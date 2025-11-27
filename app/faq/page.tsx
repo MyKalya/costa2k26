@@ -20,7 +20,7 @@ function CostCard({ icon, title, subtitle, amount, amountNote, badge, bgClass = 
     <div className="flex flex-col gap-3 rounded-2xl border border-slate-200 bg-white/80 shadow-sm p-4 sm:p-5">
       <div className="flex items-start justify-between gap-3">
         <div className="flex gap-3 flex-1 min-w-0">
-          <div className={clsx("flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full", bgClass)}>
+          <div className={clsx("flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full", bgClass === "bg-amber-50" ? "bg-amber-100" : bgClass)}>
             <div className={clsx(iconColorClass, "[&>svg]:h-5 [&>svg]:w-5")}>
               {icon}
             </div>
@@ -172,21 +172,21 @@ export default function TripCostsPage() {
             iconColorClass="text-slate-800"
           >
             <p>
-              Costa Rica is pretty card-friendly, but it really helps to have some USD on hand for tips, small markets, taxis/parking and random &quot;I need this&quot; moments. Bring whatever feels right for you – think meals out, drinks, snacks and souvenirs.
+              Costa Rica is pretty card-friendly, but it really helps to have some USD on hand for tips, small markets, taxis/parking and those random &quot;I need this&quot; moments. Bring whatever feels right for you. Think meals out, drinks, snacks and souvenirs.
             </p>
           </CostCard>
 
           {/* Tile 7 - Donation */}
           <CostCard
             icon={<Gift className="h-5 w-5" aria-hidden="true" />}
-            title="Buy the site maker a drink"
-            subtitle="Optional, very unserious"
-            amountNote="snacks / love / BTC"
-            bgClass="bg-rose-50"
-            iconColorClass="text-rose-800"
+            title="Donate to the site creator"
+            subtitle="Optional, unserious, but appreciated"
+            amountNote="BTC preferred"
+            bgClass="bg-amber-50"
+            iconColorClass="text-amber-700"
           >
             <p>
-              If you&apos;re enjoying this little Costa2K26 site, tips in the form of snacks, coffee or Bitcoin are always appreciated. Absolutely zero pressure, 100% jokes… mostly.
+              If you&apos;re enjoying this Costa2K26 site, feel free to donate to the creator — Bitcoin preferred. Or, if you&apos;re not into crypto, I&apos;ll accept one free flop in 2026 with zero questions asked.
             </p>
           </CostCard>
         </div>
