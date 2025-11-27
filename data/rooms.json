@@ -1,0 +1,65 @@
+[
+  {
+    "villa": 14,
+    "room": "V14-1 Master",
+    "bed": "King",
+    "bath": "Ensuite",
+    "status": "Assigned",
+    "occupants": [
+      "Alex & Jamie"
+    ],
+    "note": "Poolside walk-out",
+    "wifi": {
+      "ssid": "Bosques14",
+      "password": "Puravida14"
+    },
+    "accessCode": "1418"
+  },
+  {
+    "villa": 14,
+    "room": "V14-2",
+    "bed": "Queen",
+    "bath": "Shared",
+    "status": "Assigned",
+    "occupants": [
+      "Tasha"
+    ],
+    "note": "",
+    "wifi": {
+      "ssid": "Bosques14",
+      "password": "Puravida14"
+    },
+    "accessCode": "1418"
+  },
+  {
+    "villa": 15,
+    "room": "V15-1",
+    "bed": "Two Queens",
+    "bath": "Ensuite",
+    "status": "Assigned",
+    "occupants": [
+      "Morgan",
+      "Priya"
+    ],
+    "note": "",
+    "wifi": {
+      "ssid": "Bosques15",
+      "password": "Puravida15"
+    },
+    "accessCode": "1525"
+  },
+  {
+    "villa": 16,
+    "room": "V16 Bunk",
+    "bed": "Full + Twin bunk",
+    "bath": "Shared",
+    "status": "Open",
+    "occupants": [],
+    "note": "Great for late arrivals",
+    "wifi": {
+      "ssid": "Bosques16",
+      "password": "Puravida16"
+    },
+    "accessCode": "1636"
+  }
+]

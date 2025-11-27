@@ -1,0 +1,203 @@
+"use client";
+
+import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
+import { clsx } from "clsx";
+import type { LucideIcon } from "lucide-react";
+import {
+  BedDouble,
+  Home,
+  Plane,
+  CalendarDays,
+  Package,
+  Gift,
+  CircleHelp,
+  Megaphone,
+  Lock,
+} from "lucide-react";
+
+import { Button } from "@/components/ui/Button";
+
+type NavItem = { href: string; label: string; Icon: LucideIcon };
+
+const navLinks: NavItem[] = [
+  { href: "/stay", label: "Our Villa", Icon: Home },
+  { href: "/rooms", label: "Rooms", Icon: BedDouble },
+  { href: "/travel", label: "Travel", Icon: Plane },
+  { href: "/itinerary", label: "Itinerary", Icon: CalendarDays },
+  { href: "/packing", label: "Packing", Icon: Package },
+  { href: "/explore-tamarindo", label: "Explore Nearby", Icon: Gift },
+  { href: "/faq", label: "FAQ", Icon: CircleHelp },
+  { href: "/updates", label: "Updates", Icon: Megaphone },
+  { href: "/guest", label: "Guest 🔒", Icon: Lock },
+] as const;
+
+export default function NavBar() {
+  const [open, setOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isHidden, setIsHidden] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const firstLinkRef = useRef<HTMLAnchorElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentY = window.scrollY;
+
+      // top threshold for style change
+      setIsScrolled(currentY > 80);
+
+      // hide on scroll down, show on scroll up (only after scrolling past 100px)
+      if (currentY < 100) {
+        setIsHidden(false);
+      } else if (currentY > lastScrollY && currentY > 150) {
+        setIsHidden(true);
+      } else if (currentY < lastScrollY) {
+        setIsHidden(false);
+      }
+
+      setLastScrollY(currentY);
+    };
+
+    // Initial check
+    handleScroll();
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
+
+  useEffect(() => {
+    if (!open) return;
+    const previouslyFocused = document.activeElement as HTMLElement | null;
+    const main = document.querySelector("main");
+    main?.setAttribute("aria-hidden", "true");
+    (main as HTMLElement | null)?.setAttribute("inert", "");
+
+    const focusable = menuRef.current?.querySelectorAll<HTMLElement>("a, button");
+    if (focusable && focusable.length) {
+      focusable[0].focus();
+    }
+
+    const handleKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        setOpen(false);
+        previouslyFocused?.focus?.();
+      }
+      if (event.key === "Tab" && focusable && focusable.length) {
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      }
+    };
+
+    const handleClick = (event: MouseEvent | TouchEvent) => {
+      if (!menuRef.current?.contains(event.target as Node)) {
+        setOpen(false);
+      }
+    };
+
+    document.body.style.overflow = "hidden";
+    document.addEventListener("keydown", handleKey);
+    document.addEventListener("mousedown", handleClick);
+    document.addEventListener("touchstart", handleClick);
+
+    return () => {
+      document.body.style.overflow = "";
+      document.removeEventListener("keydown", handleKey);
+      document.removeEventListener("mousedown", handleClick);
+      document.removeEventListener("touchstart", handleClick);
+      previouslyFocused?.focus?.();
+      main?.removeAttribute("aria-hidden");
+      main?.removeAttribute("inert");
+    };
+  }, [open]);
+
+  return (
+    <header
+      className={clsx(
+        "fixed top-0 left-0 right-0 z-40 transition-transform duration-300",
+        isHidden && isScrolled ? "-translate-y-full" : "translate-y-0",
+        isScrolled
+          ? "bg-white/70 backdrop-blur-xl text-slate-900 border-b border-white/30 shadow-[0_2px_10px_rgba(0,0,0,0.05)]"
+          : "bg-white/20 backdrop-blur-xl text-slate-900 border-b border-white/20"
+      )}
+      style={{ margin: 0, padding: 0 }}
+    >
+      <nav className="relative mx-auto flex max-w-5xl items-center justify-between px-4 border-0" style={{ height: "56px" }}>
+        {/* Left spacer - empty */}
+        <div className="w-10" />
+        
+        {/* Centered brand - script style */}
+        <Link
+          href="/"
+          className="absolute left-1/2 -translate-x-1/2 text-[20px] sm:text-[22px] font-normal text-slate-900"
+          style={{ fontFamily: "'Pacifico', cursive" }}
+          aria-label="Costa Rica 2026 home"
+        >
+          Costa2K26
+        </Link>
+        
+        {/* Right menu button - icon only */}
+        <button
+          type="button"
+          className="p-2 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400/50 text-slate-900 hover:text-slate-700"
+          onClick={() => setOpen(true)}
+          aria-haspopup="dialog"
+          aria-expanded={open}
+          aria-label="Open menu"
+        >
+          <svg
+            className="h-6 w-6"
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </nav>
+
+      {open && (
+        <div
+          className="fixed inset-0 z-[60] flex items-start justify-center px-4 pt-24 sm:pt-28"
+          aria-modal="true"
+          role="dialog"
+        >
+          <div
+            className="absolute inset-0 bg-black/35 backdrop-blur-sm"
+            aria-hidden="true"
+            onClick={() => setOpen(false)}
+          />
+          <div ref={menuRef} className="dropdown-panel w-full max-w-sm max-h-[70svh] overflow-hidden">
+            <div className="flex max-h-[60svh] flex-col space-y-3 overflow-y-auto pr-1">
+              {navLinks.map(({ href, label, Icon }, index) => (
+                <Link
+                  key={href}
+                  href={href}
+                  ref={index === 0 ? firstLinkRef : undefined}
+                  style={{ animationDelay: `${index * 30}ms` }}
+                  className="dropdown-link group"
+                  onClick={() => setOpen(false)}
+                >
+                  <Icon className="h-5 w-5 text-primary transition-transform duration-200 group-hover:scale-110" aria-hidden />
+                  <span className="text-sm font-semibold text-foreground">{label}</span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+    </header>
+  );
+}

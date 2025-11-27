@@ -2,32 +2,226 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600;700&family=Bungee:wght@400&family=Pacifico&display=swap');
+
+@font-face {
+  font-family: 'Recoleta';
+  src: url('/fonts/Recoleta-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+.font-recoleta {
+  font-family: 'Recoleta', ui-serif, Georgia, serif;
+}
+
+:root {
+  --font-sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-recoleta: "Recoleta";
+  --bg: #FFFFFF;
+  --bg-subtle: #F8FAF9;
+  --surface: #FFFFFF;
+  --fg: #1A1F1B;
+  --fg-muted: #5A635C;
+  --brand: #2D5A3F;
+  --brand-hover: #244C36;
+  --accent: #D7A25F;
+  --border: #E5E8E6;
+  --success: #1E9D73;
+  --error: #E24E3A;
+  --contrast-dark: #0E2E22;
+  color-scheme: light;
+}
+
+html,
+body {
+  min-height: 100%;
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 180ms ease;
+}
+
+a:hover,
+a:focus-visible {
+  color: var(--brand);
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.bg-page { background: var(--bg); }
+.bg-section { background: var(--bg-subtle); }
+.text-muted { color: var(--fg-muted); }
+.ring-accent { box-shadow: 0 0 0 4px rgba(215, 162, 95, 0.35); }
+.shadow-card { box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+.shadow-hover { box-shadow: 0 6px 16px rgba(0,0,0,0.08); }
+.shadow-focus { box-shadow: 0 0 0 4px rgba(215,162,95,0.35); }
+
+.container { @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8; }
+.container-wrap { @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8; }
+.section { @apply container py-12 sm:py-16 space-y-6; }
+.h1 { @apply text-3xl sm:text-4xl font-semibold text-foreground font-sans; }
+.h2 { @apply text-2xl sm:text-3xl font-semibold text-foreground font-sans; }
+.lead { @apply text-base sm:text-lg text-muted font-sans; }
+
+.card { @apply bg-surface border border-border rounded-card shadow-card text-foreground; }
+.badge { @apply inline-flex items-center gap-2 rounded-pill bg-primary/10 px-3 py-1 text-xs font-semibold text-primary; }
+
+.section-header { @apply flex flex-col gap-2; }
+.section-header-title { @apply font-sans text-xl font-semibold text-foreground; }
+.section-header-subtitle { @apply text-sm text-muted; }
+.section-divider { @apply mt-2 h-px w-full bg-border; }
+
+.dropdown-panel {
+  position: relative;
+  overflow: hidden;
+  padding: 1.5rem;
+  border-radius: 24px;
+  background-color: rgba(255, 255, 255, 0.94);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 20px 50px rgba(14, 46, 34, 0.18);
+}
+
+.dropdown-panel::before {
+  content: "";
+  position: absolute;
+  inset: -12%;
+  pointer-events: none;
+  background-image:
+    url('/textures/caustics.webp'),
+    radial-gradient(120px 90px at 12% 18%, rgba(215,162,95,0.12), transparent 60%),
+    radial-gradient(140px 90px at 75% 62%, rgba(45,90,63,0.08), transparent 70%),
+    radial-gradient(110px 70px at 45% 80%, rgba(215,162,95,0.1), transparent 70%);
+  background-position: center, 12% 18%, 75% 62%, 45% 80%;
+  background-size: 160% 160%, 220% 220%, 220% 220%, 200% 200%;
+  mix-blend-mode: screen;
+  opacity: 0.08;
+  filter: blur(3px);
+  animation: caustics-pan 24s linear infinite;
+}
+
+.dropdown-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border-radius: 9999px;
+  padding: 0.875rem 1.25rem;
+  font-weight: 600;
+  color: var(--fg);
+  opacity: 0;
+  transform: translateY(12px);
+  animation: dropdown-item 0.35s ease-out forwards;
+}
+
+.dropdown-link::after {
+  content: "";
+  position: absolute;
+  left: 1.25rem;
+  right: 1.25rem;
+  bottom: 0.45rem;
+  height: 2px;
+  border-radius: 9999px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  opacity: 0;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.dropdown-link:hover,
+.dropdown-link:focus-visible { background: rgba(13, 46, 34, 0.04); }
+.dropdown-link:hover::after,
+.dropdown-link:focus-visible::after { transform: scaleX(1); opacity: 1; }
+
+.toast {
+  position: fixed;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(14, 46, 34, 0.92);
+  color: #fff;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  font-size: 0.875rem;
+  z-index: 90;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.16);
+}
+
+.hero-badge {
+  @apply inline-flex items-center gap-2 rounded-pill bg-primary/15 px-4 py-2 text-xs font-semibold text-primary;
+}
+
+.scroll-indicator {
+  position: absolute;
+  left: 50%;
+  bottom: 32px;
+  transform: translateX(-50%);
+  color: #fff;
+  opacity: 0.85;
+  animation: scroll-hint 2.8s ease-in-out infinite;
+}
+
+.animate-reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  animation: reveal 0.3s ease-natural forwards;
+}
+
+.highlight-pulse {
+  animation: highlight-pulse 1s ease-out;
+}
+
+@keyframes reveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@keyframes dropdown-item {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+@keyframes scroll-hint {
+  0%, 100% { opacity: 0; transform: translate(-50%, 8px); }
+  40% { opacity: 1; transform: translate(-50%, 0); }
+  60% { opacity: 1; transform: translate(-50%, 3px); }
+}
+
+@keyframes highlight-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(215, 162, 95, 0.65); }
+  70% { box-shadow: 0 0 0 12px rgba(215, 162, 95, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(215, 162, 95, 0); }
+}
+
+@keyframes caustics-pan {
+  0% { transform: translate3d(0,0,0); }
+  50% { transform: translate3d(-6%, -4%, 0); }
+  100% { transform: translate3d(0,0,0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0 !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0 !important;
   }
 }
