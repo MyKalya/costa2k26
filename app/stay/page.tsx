@@ -251,37 +251,52 @@ export default function Stay() {
   return (
     <div className="bg-background text-foreground">
       {/* Hero Section */}
-      <section className="bg-[#FFFDF5] py-10 sm:py-16">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      <section className="bg-[#FAF8F2] py-12 sm:py-16">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
           {/* Text block */}
-          <div className="max-w-2xl space-y-3">
-            <p className="text-sm font-medium tracking-wide uppercase text-gray-500">
+          <div className="space-y-3">
+            <p className="text-xs font-semibold tracking-wide uppercase text-gray-500">
               Our Costa2K26 Stay
             </p>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold leading-tight text-[#222222]">
+
+            <h1 className="text-4xl font-bold text-[#222222] sm:text-5xl">
               Where we are staying
             </h1>
-            <p className="text-base sm:text-lg text-gray-600">
-              Three villas, one home base for all of us. A shared spot to wake up, wander between pools, and end the night together.
+
+            <p className="text-gray-600 text-base sm:text-lg">
+              Three villas, one home base for all of us. A shared spot to wake up,
+              wander between pools, and end the night together.
             </p>
           </div>
 
-          {/* Video block */}
+          {/* YouTube video */}
           <div className="w-full aspect-video rounded-2xl overflow-hidden shadow-lg bg-black">
             <iframe
               className="w-full h-full"
               src={videoConfig.stayYoutube}
-              title="Our Costa2K26 stay"
+              title="Our Costa2K26 Stay"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
             />
           </div>
+
+          {/* YouTube button */}
+          <div>
+            <a
+              href="https://youtu.be/P4GQP5FozYo"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center text-sm font-medium text-red-600 hover:text-red-700"
+            >
+              ▶️ Watch on YouTube
+            </a>
+          </div>
         </div>
       </section>
 
       {/* CTAs Section */}
-      <section className="bg-[#FFFDF5] py-8">
+      <section className="bg-[#FAF8F2] py-8">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col items-center gap-3">
             <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
