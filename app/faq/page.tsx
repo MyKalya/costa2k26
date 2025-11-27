@@ -16,11 +16,14 @@ type CostCardProps = {
 };
 
 function CostCard({ icon, title, subtitle, amount, amountNote, badge, bgClass = "bg-emerald-50", iconColorClass = "text-emerald-800", children }: CostCardProps) {
+  const borderClass = bgClass === "bg-amber-50" ? "border-amber-200" : "border-slate-200";
+  const iconBgClass = bgClass === "bg-amber-50" ? "bg-amber-100" : bgClass;
+  
   return (
-    <div className="flex flex-col gap-3 rounded-2xl border border-slate-200 bg-white/80 shadow-sm p-4 sm:p-5">
+    <div className={clsx("flex flex-col gap-3 rounded-2xl border bg-white/80 shadow-sm p-4 sm:p-5", borderClass)}>
       <div className="flex items-start justify-between gap-3">
         <div className="flex gap-3 flex-1 min-w-0">
-          <div className={clsx("flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full", bgClass === "bg-amber-50" ? "bg-amber-100" : bgClass)}>
+          <div className={clsx("flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full", iconBgClass)}>
             <div className={clsx(iconColorClass, "[&>svg]:h-5 [&>svg]:w-5")}>
               {icon}
             </div>
