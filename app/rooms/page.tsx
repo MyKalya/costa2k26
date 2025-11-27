@@ -497,7 +497,7 @@ const VillaCarousel = forwardRef<HTMLDivElement, {
                 </div>
                 <div className="flex flex-col gap-1 px-4 py-3">
                   <span className="text-sm font-semibold text-foreground">{meta?.name ?? `Villa ${villaId}`}</span>
-                  <span className="text-xs text-muted">Sleeps {meta?.sleeps ?? "--"} • {meta?.beds ?? "-"} beds • {meta?.rooms ?? ROOMS.filter((room) => room.villa === villaId).length} rooms</span>
+                  <span className="text-xs text-muted">Sleeps {meta?.sleeps ?? "--"} • {meta?.beds ?? "-"} beds • {ROOMS.filter((room) => room.villa === villaId).length} rooms</span>
                 </div>
               </button>
             );
@@ -529,7 +529,7 @@ const VillaQuickActions = ({
     <div>
       <h2 className="font-sans text-lg font-semibold text-[#134E4A]">{meta?.name ?? `Villa ${villaId}`}</h2>
       <p className="text-sm text-[#4C625E]">
-        Sleeps {meta?.sleeps ?? "--"} • {meta?.beds ?? "-"} beds • {meta?.rooms ?? ROOMS.filter((room) => room.villa === villaId).length} rooms
+        Sleeps {meta?.sleeps ?? "--"} • {meta?.beds ?? "-"} beds • {ROOMS.filter((room) => room.villa === villaId).length} rooms
       </p>
     </div>
     <div className="flex flex-wrap items-center gap-2">
