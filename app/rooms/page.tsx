@@ -1001,7 +1001,7 @@ function toRoomInfo(room: (typeof ROOMS)[number]) {
     capacity: meta.capacity,
     amenities: meta.amenities ?? [],
     assignments: getAssignments(room.id, room.occupants),
-    note: room.note,
+    note: "note" in room ? room.note : "",
     status: room.status,
   };
 }
