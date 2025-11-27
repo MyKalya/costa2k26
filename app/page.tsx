@@ -189,7 +189,7 @@ const tripHubItems = [
   },
   {
     id: "stay",
-    title: "Where we're staying",
+    title: "Where we&rsquo;re staying",
     description: "Villa details, maps, and your room info.",
     status: "Live",
     ctaLabel: "Explore the villa",
@@ -219,7 +219,7 @@ const COMING_NEXT_CARDS = [
   {
     id: "activities",
     title: "Activities and planning",
-    body: "We're finalizing a few add-ons and group options. Hot springs, ATV, surf lessons. We'll update the itinerary as things get confirmed.",
+    body: "We&rsquo;re finalizing a few add-ons and group options. Hot springs, ATV, surf lessons. We&rsquo;ll update the itinerary as things get confirmed.",
     status: "Updating weekly",
     accentColor: "green",
   },
@@ -233,7 +233,7 @@ const COMING_NEXT_CARDS = [
   {
     id: "questions",
     title: "Questions or ideas?",
-    body: "Message us on WhatsApp if you have questions or suggestions. This trip is for all of us, and we're open to anything you'd love to see.",
+    body: "Message us on WhatsApp if you have questions or suggestions. This trip is for all of us, and we&rsquo;re open to anything you&rsquo;d love to see.",
     status: "Open to ideas",
     accentColor: "coral",
     hasButton: true,

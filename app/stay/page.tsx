@@ -70,7 +70,7 @@ const HOUSE_RULES = [
   },
   {
     title: "Air Conditioning & Electricity",
-    content: "Set A/C around 72°F / 22°C. Keep doors and windows closed while it's running, and turn it off when you leave the room. The villa charges a $50 USD fee any time A/C is found running with doors open or when no one is in the room.",
+    content: "Set A/C around 72°F / 22°C. Keep doors and windows closed while it&rsquo;s running, and turn it off when you leave the room. The villa charges a $50 USD fee any time A/C is found running with doors open or when no one is in the room.",
     icon: Snowflake,
   },
   {
