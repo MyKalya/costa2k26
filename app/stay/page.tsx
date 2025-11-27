@@ -251,44 +251,38 @@ export default function Stay() {
   return (
     <div className="bg-background text-foreground">
       {/* Hero Section */}
-      <section className="border-b border-border bg-background pb-12 sm:pb-16 md:pb-20">
-        {/* Video Container - 65vh height, full width, extends to top */}
-        <div className="relative -mx-4 h-[65vh] overflow-hidden sm:-mx-6 md:-mx-8">
-          <div className="absolute inset-0 w-full h-full">
+      <section className="bg-[#FFFDF5] py-10 sm:py-16">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+          {/* Text block */}
+          <div className="max-w-2xl space-y-3">
+            <p className="text-sm font-medium tracking-wide uppercase text-gray-500">
+              Our Costa2K26 Stay
+            </p>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold leading-tight text-[#222222]">
+              Where we are staying
+            </h1>
+            <p className="text-base sm:text-lg text-gray-600">
+              Three villas, one home base for all of us. A shared spot to wake up, wander between pools, and end the night together.
+            </p>
+          </div>
+
+          {/* Video block */}
+          <div className="w-full aspect-video rounded-2xl overflow-hidden shadow-lg bg-black">
             <iframe
-              className="absolute inset-0 w-full h-full"
+              className="w-full h-full"
               src={videoConfig.stayYoutube}
-              title="Stay preview"
+              title="Our Costa2K26 stay"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
             />
           </div>
-          {/* Subtle gradient overlay only at edges for text readability */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/20 pointer-events-none" />
-          
-          {/* Headline at top of video - centered horizontally, clickable through */}
-          <div className="absolute top-0 left-0 right-0 flex justify-center px-4 pt-8 sm:pt-12 md:pt-16 pointer-events-none z-10">
-            <h1 className="text-center font-recoleta text-[clamp(2.5rem,7vw,5rem)] font-bold leading-[1.1] uppercase tracking-tight text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)] sm:leading-tight">
-              Where We&apos;re Staying
-            </h1>
-          </div>
-          
-          {/* Subtitle and cheeky line at bottom of video - centered horizontally, clickable through */}
-          <div className="absolute bottom-0 left-0 right-0 flex justify-center px-4 pb-8 sm:pb-12 md:pb-16 pointer-events-none z-10">
-            <div className="text-center text-white">
-              <p className="mx-auto max-w-2xl text-base font-sans text-white/95 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] sm:text-lg md:text-xl">
-                Three villas, one home base for all of us.
-              </p>
-              <p className="mx-auto mt-2 text-xs font-sans text-white/90 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] sm:text-sm">
-                Oh yeah... that&apos;s actually footage of our villa 👀
-              </p>
-            </div>
-          </div>
         </div>
+      </section>
 
-        {/* CTAs directly below video - in white space */}
-        <div className="container-wrap pt-8">
+      {/* CTAs Section */}
+      <section className="bg-[#FFFDF5] py-8">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col items-center gap-3">
             <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
               <Button as={Link} href="/rooms" variant="primary" size="lg" className="shadow-hover w-full max-w-xs sm:w-auto">
