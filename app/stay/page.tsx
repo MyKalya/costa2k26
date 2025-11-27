@@ -251,34 +251,47 @@ export default function Stay() {
   return (
     <div className="bg-background text-foreground">
       {/* Hero Section */}
-      <section className="bg-gradient-to-b from-[#E0F7F4] via-[#FFF4D8] to-[#FFE1E0] py-12 sm:py-16">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+      <section className="relative overflow-hidden py-14 sm:py-20 bg-gradient-to-br from-[#041F1A] via-[#0B3A2D] to-[#F3EEE2]">
+        {/* Palm leaf line art overlay */}
+        <div
+          className="pointer-events-none absolute inset-0 opacity-30"
+          style={{
+            backgroundImage: "url('/palm-leaf-pattern.svg')",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "700px",
+            backgroundPosition: "top right"
+          }}
+        />
+
+        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
           {/* Text block */}
-          <div className="space-y-3">
-            <p className="text-xs font-semibold tracking-wide uppercase text-gray-600">
+          <div className="space-y-4 text-[#F7F3EA]">
+            <p className="text-xs font-semibold tracking-[0.18em] uppercase text-[#D5E6DD]">
               Our Costa2K26 Stay
             </p>
 
-            <h1 className="text-4xl font-bold text-[#222222] sm:text-5xl">
+            <h1 className="text-4xl sm:text-5xl font-semibold leading-tight">
               Where we are staying
             </h1>
 
-            <p className="text-gray-700 text-base sm:text-lg">
+            <p className="text-sm sm:text-base md:text-lg max-w-2xl text-[#ECF2EE]">
               Three villas, one home base for all of us. A shared spot to wake up,
               wander between pools, and end the night together.
             </p>
           </div>
 
-          {/* YouTube video – autoplay, muted */}
-          <div className="w-full aspect-video rounded-2xl overflow-hidden shadow-lg bg-black">
-            <iframe
-              className="w-full h-full"
-              src="https://www.youtube.com/embed/P4GQP5FozYo?rel=0&modestbranding=1&playsinline=1&autoplay=1&mute=1&controls=1"
-              title="Our Costa2K26 Stay"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
-            />
+          {/* Video card */}
+          <div className="w-full rounded-3xl overflow-hidden shadow-[0_22px_60px_rgba(0,0,0,0.45)] bg-[#021712]">
+            <div className="aspect-video">
+              <iframe
+                className="w-full h-full"
+                src="https://www.youtube.com/embed/P4GQP5FozYo?rel=0&modestbranding=1&playsinline=1&autoplay=1&mute=1&controls=1"
+                title="Our Costa2K26 Stay"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              />
+            </div>
           </div>
         </div>
       </section>

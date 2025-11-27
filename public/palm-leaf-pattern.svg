@@ -1,0 +1,24 @@
+<svg width="700" height="800" viewBox="0 0 700 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Palm frond 1 -->
+  <path d="M500 50 Q550 100 580 150 Q590 180 585 200 Q580 220 570 240 Q560 260 545 280" stroke="#D5E6DD" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.6"/>
+  <path d="M490 100 Q520 130 540 160 Q550 185 548 205 Q545 225 535 245 Q525 265 510 285" stroke="#D5E6DD" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.5"/>
+  <path d="M510 80 Q540 110 560 140 Q570 170 568 190 Q565 210 555 230 Q545 250 530 270" stroke="#D5E6DD" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.5"/>
+  
+  <!-- Palm frond 2 -->
+  <path d="M550 80 Q600 120 630 180 Q640 220 635 250 Q630 280 615 310 Q600 340 580 370" stroke="#D5E6DD" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.6"/>
+  <path d="M540 130 Q580 160 605 210 Q615 245 612 270 Q608 295 595 320 Q582 345 565 375" stroke="#D5E6DD" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.5"/>
+  <path d="M560 100 Q595 140 620 190 Q630 230 627 260 Q623 290 610 315 Q597 340 580 370" stroke="#D5E6DD" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.5"/>
+  
+  <!-- Palm frond 3 (smaller, top right) -->
+  <path d="M600 20 Q630 50 645 90 Q650 120 645 150 Q640 180 625 210" stroke="#D5E6DD" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.5"/>
+  <path d="M590 50 Q615 75 630 110 Q635 135 632 160 Q628 185 616 210" stroke="#D5E6DD" stroke-width="1" stroke-linecap="round" fill="none" opacity="0.4"/>
+  
+  <!-- Palm frond 4 (curved, left side) -->
+  <path d="M480 120 Q450 150 430 200 Q420 240 425 280 Q430 320 445 360" stroke="#D5E6DD" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.5"/>
+  <path d="M470 160 Q445 185 430 225 Q425 260 428 295 Q432 330 445 365" stroke="#D5E6DD" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.4"/>
+  
+  <!-- Additional small decorative leaves -->
+  <path d="M520 150 Q540 170 550 190" stroke="#D5E6DD" stroke-width="1" stroke-linecap="round" fill="none" opacity="0.4"/>
+  <path d="M580 140 Q595 160 605 180" stroke="#D5E6DD" stroke-width="1" stroke-linecap="round" fill="none" opacity="0.4"/>
+</svg>
+
