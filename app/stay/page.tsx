@@ -251,16 +251,16 @@ export default function Stay() {
   return (
     <div className="bg-background text-foreground">
       {/* Hero Section */}
-      <section className="relative overflow-hidden py-14 sm:py-20">
+      <section className="relative overflow-hidden py-14 sm:py-20 min-h-[60vh]">
         {/* Background image */}
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: "url('/media/images/palm-background.png')",
+            backgroundImage: "url('https://res.cloudinary.com/drbh1hki1/image/upload/v1764280464/palm-background_pkve1s.png')",
           }}
         />
         {/* Dark overlay for text readability */}
-        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 z-[1] bg-black/40" />
         
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
           {/* Text block */}
