@@ -256,7 +256,7 @@ export default function Stay() {
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: "url('/media/images/palm-background.jpg')",
+            backgroundImage: "url('/media/images/palm-background.png')",
           }}
         />
         {/* Dark overlay for text readability */}
