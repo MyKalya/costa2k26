@@ -27,7 +27,7 @@ const navLinks: NavItem[] = [
   { href: "/itinerary", label: "Itinerary", Icon: CalendarDays },
   { href: "/packing", label: "Packing", Icon: Package },
   { href: "/explore-tamarindo", label: "Explore Nearby", Icon: Gift },
-  { href: "/faq", label: "FAQ", Icon: CircleHelp },
+  { href: "/faq", label: "Trip costs", Icon: CircleHelp },
   { href: "/updates", label: "Updates", Icon: Megaphone },
   { href: "/guest", label: "Guest 🔒", Icon: Lock },
 ] as const;
