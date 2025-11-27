@@ -522,7 +522,7 @@ const VillaQuickActions = ({
   onAction,
 }: {
   villaId: VillaId;
-  meta?: (typeof VILLAS)[string];
+  meta?: (typeof VILLAS)[VillaId];
   onAction: (id: QuickActionId) => void;
 }) => (
   <div className="flex flex-col gap-3 text-sm sm:flex-row sm:items-center sm:justify-between">
