@@ -16,7 +16,7 @@ export function HeroSection({ onViewDays }: HeroSectionProps) {
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: "url('/images/itinerary-hero.png')",
+          backgroundImage: "url('/media/itinerary/itinerary-hero.png')",
           backgroundColor: "#0E3D2F", // Fallback jungle green
         }}
       >

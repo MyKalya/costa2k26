@@ -6,7 +6,7 @@ export const VILLAS = {
     baths: 6,
     wifi: { ssid: "Bosques14", password: "Puravida14" },
     accessCode: "1418",
-    heroImage: "/images/stay/villa 14.avif",
+    heroImage: "/media/villas/villa 14.avif",
   },
   "15": {
     name: "Villa 15",
@@ -15,7 +15,7 @@ export const VILLAS = {
     baths: 8,
     wifi: { ssid: "Bosques15", password: "Puravida15" },
     accessCode: "1525",
-    heroImage: "/images/stay/villa 15.avif",
+    heroImage: "/media/villas/villa 15.avif",
   },
   "16": {
     name: "Villa 16",
@@ -24,7 +24,7 @@ export const VILLAS = {
     baths: 7,
     wifi: { ssid: "Bosques16", password: "Puravida16" },
     accessCode: "1636",
-    heroImage: "/images/stay/villa 16.avif",
+    heroImage: "/media/villas/villa 16.avif",
   },
 } as const;
 

@@ -145,7 +145,7 @@ export const sampleDay1: ItineraryDay = {
   
   theme: "arrival",
   themeColor: "#E8D5B7", // Warm sand
-  heroImageSrc: "/images/itinerary/day-1-arrival.jpg",
+  heroImageSrc: "/media/itinerary/day1-banner.png",
   
   shortLabel: "Arrival",
   title: "Arrivals and Welcome Party",
@@ -220,7 +220,7 @@ export const itineraryDays: ItineraryDay[] = [
     dateValue: "2026-02-13",
     theme: "arrival",
     themeColor: "#E8D5B7", // Warm sand
-    heroImageSrc: "/images/itinerary/day-1-arrival.jpg",
+    heroImageSrc: "/media/itinerary/day1-banner.png",
     shortLabel: "Arrival",
     title: "Arrivals and Welcome Party",
     subtitle: "Settle in, meet the group, and kick off the week with dinner and drinks.",
@@ -255,7 +255,7 @@ export const itineraryDays: ItineraryDay[] = [
     dateValue: "2026-02-14",
     theme: "valentines",
     themeColor: "#FF6B6B", // Coral
-    heroImageSrc: "/images/itinerary/day-2-valentines.jpg",
+    heroImageSrc: "/media/itinerary/day2-banner.png",
     shortLabel: "Valentines Beach Club",
     title: "Valentines at the Beach Club",
     subtitle: "A full day at Tamarindo Beach Club with watersports, brunch, and sunset drinks.",
@@ -309,7 +309,7 @@ export const itineraryDays: ItineraryDay[] = [
     dateValue: "2026-02-15",
     theme: "free-day",
     themeColor: "#4ECDC4", // Dusk teal
-    heroImageSrc: "/images/itinerary/day-3-free-day.jpg",
+    heroImageSrc: "/media/itinerary/day3-banner.png",
     shortLabel: "Free Day",
     title: "Free Day and Night Market",
     subtitle: "Your day to explore, relax, or choose your own adventure. End with the vibrant night market.",
@@ -354,7 +354,7 @@ export const itineraryDays: ItineraryDay[] = [
     dateValue: "2026-02-16",
     theme: "adventure",
     themeColor: "#134E4A", // Deep jungle green
-    heroImageSrc: "/images/itinerary/day-4-adventure.jpg",
+    heroImageSrc: "/media/itinerary/day4-banner.png",
     shortLabel: "Adventure",
     title: "Adventure and Hot Springs",
     subtitle: "River tubing, hot springs, and authentic Costa Rican cuisine. Choose your adventure path.",
@@ -420,7 +420,7 @@ export const itineraryDays: ItineraryDay[] = [
     dateValue: "2026-02-17",
     theme: "catamaran",
     themeColor: "#4A90E2", // Bright ocean blue
-    heroImageSrc: "/images/itinerary/day-5-catamaran.jpg",
+    heroImageSrc: "/media/itinerary/day5-banner.png",
     shortLabel: "Catamaran",
     title: "Catamaran and Private Chef Night",
     subtitle: "Sunset catamaran tour followed by an intimate private chef dinner at the villa.",
@@ -470,7 +470,7 @@ export const itineraryDays: ItineraryDay[] = [
     dateValue: "2026-02-18",
     theme: "departure",
     themeColor: "#95A5A6", // Calm neutral
-    heroImageSrc: "/images/itinerary/day-6-departure.jpg",
+    heroImageSrc: "/media/itinerary/day6-banner.png",
     shortLabel: "Departure",
     title: "Departure Day",
     subtitle: "Farewell breakfast and airport shuttles. Until next time, Costa Rica.",

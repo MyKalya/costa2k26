@@ -42,7 +42,7 @@ const VILLA_DETAILS = [
     sleeps: 12,
     beds: 5,
     baths: 6,
-    image: "/images/stay/villa 14.avif",
+    image: "/media/villas/villa 14.avif",
   },
   {
     id: "15",
@@ -50,7 +50,7 @@ const VILLA_DETAILS = [
     sleeps: 14,
     beds: 6,
     baths: 8,
-    image: "/images/stay/villa 15.avif",
+    image: "/media/villas/villa 15.avif",
   },
   {
     id: "16",
@@ -58,7 +58,7 @@ const VILLA_DETAILS = [
     sleeps: 14,
     beds: 6,
     baths: 7,
-    image: "/images/stay/villa 16.avif",
+    image: "/media/villas/villa 16.avif",
   },
 ] as const;
 
@@ -130,21 +130,21 @@ export default function Stay() {
     "Minutes from beach club, golf course, and coastal trails",
   ] as const;
 
-  // Image carousel - using actual AVIF files from /public/images/stay/
+  // Image carousel - using actual AVIF files from /public/media/villas/
   const stayImages = [
-    "/images/stay/1.avif",
-    "/images/stay/2.avif",
-    "/images/stay/3.avif",
-    "/images/stay/4.avif",
-    "/images/stay/5.avif",
-    "/images/stay/6.avif",
-    "/images/stay/7.avif",
-    "/images/stay/8.avif",
-    "/images/stay/10.avif",
-    "/images/stay/12.jpeg",
-    "/images/stay/13.avif",
-    "/images/stay/14.avif",
-    "/images/stay/15.avif",
+    "/media/villas/1.avif",
+    "/media/villas/2.avif",
+    "/media/villas/3.avif",
+    "/media/villas/4.avif",
+    "/media/villas/5.avif",
+    "/media/villas/6.avif",
+    "/media/villas/7.avif",
+    "/media/villas/8.avif",
+    "/media/villas/10.avif",
+    "/media/villas/12.jpeg",
+    "/media/villas/13.avif",
+    "/media/villas/14.avif",
+    "/media/villas/15.avif",
   ].map((path, i) => ({
     src: path,
     alt: `Villa preview ${i + 1}`,
@@ -262,7 +262,7 @@ export default function Stay() {
             preload="auto"
             aria-hidden="true"
           >
-            <source src="/videos/stay.mp4" type="video/mp4" />
+            <source src="/media/video/stay.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
           {/* Gradient overlay for text readability */}
@@ -826,7 +826,7 @@ export default function Stay() {
                 >
                   <div className="relative aspect-[3/1] w-full">
                     <Image
-                      src="/images/stay/villa 15.avif"
+                      src="/media/villas/villa 15.avif"
                       alt="Villa exterior"
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"

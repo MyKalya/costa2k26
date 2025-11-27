@@ -98,7 +98,7 @@ export function ItineraryHero({ days, activeDayId, onDaySelect, onViewDay }: Iti
       <motion.div
         style={{ 
           y: backgroundY,
-          backgroundImage: "url('/images/itinerary/hero-beach.jpg')", // Placeholder
+          backgroundImage: "url('/media/itinerary/itinerary-hero.png')",
         }}
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
       >

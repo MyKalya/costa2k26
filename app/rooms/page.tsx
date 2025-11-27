@@ -292,7 +292,7 @@ function RoomsPageContent() {
     </BottomSheet>
   ) : null;
 
-  const heroImage = "/images/stay/villas.avif";
+  const heroImage = "/media/villas/villas.avif";
 
   return (
     <div className="bg-background text-foreground">
@@ -490,7 +490,7 @@ const VillaCarousel = forwardRef<HTMLDivElement, {
           {VILLA_ORDER.map((villaId) => {
             const meta = VILLAS[villaId];
             const active = selected === villaId;
-            const image = meta?.heroImage ?? "/images/stay/villas.avif";
+            const image = meta?.heroImage ?? "/media/villas/villas.avif";
             return (
               <button
                 key={villaId}

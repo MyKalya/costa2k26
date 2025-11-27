@@ -282,7 +282,7 @@ function Hero({
   onTravelInfo: () => void;
 }) {
   const [shouldUseVideo, setShouldUseVideo] = useState(true);
-  const [videoSrc, setVideoSrc] = useState("/videos/hero.mp4");
+  const [videoSrc, setVideoSrc] = useState("/media/video/hero.mp4");
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
@@ -300,8 +300,8 @@ function Hero({
 
     const handleVideoError = () => {
       // If hero.mp4 fails, try stay.mp4 as fallback
-      if (videoSrc === "/videos/hero.mp4") {
-        setVideoSrc("/videos/stay.mp4");
+      if (videoSrc === "/media/video/hero.mp4") {
+        setVideoSrc("/media/video/stay.mp4");
       }
     };
 

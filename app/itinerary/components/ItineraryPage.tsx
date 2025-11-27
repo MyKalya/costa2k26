@@ -15,7 +15,7 @@ const days: DayCardProps[] = [
     summary: "Settle in, meet the group, and kick off the week with dinner and drinks.",
     themeColor: "#C46A28",
     cardBg: "#FDF3EA",
-    bannerImage: "/images/day1-banner.png",
+    bannerImage: "/media/itinerary/day1-banner.png",
     vibeSummary: "First night in Costa Rica. Soft landings, sunset views, and a warm welcome with the whole crew.",
     notes: [
       "Welcome party dress code: all white.",
@@ -55,7 +55,7 @@ const days: DayCardProps[] = [
     summary: "A full day at Tamarindo Beach Club with watersports, brunch, and sunset drinks.",
     themeColor: "#E8A48F",
     cardBg: "#FDEFEA",
-    bannerImage: "/images/day2-banner.png",
+    bannerImage: "/media/itinerary/day2-banner.png",
     vibeSummary: "Beach club Valentine energy. Daybeds, water, and slow-motion sunshine all day.",
     notes: [
       "Bring sunglasses, hat, and sunscreen.",
@@ -110,7 +110,7 @@ const days: DayCardProps[] = [
       "Your day to explore, relax, or choose your own adventure, with the night market to close it out.",
     themeColor: "#4AA7A4",
     cardBg: "#EBF7F6",
-    bannerImage: "/images/day3-banner.png",
+    bannerImage: "/media/itinerary/day3-banner.png",
     vibeSummary: "Choose your own adventure. Explore town, find your spots, and end the night at the market.",
     notes: [
       "Great day to book optional excursions or spa.",
@@ -158,7 +158,7 @@ const days: DayCardProps[] = [
     summary: "River tubing, hot springs, and authentic Costa Rican cuisine.",
     themeColor: "#3A784F",
     cardBg: "#E7F2EB",
-    bannerImage: "/images/day4-banner.png",
+    bannerImage: "/media/itinerary/day4-banner.png",
     vibeSummary: "Adventure day. Rivers, hot springs, and a little bit of jungle.",
     notes: [
       "Bring a change of clothes in case you get wet.",
@@ -220,7 +220,7 @@ const days: DayCardProps[] = [
     summary: "Sail, swim, and watch the sunset from the water with the whole group.",
     themeColor: "#3D829F",
     cardBg: "#E9F4F8",
-    bannerImage: "/images/day5-banner.png",
+    bannerImage: "/media/itinerary/day5-banner.png",
     vibeSummary: "Catamaran party at sea. Swim, sail, and watch the sunset from the water.",
     notes: [
       "Bring swim outfits and something dry for the sail back.",
@@ -275,7 +275,7 @@ const days: DayCardProps[] = [
     summary: "One last slow morning together before everyone heads home.",
     themeColor: "#AFA98A",
     cardBg: "#F5F3EA",
-    bannerImage: "/images/day6-banner.png",
+    bannerImage: "/media/itinerary/day6-banner.png",
     vibeSummary: "Last slow morning together before everyone heads home.",
     notes: [
       "Keep your passport and boarding pass handy.",

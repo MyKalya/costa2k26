@@ -61,7 +61,7 @@ function ExploreHero({ heroY }: { heroY: any }) {
       >
         <div className="absolute inset-0 bg-gradient-to-br from-[#134E4A]/20 via-[#4C625E]/10 to-[#DDEEE8]/30" />
         <Image
-          src="/images/explore-hero.jpg"
+          src="/media/beach/explore-hero.jpg"
           alt="Beach scene"
           fill
           className="object-cover object-center"
