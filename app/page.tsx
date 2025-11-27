@@ -294,18 +294,52 @@ function Hero({
     return () => mediaQuery.removeEventListener?.("change", handleChange);
   }, []);
 
+  // Ensure video plays on mount and handle errors
+  useEffect(() => {
+    if (!shouldUseVideo || !videoRef.current) return;
+    const video = videoRef.current;
+
+    const handleCanPlay = () => {
+      video.play().catch((error) => {
+        console.warn("Video autoplay prevented:", error);
+      });
+    };
+
+    const handleError = (e: Event) => {
+      console.error("Video load error:", e);
+      // Fall back to background image if video fails
+      setShouldUseVideo(false);
+    };
+
+    video.addEventListener("canplay", handleCanPlay);
+    video.addEventListener("error", handleError);
+
+    // Try to play immediately
+    video.play().catch(() => {
+      // Autoplay might be blocked, wait for user interaction
+      console.log("Autoplay blocked, waiting for user interaction");
+    });
+
+    return () => {
+      video.removeEventListener("canplay", handleCanPlay);
+      video.removeEventListener("error", handleError);
+    };
+  }, [shouldUseVideo]);
+
   return (
     <section className="relative h-[80vh] overflow-hidden">
       {/* Background video */}
       {shouldUseVideo ? (
         <video
           ref={videoRef}
+          src={videoConfig.hero}
           autoPlay
           muted
           loop
           playsInline
           preload="auto"
-          className="absolute inset-0 h-full w-full object-cover"
+          crossOrigin="anonymous"
+          className="absolute inset-0 h-full w-full object-cover z-0"
           style={{ objectPosition: "35% center" }}
           aria-hidden="true"
         >
