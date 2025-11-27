@@ -256,13 +256,12 @@ export default function Stay() {
         <div className="relative -mx-4 h-[65vh] overflow-hidden sm:-mx-6 md:-mx-8">
           <div className="absolute inset-0 w-full h-full">
             <iframe
-              className="w-full h-full object-cover object-center"
+              className="absolute inset-0 w-full h-full"
               src={videoConfig.stayYoutube}
               title="Stay preview"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
-              style={{ objectFit: "cover" }}
             />
           </div>
           {/* Gradient overlay for text readability */}
