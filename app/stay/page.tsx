@@ -264,23 +264,23 @@ export default function Stay() {
               allowFullScreen
             />
           </div>
-          {/* Gradient overlay for text readability */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/50" />
+          {/* Subtle gradient overlay only at edges for text readability */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/20 pointer-events-none" />
           
-          {/* Headline at top of video - centered horizontally */}
-          <div className="absolute top-0 left-0 right-0 flex justify-center px-4 pt-8 sm:pt-12 md:pt-16">
-            <h1 className="text-center font-recoleta text-[clamp(2.5rem,7vw,5rem)] font-bold leading-[1.1] uppercase tracking-tight text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)] sm:leading-tight">
+          {/* Headline at top of video - centered horizontally, clickable through */}
+          <div className="absolute top-0 left-0 right-0 flex justify-center px-4 pt-8 sm:pt-12 md:pt-16 pointer-events-none z-10">
+            <h1 className="text-center font-recoleta text-[clamp(2.5rem,7vw,5rem)] font-bold leading-[1.1] uppercase tracking-tight text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)] sm:leading-tight">
               Where We&apos;re Staying
             </h1>
           </div>
           
-          {/* Subtitle and cheeky line at bottom of video - centered horizontally */}
-          <div className="absolute bottom-0 left-0 right-0 flex justify-center px-4 pb-8 sm:pb-12 md:pb-16">
+          {/* Subtitle and cheeky line at bottom of video - centered horizontally, clickable through */}
+          <div className="absolute bottom-0 left-0 right-0 flex justify-center px-4 pb-8 sm:pb-12 md:pb-16 pointer-events-none z-10">
             <div className="text-center text-white">
-              <p className="mx-auto max-w-2xl text-base font-sans text-white/95 drop-shadow-[0_1px_4px_rgba(0,0,0,0.3)] sm:text-lg md:text-xl">
+              <p className="mx-auto max-w-2xl text-base font-sans text-white/95 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] sm:text-lg md:text-xl">
                 Three villas, one home base for all of us.
               </p>
-              <p className="mx-auto mt-2 text-xs font-sans text-white/90 drop-shadow-[0_1px_4px_rgba(0,0,0,0.3)] sm:text-sm">
+              <p className="mx-auto mt-2 text-xs font-sans text-white/90 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] sm:text-sm">
                 Oh yeah... that&apos;s actually footage of our villa 👀
               </p>
             </div>
