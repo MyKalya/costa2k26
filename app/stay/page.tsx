@@ -8,6 +8,7 @@ import { ChevronDown, MessageCircle, Waves, Flame, Home, Leaf, Dumbbell, Shield,
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { videoConfig } from "@/lib/videoConfig";
+import { PalmBackground } from "@/components/PalmBackground";
 
 const HIGHLIGHTS = [
   {
@@ -252,16 +253,7 @@ export default function Stay() {
     <div className="bg-background text-foreground">
       {/* Hero Section */}
       <section className="relative overflow-hidden py-14 sm:py-20 bg-gradient-to-br from-[#041F1A] via-[#0B3A2D] to-[#F3EEE2]">
-        {/* Palm leaf line art overlay */}
-        <div
-          className="pointer-events-none absolute inset-0 opacity-30"
-          style={{
-            backgroundImage: "url('/palm-leaf-pattern.svg')",
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "700px",
-            backgroundPosition: "top right"
-          }}
-        />
+        <PalmBackground />
 
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
           {/* Text block */}
