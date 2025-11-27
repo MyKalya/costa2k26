@@ -254,18 +254,17 @@ export default function Stay() {
       <section className="border-b border-border bg-background pb-12 sm:pb-16 md:pb-20">
         {/* Video Container - 65vh height, full width, extends to top */}
         <div className="relative -mx-4 h-[65vh] overflow-hidden sm:-mx-6 md:-mx-8">
-          <video
-            className="absolute inset-0 h-full w-full object-cover object-center"
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="auto"
-            aria-hidden="true"
-          >
-            <source src={videoConfig.stay} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
+          <div className="absolute inset-0 w-full h-full">
+            <iframe
+              className="w-full h-full object-cover object-center"
+              src={videoConfig.stayYoutube}
+              title="Stay preview"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+              style={{ objectFit: "cover" }}
+            />
+          </div>
           {/* Gradient overlay for text readability */}
           <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/50" />
           
