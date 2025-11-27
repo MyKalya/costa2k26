@@ -189,7 +189,7 @@ export default function TripCostsPage() {
             iconColorClass="text-amber-700"
           >
             <p>
-              If you&apos;re enjoying this Costa2K26 site, feel free to donate to the creator — Bitcoin preferred. Or, if you&apos;re not into crypto, I&apos;ll accept one free flop in 2026 with zero questions asked.
+              If you&apos;re enjoying this Costa2K26 site, feel free to donate to the creator. Bitcoin preferred. Or, if you&apos;re not into crypto, I&apos;ll accept one free flop in 2026 with zero questions asked.
             </p>
           </CostCard>
         </div>
