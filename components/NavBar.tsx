@@ -23,13 +23,13 @@ type NavItem = { href: string; label: string; Icon: LucideIcon };
 const navLinks: NavItem[] = [
   { href: "/stay", label: "Our Villa", Icon: Home },
   { href: "/rooms", label: "Rooms", Icon: BedDouble },
-  { href: "/travel", label: "Travel", Icon: Plane },
+  // { href: "/travel", label: "Travel", Icon: Plane }, // Hidden for now
   { href: "/itinerary", label: "Itinerary", Icon: CalendarDays },
-  { href: "/packing", label: "Packing", Icon: Package },
+  // { href: "/packing", label: "Packing", Icon: Package }, // Hidden for now
   { href: "/explore-tamarindo", label: "Explore Nearby", Icon: Gift },
   { href: "/faq", label: "Trip costs", Icon: CircleHelp },
-  { href: "/updates", label: "Updates", Icon: Megaphone },
-  { href: "/guest", label: "Guest 🔒", Icon: Lock },
+  // { href: "/updates", label: "Updates", Icon: Megaphone }, // Hidden for now
+  // { href: "/guest", label: "Guest 🔒", Icon: Lock }, // Removed
 ] as const;
 
 export default function NavBar() {

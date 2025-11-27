@@ -8,13 +8,13 @@ import { Button } from "@/components/ui/Button";
 const menuLinks = [
   { href: "/stay", label: "Our Villa", icon: "🏡" },
   { href: "/rooms", label: "Rooms", icon: "🛌" },
-  { href: "/travel", label: "Travel", icon: "✈️" },
+  // { href: "/travel", label: "Travel", icon: "✈️" }, // Hidden for now
   { href: "/itinerary", label: "Itinerary", icon: "🗓️" },
-  { href: "/packing", label: "Packing", icon: "🧳" },
+  // { href: "/packing", label: "Packing", icon: "🧳" }, // Hidden for now
   { href: "/explore-tamarindo", label: "Explore Nearby", icon: "🍹" },
   { href: "/faq", label: "Trip costs", icon: "💰" },
-  { href: "/updates", label: "Updates", icon: "📣" },
-  { href: "/guest", label: "Guest 🔒", icon: "🔐" },
+  // { href: "/updates", label: "Updates", icon: "📣" }, // Hidden for now
+  // { href: "/guest", label: "Guest 🔒", icon: "🔐" }, // Removed
 ] as const;
 
 export default function MenuSheet() {
