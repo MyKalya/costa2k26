@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { Righteous } from "next/font/google";
 import { tripDays } from "@/lib/tripDays";
+import { videoConfig } from "@/lib/videoConfig";
 import { useScroll, motion, useTransform, useInView } from "framer-motion";
 import { Send, Calendar, Home as HomeIcon, Plane, LucideIcon, MessageCircle } from "lucide-react";
 
@@ -282,7 +283,6 @@ function Hero({
   onTravelInfo: () => void;
 }) {
   const [shouldUseVideo, setShouldUseVideo] = useState(true);
-  const [videoSrc, setVideoSrc] = useState("/media/video/hero.mp4");
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
@@ -293,24 +293,6 @@ function Hero({
     mediaQuery.addEventListener?.("change", handleChange);
     return () => mediaQuery.removeEventListener?.("change", handleChange);
   }, []);
-
-  useEffect(() => {
-    if (!shouldUseVideo || !videoRef.current) return;
-    const video = videoRef.current;
-
-    const handleVideoError = () => {
-      // If hero.mp4 fails, try stay.mp4 as fallback
-      if (videoSrc === "/media/video/hero.mp4") {
-        setVideoSrc("/media/video/stay.mp4");
-      }
-    };
-
-    video.addEventListener("error", handleVideoError);
-    
-    return () => {
-      video.removeEventListener("error", handleVideoError);
-    };
-  }, [shouldUseVideo, videoSrc]);
 
   return (
     <section className="relative h-[80vh] overflow-hidden">
@@ -325,10 +307,9 @@ function Hero({
           preload="auto"
           className="absolute inset-0 h-full w-full object-cover"
           style={{ objectPosition: "35% center" }}
-          src={videoSrc}
           aria-hidden="true"
         >
-          <source src={videoSrc} type="video/mp4" />
+          <source src={videoConfig.hero} type="video/mp4" />
         </video>
       ) : (
         <div
