@@ -1,24 +1,73 @@
 <svg width="700" height="800" viewBox="0 0 700 800" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Palm frond 1 -->
-  <path d="M500 50 Q550 100 580 150 Q590 180 585 200 Q580 220 570 240 Q560 260 545 280" stroke="#D5E6DD" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.6"/>
-  <path d="M490 100 Q520 130 540 160 Q550 185 548 205 Q545 225 535 245 Q525 265 510 285" stroke="#D5E6DD" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.5"/>
-  <path d="M510 80 Q540 110 560 140 Q570 170 568 190 Q565 210 555 230 Q545 250 530 270" stroke="#D5E6DD" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.5"/>
+  <!-- Large palm frond 1 - top right -->
+  <g opacity="0.25">
+    <!-- Central stem -->
+    <path d="M520 40 Q540 60 545 90 Q545 130 535 180 Q525 230 510 290 Q495 350 475 420" stroke="#D5E6DD" stroke-width="2" stroke-linecap="round" fill="none"/>
+    
+    <!-- Left side leaflets -->
+    <path d="M530 80 L480 100" stroke="#D5E6DD" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M535 120 L475 145" stroke="#D5E6DD" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M538 160 L470 190" stroke="#D5E6DD" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M540 200 L468 235" stroke="#D5E6DD" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M540 240 L465 280" stroke="#D5E6DD" stroke-width="1.5" stroke-linecap="round"/>
+    
+    <!-- Right side leaflets -->
+    <path d="M530 80 L580 95" stroke="#D5E6DD" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M535 120 L585 130" stroke="#D5E6DD" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M538 160 L590 165" stroke="#D5E6DD" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M540 200 L592 200" stroke="#D5E6DD" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M540 240 L590 240" stroke="#D5E6DD" stroke-width="1.5" stroke-linecap="round"/>
+    
+    <!-- Veins on left leaflets -->
+    <path d="M480 100 Q460 105 450 110" stroke="#D5E6DD" stroke-width="1" stroke-linecap="round" opacity="0.6"/>
+    <path d="M475 145 Q455 152 445 160" stroke="#D5E6DD" stroke-width="1" stroke-linecap="round" opacity="0.6"/>
+    <path d="M470 190 Q450 200 440 210" stroke="#D5E6DD" stroke-width="1" stroke-linecap="round" opacity="0.6"/>
+    
+    <!-- Veins on right leaflets -->
+    <path d="M580 95 Q600 92 610 90" stroke="#D5E6DD" stroke-width="1" stroke-linecap="round" opacity="0.6"/>
+    <path d="M585 130 Q605 128 615 125" stroke="#D5E6DD" stroke-width="1" stroke-linecap="round" opacity="0.6"/>
+    <path d="M590 165 Q610 163 620 160" stroke="#D5E6DD" stroke-width="1" stroke-linecap="round" opacity="0.6"/>
+  </g>
   
-  <!-- Palm frond 2 -->
-  <path d="M550 80 Q600 120 630 180 Q640 220 635 250 Q630 280 615 310 Q600 340 580 370" stroke="#D5E6DD" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.6"/>
-  <path d="M540 130 Q580 160 605 210 Q615 245 612 270 Q608 295 595 320 Q582 345 565 375" stroke="#D5E6DD" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.5"/>
-  <path d="M560 100 Q595 140 620 190 Q630 230 627 260 Q623 290 610 315 Q597 340 580 370" stroke="#D5E6DD" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.5"/>
+  <!-- Medium palm frond 2 - curved -->
+  <g opacity="0.2">
+    <!-- Curved central stem -->
+    <path d="M550 100 Q580 140 600 200 Q605 260 590 320 Q575 380 550 450" stroke="#D5E6DD" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+    
+    <!-- Left leaflets -->
+    <path d="M560 150 L520 170" stroke="#D5E6DD" stroke-width="1.3" stroke-linecap="round"/>
+    <path d="M570 200 L520 230" stroke="#D5E6DD" stroke-width="1.3" stroke-linecap="round"/>
+    <path d="M575 250 L515 290" stroke="#D5E6DD" stroke-width="1.3" stroke-linecap="round"/>
+    <path d="M578 300 L510 350" stroke="#D5E6DD" stroke-width="1.3" stroke-linecap="round"/>
+    
+    <!-- Right leaflets -->
+    <path d="M560 150 L600 160" stroke="#D5E6DD" stroke-width="1.3" stroke-linecap="round"/>
+    <path d="M570 200 L610 205" stroke="#D5E6DD" stroke-width="1.3" stroke-linecap="round"/>
+    <path d="M575 250 L615 250" stroke="#D5E6DD" stroke-width="1.3" stroke-linecap="round"/>
+    
+    <!-- Parallel veins -->
+    <path d="M520 170 Q500 175 490 180" stroke="#D5E6DD" stroke-width="0.8" stroke-linecap="round" opacity="0.5"/>
+    <path d="M520 230 Q500 238 490 245" stroke="#D5E6DD" stroke-width="0.8" stroke-linecap="round" opacity="0.5"/>
+  </g>
   
-  <!-- Palm frond 3 (smaller, top right) -->
-  <path d="M600 20 Q630 50 645 90 Q650 120 645 150 Q640 180 625 210" stroke="#D5E6DD" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.5"/>
-  <path d="M590 50 Q615 75 630 110 Q635 135 632 160 Q628 185 616 210" stroke="#D5E6DD" stroke-width="1" stroke-linecap="round" fill="none" opacity="0.4"/>
+  <!-- Small palm frond 3 - top -->
+  <g opacity="0.18">
+    <path d="M600 30 Q615 50 625 80 Q625 120 615 160" stroke="#D5E6DD" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+    <path d="M610 70 L580 85" stroke="#D5E6DD" stroke-width="1.2" stroke-linecap="round"/>
+    <path d="M615 100 L585 120" stroke="#D5E6DD" stroke-width="1.2" stroke-linecap="round"/>
+    <path d="M618 130 L588 155" stroke="#D5E6DD" stroke-width="1.2" stroke-linecap="round"/>
+    <path d="M610 70 L640 75" stroke="#D5E6DD" stroke-width="1.2" stroke-linecap="round"/>
+    <path d="M615 100 L645 105" stroke="#D5E6DD" stroke-width="1.2" stroke-linecap="round"/>
+  </g>
   
-  <!-- Palm frond 4 (curved, left side) -->
-  <path d="M480 120 Q450 150 430 200 Q420 240 425 280 Q430 320 445 360" stroke="#D5E6DD" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.5"/>
-  <path d="M470 160 Q445 185 430 225 Q425 260 428 295 Q432 330 445 365" stroke="#D5E6DD" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.4"/>
-  
-  <!-- Additional small decorative leaves -->
-  <path d="M520 150 Q540 170 550 190" stroke="#D5E6DD" stroke-width="1" stroke-linecap="round" fill="none" opacity="0.4"/>
-  <path d="M580 140 Q595 160 605 180" stroke="#D5E6DD" stroke-width="1" stroke-linecap="round" fill="none" opacity="0.4"/>
+  <!-- Feather-like palm frond 4 -->
+  <g opacity="0.22">
+    <path d="M490 140 Q460 160 440 200 Q425 250 420 310" stroke="#D5E6DD" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+    <!-- Pinnate leaflets -->
+    <path d="M450 180 L440 175" stroke="#D5E6DD" stroke-width="1.2" stroke-linecap="round"/>
+    <path d="M455 160 L445 158" stroke="#D5E6DD" stroke-width="1.2" stroke-linecap="round"/>
+    <path d="M445 200 L435 200" stroke="#D5E6DD" stroke-width="1.2" stroke-linecap="round"/>
+    <path d="M438 220 L428 225" stroke="#D5E6DD" stroke-width="1.2" stroke-linecap="round"/>
+    <path d="M430 250 L420 260" stroke="#D5E6DD" stroke-width="1.2" stroke-linecap="round"/>
+  </g>
 </svg>
-
