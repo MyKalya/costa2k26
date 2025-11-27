@@ -40,7 +40,7 @@ export class AccessCodeManager {
 type Writer = (text: string) => Promise<void>;
 
 export async function copyWifiPassword(
-  wifi: { password?: string } | undefined,
+  wifi: { password?: string; ssid?: string } | undefined,
   writer: Writer = (text) => navigator.clipboard.writeText(text),
 ) {
   if (!wifi?.password) {

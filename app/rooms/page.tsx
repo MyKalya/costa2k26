@@ -7,6 +7,7 @@ import {
   useMemo,
   useRef,
   useState,
+  Suspense,
   type ForwardedRef,
   type ReactNode,
   type RefObject,
@@ -75,7 +76,7 @@ type RoomCardProps = {
 
 const HERO_FALLBACK = "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1600&auto=format&fit=crop";
 
-export default function RoomsPage() {
+function RoomsPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -459,6 +460,14 @@ export default function RoomsPage() {
       .then(() => setToast(`Share link copied for ${guestName}`))
       .catch(() => setToast("Unable to copy link"));
   }
+}
+
+export default function RoomsPage() {
+  return (
+    <Suspense fallback={<div className="flex min-h-screen items-center justify-center">Loading...</div>}>
+      <RoomsPageContent />
+    </Suspense>
+  );
 }
 
 const VillaCarousel = forwardRef<HTMLDivElement, {

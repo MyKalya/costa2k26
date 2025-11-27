@@ -43,6 +43,7 @@ export default function Travel() {
             From Liberia Airport take Route 21, then Route 155 toward Tamarindo, following signs for Hacienda Pinilla. Expect ~1 hour. Call ahead if arriving after 10pm so the gate knows you’re coming.
           </p>
           <Button
+            as="a"
             href="https://maps.google.com/?q=Hacienda+Pinilla"
             target="_blank"
             rel="noopener"

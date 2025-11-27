@@ -1,11 +1,11 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion, type Variants } from "framer-motion";
 
 export function HeroTitle({ children }: { children: React.ReactNode }) {
   const reduce = useReducedMotion();
 
-  const variants = reduce
+  const variants: Variants = reduce
     ? {
         hidden: { opacity: 0 },
         show: { opacity: 1, transition: { duration: 0.25 } },
