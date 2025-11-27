@@ -198,7 +198,14 @@ export const FLOORS = {
 
 export const VILLA_ORDER = ["14", "15", "16"] as const;
 
-export const ZONES = {
+export type Zone = {
+  id: string;
+  name: string;
+  description: string;
+  rooms: string[];
+};
+
+export const ZONES: Record<string, Zone[]> = {
   "14": [
     {
       id: "detached",
@@ -259,7 +266,7 @@ export const ZONES = {
       rooms: ["V16-11", "V16-12"],
     },
   ],
-} as const;
+};
 
 export const ROOM_DETAILS: Record<string, { ensuite: boolean; capacity: number; amenities?: string[] }> = {
   "V15-1 Master": { ensuite: true, capacity: 2, amenities: ["Pool access", "Detached suite"] },

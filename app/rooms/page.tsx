@@ -30,7 +30,7 @@ import {
 } from "lucide-react";
 
 import { Button } from "@/components/ui/Button";
-import { VILLAS, ROOMS, ZONES, ROOM_DETAILS, VILLA_ORDER } from "@/app/data/rooms";
+import { VILLAS, ROOMS, ZONES, ROOM_DETAILS, VILLA_ORDER, type Zone } from "@/app/data/rooms";
 import { AccessCodeManager, copyWifiPassword } from "@/lib/roomControls";
 
 type VillaId = (typeof VILLA_ORDER)[number];
@@ -1015,9 +1015,11 @@ function slugify(value: string) {
 }
 
 function getZoneId(villa: VillaId, roomId: string) {
-  const zones = ZONES[villa] ?? [];
+  const zones: Zone[] = ZONES[villa] ?? [];
   for (const zone of zones) {
-    if (zone.rooms.includes(roomId)) return zone.id;
+    if (zone.rooms.includes(roomId)) {
+      return zone.id;
+    }
   }
   return "unknown";
 }
