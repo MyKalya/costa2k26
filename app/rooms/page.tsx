@@ -39,6 +39,13 @@ type AccessState = { visible: boolean; expiresAt: number };
 
 type RoomInfo = ReturnType<typeof toRoomInfo>;
 
+type ZoneConfig = {
+  id: string;
+  name: string;
+  description: string;
+  rooms: readonly string[] | string[];
+};
+
 type GuestEntry = {
   id: string;
   name: string;
@@ -763,7 +770,7 @@ const AnimatedZoneSection = ({
   onShareGuest,
   isFirst,
 }: {
-  zone: (typeof ZONES)[VillaId][number];
+  zone: ZoneConfig;
   expanded: boolean;
   onToggle: () => void;
   rooms: RoomInfo[];
@@ -812,7 +819,7 @@ const ZoneSection = ({
   onShareGuest,
   isFirst,
 }: {
-  zone: (typeof ZONES)[VillaId][number];
+  zone: ZoneConfig;
   expanded: boolean;
   onToggle: () => void;
   rooms: RoomInfo[];
