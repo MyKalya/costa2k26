@@ -15,12 +15,12 @@ type CostCardProps = {
   children?: React.ReactNode;
 };
 
-function CostCard({ icon, title, subtitle, amount, amountNote, badge, bgClass = "bg-emerald-50", iconColorClass = "text-emerald-800", children }: CostCardProps) {
-  const borderClass = bgClass === "bg-amber-50" ? "border-amber-200" : "border-slate-200";
+function CostCard({ icon, title, subtitle, amount, amountNote, badge, bgClass = "bg-emerald-100", iconColorClass = "text-emerald-900", children }: CostCardProps) {
+  const borderClass = bgClass === "bg-amber-50" ? "border-amber-200" : bgClass.includes("emerald") ? "border-emerald-200" : bgClass.includes("teal") ? "border-teal-200" : bgClass.includes("green") ? "border-green-200" : "border-slate-200";
   const iconBgClass = bgClass === "bg-amber-50" ? "bg-amber-100" : bgClass;
   
   return (
-    <div className={clsx("flex flex-col gap-3 rounded-2xl border bg-white/80 shadow-sm p-4 sm:p-5", borderClass)}>
+    <div className={clsx("flex flex-col gap-3 rounded-2xl border bg-white shadow-sm p-4 sm:p-5", borderClass)}>
       <div className="flex items-start justify-between gap-3">
         <div className="flex gap-3 flex-1 min-w-0">
           <div className={clsx("flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full", iconBgClass)}>
@@ -42,7 +42,7 @@ function CostCard({ icon, title, subtitle, amount, amountNote, badge, bgClass = 
         </div>
         <div className="flex-shrink-0 text-right">
           {amount && (
-            <p className="text-lg font-semibold text-emerald-800">{amount}</p>
+            <p className="text-2xl sm:text-3xl font-bold text-emerald-900">{amount}</p>
           )}
           {amountNote && (
             <p className="text-xs text-slate-500 mt-0.5">{amountNote}</p>
@@ -91,8 +91,8 @@ export default function TripCostsPage() {
             subtitle="Initial deposit"
             amount="$450"
             badge="per person"
-            bgClass="bg-emerald-50"
-            iconColorClass="text-emerald-800"
+            bgClass="bg-emerald-100"
+            iconColorClass="text-emerald-900"
           >
             <p>
               Our three villas in Hacienda Pinilla come to a total of <span className="font-medium">$21,390</span> for the group. This first deposit secures our stay. Once we send the second and final deposit to the hosts, we&apos;ll share the remaining amount per person.
@@ -106,8 +106,8 @@ export default function TripCostsPage() {
             subtitle="Private sunset cruise"
             amount="$100"
             amountNote="deposit per person"
-            bgClass="bg-teal-50"
-            iconColorClass="text-teal-800"
+            bgClass="bg-teal-100"
+            iconColorClass="text-teal-900"
           >
             <p>
               This holds our private catamaran for the group. Expect another <span className="font-medium">$50–$80 per person</span> once we lock our final headcount and package. We&apos;ll confirm the exact total before anything else is due.
@@ -128,8 +128,8 @@ export default function TripCostsPage() {
             subtitle="Getting between airport, villas and activities"
             amount="$100–$120"
             amountNote="estimate per person"
-            bgClass="bg-lime-50"
-            iconColorClass="text-lime-800"
+            bgClass="bg-green-100"
+            iconColorClass="text-green-900"
           >
             <p>
               We&apos;ll mix rental cars and group transport so people can get around without stress. Final cost depends on flight times and how many cars we end up needing.
@@ -143,8 +143,8 @@ export default function TripCostsPage() {
             subtitle="Easy mornings at the villas"
             amount="$60–$100"
             amountNote="estimate per person"
-            bgClass="bg-amber-50"
-            iconColorClass="text-amber-800"
+            bgClass="bg-emerald-100"
+            iconColorClass="text-emerald-900"
           >
             <p>
               We&apos;re looking at pre-arranged breakfasts so you can roll out of bed and straight into coffee and food. Range depends on the vendor and menu we lock in.
@@ -157,8 +157,8 @@ export default function TripCostsPage() {
             title="Activities"
             subtitle="ATVs, beach clubs, spa time & more"
             amountNote="varies by activity"
-            bgClass="bg-sky-50"
-            iconColorClass="text-sky-800"
+            bgClass="bg-teal-100"
+            iconColorClass="text-teal-900"
           >
             <p>
               Think ATV tours, beach clubs, spa/massage time, surf lessons and whatever else the group is feeling. We&apos;ll share a menu of options and pricing closer to the trip so you can pick what you&apos;re into.
@@ -171,8 +171,8 @@ export default function TripCostsPage() {
             title="Spending money & tips"
             subtitle="Restaurants, drinks and the little extras"
             amountNote="you decide"
-            bgClass="bg-slate-50"
-            iconColorClass="text-slate-800"
+            bgClass="bg-green-100"
+            iconColorClass="text-green-900"
           >
             <p>
               Costa Rica is pretty card-friendly, but it really helps to have some USD on hand for tips, small markets, taxis/parking and those random &quot;I need this&quot; moments. Bring whatever feels right for you. Think meals out, drinks, snacks and souvenirs.
