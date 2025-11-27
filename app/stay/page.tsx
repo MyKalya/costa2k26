@@ -251,11 +251,11 @@ export default function Stay() {
   return (
     <div className="bg-background text-foreground">
       {/* Hero Section */}
-      <section className="bg-[#FAF8F2] py-12 sm:py-16">
+      <section className="bg-gradient-to-b from-[#E0F7F4] via-[#FFF4D8] to-[#FFE1E0] py-12 sm:py-16">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
           {/* Text block */}
           <div className="space-y-3">
-            <p className="text-xs font-semibold tracking-wide uppercase text-gray-500">
+            <p className="text-xs font-semibold tracking-wide uppercase text-gray-600">
               Our Costa2K26 Stay
             </p>
 
@@ -263,34 +263,22 @@ export default function Stay() {
               Where we are staying
             </h1>
 
-            <p className="text-gray-600 text-base sm:text-lg">
+            <p className="text-gray-700 text-base sm:text-lg">
               Three villas, one home base for all of us. A shared spot to wake up,
               wander between pools, and end the night together.
             </p>
           </div>
 
-          {/* YouTube video */}
+          {/* YouTube video – autoplay, muted */}
           <div className="w-full aspect-video rounded-2xl overflow-hidden shadow-lg bg-black">
             <iframe
               className="w-full h-full"
-              src={videoConfig.stayYoutube}
+              src="https://www.youtube.com/embed/P4GQP5FozYo?rel=0&modestbranding=1&playsinline=1&autoplay=1&mute=1&controls=1"
               title="Our Costa2K26 Stay"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
             />
-          </div>
-
-          {/* YouTube button */}
-          <div>
-            <a
-              href="https://youtu.be/P4GQP5FozYo"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center text-sm font-medium text-red-600 hover:text-red-700"
-            >
-              ▶️ Watch on YouTube
-            </a>
           </div>
         </div>
       </section>
