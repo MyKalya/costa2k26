@@ -150,6 +150,7 @@ export const sampleDay1: ItineraryDay = {
   shortLabel: "Arrival",
   title: "Arrivals and Welcome Party",
   subtitle: "Settle in, meet the group, and kick off the week with dinner and drinks.",
+  heroTagline: "Touch down, drop bags, grab a drink. The real week starts tonight.",
   
   includes: [
     { 
