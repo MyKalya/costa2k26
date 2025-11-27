@@ -7,6 +7,7 @@ import { motion, useInView } from "framer-motion";
 import { ChevronDown, MessageCircle, Waves, Flame, Home, Leaf, Dumbbell, Shield, ChevronLeft, ChevronRight, X, Cigarette, Snowflake, Trash2, UtensilsCrossed, Sparkles, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
+import { videoConfig } from "@/lib/videoConfig";
 
 const HIGHLIGHTS = [
   {
@@ -262,7 +263,7 @@ export default function Stay() {
             preload="auto"
             aria-hidden="true"
           >
-            <source src="/media/video/stay.mp4" type="video/mp4" />
+            <source src={videoConfig.stay} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
           {/* Gradient overlay for text readability */}
