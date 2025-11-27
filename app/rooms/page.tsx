@@ -763,7 +763,7 @@ const AnimatedZoneSection = ({
   onShareGuest,
   isFirst,
 }: {
-  zone: (typeof ZONES)[string][number];
+  zone: (typeof ZONES)[VillaId][number];
   expanded: boolean;
   onToggle: () => void;
   rooms: RoomInfo[];
@@ -812,7 +812,7 @@ const ZoneSection = ({
   onShareGuest,
   isFirst,
 }: {
-  zone: (typeof ZONES)[string][number];
+  zone: (typeof ZONES)[VillaId][number];
   expanded: boolean;
   onToggle: () => void;
   rooms: RoomInfo[];
