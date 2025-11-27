@@ -8,7 +8,6 @@ import { ChevronDown, MessageCircle, Waves, Flame, Home, Leaf, Dumbbell, Shield,
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { videoConfig } from "@/lib/videoConfig";
-import { PalmBackground } from "@/components/PalmBackground";
 
 const HIGHLIGHTS = [
   {
@@ -252,10 +251,18 @@ export default function Stay() {
   return (
     <div className="bg-background text-foreground">
       {/* Hero Section */}
-      <section className="relative overflow-hidden py-14 sm:py-20 bg-gradient-to-br from-[#041F1A] via-[#0B3A2D] to-[#F3EEE2]">
-        <PalmBackground />
-
-        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+      <section className="relative overflow-hidden py-14 sm:py-20">
+        {/* Background image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: "url('/media/images/palm-background.jpg')",
+          }}
+        />
+        {/* Dark overlay for text readability */}
+        <div className="absolute inset-0 bg-black/40" />
+        
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
           {/* Text block */}
           <div className="space-y-4 text-[#F7F3EA]">
             <p className="text-xs font-semibold tracking-[0.18em] uppercase text-[#D5E6DD]">
