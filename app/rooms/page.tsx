@@ -577,6 +577,7 @@ const GuestFinder = ({
 }) => {
   const [query, setQuery] = useState("");
   const [open, setOpen] = useState(false);
+  const [inputFocused, setInputFocused] = useState(false);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);
 
@@ -596,6 +597,7 @@ const GuestFinder = ({
     const handleClick = (event: MouseEvent) => {
       if (!containerRef.current?.contains(event.target as Node)) {
         setOpen(false);
+        setInputFocused(false);
       }
     };
     document.addEventListener("mousedown", handleClick);
@@ -608,12 +610,57 @@ const GuestFinder = ({
     return options.filter((option) => option.name.toLowerCase().includes(value));
   }, [options, query]);
 
+  const handleContainerClick = (event: React.MouseEvent) => {
+    // If clicking on the input itself or clear button, let it handle its own click
+    const target = event.target as HTMLElement;
+    if (target.tagName === "INPUT" || target.closest("button")) {
+      return;
+    }
+    
+    // First click: show list without focusing input (prevents keyboard)
+    event.preventDefault();
+    event.stopPropagation();
+    
+    if (!open) {
+      setOpen(true);
+      setInputFocused(false);
+      // Ensure input is not focused to prevent keyboard
+      inputRef.current?.blur();
+    } else if (!inputFocused) {
+      // Second click on container (when list is open but input not focused): focus the input
+      setInputFocused(true);
+      setTimeout(() => {
+        inputRef.current?.focus();
+      }, 0);
+    }
+  };
+
+  const handleInputClick = (event: React.MouseEvent) => {
+    // When clicking directly on input, focus it and show keyboard
+    if (!inputFocused) {
+      event.preventDefault();
+      setInputFocused(true);
+      setOpen(true);
+      setTimeout(() => {
+        inputRef.current?.focus();
+      }, 0);
+    }
+  };
+
+  const handleInputFocus = () => {
+    setInputFocused(true);
+    setOpen(true);
+  };
+
   return (
     <div ref={containerRef} className="relative w-full sm:max-w-xs">
       <label htmlFor="guest-select" className="text-xs font-semibold uppercase tracking-wide text-muted">
         Find a guest
       </label>
-      <div className="mt-1 flex items-center gap-2 rounded-pill border border-border bg-background-subtle px-4 py-2 shadow-card focus-within:border-[#134E4A] focus-within:ring-2 focus-within:ring-[#134E4A]/20">
+      <div 
+        onClick={handleContainerClick}
+        className={`mt-1 flex items-center gap-2 rounded-pill border border-border bg-background-subtle px-4 py-2 shadow-card ${inputFocused ? "border-[#134E4A] ring-2 ring-[#134E4A]/20" : ""}`}
+      >
         <Search className="h-4 w-4 text-muted" aria-hidden />
         <input
           id="guest-select"
@@ -623,9 +670,18 @@ const GuestFinder = ({
             setQuery(event.target.value);
             setOpen(true);
           }}
-          onFocus={() => setOpen(true)}
+          onClick={handleInputClick}
+          onFocus={handleInputFocus}
+          onBlur={() => {
+            // Don't close if clicking within the container
+            setTimeout(() => {
+              if (!containerRef.current?.contains(document.activeElement)) {
+                setInputFocused(false);
+              }
+            }, 150);
+          }}
           placeholder="Search guest list"
-          className="w-full bg-transparent text-sm text-foreground placeholder:text-muted outline-none"
+          className="w-full bg-transparent text-sm text-foreground placeholder:text-muted outline-none pointer-events-auto"
           autoComplete="off"
           role="combobox"
           aria-expanded={open}
@@ -634,11 +690,13 @@ const GuestFinder = ({
           <button
             type="button"
             className="flex h-7 w-7 items-center justify-center rounded-full text-muted transition hover:text-foreground focus-visible:ring-2 focus-visible:ring-accent"
-            onClick={() => {
+            onClick={(e) => {
+              e.stopPropagation();
               setQuery("");
               onClear();
-              inputRef.current?.focus();
+              inputRef.current?.blur();
               setOpen(false);
+              setInputFocused(false);
             }}
             aria-label="Clear selection"
           >
@@ -650,6 +708,7 @@ const GuestFinder = ({
         <ul
           role="listbox"
           className="absolute left-0 right-0 z-40 mt-2 max-h-72 overflow-y-auto rounded-2xl border border-border bg-surface p-2 shadow-hover"
+          style={{ top: "100%" }}
         >
           {filtered.map((option) => (
             <li key={option.id}>
@@ -662,6 +721,8 @@ const GuestFinder = ({
                   setQuery(option.name);
                   onSelect(option);
                   setOpen(false);
+                  setInputFocused(false);
+                  inputRef.current?.blur();
                 }}
               >
                 <span className="font-medium">{option.name}</span>
