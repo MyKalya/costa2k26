@@ -661,13 +661,13 @@ function WhatsComingNext() {
         {/* Heading block */}
         <div>
           <p className="text-xs font-semibold tracking-[0.22em] uppercase text-gray-500">
-            WHAT'S COMING NEXT
+            WHAT&apos;S COMING NEXT
           </p>
           <h2 className="text-2xl md:text-3xl font-semibold text-[#111827] max-w-xl mt-1">
-            We're still building this trip together.
+            We&apos;re still building this trip together.
           </h2>
           <p className="mt-2 text-sm md:text-base text-gray-600 max-w-xl">
-            We're locking in a few more details and we'd love your input. As we book more activities and transport, this site will stay up to date.
+            We&apos;re locking in a few more details and we&apos;d love your input. As we book more activities and transport, this site will stay up to date.
           </p>
         </div>
 

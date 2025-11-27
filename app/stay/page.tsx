@@ -271,7 +271,7 @@ export default function Stay() {
           {/* Headline at top of video - centered horizontally */}
           <div className="absolute top-0 left-0 right-0 flex justify-center px-4 pt-8 sm:pt-12 md:pt-16">
             <h1 className="text-center font-recoleta text-[clamp(2.5rem,7vw,5rem)] font-bold leading-[1.1] uppercase tracking-tight text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)] sm:leading-tight">
-              Where We're Staying
+              Where We&apos;re Staying
             </h1>
           </div>
           
@@ -282,7 +282,7 @@ export default function Stay() {
                 Three villas, one home base for all of us.
               </p>
               <p className="mx-auto mt-2 text-xs font-sans text-white/90 drop-shadow-[0_1px_4px_rgba(0,0,0,0.3)] sm:text-sm">
-                Oh yeah... that's actually footage of our villa 👀
+                Oh yeah... that&apos;s actually footage of our villa 👀
               </p>
             </div>
           </div>
@@ -293,7 +293,7 @@ export default function Stay() {
           <div className="flex flex-col items-center gap-3">
             <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
               <Button as={Link} href="/rooms" variant="primary" size="lg" className="shadow-hover w-full max-w-xs sm:w-auto">
-                See Who's Staying Where
+                See Who&apos;s Staying Where
               </Button>
               <Button
                 as="a"
@@ -366,7 +366,7 @@ export default function Stay() {
       <section className="border-b border-border bg-background pt-12 pb-16">
         <div className="container-wrap">
           <p className="mx-auto max-w-2xl text-center text-lg leading-relaxed text-foreground sm:text-xl">
-            Three pools, multiple terraces, and an open-air rancho. This is where we're making five days of core memories with everyone we love in one ridiculously beautiful spot.
+            Three pools, multiple terraces, and an open-air rancho. This is where we&apos;re making five days of core memories with everyone we love in one ridiculously beautiful spot.
           </p>
           <div className="mt-10 overflow-hidden rounded-2xl border border-border shadow-hover">
             <div
@@ -593,7 +593,7 @@ export default function Stay() {
             ))}
           </div>
           <p className="mt-6 text-center text-xs text-muted-foreground sm:text-sm">
-            Check the <Link href="/rooms" className="font-semibold text-foreground underline">Rooms page</Link> for full details on who's where.
+            Check the <Link href="/rooms" className="font-semibold text-foreground underline">Rooms page</Link> for full details on who&apos;s where.
           </p>
         </div>
       </section>
