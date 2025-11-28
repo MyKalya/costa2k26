@@ -23,7 +23,7 @@ type NavItem = { href: string; label: string; Icon: LucideIcon };
 const navLinks: NavItem[] = [
   { href: "/stay", label: "Our Villa", Icon: Home },
   { href: "/rooms", label: "Rooms", Icon: BedDouble },
-  // { href: "/travel", label: "Travel", Icon: Plane }, // Hidden for now
+  { href: "/travel", label: "Travel", Icon: Plane },
   { href: "/itinerary", label: "Itinerary", Icon: CalendarDays },
   // { href: "/packing", label: "Packing", Icon: Package }, // Hidden for now
   { href: "/explore-tamarindo", label: "Explore Nearby", Icon: Gift },
