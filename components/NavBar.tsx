@@ -129,17 +129,17 @@ export default function NavBar() {
     >
       {/* Palm background image */}
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat pointer-events-none"
         style={{
           backgroundImage: "url('https://res.cloudinary.com/drbh1hki1/image/upload/v1764373668/ChatGPT_Image_Nov_28_2025_06_47_33_PM_hylc3j.png')",
         }}
       />
       
       {/* Light dark green overlay for readability - reduced opacity to show leaf details */}
-      <div className="absolute inset-0 bg-[#0E3D2F]/20" />
+      <div className="absolute inset-0 bg-[#0E3D2F]/20 pointer-events-none" />
       
       {/* Subtle green glassmorphic effect - lighter to preserve leaf details */}
-      <div className="absolute inset-0 backdrop-blur-md bg-gradient-to-b from-[#0E3D2F]/30 via-[#0E3D2F]/20 to-[#0E3D2F]/30 border-b border-white/10" />
+      <div className="absolute inset-0 backdrop-blur-md bg-gradient-to-b from-[#0E3D2F]/30 via-[#0E3D2F]/20 to-[#0E3D2F]/30 border-b border-white/10 pointer-events-none" />
       
       <nav className="relative z-50 mx-auto flex max-w-5xl items-center justify-between px-4" style={{ height: "56px" }}>
         {/* Left spacer - empty */}
