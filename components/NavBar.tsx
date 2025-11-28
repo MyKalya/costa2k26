@@ -131,15 +131,15 @@ export default function NavBar() {
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: "url('https://res.cloudinary.com/drbh1hki1/image/upload/v1764280464/palm-background_pkve1s.png')",
+          backgroundImage: "url('https://res.cloudinary.com/drbh1hki1/image/upload/v1764373668/ChatGPT_Image_Nov_28_2025_06_47_33_PM_hylc3j.png')",
         }}
       />
       
-      {/* Dark overlay for readability */}
-      <div className="absolute inset-0 bg-black/40" />
+      {/* Light overlay for readability - reduced opacity to show leaf details */}
+      <div className="absolute inset-0 bg-black/20" />
       
-      {/* Glassmorphic effect */}
-      <div className="absolute inset-0 backdrop-blur-xl bg-gradient-to-b from-black/50 via-black/45 to-black/50 border-b border-white/10" />
+      {/* Subtle glassmorphic effect - lighter to preserve leaf details */}
+      <div className="absolute inset-0 backdrop-blur-md bg-gradient-to-b from-black/25 via-black/20 to-black/25 border-b border-white/10" />
       
       <nav className="relative mx-auto flex max-w-5xl items-center justify-between px-4" style={{ height: "56px" }}>
         {/* Left spacer - empty */}
