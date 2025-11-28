@@ -135,11 +135,11 @@ export default function NavBar() {
         }}
       />
       
-      {/* Light overlay for readability - reduced opacity to show leaf details */}
-      <div className="absolute inset-0 bg-black/20" />
+      {/* Light dark green overlay for readability - reduced opacity to show leaf details */}
+      <div className="absolute inset-0 bg-[#0E3D2F]/20" />
       
-      {/* Subtle glassmorphic effect - lighter to preserve leaf details */}
-      <div className="absolute inset-0 backdrop-blur-md bg-gradient-to-b from-black/25 via-black/20 to-black/25 border-b border-white/10" />
+      {/* Subtle green glassmorphic effect - lighter to preserve leaf details */}
+      <div className="absolute inset-0 backdrop-blur-md bg-gradient-to-b from-[#0E3D2F]/30 via-[#0E3D2F]/20 to-[#0E3D2F]/30 border-b border-white/10" />
       
       <nav className="relative mx-auto flex max-w-5xl items-center justify-between px-4" style={{ height: "56px" }}>
         {/* Left spacer - empty */}
