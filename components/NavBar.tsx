@@ -122,39 +122,50 @@ export default function NavBar() {
   return (
     <header
       className={clsx(
-        "fixed top-0 left-0 right-0 z-40 transition-transform duration-300",
-        isHidden && isScrolled ? "-translate-y-full" : "translate-y-0",
-        isScrolled
-          ? "bg-white/70 backdrop-blur-xl text-slate-900 border-b border-white/30 shadow-[0_2px_10px_rgba(0,0,0,0.05)]"
-          : "bg-white/20 backdrop-blur-xl text-slate-900 border-b border-white/20"
+        "fixed top-0 left-0 right-0 z-40 transition-transform duration-300 overflow-hidden",
+        isHidden && isScrolled ? "-translate-y-full" : "translate-y-0"
       )}
       style={{ margin: 0, padding: 0 }}
     >
-      <nav className="relative mx-auto flex max-w-5xl items-center justify-between px-4 border-0" style={{ height: "56px" }}>
+      {/* Palm background image */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: "url('https://res.cloudinary.com/drbh1hki1/image/upload/v1764280464/palm-background_pkve1s.png')",
+        }}
+      />
+      
+      {/* Dark overlay for readability */}
+      <div className="absolute inset-0 bg-black/40" />
+      
+      {/* Glassmorphic effect */}
+      <div className="absolute inset-0 backdrop-blur-xl bg-gradient-to-b from-black/50 via-black/45 to-black/50 border-b border-white/10" />
+      
+      <nav className="relative mx-auto flex max-w-5xl items-center justify-between px-4" style={{ height: "56px" }}>
         {/* Left spacer - empty */}
         <div className="w-10" />
         
-        {/* Centered brand - script style */}
+        {/* Centered brand - script style with white text */}
         <Link
           href="/"
-          className="absolute left-1/2 -translate-x-1/2 text-[20px] sm:text-[22px] font-normal text-slate-900"
+          className="absolute left-1/2 -translate-x-1/2 text-[20px] sm:text-[22px] font-normal text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)] hover:text-white/90 transition-colors"
           style={{ fontFamily: "'Pacifico', cursive" }}
           aria-label="Costa Rica 2026 home"
         >
           Costa2K26
         </Link>
         
-        {/* Right menu button - icon only */}
+        {/* Right menu button - white icon */}
         <button
           type="button"
-          className="p-2 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400/50 text-slate-900 hover:text-slate-700"
+          className="relative p-2 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50 text-white hover:text-white/80"
           onClick={() => setOpen(true)}
           aria-haspopup="dialog"
           aria-expanded={open}
           aria-label="Open menu"
         >
           <svg
-            className="h-6 w-6"
+            className="h-6 w-6 drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]"
             fill="none"
             strokeLinecap="round"
             strokeLinejoin="round"
