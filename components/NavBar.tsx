@@ -141,14 +141,14 @@ export default function NavBar() {
       {/* Subtle green glassmorphic effect - lighter to preserve leaf details */}
       <div className="absolute inset-0 backdrop-blur-md bg-gradient-to-b from-[#0E3D2F]/30 via-[#0E3D2F]/20 to-[#0E3D2F]/30 border-b border-white/10" />
       
-      <nav className="relative mx-auto flex max-w-5xl items-center justify-between px-4" style={{ height: "56px" }}>
+      <nav className="relative z-50 mx-auto flex max-w-5xl items-center justify-between px-4" style={{ height: "56px" }}>
         {/* Left spacer - empty */}
         <div className="w-10" />
         
         {/* Centered brand - script style with white text */}
         <Link
           href="/"
-          className="absolute left-1/2 -translate-x-1/2 text-[20px] sm:text-[22px] font-normal text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)] hover:text-white/90 transition-colors"
+          className="absolute left-1/2 -translate-x-1/2 z-50 text-[20px] sm:text-[22px] font-normal text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)] hover:text-white/90 transition-colors"
           style={{ fontFamily: "'Pacifico', cursive" }}
           aria-label="Costa Rica 2026 home"
         >
@@ -158,7 +158,7 @@ export default function NavBar() {
         {/* Right menu button - white icon */}
         <button
           type="button"
-          className="relative p-2 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50 text-white hover:text-white/80"
+          className="relative z-50 p-2 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50 text-white hover:text-white/80"
           onClick={() => setOpen(true)}
           aria-haspopup="dialog"
           aria-expanded={open}
