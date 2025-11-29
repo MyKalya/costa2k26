@@ -191,7 +191,7 @@ const tripHubItems = [
   {
     id: "stay",
     title: "Where we're staying",
-    description: "Villa details, maps, and your room info.",
+    description: "Villa details, pictures, and your room info.",
     status: "Live",
     ctaLabel: "Explore the villa",
     href: "/stay",
@@ -364,10 +364,10 @@ function Hero({
         {/* TOP GROUP: Title + Subtitle */}
         <div className="flex flex-col items-center text-center gap-3">
           <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight text-white">
-            Costa Rica is here.
+            Get Ready for Costa Rica!
           </h1>
           <p className="max-w-xs text-sm sm:text-base text-white/85 leading-relaxed">
-            Five days at Hacienda Pinilla with your people. February 13–18, 2026.
+            Five days at Hacienda Pinilla with our people. February 13–18, 2026.
           </p>
         </div>
 
@@ -436,7 +436,7 @@ function TripHubSection() {
             Your trip hub
           </p>
           <h2 className="text-2xl sm:text-3xl font-bold mb-3 leading-tight">
-            Everything for Costa2K26, in one place.
+            All you need for Costa Rica in one place.
           </h2>
           <p className="text-sm text-[#4B5563] mb-6 max-w-xl">
             Use this site as the source of truth for the trip. Pages will be
