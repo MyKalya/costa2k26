@@ -120,6 +120,7 @@ export default function NavBar() {
   }, [open]);
 
   return (
+    <>
     <header
       className={clsx(
         "fixed top-0 left-0 right-0 z-40 transition-transform duration-300 overflow-hidden",
@@ -155,8 +156,12 @@ export default function NavBar() {
         {/* Right menu button - white icon to pop against background */}
         <button
           type="button"
-          className="relative z-10 p-2 text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
-          onClick={() => setOpen(true)}
+          className="relative z-50 p-2 text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50 cursor-pointer"
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            setOpen(true);
+          }}
           aria-haspopup="dialog"
           aria-expanded={open}
           aria-label="Open menu"
@@ -175,12 +180,15 @@ export default function NavBar() {
           </svg>
         </button>
       </nav>
-
+      </header>
+      
+      {/* Menu modal - rendered outside header to avoid overflow issues */}
       {open && (
         <div
           className="fixed inset-0 z-[60] flex items-start justify-center px-4 pt-24 sm:pt-28"
           aria-modal="true"
           role="dialog"
+          style={{ display: 'flex' }}
         >
           <div
             className="absolute inset-0 bg-black/35 backdrop-blur-sm"
@@ -189,7 +197,7 @@ export default function NavBar() {
           />
           <div 
             ref={menuRef} 
-            className="relative w-full max-w-sm max-h-[70svh] overflow-hidden rounded-3xl border border-white/20 shadow-2xl"
+            className="relative w-full max-w-sm min-h-[300px] max-h-[70svh] overflow-hidden rounded-3xl border border-white/20 shadow-2xl"
             style={{
               backgroundImage: "url('https://res.cloudinary.com/drbh1hki1/image/upload/v1764376148/ChatGPT_Image_Nov_28_2025_07_29_02_PM_oa4q8h.png')",
               backgroundSize: "cover",
@@ -200,7 +208,7 @@ export default function NavBar() {
             <div className="absolute inset-0 backdrop-blur-md bg-white/35 pointer-events-none" />
             
             {/* Content with proper z-index */}
-            <div className="relative z-10 flex max-h-[60svh] flex-col space-y-3 overflow-y-auto p-6">
+            <div className="relative z-10 flex flex-col space-y-3 overflow-y-auto p-6">
               {navLinks.map(({ href, label, Icon }, index) => (
                 <Link
                   key={href}
@@ -217,6 +225,6 @@ export default function NavBar() {
           </div>
         </div>
       )}
-    </header>
+    </>
   );
 }
