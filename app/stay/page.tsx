@@ -27,7 +27,7 @@ const HIGHLIGHTS = [
     icon: Leaf,
   },
   {
-    text: "70-Foot Lap Pool + Gym",
+    text: "70-Foot Lap Pool + Gym at the near by club",
     icon: Dumbbell,
   },
   {
@@ -266,16 +266,15 @@ export default function Stay() {
           {/* Text block */}
           <div className="space-y-4 text-[#F7F3EA]">
             <p className="text-xs font-semibold tracking-[0.18em] uppercase text-[#D5E6DD]">
-              Our Costa2K26 Stay
+              Our Costa Stay
             </p>
 
             <h1 className="text-4xl sm:text-5xl font-semibold leading-tight">
-              Where we are staying
+              Where we&apos;re staying
             </h1>
 
             <p className="text-sm sm:text-base md:text-lg max-w-2xl text-[#ECF2EE]">
-              Three villas, one home base for all of us. A shared spot to wake up,
-              wander between pools, and end the night together.
+              Three villas side by side in a gated community. A shared place for us to hang out, get to know the group, turn up, recover, and do it all again the next day.
             </p>
           </div>
 
@@ -317,7 +316,7 @@ export default function Stay() {
             </div>
             {/* Scroll guidance - centered */}
             <p className="text-center text-sm text-muted">
-              Keep scrolling to see photos, room layouts, and details about our villas.
+              Keep scrolling for photos, room layouts, and villa details.
             </p>
           </div>
         </div>
