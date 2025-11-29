@@ -206,7 +206,7 @@ export default function NavBar() {
                   key={href}
                   href={href}
                   ref={index === 0 ? firstLinkRef : undefined}
-                  className="flex items-center gap-3 rounded-full px-4 py-3 text-sm font-semibold text-slate-900 hover:bg-white/20 transition-colors drop-shadow-[0_1px_2px_rgba(255,255,255,0.8)]"
+                  className="flex items-center gap-3 rounded-full px-4 py-3 text-sm font-semibold text-white hover:bg-white/10 transition-colors drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]"
                   onClick={() => setOpen(false)}
                 >
                   <Icon className="h-5 w-5 flex-shrink-0" aria-hidden />
