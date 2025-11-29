@@ -23,7 +23,7 @@ type NavItem = { href: string; label: string; Icon: LucideIcon };
 const navLinks: NavItem[] = [
   { href: "/stay", label: "Our Villa", Icon: Home },
   { href: "/rooms", label: "Rooms", Icon: BedDouble },
-  { href: "/travel", label: "Travel", Icon: Plane },
+  // { href: "/travel", label: "Travel", Icon: Plane }, // Hidden for now
   { href: "/itinerary", label: "Itinerary", Icon: CalendarDays },
   // { href: "/packing", label: "Packing", Icon: Package }, // Hidden for now
   { href: "/explore-tamarindo", label: "Explore Nearby", Icon: Gift },
@@ -122,50 +122,39 @@ export default function NavBar() {
   return (
     <header
       className={clsx(
-        "fixed top-0 left-0 right-0 z-40 transition-transform duration-300 overflow-hidden",
-        isHidden && isScrolled ? "-translate-y-full" : "translate-y-0"
+        "fixed top-0 left-0 right-0 z-40 transition-transform duration-300",
+        isHidden && isScrolled ? "-translate-y-full" : "translate-y-0",
+        isScrolled
+          ? "bg-white/70 backdrop-blur-xl text-slate-900 border-b border-white/30 shadow-[0_2px_10px_rgba(0,0,0,0.05)]"
+          : "bg-white/20 backdrop-blur-xl text-slate-900 border-b border-white/20"
       )}
       style={{ margin: 0, padding: 0 }}
     >
-      {/* Palm background image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat pointer-events-none"
-        style={{
-          backgroundImage: "url('https://res.cloudinary.com/drbh1hki1/image/upload/v1764373668/ChatGPT_Image_Nov_28_2025_06_47_33_PM_hylc3j.png')",
-        }}
-      />
-      
-      {/* Light dark green overlay for readability - reduced opacity to show leaf details */}
-      <div className="absolute inset-0 bg-[#0E3D2F]/20 pointer-events-none" />
-      
-      {/* Subtle green glassmorphic effect - lighter to preserve leaf details */}
-      <div className="absolute inset-0 backdrop-blur-md bg-gradient-to-b from-[#0E3D2F]/30 via-[#0E3D2F]/20 to-[#0E3D2F]/30 border-b border-white/10 pointer-events-none" />
-      
-      <nav className="relative z-50 mx-auto flex max-w-5xl items-center justify-between px-4" style={{ height: "56px" }}>
+      <nav className="relative mx-auto flex max-w-5xl items-center justify-between px-4 border-0" style={{ height: "56px" }}>
         {/* Left spacer - empty */}
         <div className="w-10" />
         
-        {/* Centered brand - script style with white text */}
+        {/* Centered brand - script style */}
         <Link
           href="/"
-          className="absolute left-1/2 -translate-x-1/2 z-50 text-[20px] sm:text-[22px] font-normal text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)] hover:text-white/90 transition-colors"
+          className="absolute left-1/2 -translate-x-1/2 text-[20px] sm:text-[22px] font-normal text-slate-900"
           style={{ fontFamily: "'Pacifico', cursive" }}
           aria-label="Costa Rica 2026 home"
         >
           Costa2K26
         </Link>
         
-        {/* Right menu button - white icon */}
+        {/* Right menu button - icon only */}
         <button
           type="button"
-          className="relative z-50 p-2 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50 text-white hover:text-white/80"
+          className="p-2 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400/50 text-slate-900 hover:text-slate-700"
           onClick={() => setOpen(true)}
           aria-haspopup="dialog"
           aria-expanded={open}
           aria-label="Open menu"
         >
           <svg
-            className="h-6 w-6 drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]"
+            className="h-6 w-6"
             fill="none"
             strokeLinecap="round"
             strokeLinejoin="round"
