@@ -179,19 +179,33 @@ export default function NavBar() {
             aria-hidden="true"
             onClick={() => setOpen(false)}
           />
-          <div ref={menuRef} className="dropdown-panel w-full max-w-sm max-h-[70svh] overflow-hidden">
-            <div className="flex max-h-[60svh] flex-col space-y-3 overflow-y-auto pr-1">
+          <div 
+            ref={menuRef} 
+            className="relative w-full max-w-sm max-h-[70svh] overflow-hidden rounded-3xl border border-white/20 shadow-2xl"
+            style={{
+              backgroundImage: "url('https://res.cloudinary.com/drbh1hki1/image/upload/v1764375239/ChatGPT_Image_Nov_28_2025_07_13_52_PM_xtctke.png')",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          >
+            {/* Dark overlay for text readability */}
+            <div className="absolute inset-0 bg-black/50" />
+            
+            {/* Glassmorphic effect */}
+            <div className="absolute inset-0 backdrop-blur-xl bg-white/20" />
+            
+            {/* Content with proper z-index */}
+            <div className="relative z-10 flex max-h-[60svh] flex-col space-y-3 overflow-y-auto p-6">
               {navLinks.map(({ href, label, Icon }, index) => (
                 <Link
                   key={href}
                   href={href}
                   ref={index === 0 ? firstLinkRef : undefined}
-                  style={{ animationDelay: `${index * 30}ms` }}
-                  className="dropdown-link group"
+                  className="flex items-center gap-3 rounded-full px-4 py-3 text-sm font-semibold text-white hover:bg-white/10 transition-colors"
                   onClick={() => setOpen(false)}
                 >
-                  <Icon className="h-5 w-5 text-primary transition-transform duration-200 group-hover:scale-110" aria-hidden />
-                  <span className="text-sm font-semibold text-foreground">{label}</span>
+                  <Icon className="h-5 w-5 flex-shrink-0" aria-hidden />
+                  <span>{label}</span>
                 </Link>
               ))}
             </div>
