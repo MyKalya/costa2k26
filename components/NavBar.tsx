@@ -122,39 +122,47 @@ export default function NavBar() {
   return (
     <header
       className={clsx(
-        "fixed top-0 left-0 right-0 z-40 transition-transform duration-300",
-        isHidden && isScrolled ? "-translate-y-full" : "translate-y-0",
-        isScrolled
-          ? "bg-white/70 backdrop-blur-xl text-slate-900 border-b border-white/30 shadow-[0_2px_10px_rgba(0,0,0,0.05)]"
-          : "bg-white/20 backdrop-blur-xl text-slate-900 border-b border-white/20"
+        "fixed top-0 left-0 right-0 z-40 transition-transform duration-300 overflow-hidden",
+        isHidden && isScrolled ? "-translate-y-full" : "translate-y-0"
       )}
       style={{ margin: 0, padding: 0 }}
     >
-      <nav className="relative mx-auto flex max-w-5xl items-center justify-between px-4 border-0" style={{ height: "56px" }}>
+      {/* Background image */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat pointer-events-none"
+        style={{
+          backgroundImage: "url('https://res.cloudinary.com/drbh1hki1/image/upload/v1764376148/ChatGPT_Image_Nov_28_2025_07_29_02_PM_oa4q8h.png')",
+        }}
+      />
+      
+      {/* Glassmorphic effect at 35% opacity */}
+      <div className="absolute inset-0 backdrop-blur-md bg-white/35 border-b border-white/10 pointer-events-none" />
+      
+      <nav className="relative mx-auto flex max-w-5xl items-center justify-between px-4" style={{ height: "56px" }}>
         {/* Left spacer - empty */}
         <div className="w-10" />
         
-        {/* Centered brand - script style */}
+        {/* Centered brand - white text to pop against background */}
         <Link
           href="/"
-          className="absolute left-1/2 -translate-x-1/2 text-[20px] sm:text-[22px] font-normal text-slate-900"
+          className="absolute left-1/2 -translate-x-1/2 z-10 text-[20px] sm:text-[22px] font-normal text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]"
           style={{ fontFamily: "'Pacifico', cursive" }}
           aria-label="Costa Rica 2026 home"
         >
           Costa2K26
         </Link>
         
-        {/* Right menu button - icon only */}
+        {/* Right menu button - white icon to pop against background */}
         <button
           type="button"
-          className="p-2 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400/50 text-slate-900 hover:text-slate-700"
+          className="relative z-10 p-2 text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
           onClick={() => setOpen(true)}
           aria-haspopup="dialog"
           aria-expanded={open}
           aria-label="Open menu"
         >
           <svg
-            className="h-6 w-6"
+            className="h-6 w-6 drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]"
             fill="none"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -183,16 +191,13 @@ export default function NavBar() {
             ref={menuRef} 
             className="relative w-full max-w-sm max-h-[70svh] overflow-hidden rounded-3xl border border-white/20 shadow-2xl"
             style={{
-              backgroundImage: "url('https://res.cloudinary.com/drbh1hki1/image/upload/v1764375239/ChatGPT_Image_Nov_28_2025_07_13_52_PM_xtctke.png')",
+              backgroundImage: "url('https://res.cloudinary.com/drbh1hki1/image/upload/v1764376148/ChatGPT_Image_Nov_28_2025_07_29_02_PM_oa4q8h.png')",
               backgroundSize: "cover",
               backgroundPosition: "center",
             }}
           >
-            {/* Dark overlay for text readability */}
-            <div className="absolute inset-0 bg-black/50" />
-            
-            {/* Glassmorphic effect */}
-            <div className="absolute inset-0 backdrop-blur-xl bg-white/20" />
+            {/* Glassmorphic effect at 35% opacity */}
+            <div className="absolute inset-0 backdrop-blur-md bg-white/35 pointer-events-none" />
             
             {/* Content with proper z-index */}
             <div className="relative z-10 flex max-h-[60svh] flex-col space-y-3 overflow-y-auto p-6">
@@ -201,7 +206,7 @@ export default function NavBar() {
                   key={href}
                   href={href}
                   ref={index === 0 ? firstLinkRef : undefined}
-                  className="flex items-center gap-3 rounded-full px-4 py-3 text-sm font-semibold text-white hover:bg-white/10 transition-colors"
+                  className="flex items-center gap-3 rounded-full px-4 py-3 text-sm font-semibold text-slate-900 hover:bg-white/20 transition-colors drop-shadow-[0_1px_2px_rgba(255,255,255,0.8)]"
                   onClick={() => setOpen(false)}
                 >
                   <Icon className="h-5 w-5 flex-shrink-0" aria-hidden />
