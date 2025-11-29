@@ -137,7 +137,7 @@ export default function NavBar() {
       />
       
       {/* Glassmorphic effect at 35% opacity */}
-      <div className="absolute inset-0 backdrop-blur-md bg-white/35 border-b border-white/10 pointer-events-none" />
+      <div className="absolute inset-0 backdrop-blur-md bg-black/35 border-b border-white/10 pointer-events-none" />
       
       <nav className="relative mx-auto flex max-w-5xl items-center justify-between px-4" style={{ height: "56px" }}>
         {/* Left spacer - empty */}
@@ -205,7 +205,7 @@ export default function NavBar() {
             }}
           >
             {/* Glassmorphic effect at 35% opacity */}
-            <div className="absolute inset-0 backdrop-blur-md bg-white/35 pointer-events-none" />
+            <div className="absolute inset-0 backdrop-blur-md bg-black/35 pointer-events-none" />
             
             {/* Content with proper z-index */}
             <div className="relative z-10 flex flex-col space-y-3 overflow-y-auto p-6">
