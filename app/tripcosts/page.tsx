@@ -2,7 +2,7 @@
 
 import { useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Home, Sailboat, Car, UtensilsCrossed, Palmtree, Wallet, Gift, Ticket, ChevronDown, ChevronUp, CreditCard, Check, Copy } from "lucide-react";
+import { Home, Sailboat, Car, UtensilsCrossed, Palmtree, Wallet, Ticket, ChevronDown, ChevronUp, CreditCard, Check, Copy } from "lucide-react";
 import { clsx } from "clsx";
 import { PalmBackground } from "@/components/PalmBackground";
 
