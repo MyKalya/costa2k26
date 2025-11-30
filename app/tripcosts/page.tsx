@@ -2,7 +2,7 @@
 
 import { useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Home, Sailboat, Car, UtensilsCrossed, Palmtree, Wallet, Gift, Ticket, ChevronDown, ChevronUp, CreditCard } from "lucide-react";
+import { Home, Sailboat, Car, UtensilsCrossed, Palmtree, Wallet, Gift, Ticket, ChevronDown, ChevronUp, CreditCard, Check, Copy } from "lucide-react";
 import { clsx } from "clsx";
 import { PalmBackground } from "@/components/PalmBackground";
 
@@ -52,9 +52,20 @@ function CostCard({
   isDeposit = false,
 }: CostCardProps) {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [copied, setCopied] = useState<string | null>(null);
   const hasTwoLineAmount = depositNow && estimatedTotal;
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
+
+  const handleCopy = async (text: string, type: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopied(type);
+      setTimeout(() => setCopied(null), 2000);
+    } catch (err) {
+      console.error("Failed to copy:", err);
+    }
+  };
 
   return (
     <motion.div
@@ -63,8 +74,8 @@ function CostCard({
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
       className={clsx(
-        "group relative overflow-hidden rounded-3xl border shadow-lg backdrop-blur-sm transition-all duration-300",
-        isDeposit ? "p-6 sm:p-7" : "p-5 sm:p-6",
+        "group relative overflow-hidden rounded-2xl border shadow-lg backdrop-blur-sm transition-all duration-300",
+        isDeposit ? "p-4 sm:p-5" : "p-4 sm:p-5",
         cardBorderClass
       )}
       style={{
@@ -87,26 +98,26 @@ function CostCard({
 
       {/* Content */}
       <div className="relative z-10">
-        <div className="flex items-start justify-between gap-4 flex-wrap mb-4">
-          <div className="flex gap-4 flex-1 min-w-0">
+        <div className="flex items-start justify-between gap-3 flex-wrap mb-3">
+          <div className="flex gap-3 flex-1 min-w-0">
             {/* Icon with glass morphism */}
             <motion.div
               whileHover={{ scale: 1.05, rotate: 2 }}
               className={clsx(
-                "flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-2xl shadow-lg backdrop-blur-sm border border-white/20",
+                "flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl shadow-lg backdrop-blur-sm border border-white/20",
                 iconBgClass
               )}
               style={{
                 backgroundColor: gradientFrom ? `${gradientFrom}20` : undefined,
               }}
             >
-              <div className={clsx(iconColorClass, "[&>svg]:h-6 [&>svg]:w-6")}>
+              <div className={clsx(iconColorClass, "[&>svg]:h-5 [&>svg]:w-5")}>
                 {icon}
               </div>
             </motion.div>
 
             <div className="flex-1 min-w-0">
-              <h3 className="text-xl font-bold text-slate-900 mb-1">{title}</h3>
+              <h3 className="text-lg font-bold text-slate-900 mb-0.5">{title}</h3>
               {subtitle && (
                 <p className="text-sm text-slate-600 font-medium">{subtitle}</p>
               )}
@@ -115,33 +126,33 @@ function CostCard({
 
           {/* Amount display */}
           {(amount || amountLabel || hasTwoLineAmount) && (
-            <div className="flex flex-col items-end gap-2 flex-shrink-0">
+            <div className="flex flex-col items-end gap-1.5 flex-shrink-0">
               {hasTwoLineAmount ? (
                 <>
                   {/* Deposit now - highlighted */}
-                  <div className="flex flex-col items-end gap-1 bg-white/60 backdrop-blur-sm rounded-xl px-4 py-2.5 border border-white/40 shadow-sm">
+                  <div className="flex flex-col items-end gap-0.5 bg-white/60 backdrop-blur-sm rounded-lg px-3 py-2 border border-white/40 shadow-sm">
                     <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">
                       Deposit now
                     </span>
-                    <span className={clsx("text-3xl sm:text-4xl font-bold", amountColorClass)}>
+                    <span className={clsx("text-2xl sm:text-3xl font-bold", amountColorClass)}>
                       {depositNow}
                     </span>
                     {depositLabel && (
-                      <span className={clsx("text-xs font-semibold uppercase tracking-wide", amountLabelColorClass)}>
+                      <span className={clsx("text-[10px] font-semibold uppercase tracking-wide", amountLabelColorClass)}>
                         {depositLabel}
                       </span>
                     )}
                   </div>
                   {/* Estimated total */}
-                  <div className="flex flex-col items-end gap-1 mt-1">
+                  <div className="flex flex-col items-end gap-0.5">
                     <span className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider">
                       Estimated total
                     </span>
-                    <span className={clsx("text-2xl sm:text-3xl font-bold", amountColorClass)}>
+                    <span className={clsx("text-xl sm:text-2xl font-bold", amountColorClass)}>
                       {estimatedTotal}
                     </span>
                     {estimatedLabel && (
-                      <span className={clsx("text-[10px] font-medium uppercase tracking-wide leading-tight text-slate-600 max-w-[140px] text-right", amountLabelColorClass)}>
+                      <span className={clsx("text-[9px] font-medium uppercase tracking-wide leading-tight text-slate-600 max-w-[120px] text-right", amountLabelColorClass)}>
                         {estimatedLabel}
                       </span>
                     )}
@@ -150,14 +161,14 @@ function CostCard({
               ) : (
                 <>
                   {amount && (
-                    <div className="bg-white/60 backdrop-blur-sm rounded-xl px-4 py-2.5 border border-white/40 shadow-sm">
-                      <span className={clsx("text-3xl sm:text-4xl font-bold block", amountColorClass)}>
+                    <div className="bg-white/60 backdrop-blur-sm rounded-lg px-3 py-2 border border-white/40 shadow-sm">
+                      <span className={clsx("text-2xl sm:text-3xl font-bold block", amountColorClass)}>
                         {amount}
                       </span>
                     </div>
                   )}
                   {amountLabel && (
-                    <span className={clsx("text-xs font-semibold uppercase tracking-wide mt-1", amountLabelColorClass)}>
+                    <span className={clsx("text-[10px] font-semibold uppercase tracking-wide mt-1", amountLabelColorClass)}>
                       {amountLabel}
                     </span>
                   )}
@@ -169,24 +180,24 @@ function CostCard({
 
         {/* Body content */}
         {children && (
-          <div className="text-sm text-slate-700 leading-relaxed space-y-3 pl-[72px]">
+          <div className="text-sm text-slate-700 leading-relaxed space-y-2.5 pl-[60px]">
             <div>{children}</div>
             
             {/* Payment instructions - collapsible */}
             {paymentInstructions && (
-              <div className="pt-3 mt-3 border-t border-slate-200/60">
+              <div className="pt-2 mt-2 border-t border-slate-200/60">
                 <button
                   onClick={() => setIsExpanded(!isExpanded)}
-                  className="flex items-center gap-2 w-full text-left group/payment"
+                  className="flex items-center gap-1.5 w-full text-left group/payment"
                 >
-                  <CreditCard className="h-4 w-4 text-slate-500" />
+                  <CreditCard className="h-3.5 w-3.5 text-slate-500" />
                   <span className="text-xs font-bold text-slate-900 uppercase tracking-wide">
                     How to pay
                   </span>
                   {isExpanded ? (
-                    <ChevronUp className="h-4 w-4 text-slate-500 ml-auto transition-transform" />
+                    <ChevronUp className="h-3.5 w-3.5 text-slate-500 ml-auto transition-transform" />
                   ) : (
-                    <ChevronDown className="h-4 w-4 text-slate-500 ml-auto transition-transform" />
+                    <ChevronDown className="h-3.5 w-3.5 text-slate-500 ml-auto transition-transform" />
                   )}
                 </button>
                 {isExpanded && (
@@ -195,9 +206,30 @@ function CostCard({
                     animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}
                     transition={{ duration: 0.2 }}
-                    className="mt-2 text-sm text-slate-700 leading-relaxed"
+                    className="mt-2 space-y-1.5"
                   >
-                    {paymentInstructions}
+                    <button
+                      onClick={() => handleCopy("m.gnanam31@gmail.com", "email")}
+                      className="flex items-center gap-2 text-xs text-slate-700 hover:text-slate-900 transition-colors w-full text-left group/item"
+                    >
+                      {copied === "email" ? (
+                        <Check className="h-3.5 w-3.5 text-green-600 flex-shrink-0" />
+                      ) : (
+                        <Copy className="h-3.5 w-3.5 text-slate-400 group-hover/item:text-slate-600 flex-shrink-0 transition-colors" />
+                      )}
+                      <span className="font-mono">m.gnanam31@gmail.com</span>
+                    </button>
+                    <button
+                      onClick={() => handleCopy("$mathu", "mathu")}
+                      className="flex items-center gap-2 text-xs text-slate-700 hover:text-slate-900 transition-colors w-full text-left group/item"
+                    >
+                      {copied === "mathu" ? (
+                        <Check className="h-3.5 w-3.5 text-green-600 flex-shrink-0" />
+                      ) : (
+                        <Copy className="h-3.5 w-3.5 text-slate-400 group-hover/item:text-slate-600 flex-shrink-0 transition-colors" />
+                      )}
+                      <span className="font-mono">$mathu</span>
+                    </button>
                   </motion.div>
                 )}
               </div>
@@ -273,17 +305,23 @@ export default function TripCostsPage() {
       {/* Main Content */}
       <section className="relative mx-auto max-w-4xl px-4 sm:px-6 py-12 sm:py-16">
         {/* Section 1: What we're paying now */}
-        <div ref={section1Ref} className="mb-16">
+        <div ref={section1Ref} className="mb-12">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={section1InView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.5 }}
-            className="mb-8"
+            className="mb-6"
           >
-            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-3">
-              What we&apos;re paying now
-            </h2>
-            <p className="text-base text-slate-600 leading-relaxed">
+            <div className="flex items-center gap-3 mb-3">
+              <div className="h-1 w-8 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-full"></div>
+              <h2 className="text-2xl sm:text-3xl font-bold text-slate-900">
+                What we&apos;re paying now
+              </h2>
+              <span className="px-3 py-1 text-xs font-bold text-emerald-700 bg-emerald-100 rounded-full border border-emerald-200">
+                ACTION REQUIRED
+              </span>
+            </div>
+            <p className="text-sm text-slate-600 leading-relaxed ml-11">
               This section covers amounts we will actually ask you to send now.
             </p>
           </motion.div>
@@ -337,20 +375,41 @@ export default function TripCostsPage() {
           </div>
         </div>
 
+        {/* Divider */}
+        <div className="relative my-12">
+          <div className="absolute inset-0 flex items-center">
+            <div className="w-full border-t border-slate-200"></div>
+          </div>
+          <div className="relative flex justify-center">
+            <span className="bg-white px-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">
+              Planning Ahead
+            </span>
+          </div>
+        </div>
+
         {/* Section 2: What to plan for */}
-        <div ref={section2Ref} className="mb-16">
+        <div ref={section2Ref} className="mb-12">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={section2InView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.5 }}
-            className="mb-8"
+            className="mb-6"
           >
-            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-3">
-              What to plan for
-            </h2>
+            <div className="flex items-center gap-3 mb-3">
+              <div className="h-1 w-8 bg-gradient-to-r from-amber-400 to-orange-400 rounded-full"></div>
+              <h2 className="text-2xl sm:text-3xl font-bold text-slate-900">
+                What to plan for
+              </h2>
+              <span className="px-3 py-1 text-xs font-bold text-amber-700 bg-amber-100 rounded-full border border-amber-200">
+                ESTIMATES
+              </span>
+            </div>
+            <p className="text-sm text-slate-600 leading-relaxed ml-11">
+              Budget for these costs—some are still being finalized.
+            </p>
           </motion.div>
 
-          <div className="space-y-6">
+          <div className="space-y-4">
             {/* Transport */}
             <CostCard
               icon={<Car className="h-6 w-6" aria-hidden="true" />}
