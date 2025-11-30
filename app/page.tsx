@@ -336,7 +336,7 @@ function Hero() {
           </div>
 
           {/* Header - right below notification, forced 2 lines only */}
-          <div className="flex flex-col items-center text-center mt-4">
+          <div className="flex flex-col items-center text-center mt-2">
             <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight text-white drop-shadow-lg leading-[1.1] whitespace-pre-line">
               Get Set for an Unreal Week{"\n"}Together!
             </h1>
