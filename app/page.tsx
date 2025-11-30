@@ -335,11 +335,10 @@ function Hero() {
             <UpdatesTile className="w-full" />
           </div>
 
-          {/* Header - right below notification, forced 2 lines */}
-          <div className="flex flex-col items-center text-center mt-6">
-            <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight text-white drop-shadow-lg leading-[1.1]">
-              <span className="block">Get Set for an Unreal Week</span>
-              <span className="block">Together!</span>
+          {/* Header - right below notification, forced 2 lines only */}
+          <div className="flex flex-col items-center text-center mt-4">
+            <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight text-white drop-shadow-lg leading-[1.1] whitespace-pre-line">
+              Get Set for an Unreal Week{"\n"}Together!
             </h1>
           </div>
         </div>
