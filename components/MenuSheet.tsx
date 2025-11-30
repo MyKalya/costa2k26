@@ -12,7 +12,7 @@ const menuLinks = [
   { href: "/itinerary", label: "Itinerary", icon: "🗓️" },
   // { href: "/packing", label: "Packing", icon: "🧳" }, // Hidden for now
   { href: "/explore-tamarindo", label: "Explore Nearby", icon: "🍹" },
-  { href: "/faq", label: "Trip costs", icon: "💰" },
+  { href: "/tripcosts", label: "Trip costs", icon: "💰" },
   // { href: "/updates", label: "Updates", icon: "📣" }, // Hidden for now
   // { href: "/guest", label: "Guest 🔒", icon: "🔐" }, // Removed
 ] as const;
