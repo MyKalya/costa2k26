@@ -243,7 +243,7 @@ export default function TripCostsPage() {
   const section2InView = useInView(section2Ref, { once: true, margin: "-100px" });
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-slate-50 via-white to-slate-50">
+    <main className="min-h-screen bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900">
       {/* Hero Section */}
       <section 
         ref={heroRef}
