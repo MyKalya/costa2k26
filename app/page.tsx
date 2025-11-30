@@ -251,21 +251,9 @@ export default function Home() {
     router.push("/itinerary");
   };
 
-  const handleWhereStaying = () => {
-    router.push("/stay");
-  };
-
-  const handleTravelInfo = () => {
-    router.push("/travel");
-  };
-
   return (
     <main className="bg-black text-white">
-      <Hero
-        onViewPlan={handleViewPlan}
-        onWhereStaying={handleWhereStaying}
-        onTravelInfo={handleTravelInfo}
-      />
+      <Hero />
       <TripHubSection />
       <WeekAtAGlance />
       <WhatsComingNext />
@@ -274,15 +262,7 @@ export default function Home() {
   );
 }
 
-function Hero({
-  onViewPlan,
-  onWhereStaying,
-  onTravelInfo,
-}: {
-  onViewPlan: () => void;
-  onWhereStaying: () => void;
-  onTravelInfo: () => void;
-}) {
+function Hero() {
   const [shouldUseVideo, setShouldUseVideo] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -360,53 +340,33 @@ function Hero({
       {/* Dark gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/45 to-black/15" />
 
-      {/* Content wrapper - single flex container with justify-between */}
-      <div className="relative z-20 flex h-full flex-col items-center justify-between px-6 py-16">
-        {/* TOP GROUP: Title + Subtitle */}
-        <div className="flex flex-col items-center text-center gap-3">
-          <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight text-white">
-            Get Set for an Unreal Week Together!
-          </h1>
-          <p className="max-w-xs text-sm sm:text-base text-white/85 leading-relaxed">
-            Five days in Hacienda Pinilla with our people. February 13–18, 2026.
-          </p>
+      {/* Content wrapper - better spaced layout */}
+      <div className="relative z-20 flex h-full flex-col items-center justify-center px-6 py-12">
+        {/* TOP: Updates Tile - subtle notification at top */}
+        <div className="absolute top-6 left-1/2 -translate-x-1/2 w-full max-w-sm px-4">
+          <UpdatesTile className="w-full" />
         </div>
 
-        {/* MIDDLE GROUP: Countdown bubble */}
-        <div className="flex justify-center">
+        {/* CENTER GROUP: Title + Subtitle + Countdown - better spaced */}
+        <div className="flex flex-col items-center text-center gap-6 sm:gap-8">
+          {/* Title + Subtitle */}
+          <div className="flex flex-col items-center text-center gap-3 sm:gap-4">
+            <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight text-white drop-shadow-lg">
+              Get Set for an Unreal Week Together!
+            </h1>
+            <p className="max-w-xs text-sm sm:text-base text-white/85 leading-relaxed drop-shadow-md">
+              Five days in Hacienda Pinilla with our people. February 13–18, 2026.
+            </p>
+          </div>
+
+          {/* Countdown bubble */}
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
+            transition={{ duration: 0.5, ease: "easeOut", delay: 0.2 }}
           >
             <CountdownChip />
           </motion.div>
-        </div>
-
-        {/* BOTTOM GROUP: CTA + Secondary links + Updates Tile */}
-        <div className="flex w-full flex-col items-center gap-4 pb-4">
-          <button
-            onClick={onViewPlan}
-            className="w-full max-w-xs rounded-full bg-emerald-900 px-6 py-4 text-center text-base font-medium text-white shadow-md transition hover:-translate-y-0.5 hover:shadow-lg"
-          >
-            View the full plan
-          </button>
-          <div className="flex gap-8 text-sm text-white/85">
-            <button
-              onClick={onWhereStaying}
-              className="underline-offset-4 hover:underline"
-            >
-              Where we&apos;re staying
-            </button>
-            <button
-              onClick={onTravelInfo}
-              className="underline-offset-4 hover:underline"
-            >
-              Travel details
-            </button>
-          </div>
-          {/* Updates Tile - visible and prominent */}
-          <UpdatesTile className="mt-2 w-full max-w-sm" />
         </div>
       </div>
     </section>
