@@ -134,7 +134,7 @@ function CostCard({
                     <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">
                       Deposit now
                     </span>
-                    <span className={clsx("text-2xl sm:text-3xl font-bold", amountColorClass)}>
+                    <span className={clsx("text-3xl sm:text-4xl font-bold", amountColorClass)}>
                       {depositNow}
                     </span>
                     {depositLabel && (
@@ -144,15 +144,15 @@ function CostCard({
                     )}
                   </div>
                   {/* Estimated total */}
-                  <div className="flex flex-col items-end gap-0.5">
-                    <span className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider">
+                  <div className="flex flex-col items-end gap-0.5 mt-1 pt-2 border-t border-slate-200/40">
+                    <span className="text-[9px] font-medium text-slate-400 uppercase tracking-wider">
                       Estimated total
                     </span>
-                    <span className={clsx("text-xl sm:text-2xl font-bold", amountColorClass)}>
+                    <span className={clsx("text-base sm:text-lg font-semibold text-slate-500", amountColorClass)}>
                       {estimatedTotal}
                     </span>
                     {estimatedLabel && (
-                      <span className={clsx("text-[9px] font-medium uppercase tracking-wide leading-tight text-slate-600 max-w-[120px] text-right", amountLabelColorClass)}>
+                      <span className={clsx("text-[9px] font-normal uppercase tracking-wide leading-tight text-slate-400 max-w-[120px] text-right", amountLabelColorClass)}>
                         {estimatedLabel}
                       </span>
                     )}
@@ -334,7 +334,7 @@ export default function TripCostsPage() {
               subtitle="Initial deposit"
               depositNow="$450"
               depositLabel="per person"
-              estimatedTotal="$XXX–$YYY"
+              estimatedTotal="$650–$680"
               estimatedLabel="per person (we will update this range)"
               paymentInstructions="Send e-transfer to m.gnanam31@gmail.com or Wealthsimple to $mathu."
               gradientFrom="#10B981"
