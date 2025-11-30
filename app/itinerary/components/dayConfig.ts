@@ -20,21 +20,21 @@ export const daysConfig: DayConfig[] = [
   {
     id: "day-2",
     number: 2,
-    label: "Beach Club",
+    label: "BBQ & Beach",
     image: "/media/itinerary/day2-banner.png",
     color: "#E8A48F", // peach / coral
   },
   {
     id: "day-3",
     number: 3,
-    label: "Free Day",
+    label: "Adventure",
     image: "/media/itinerary/day3-banner.png",
     color: "#4AA7A4", // teal night-market
   },
   {
     id: "day-4",
     number: 4,
-    label: "Adventure",
+    label: "ATVs or Explore",
     image: "/media/itinerary/day4-banner.png",
     color: "#3A784F", // deep jungle green
   },

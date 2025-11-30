@@ -34,7 +34,7 @@ export function HeroSection({ onViewDays }: HeroSectionProps) {
         >
           {/* Eyebrow */}
           <p className="mb-4 text-sm font-medium uppercase tracking-wider opacity-90 drop-shadow-md">
-            COSTA2K26
+            Costa2K26
           </p>
 
           {/* Main Title */}
