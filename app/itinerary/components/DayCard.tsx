@@ -86,13 +86,14 @@ export function DayCard(props: DayCardProps) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.25 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
-      className={`max-w-2xl mx-auto mt-8 mb-12 rounded-3xl overflow-hidden shadow-xl ${
-        isDay1 ? "bg-white" : "shadow-black/5"
-      }`}
-      style={!isDay1 ? { backgroundColor: cardBg } : {}}
+      className="max-w-2xl mx-auto mt-6 mb-8 rounded-3xl overflow-hidden shadow-xl"
+      style={{ 
+        background: `linear-gradient(to bottom, ${themeColor}08, ${themeColor}05, ${themeColor}08)`,
+        border: `1px solid ${themeColor}15`
+      }}
     >
       {/* Enhanced Banner with gradient overlay */}
-      <div className="relative w-full h-48 sm:h-56 overflow-hidden">
+      <div className="relative w-full h-44 sm:h-52 overflow-hidden">
         <img 
           src={bannerImage} 
           alt={title} 
@@ -103,7 +104,7 @@ export function DayCard(props: DayCardProps) {
           className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"
         />
         {/* Day label overlay on banner */}
-        <div className="absolute top-4 left-5 right-5 flex items-start justify-between">
+        <div className="absolute top-3 left-4 right-4 flex items-start justify-between">
           <div className="flex flex-col">
             <span
               className="inline-flex items-center gap-1.5 text-xs font-bold tracking-[0.2em] uppercase text-white/90 backdrop-blur-sm bg-black/20 rounded-full px-3 py-1.5 self-start"
@@ -116,12 +117,12 @@ export function DayCard(props: DayCardProps) {
         </div>
       </div>
 
-      {/* Header section with improved spacing */}
-      <div className="px-6 pt-6 pb-4 bg-white">
-        <div className="flex items-start justify-between gap-4 mb-3">
+      {/* Header section with tighter spacing */}
+      <div className="px-5 pt-4 pb-3" style={{ backgroundColor: `${themeColor}06` }}>
+        <div className="flex items-start justify-between gap-4 mb-2">
           <div className="flex-1">
             <p
-              className="text-xs font-bold tracking-[0.2em] uppercase mb-2"
+              className="text-xs font-bold tracking-[0.2em] uppercase mb-1.5"
               style={{ color: themeColor }}
             >
               {dateLabel}
@@ -132,12 +133,12 @@ export function DayCard(props: DayCardProps) {
           </div>
         </div>
 
-        {/* Vibe summary - more prominent */}
+        {/* Vibe summary - bolder background */}
         <div 
-          className="rounded-2xl px-5 py-4 mt-4 mb-2"
+          className="rounded-2xl px-4 py-3 mt-3"
           style={{ 
-            backgroundColor: `${themeColor}15`,
-            border: `2px solid ${themeColor}30`
+            backgroundColor: `${themeColor}20`,
+            border: `2px solid ${themeColor}40`
           }}
         >
           <p className="text-sm sm:text-base font-medium text-[#374151] leading-relaxed">
@@ -147,9 +148,9 @@ export function DayCard(props: DayCardProps) {
       </div>
 
       {/* Content section with enhanced timeline */}
-      <div className="px-6 pt-2 pb-6 bg-white">
+      <div className="px-5 pt-3 pb-5" style={{ backgroundColor: `${themeColor}03` }}>
         {/* Timeline with better visual hierarchy */}
-        <div className="relative pl-10 mt-4">
+        <div className="relative pl-10 mt-3">
           {/* Vertical timeline line - more prominent */}
           <div 
             className="absolute left-4 top-0 bottom-0 w-1 rounded-full opacity-60"
@@ -163,7 +164,7 @@ export function DayCard(props: DayCardProps) {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
-              className="relative mb-6 last:mb-0"
+              className="relative mb-4 last:mb-0"
             >
               {/* Enhanced marker */}
               <div 
@@ -206,7 +207,7 @@ export function DayCard(props: DayCardProps) {
 
               {/* Subtle divider */}
               {index < events.length - 1 && (
-                <div className="mt-4 ml-8 h-px bg-gradient-to-r from-transparent via-[#E5E7EB] to-transparent" />
+                <div className="mt-3 ml-8 h-px bg-gradient-to-r from-transparent via-[#E5E7EB] to-transparent" />
               )}
             </motion.div>
           ))}
@@ -219,13 +220,13 @@ export function DayCard(props: DayCardProps) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: 0.3 }}
-            className="mt-8 rounded-2xl px-5 py-4"
+            className="mt-5 rounded-2xl px-4 py-3"
             style={{
-              backgroundColor: `${themeColor}08`,
-              border: `2px solid ${themeColor}20`,
+              backgroundColor: `${themeColor}15`,
+              border: `2px solid ${themeColor}30`,
             }}
           >
-            <div className="flex items-center gap-3 mb-3">
+            <div className="flex items-center gap-3 mb-2.5">
               <span
                 className="inline-flex h-7 min-w-[28px] items-center justify-center rounded-xl px-3 text-xs font-bold uppercase tracking-[0.12em] shadow-sm"
                 style={{ backgroundColor: themeColor, color: "#FFFFFF" }}
@@ -234,7 +235,7 @@ export function DayCard(props: DayCardProps) {
               </span>
               <p className="text-xs font-medium text-[#6B7280]">Important details for this day</p>
             </div>
-            <ul className="space-y-2.5">
+            <ul className="space-y-2">
               {notes.map((note, noteIndex) => (
                 <li key={noteIndex} className="flex gap-3 items-start">
                   <span
@@ -254,7 +255,8 @@ export function DayCard(props: DayCardProps) {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4, delay: 0.4 }}
-          className="mt-6 pt-5 border-t-2 border-[#E5E7EB]"
+          className="mt-5 pt-4 border-t-2"
+          style={{ borderColor: `${themeColor}20` }}
         >
           <div className="flex items-start gap-3">
             <span className="text-xl mt-0.5">🚗</span>
