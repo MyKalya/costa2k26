@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
-import { ChevronDown, MessageCircle, Waves, Flame, Home, Leaf, Dumbbell, Shield, ChevronLeft, ChevronRight, X, Cigarette, Snowflake, Trash2, UtensilsCrossed, Sparkles, MapPin } from "lucide-react";
+import { ChevronDown, MessageCircle, Waves, Flame, Home, Leaf, Dumbbell, Shield, ChevronLeft, ChevronRight, X, Cigarette, Snowflake, Trash2, UtensilsCrossed, Sparkles, MapPin, Car, Gift } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { videoConfig } from "@/lib/videoConfig";
@@ -93,6 +93,14 @@ const SERVICES = [
   {
     text: "Concierge for transport, tours, and spa",
     icon: MessageCircle,
+  },
+  {
+    text: "Five Rental cars onsite",
+    icon: Car,
+  },
+  {
+    text: "Adventure add ons",
+    icon: Gift,
   },
 ] as const;
 
@@ -274,7 +282,7 @@ export default function Stay() {
             </h1>
 
             <p className="text-sm sm:text-base md:text-lg max-w-2xl text-[#ECF2EE]">
-              Three villas side by side in a gated community. A shared place for us to hang out, get to know the group, turn up, recover, and do it all again the next day.
+              Three villas side by side, one big home base. A spot to chill, link up, turn up, recover, and repeat.
             </p>
           </div>
 
@@ -300,7 +308,7 @@ export default function Stay() {
           <div className="flex flex-col items-center gap-3">
             <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
               <Button as={Link} href="/rooms" variant="primary" size="lg" className="shadow-hover w-full max-w-xs sm:w-auto">
-                See Who&apos;s Staying Where
+                Find Your Room
               </Button>
               <Button
                 as="a"
@@ -373,7 +381,7 @@ export default function Stay() {
       <section className="border-b border-border bg-background pt-12 pb-16">
         <div className="container-wrap">
           <p className="mx-auto max-w-2xl text-center text-lg leading-relaxed text-foreground sm:text-xl">
-            Three pools, multiple terraces, and an open-air rancho. This is where we&apos;re making five days of core memories with everyone we love in one ridiculously beautiful spot.
+            Three pools, open terraces, and a rancho built for core memories and chaos. Core memories coming right up, with everyone we love in one ridiculously beautiful spot.
           </p>
           <div className="mt-10 overflow-hidden rounded-2xl border border-border shadow-hover">
             <div
@@ -983,7 +991,19 @@ export default function Stay() {
                               className="flex items-center gap-3"
                             >
                               <IconComponent className="h-5 w-5 flex-shrink-0 text-primary" />
-                              <span className="text-sm leading-relaxed text-muted sm:text-base">{service.text}</span>
+                              <span className="text-sm leading-relaxed text-muted sm:text-base">
+                                {idx === 3 ? (
+                                  <>
+                                    <span className="font-semibold text-foreground">Five Rental cars onsite</span> Available for small group outings. Let us know before taking one. Try to roll in groups of five so everyone can get around easily.
+                                  </>
+                                ) : idx === 4 ? (
+                                  <>
+                                    <span className="font-semibold text-foreground">Adventure add ons</span> Short excursions and pricing are linked in the itinerary. Fill out the interest sheet if you want in.
+                                  </>
+                                ) : (
+                                  service.text
+                                )}
+                              </span>
                             </motion.li>
                           );
                         })}

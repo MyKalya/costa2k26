@@ -48,7 +48,7 @@ function CountdownChip() {
   return (
     <div className="rounded-full bg-black/35 px-6 py-3 backdrop-blur-sm text-center text-white shadow-lg">
       <span className="text-[11px] font-medium tracking-[0.18em] uppercase text-white/70 block mb-1">
-        TRIP COUNTDOWN
+        THE COUNTDOWN IS ON
       </span>
       <div className="flex items-baseline justify-center gap-1.5">
         <span className="text-lg font-semibold text-white">
@@ -191,7 +191,7 @@ const tripHubItems = [
   {
     id: "stay",
     title: "Where we're staying",
-    description: "Villa details, pictures, and your room info.",
+    description: "Villa details, photos, and your room details",
     status: "Live",
     ctaLabel: "Explore the villa",
     href: "/stay",
@@ -204,7 +204,7 @@ const tripHubItems = [
   {
     id: "travel",
     title: "Travel basics",
-    description: "Packing notes, arrival tips, and what to expect.",
+    description: "Packing notes, arrival pointers, and what to expect.",
     status: "Updating gradually",
     ctaLabel: "View travel info",
     href: "/travel",
@@ -364,10 +364,10 @@ function Hero({
         {/* TOP GROUP: Title + Subtitle */}
         <div className="flex flex-col items-center text-center gap-3">
           <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight text-white">
-            Get Ready for Costa Rica!
+            Get Set for an Unreal Week Together!
           </h1>
           <p className="max-w-xs text-sm sm:text-base text-white/85 leading-relaxed">
-            Five days at Hacienda Pinilla with our people. February 13–18, 2026.
+            Five days in Hacienda Pinilla with our people. February 13–18, 2026.
           </p>
         </div>
 
@@ -395,13 +395,13 @@ function Hero({
               onClick={onWhereStaying}
               className="underline-offset-4 hover:underline"
             >
-              Where we are staying
+              Where we&apos;re staying
             </button>
             <button
               onClick={onTravelInfo}
               className="underline-offset-4 hover:underline"
             >
-              Travel info
+              Travel details
             </button>
           </div>
         </div>
@@ -436,12 +436,10 @@ function TripHubSection() {
             Your trip hub
           </p>
           <h2 className="text-2xl sm:text-3xl font-bold mb-3 leading-tight">
-            All you need for Costa Rica in one place.
+            Everything you need to know in one place.
           </h2>
           <p className="text-sm text-[#4B5563] mb-6 max-w-xl">
-            Use this site as the source of truth for the trip. Pages will be
-            updated as plans firm up, so you can always come back here and see
-            what is new.
+            We&apos;ll keep this space updated as plans firm up, so check back anytime for updates.
           </p>
 
           <div className="space-y-6">
@@ -569,7 +567,7 @@ function WeekAtAGlance() {
             WEEK AT A GLANCE
           </p>
           <h2 className="text-2xl sm:text-3xl font-semibold text-[#111827] max-w-md mt-1">
-            Six days in Costa Rica, at a glance.
+            Six days & a lifetime of memories.
           </h2>
         </div>
 
