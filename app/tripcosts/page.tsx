@@ -119,12 +119,28 @@ function CostCard({
             <div className="flex-1 min-w-0">
               <h3 className="text-lg font-bold text-slate-900 mb-0.5">{title}</h3>
               {subtitle && (
-                <p className="text-sm text-slate-600 font-medium">{subtitle}</p>
+                <p className="text-sm text-slate-600 font-medium mb-2">{subtitle}</p>
+              )}
+              {/* Estimated total - placed under subtitle to fill space */}
+              {hasTwoLineAmount && estimatedTotal && (
+                <div className="flex flex-col gap-0.5 mt-2">
+                  <span className="text-[9px] font-medium text-slate-400 uppercase tracking-wider">
+                    Estimated total
+                  </span>
+                  <span className={clsx("text-base sm:text-lg font-semibold text-slate-500", amountColorClass)}>
+                    {estimatedTotal}
+                  </span>
+                  {estimatedLabel && (
+                    <span className={clsx("text-[9px] font-normal uppercase tracking-wide leading-tight text-slate-400", amountLabelColorClass)}>
+                      {estimatedLabel}
+                    </span>
+                  )}
+                </div>
               )}
             </div>
           </div>
 
-          {/* Amount display */}
+          {/* Amount display - Deposit only on right */}
           {(amount || amountLabel || hasTwoLineAmount) && (
             <div className="flex flex-col items-end gap-1.5 flex-shrink-0">
               {hasTwoLineAmount ? (
@@ -140,20 +156,6 @@ function CostCard({
                     {depositLabel && (
                       <span className={clsx("text-[10px] font-semibold uppercase tracking-wide", amountLabelColorClass)}>
                         {depositLabel}
-                      </span>
-                    )}
-                  </div>
-                  {/* Estimated total */}
-                  <div className="flex flex-col items-end gap-0.5 mt-1 pt-2 border-t border-slate-200/40">
-                    <span className="text-[9px] font-medium text-slate-400 uppercase tracking-wider">
-                      Estimated total
-                    </span>
-                    <span className={clsx("text-base sm:text-lg font-semibold text-slate-500", amountColorClass)}>
-                      {estimatedTotal}
-                    </span>
-                    {estimatedLabel && (
-                      <span className={clsx("text-[9px] font-normal uppercase tracking-wide leading-tight text-slate-400 max-w-[120px] text-right", amountLabelColorClass)}>
-                        {estimatedLabel}
                       </span>
                     )}
                   </div>
