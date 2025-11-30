@@ -328,14 +328,14 @@ function Hero() {
 
       {/* Content wrapper - top-aligned layout */}
       <div className="relative z-20 flex h-full flex-col items-center px-6 pt-2 pb-8">
-        {/* TOP SECTION: Updates Tile + Header directly below */}
+        {/* TOP SECTION: Header */}
         <div className="w-full flex flex-col items-center">
-          {/* Updates Tile */}
-          <div className="w-full max-w-md px-4">
+          {/* Updates Tile - Hidden until updates page and backend are ready */}
+          {/* <div className="w-full max-w-md px-4">
             <UpdatesTile className="w-full" />
-          </div>
+          </div> */}
 
-          {/* Header - right below notification, forced 2 lines only */}
+          {/* Header - forced 2 lines only */}
           <div className="flex flex-col items-center text-center mt-2">
             <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight text-white drop-shadow-lg leading-[1.1] whitespace-pre-line">
               Get Set for an Unreal{"\n"}Week Together!
