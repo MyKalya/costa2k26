@@ -106,13 +106,13 @@ function HubCard({
         delay: index * 0.1,
         ease: "easeOut",
       }}
-      className="group relative block rounded-3xl border border-white/60 p-6 md:p-7 shadow-[0_2px_10px_rgba(0,0,0,0.04)] backdrop-filter backdrop-blur-sm hover:shadow-[0_8px_20px_rgba(0,0,0,0.08)] hover:-translate-y-[3px] transition-all duration-300 ease-out overflow-hidden"
+      className="group relative block rounded-3xl border border-white/20 p-6 md:p-7 shadow-[0_4px_20px_rgba(0,0,0,0.25)] backdrop-filter backdrop-blur-sm hover:shadow-[0_8px_30px_rgba(0,0,0,0.35)] hover:-translate-y-[3px] transition-all duration-300 ease-out overflow-hidden"
       style={{
         background: `linear-gradient(to bottom right, ${gradientFrom}, ${gradientTo})`,
       }}
     >
-      {/* Inner light effect on hover */}
-      <div className="absolute inset-0 bg-gradient-to-br from-white/80 to-white/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+      {/* Subtle brightness on hover */}
+      <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
       <div className="relative flex items-start gap-5">
         {/* Premium gradient capsule icon */}
@@ -121,7 +121,7 @@ function HubCard({
           whileHover={{ y: -2, rotate: 1 }}
           transition={{ duration: 0.2, ease: "easeOut" }}
         >
-          <div className="flex h-12 w-12 items-center justify-center rounded-2xl p-3 shadow-inner bg-gradient-to-br from-white/70 to-white/40 backdrop-blur-sm">
+          <div className="flex h-12 w-12 items-center justify-center rounded-2xl p-3 shadow-lg bg-white/15 backdrop-blur-sm border border-white/20">
             <Icon className="h-6 w-6" strokeWidth={2} style={{ color: iconColor }} />
           </div>
         </motion.div>
@@ -130,45 +130,31 @@ function HubCard({
         <div className="flex-1 min-w-0">
           {/* Header row */}
           <div className="flex items-start justify-between gap-3 mb-2">
-            <h3 className="text-lg font-semibold text-[#0f1f14] leading-tight">
+            <h3 className="text-lg font-semibold text-white leading-tight">
               {title}
             </h3>
-            <span className="flex-shrink-0 rounded-full bg-[#ECFDF3] px-3 py-1 text-[10px] font-semibold text-[#15803D] whitespace-nowrap uppercase tracking-wide">
+            <span className="flex-shrink-0 rounded-full bg-white/20 backdrop-blur-sm px-3 py-1 text-[10px] font-semibold text-white/90 whitespace-nowrap uppercase tracking-wide border border-white/10">
               {status}
             </span>
           </div>
 
           {/* Description */}
-          <p className="text-sm text-[#6B7280] mb-4 leading-relaxed">
+          <p className="text-sm text-white/80 mb-4 leading-relaxed">
             {description}
           </p>
 
-          {/* CTA with animated underline */}
-          <div className="relative inline-block group/cta">
+          {/* CTA Pill Button */}
+          <motion.div
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+          >
             <span
-              className="inline-flex items-center gap-2 text-sm font-medium transition-colors duration-200"
-              style={{ color: ctaColor }}
+              className="inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-semibold text-white shadow-md transition-shadow duration-200 hover:shadow-lg"
+              style={{ backgroundColor: ctaColor }}
             >
               {ctaLabel}
-              <motion.span
-                aria-hidden="true"
-                className="inline-block"
-                whileHover={{ x: 4 }}
-                transition={{ duration: 0.2, ease: "easeOut" }}
-              >
-                →
-              </motion.span>
             </span>
-            <motion.div
-              className="absolute bottom-0 left-0 right-0 h-[1.5px] origin-left"
-              style={{
-                backgroundColor: ctaColor,
-              }}
-              initial={{ scaleX: 0 }}
-              whileHover={{ scaleX: 1 }}
-              transition={{ duration: 0.2, ease: "easeOut" }}
-            />
-          </div>
+          </motion.div>
         </div>
       </div>
     </motion.a>
@@ -184,9 +170,9 @@ const tripHubItems = [
     ctaLabel: "View the itinerary",
     href: "/itinerary",
     icon: Calendar,
-    gradientFrom: "#e9f7f2",
-    gradientTo: "#d8f0e7",
-    iconColor: "#059669", // emerald 700
+    gradientFrom: "#0E3D2F",
+    gradientTo: "#1C5A47",
+    iconColor: "#10B981", // emerald 500 for contrast
     ctaColor: "#059669",
   },
   {
@@ -197,10 +183,10 @@ const tripHubItems = [
     ctaLabel: "Explore the villa",
     href: "/stay",
     icon: HomeIcon,
-    gradientFrom: "#fff4e8",
-    gradientTo: "#ffe8d2",
-    iconColor: "#b45309", // amber 700
-    ctaColor: "#b45309",
+    gradientFrom: "#1F4E3A",
+    gradientTo: "#2D6B57",
+    iconColor: "#F3B44C", // mango gold for contrast
+    ctaColor: "#F3B44C",
   },
   {
     id: "travel",
@@ -210,10 +196,10 @@ const tripHubItems = [
     ctaLabel: "View travel info",
     href: "/travel",
     icon: Plane,
-    gradientFrom: "#eef7f3",
-    gradientTo: "#dff1e7",
-    iconColor: "#15803d", // green 700
-    ctaColor: "#15803d",
+    gradientFrom: "#145A47",
+    gradientTo: "#0E3D2F",
+    iconColor: "#1C736A", // ocean teal for contrast
+    ctaColor: "#1C736A",
   },
 ];
 
@@ -682,8 +668,8 @@ function WhatsComingNext() {
               {card.hasButton && card.buttonLabel && (
                 <a
                   href={card.buttonLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
+          target="_blank"
+          rel="noopener noreferrer"
                   className="mt-2 inline-flex items-center justify-center gap-2 rounded-full border border-emerald-600 text-emerald-700 text-sm font-medium px-4 py-2 hover:bg-emerald-50 transition-all duration-200 ease-out"
                 >
                   <MessageCircle className="h-4 w-4" />
