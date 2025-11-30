@@ -75,7 +75,7 @@ function CostCard({
       transition={{ duration: 0.5, ease: "easeOut" }}
       className={clsx(
         "group relative overflow-hidden rounded-3xl border border-white/20 shadow-[0_4px_20px_rgba(0,0,0,0.25)] backdrop-filter backdrop-blur-sm hover:shadow-[0_8px_30px_rgba(0,0,0,0.35)] hover:-translate-y-[3px] transition-all duration-300 ease-out",
-        isDeposit ? "p-4 sm:p-5 md:p-6" : "p-4 sm:p-5"
+        isDeposit ? "p-5 sm:p-6" : "p-5 sm:p-6"
       )}
       style={{
         background: gradientFrom && gradientTo
@@ -167,7 +167,7 @@ function CostCard({
 
         {/* Body content */}
         {children && (
-          <div className="text-sm text-white/80 leading-relaxed space-y-2.5 pl-[68px]">
+          <div className="text-sm text-white/80 leading-relaxed space-y-2.5">
             <div>{children}</div>
             
             {/* Payment instructions - collapsible */}
@@ -243,7 +243,7 @@ export default function TripCostsPage() {
   const section2InView = useInView(section2Ref, { once: true, margin: "-100px" });
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900">
+    <main className="min-h-screen bg-white">
       {/* Hero Section */}
       <section 
         ref={heroRef}
@@ -306,15 +306,15 @@ export default function TripCostsPage() {
             className="mb-6"
           >
             <div className="flex items-center gap-3 mb-3">
-              <div className="h-1 w-8 bg-gradient-to-r from-emerald-400 to-teal-400 rounded-full"></div>
-              <h2 className="text-2xl sm:text-3xl font-bold text-white">
+              <div className="h-1 w-8 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-full"></div>
+              <h2 className="text-2xl sm:text-3xl font-bold text-slate-900">
                 What we&apos;re paying now
               </h2>
-              <span className="px-3 py-1 text-xs font-bold text-emerald-400 bg-emerald-400/20 rounded-full border border-emerald-400/30">
+              <span className="px-3 py-1 text-xs font-bold text-emerald-700 bg-emerald-100 rounded-full border border-emerald-200">
                 ACTION REQUIRED
               </span>
             </div>
-            <p className="text-sm text-white/70 leading-relaxed ml-11">
+            <p className="text-sm text-slate-600 leading-relaxed ml-11">
               This section covers amounts we will actually ask you to send now.
             </p>
           </motion.div>
@@ -341,7 +341,7 @@ export default function TripCostsPage() {
 
             {/* Catamaran Party */}
             <CostCard
-              icon={<Sailboat className="h-6 w-6" strokeWidth={2} style={{ color: "#1C736A" }} />}
+              icon={<Sailboat className="h-6 w-6" strokeWidth={2} style={{ color: "#60A5FA" }} />}
               title="Catamaran party"
               subtitle="Private sunset cruise"
               depositNow="$100"
@@ -363,10 +363,10 @@ export default function TripCostsPage() {
         {/* Divider */}
         <div className="relative my-12">
           <div className="absolute inset-0 flex items-center">
-            <div className="w-full border-t border-white/10"></div>
+            <div className="w-full border-t border-slate-200"></div>
           </div>
           <div className="relative flex justify-center">
-            <span className="bg-slate-800 px-4 text-xs font-semibold text-white/60 uppercase tracking-wider">
+            <span className="bg-white px-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">
               Planning Ahead
             </span>
           </div>
@@ -382,14 +382,14 @@ export default function TripCostsPage() {
           >
             <div className="flex items-center gap-3 mb-3">
               <div className="h-1 w-8 bg-gradient-to-r from-amber-400 to-orange-400 rounded-full"></div>
-              <h2 className="text-2xl sm:text-3xl font-bold text-white">
+              <h2 className="text-2xl sm:text-3xl font-bold text-slate-900">
                 What to plan for
               </h2>
-              <span className="px-3 py-1 text-xs font-bold text-amber-400 bg-amber-400/20 rounded-full border border-amber-400/30">
+              <span className="px-3 py-1 text-xs font-bold text-amber-700 bg-amber-100 rounded-full border border-amber-200">
                 ESTIMATES
               </span>
             </div>
-            <p className="text-sm text-white/70 leading-relaxed ml-11">
+            <p className="text-sm text-slate-600 leading-relaxed ml-11">
               Budget for these costs—some are still being finalized.
             </p>
           </motion.div>
