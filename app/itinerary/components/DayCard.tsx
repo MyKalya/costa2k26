@@ -60,7 +60,7 @@ const iconForEvent = (icon?: string) => {
 };
 
 /**
- * DayCard - Premium day card with themed background, vibe summary, icons, and notes
+ * DayCard - Premium day card with modern app-esque design
  */
 export function DayCard(props: DayCardProps) {
   const {
@@ -77,111 +77,200 @@ export function DayCard(props: DayCardProps) {
     gettingAround,
   } = props;
 
+  const isDay1 = dayIndex === 1;
+
   return (
     <motion.section
       id={id}
-      initial={{ opacity: 0, y: 16 }}
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.25 }}
-      transition={{ duration: 0.4, ease: "easeOut" }}
-      className="max-w-xl mx-auto mt-6 rounded-3xl shadow-md shadow-black/5 overflow-hidden"
-      style={{ backgroundColor: cardBg }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      className={`max-w-2xl mx-auto mt-8 mb-12 rounded-3xl overflow-hidden shadow-xl ${
+        isDay1 ? "bg-white" : "shadow-black/5"
+      }`}
+      style={!isDay1 ? { backgroundColor: cardBg } : {}}
     >
-      {/* Banner image */}
-      <div className="w-full h-32 sm:h-36 overflow-hidden">
-        <img src={bannerImage} alt={title} className="h-full w-full object-cover" />
-      </div>
-
-      {/* Header strip */}
-      <div className="px-5 pt-4 pb-3">
-        <p
-          className="text-xs font-semibold tracking-[0.16em] uppercase mb-1"
-          style={{ color: themeColor }}
-        >
-          Day {dayIndex} • {dateLabel}
-        </p>
-        <h2 className="text-2xl font-semibold text-[#111827]">{title}</h2>
-      </div>
-
-      {/* Vibe summary box */}
-      <div className="px-5">
-        <div className="rounded-xl border border-[#E5E7EB] bg-white/90 px-4 py-3 text-sm text-[#4B5563] leading-relaxed">
-          {vibeSummary}
+      {/* Enhanced Banner with gradient overlay */}
+      <div className="relative w-full h-48 sm:h-56 overflow-hidden">
+        <img 
+          src={bannerImage} 
+          alt={title} 
+          className="h-full w-full object-cover"
+        />
+        {/* Gradient overlay for better text readability */}
+        <div 
+          className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"
+        />
+        {/* Day label overlay on banner */}
+        <div className="absolute top-4 left-5 right-5 flex items-start justify-between">
+          <div className="flex flex-col">
+            <span
+              className="inline-flex items-center gap-1.5 text-xs font-bold tracking-[0.2em] uppercase text-white/90 backdrop-blur-sm bg-black/20 rounded-full px-3 py-1.5 self-start"
+              style={{ border: `1px solid ${themeColor}40` }}
+            >
+              <span className="text-[10px]">DAY</span>
+              <span>{dayIndex}</span>
+            </span>
+          </div>
         </div>
       </div>
 
-      {/* Content section */}
-      <div className="px-5 pt-4 pb-5 sm:pb-6">
-        {/* Timeline */}
-        <div className="relative pl-8">
-          <div className="absolute left-3.5 top-2 bottom-4 w-px bg-[#F3B44C]" />
+      {/* Header section with improved spacing */}
+      <div className="px-6 pt-6 pb-4 bg-white">
+        <div className="flex items-start justify-between gap-4 mb-3">
+          <div className="flex-1">
+            <p
+              className="text-xs font-bold tracking-[0.2em] uppercase mb-2"
+              style={{ color: themeColor }}
+            >
+              {dateLabel}
+            </p>
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#111827] leading-tight tracking-tight">
+              {title}
+            </h2>
+          </div>
+        </div>
+
+        {/* Vibe summary - more prominent */}
+        <div 
+          className="rounded-2xl px-5 py-4 mt-4 mb-2"
+          style={{ 
+            backgroundColor: `${themeColor}15`,
+            border: `2px solid ${themeColor}30`
+          }}
+        >
+          <p className="text-sm sm:text-base font-medium text-[#374151] leading-relaxed">
+            {vibeSummary}
+          </p>
+        </div>
+      </div>
+
+      {/* Content section with enhanced timeline */}
+      <div className="px-6 pt-2 pb-6 bg-white">
+        {/* Timeline with better visual hierarchy */}
+        <div className="relative pl-10 mt-4">
+          {/* Vertical timeline line - more prominent */}
+          <div 
+            className="absolute left-4 top-0 bottom-0 w-1 rounded-full opacity-60"
+            style={{ backgroundColor: themeColor }}
+          />
 
           {events.map((event, index) => (
-            <div key={`${event.time}-${event.title}-${index}`} className="relative mb-5 last:mb-0">
-              {/* Marker circle with icon */}
-              <div className="absolute left-3.5 top-1.5 h-3.5 w-3.5 rounded-full bg-white flex items-center justify-center transform -translate-x-1/2 shadow-sm">
-                <span className="text-[9px]" aria-hidden="true">
+            <motion.div
+              key={`${event.time}-${event.title}-${index}`}
+              initial={{ opacity: 0, x: -10 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: index * 0.1 }}
+              className="relative mb-6 last:mb-0"
+            >
+              {/* Enhanced marker */}
+              <div 
+                className="absolute left-4 top-0 h-8 w-8 rounded-full flex items-center justify-center transform -translate-x-1/2 shadow-lg border-4 border-white"
+                style={{ backgroundColor: themeColor }}
+              >
+                <span className="text-sm" aria-hidden="true">
                   {iconForEvent(event.icon)}
                 </span>
               </div>
 
-              {/* Content */}
-              <div className="ml-6 space-y-0.5">
-                <p className="text-xs font-semibold text-[#111827]">{event.time}</p>
-                <p className="text-sm font-semibold text-[#111827]">{event.title}</p>
+              {/* Event content with better typography */}
+              <div className="ml-8 space-y-1.5 pb-1">
+                <div className="flex items-baseline gap-2 flex-wrap">
+                  <span 
+                    className="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded-full"
+                    style={{ 
+                      backgroundColor: `${themeColor}15`,
+                      color: themeColor
+                    }}
+                  >
+                    {event.time}
+                  </span>
+                </div>
+                <h3 className="text-lg font-bold text-[#111827] leading-tight mt-1">
+                  {event.title}
+                </h3>
                 {event.location && (
-                  <p className="text-xs text-[#6B7280]">{event.location}</p>
+                  <p className="text-sm font-medium text-[#6B7280] flex items-start gap-1.5">
+                    <span className="text-[10px] mt-0.5">📍</span>
+                    <span>{event.location}</span>
+                  </p>
                 )}
                 {event.description && (
-                  <p className="text-xs text-[#6B7280]">{event.description}</p>
+                  <p className="text-sm text-[#6B7280] leading-relaxed mt-1.5">
+                    {event.description}
+                  </p>
                 )}
               </div>
 
-              {/* Optional subtle divider between events */}
+              {/* Subtle divider */}
               {index < events.length - 1 && (
-                <div className="mt-3 ml-6 h-px w-20 border-t border-dashed border-[#E5E7EB]" />
+                <div className="mt-4 ml-8 h-px bg-gradient-to-r from-transparent via-[#E5E7EB] to-transparent" />
               )}
-            </div>
+            </motion.div>
           ))}
         </div>
 
-        {/* Special notes section */}
+        {/* Enhanced Notes section */}
         {notes && notes.length > 0 && (
-          <div className="mt-5 rounded-2xl bg-white/90 border border-black/5 px-4 py-3">
-            <div className="flex items-center gap-2 mb-2">
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: 0.3 }}
+            className="mt-8 rounded-2xl px-5 py-4"
+            style={{
+              backgroundColor: `${themeColor}08`,
+              border: `2px solid ${themeColor}20`,
+            }}
+          >
+            <div className="flex items-center gap-3 mb-3">
               <span
-                className="inline-flex h-6 min-w-[24px] items-center justify-center rounded-full px-2 text-[11px] font-semibold uppercase tracking-[0.14em]"
+                className="inline-flex h-7 min-w-[28px] items-center justify-center rounded-xl px-3 text-xs font-bold uppercase tracking-[0.12em] shadow-sm"
                 style={{ backgroundColor: themeColor, color: "#FFFFFF" }}
               >
                 Notes
               </span>
-              <p className="text-xs text-[#6B7280]">Little things to know for this day.</p>
+              <p className="text-xs font-medium text-[#6B7280]">Important details for this day</p>
             </div>
-            <ul className="space-y-1.5 text-xs text-[#374151]">
+            <ul className="space-y-2.5">
               {notes.map((note, noteIndex) => (
-                <li key={noteIndex} className="flex gap-2">
+                <li key={noteIndex} className="flex gap-3 items-start">
                   <span
-                    className="mt-[3px] h-1.5 w-1.5 rounded-full flex-shrink-0"
+                    className="mt-1.5 h-2 w-2 rounded-full flex-shrink-0"
                     style={{ backgroundColor: themeColor }}
                   />
-                  <span>{note}</span>
+                  <span className="text-sm text-[#374151] leading-relaxed flex-1">{note}</span>
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
         )}
 
-        {/* Getting around */}
-        <hr className="mt-5 mb-3 border-t border-[#E5E7EB]" />
-        <div>
-          <p
-            className="text-xs font-semibold tracking-[0.16em] uppercase mb-1.5"
-            style={{ color: themeColor }}
-          >
-            Getting around
-          </p>
-          <p className="text-xs text-[#4B5563]">{gettingAround}</p>
-        </div>
+        {/* Getting around - more prominent */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4, delay: 0.4 }}
+          className="mt-6 pt-5 border-t-2 border-[#E5E7EB]"
+        >
+          <div className="flex items-start gap-3">
+            <span className="text-xl mt-0.5">🚗</span>
+            <div className="flex-1">
+              <p
+                className="text-xs font-bold tracking-[0.16em] uppercase mb-2"
+                style={{ color: themeColor }}
+              >
+                Getting Around
+              </p>
+              <p className="text-sm text-[#4B5563] leading-relaxed font-medium">
+                {gettingAround}
+              </p>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </motion.section>
   );
