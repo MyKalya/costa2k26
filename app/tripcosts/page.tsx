@@ -208,29 +208,35 @@ function CostCard({
                     animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}
                     transition={{ duration: 0.2 }}
-                    className="mt-2 space-y-1.5"
+                    className="mt-2 space-y-2"
                   >
                     <button
                       onClick={() => handleCopy("m.gnanam31@gmail.com", "email")}
-                      className="flex items-center gap-2 text-xs text-slate-700 hover:text-slate-900 transition-colors w-full text-left group/item"
+                      className="flex items-start gap-2 text-xs text-slate-700 hover:text-slate-900 transition-colors w-full text-left group/item"
                     >
                       {copied === "email" ? (
-                        <Check className="h-3.5 w-3.5 text-green-600 flex-shrink-0" />
+                        <Check className="h-3.5 w-3.5 text-green-600 flex-shrink-0 mt-0.5" />
                       ) : (
-                        <Copy className="h-3.5 w-3.5 text-slate-400 group-hover/item:text-slate-600 flex-shrink-0 transition-colors" />
+                        <Copy className="h-3.5 w-3.5 text-slate-400 group-hover/item:text-slate-600 flex-shrink-0 mt-0.5 transition-colors" />
                       )}
-                      <span className="font-mono">m.gnanam31@gmail.com</span>
+                      <div className="flex flex-col gap-0.5">
+                        <span className="font-mono">m.gnanam31@gmail.com</span>
+                        <span className="text-[10px] text-slate-500">Interac e-transfer</span>
+                      </div>
                     </button>
                     <button
                       onClick={() => handleCopy("$mathu", "mathu")}
-                      className="flex items-center gap-2 text-xs text-slate-700 hover:text-slate-900 transition-colors w-full text-left group/item"
+                      className="flex items-start gap-2 text-xs text-slate-700 hover:text-slate-900 transition-colors w-full text-left group/item"
                     >
                       {copied === "mathu" ? (
-                        <Check className="h-3.5 w-3.5 text-green-600 flex-shrink-0" />
+                        <Check className="h-3.5 w-3.5 text-green-600 flex-shrink-0 mt-0.5" />
                       ) : (
-                        <Copy className="h-3.5 w-3.5 text-slate-400 group-hover/item:text-slate-600 flex-shrink-0 transition-colors" />
+                        <Copy className="h-3.5 w-3.5 text-slate-400 group-hover/item:text-slate-600 flex-shrink-0 mt-0.5 transition-colors" />
                       )}
-                      <span className="font-mono">$mathu</span>
+                      <div className="flex flex-col gap-0.5">
+                        <span className="font-mono">$mathu</span>
+                        <span className="text-[10px] text-slate-500">Wealthsimple</span>
+                      </div>
                     </button>
                   </motion.div>
                 )}
