@@ -7,6 +7,7 @@ import { tripDays } from "@/lib/tripDays";
 import { videoConfig } from "@/lib/videoConfig";
 import { useScroll, motion, useTransform, useInView } from "framer-motion";
 import { Send, Calendar, Home as HomeIcon, Plane, LucideIcon, MessageCircle } from "lucide-react";
+import { UpdatesTile } from "@/app/components/UpdatesTile";
 
 const righteous = Righteous({
   subsets: ["latin"],
@@ -382,7 +383,7 @@ function Hero({
           </motion.div>
         </div>
 
-        {/* BOTTOM GROUP: CTA + Secondary links */}
+        {/* BOTTOM GROUP: CTA + Secondary links + Updates Tile */}
         <div className="flex w-full flex-col items-center gap-4 pb-4">
           <button
             onClick={onViewPlan}
@@ -404,6 +405,8 @@ function Hero({
               Travel details
             </button>
           </div>
+          {/* Updates Tile - visible and prominent */}
+          <UpdatesTile className="mt-2 w-full max-w-sm" />
         </div>
       </div>
     </section>
