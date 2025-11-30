@@ -6,7 +6,7 @@ import { Righteous } from "next/font/google";
 import { tripDays } from "@/lib/tripDays";
 import { videoConfig } from "@/lib/videoConfig";
 import { useScroll, motion, useTransform, useInView } from "framer-motion";
-import { Send, Calendar, Home as HomeIcon, Plane, LucideIcon, MessageCircle } from "lucide-react";
+import { Send, Calendar, Home as HomeIcon, Plane, LucideIcon, MessageCircle, ChevronDown } from "lucide-react";
 import { UpdatesTile } from "@/app/components/UpdatesTile";
 
 const righteous = Righteous({
@@ -47,7 +47,7 @@ function CountdownChip() {
   const { days, hours, minutes } = timeLeft;
 
   return (
-    <div className="rounded-full bg-black/35 px-6 py-3 backdrop-blur-sm text-center text-white shadow-lg">
+    <div className="rounded-full bg-black/45 px-6 py-3 backdrop-blur-sm text-center text-white shadow-lg">
       <span className="text-[11px] font-medium tracking-[0.18em] uppercase text-white/70 block mb-1">
         THE COUNTDOWN IS ON
       </span>
@@ -327,24 +327,25 @@ function Hero() {
       <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/45 to-black/15" />
 
       {/* Content wrapper - better spaced layout */}
-      <div className="relative z-20 flex h-full flex-col items-center justify-center px-6 py-12">
-        {/* TOP: Updates Tile - subtle notification at top */}
-        <div className="absolute top-6 left-1/2 -translate-x-1/2 w-full max-w-sm px-4">
+      <div className="relative z-20 flex h-full flex-col items-center justify-between px-6 py-8">
+        {/* TOP: Updates Tile - higher and thinner */}
+        <div className="w-full max-w-md px-4 pt-2">
           <UpdatesTile className="w-full" />
         </div>
 
-        {/* CENTER GROUP: Title + Subtitle + Countdown - better spaced */}
-        <div className="flex flex-col items-center text-center gap-6 sm:gap-8">
-          {/* Title + Subtitle */}
-          <div className="flex flex-col items-center text-center gap-3 sm:gap-4">
-            <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight text-white drop-shadow-lg">
-              Get Set for an Unreal Week Together!
-            </h1>
-            <p className="max-w-xs text-sm sm:text-base text-white/85 leading-relaxed drop-shadow-md">
-              Five days in Hacienda Pinilla with our people. February 13–18, 2026.
-            </p>
-          </div>
+        {/* CENTER GROUP: Title - higher up, more space */}
+        <div className="flex flex-col items-center text-center -mt-8">
+          <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight text-white drop-shadow-lg">
+            Get Set for an Unreal Week Together!
+          </h1>
+        </div>
 
+        {/* BOTTOM GROUP: Subtitle + Countdown - closer together */}
+        <div className="flex flex-col items-center text-center gap-4 pb-8">
+          <p className="max-w-xs text-sm sm:text-base text-white/85 leading-relaxed drop-shadow-md">
+            Five days in Hacienda Pinilla with our people. February 13–18, 2026.
+          </p>
+          
           {/* Countdown bubble */}
           <motion.div
             initial={{ opacity: 0, y: 15 }}
@@ -352,6 +353,31 @@ function Hero() {
             transition={{ duration: 0.5, ease: "easeOut", delay: 0.2 }}
           >
             <CountdownChip />
+          </motion.div>
+
+          {/* Scroll indicator */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
+            className="flex flex-col items-center gap-2 mt-4"
+          >
+            <motion.div
+              animate={{
+                y: [0, 8, 0],
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              className="flex flex-col items-center gap-1"
+            >
+              <ChevronDown className="h-5 w-5 text-white/70" aria-hidden="true" />
+              <p className="text-xs text-white/60 font-medium">
+                Scroll down to see our stay, plans and more!
+              </p>
+            </motion.div>
           </motion.div>
         </div>
       </div>
