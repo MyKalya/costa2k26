@@ -33,7 +33,7 @@ export default function TravelPage() {
                   Most people arrive in this group.
                 </p>
                 <p className="text-slate-700">
-                  You'll be grouped into rental cars with a designated driver.
+                  You&apos;ll be grouped into rental cars with a designated driver.
                 </p>
                 <p className="text-slate-700">
                   Full instructions will be shared in January.
@@ -60,7 +60,7 @@ export default function TravelPage() {
           >
             <div className="space-y-3 text-slate-700">
               <p>
-                We're finalizing between rental cars and coordinated shuttles. Either way, transport will be fully arranged for both arrival groups before landing.
+                We&apos;re finalizing between rental cars and coordinated shuttles. Either way, transport will be fully arranged for both arrival groups before landing.
               </p>
               <p>
                 If your arrival time changes, please update us — it affects how we organize pickups.
@@ -103,7 +103,7 @@ export default function TravelPage() {
           >
             <div className="space-y-3 text-slate-700">
               <p>
-                This is our biggest party day, so we're running a sunset theme.
+                This is our biggest party day, so we&apos;re running a sunset theme.
               </p>
               <p>
                 Think colours you see in a Tamarindo sunset: terracotta, deep plums, dusty reds, burnt orange, reddish/marroons, warm sunset.
@@ -123,7 +123,7 @@ export default function TravelPage() {
           >
             <ul className="list-disc list-inside space-y-2 text-slate-700">
               <li>A full packing list is coming soon with basics for the villa, adventure days, and beach days. Themed-night details are already on this page so you can plan outfits early.</li>
-              <li>We'll share it in January as activities and details finalize, but this itinerary should give you a solid head start.</li>
+              <li>We&apos;ll share it in January as activities and details finalize, but this itinerary should give you a solid head start.</li>
             </ul>
           </AccordionItem>
         </Accordion>
