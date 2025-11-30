@@ -1,7 +1,6 @@
 "use client";
 
-import { CalendarCheck, Car, Sparkles, Wallet, CloudSun, Home, ShoppingBasket } from "lucide-react";
-import Link from "next/link";
+import { CalendarCheck, Car, Sparkles, PartyPopper, Sailboat as Catamaran, Backpack } from "lucide-react";
 import { Accordion, AccordionItem } from "@/components/ui/Accordion";
 
 export default function TravelPage() {
@@ -20,38 +19,30 @@ export default function TravelPage() {
 
         {/* Accordion Sections */}
         <Accordion>
-          {/* Section 1 - Groups Arriving */}
+          {/* Accordion Item 1: Arrival Groups (Feb 13) */}
           <AccordionItem
             title="Arrival Groups (Feb 13)"
             icon={CalendarCheck}
-            preview="Two arrival groups — we&apos;ll coordinate pickups accordingly."
+            preview="Two arrival groups — we'll coordinate pickups accordingly."
             bgColor="#E8F1EB"
           >
             <div className="space-y-4">
               <div>
                 <h4 className="font-semibold text-slate-900 mb-2">Group 1 – 2:30 PM</h4>
                 <p className="text-slate-700">
-                  Almost everyone arrives at this time
+                  Most people arrive in this group.
                 </p>
                 <p className="text-slate-700">
-                  You&apos;ll be grouped together for transport
+                  You'll be grouped into rental cars with a designated driver.
                 </p>
                 <p className="text-slate-700">
-                  We&apos;ll share exact instructions in January
+                  Full instructions will be shared in January.
                 </p>
               </div>
               <div>
                 <h4 className="font-semibold text-slate-900 mb-2">Group 2 – 4:30 PM</h4>
-                <ul className="list-disc list-inside space-y-1 text-slate-700">
-                  <li>Thasithan</li>
-                  <li>Aatharsha</li>
-                  <li>Januka</li>
-                  <li>Netharshan</li>
-                  <li>Khandeeban</li>
-                  <li>Yothia</li>
-                </ul>
-                <p className="mt-2 text-slate-700">
-                  Separate pickup will be arranged
+                <p className="text-slate-700">
+                  A separate rental car group will be arranged for this arrival time.
                 </p>
               </div>
               <p className="text-slate-700 pt-2 border-t border-slate-200/50">
@@ -60,16 +51,16 @@ export default function TravelPage() {
             </div>
           </AccordionItem>
 
-          {/* Section 2 - Transport Plan */}
+          {/* Accordion Item 2: Transport to the Villa */}
           <AccordionItem
             title="Transport to the Villa"
             icon={Car}
-            preview="We&apos;re finalizing between rentals and group shuttles."
+            preview="We're finalizing between rentals and group shuttles."
             bgColor="#DDEFE3"
           >
             <div className="space-y-3 text-slate-700">
               <p>
-                We&apos;re finalizing between rental cars and coordinated shuttles. Either way, transport will be fully arranged for both arrival groups before landing.
+                We're finalizing between rental cars and coordinated shuttles. Either way, transport will be fully arranged for both arrival groups before landing.
               </p>
               <p>
                 If your arrival time changes, please update us — it affects how we organize pickups.
@@ -77,7 +68,7 @@ export default function TravelPage() {
             </div>
           </AccordionItem>
 
-          {/* Section 3 - Welcome Party Dress Code */}
+          {/* Accordion Item 3: Arrival Night Theme */}
           <AccordionItem
             title="Arrival Night Theme"
             icon={Sparkles}
@@ -89,65 +80,51 @@ export default function TravelPage() {
             </p>
           </AccordionItem>
 
-          {/* Section 4 - Currency */}
+          {/* Accordion Item 4: Puerto de Sal Beach Club */}
           <AccordionItem
-            title="Money Tips"
-            icon={Wallet}
-            preview="Bring USD + use fee-friendly cards."
+            title="Puerto de Sal Beach Club"
+            icon={PartyPopper}
+            preview="Light, dreamy, coastal romantic. Ultra flattering."
             bgColor="#F3EEE5"
           >
             <ul className="list-disc list-inside space-y-2 text-slate-700">
-              <li>USD works almost everywhere</li>
-              <li>Good exchange rates at ATMs, not kiosks</li>
-              <li>Use no-FX-fee cards if you have them</li>
-              <li>Bring some cash for tips, shops, and random snacks</li>
+              <li>Ladies think baby pink, peach, lavender, soft yellow, champagne, pastel coral.</li>
+              <li>Men think creams, linen, pale pinks, peach, light grey or pastel yellows.</li>
+              <li>Bring some cash for tips, shops, random snacks etc.</li>
             </ul>
           </AccordionItem>
 
-          {/* Section 5 - Weather */}
+          {/* Accordion Item 5: Party on the Sea (Catamaran Theme) */}
           <AccordionItem
-            title="Weather in Tamarindo"
-            icon={CloudSun}
-            preview="Expect hot, sunny, tropical weather."
+            title="Party on the Sea"
+            icon={Catamaran}
+            preview="Warm, romantic sunset palette."
             bgColor="#E8F1EB"
           >
             <div className="space-y-3 text-slate-700">
               <p>
-                February is dry season — expect hot sun, blue skies, and warm nights.
+                This is our biggest party day, so we're running a sunset theme.
               </p>
-              <div className="weather-widget-placeholder pt-4 border-t border-slate-200/50">
-                {/* In future: weather API */}
-              </div>
+              <p>
+                Think colours you see in a Tamarindo sunset: terracotta, deep plums, dusty reds, burnt orange, reddish/marroons, warm sunset.
+              </p>
+              <p>
+                Swimwear or beach-party outfits in this palette will look great.
+              </p>
             </div>
           </AccordionItem>
 
-          {/* Section 6 - Villa Essentials */}
+          {/* Accordion Item 6: Packing List (Coming Soon) */}
           <AccordionItem
-            title="Villa Basics"
-            icon={Home}
-            preview="Wi-Fi, codes, and quick villa info."
+            title="Packing List"
+            icon={Backpack}
+            preview="Full packing guide coming in January."
             bgColor="#DDEFE3"
           >
             <ul className="list-disc list-inside space-y-2 text-slate-700">
-              <li>Fast Wi-Fi at all villas</li>
-              <li>Door codes will be shared closer to the trip</li>
-              <li>
-                Full villa details are on the <Link href="/stay" className="font-semibold text-slate-900 underline">Stay</Link> and <Link href="/rooms" className="font-semibold text-slate-900 underline">Rooms</Link> pages
-              </li>
-              <li>We&apos;ll share a full packing list in January</li>
+              <li>A full packing list is coming soon with basics for the villa, adventure days, and beach days. Themed-night details are already on this page so you can plan outfits early.</li>
+              <li>We'll share it in January as activities and details finalize, but this itinerary should give you a solid head start.</li>
             </ul>
-          </AccordionItem>
-
-          {/* Section 7 - Groceries & Meals */}
-          <AccordionItem
-            title="Groceries & Breakfast"
-            icon={ShoppingBasket}
-            preview="We&apos;ll pre-stock groceries — tell us what you want."
-            bgColor="#F8F6F0"
-          >
-            <p className="text-slate-700">
-              We&apos;re arranging groceries and breakfast items to be pre-stocked for the group. We&apos;ll share a link for requests so you can add any essentials you want waiting for you.
-            </p>
           </AccordionItem>
         </Accordion>
       </div>
