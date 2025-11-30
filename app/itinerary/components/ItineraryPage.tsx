@@ -104,23 +104,23 @@ const days: DayCardProps[] = [
       },
       {
         time: "Afternoon",
-        title: "Adventure tour - You can pick between two routes. Both include a Costa Rican lunch and hot springs at the end.(We are doing option 1. Click here to opt out of both)",
+        title: "Adventure tour - Choose your route",
         location: "",
-        description: "",
+        description: "Pick between two routes. Both include a Costa Rican lunch and hot springs at the end. (We're doing Option 1)",
         icon: "adventure",
       },
       {
         time: "Afternoon",
-        title: "Option 1 - La Leona Waterfall Hike + White Water Tubing + Hot Springs/ Mud treatment.",
+        title: "Route 1: La Leona Waterfall Hike + White Water Tubing + Hot Springs/Mud treatment",
         location: "",
         description: "Moderate. Short hike through the rapids to a bright blue canyon waterfall, followed by fun river tubing and a relaxed hot spring finish.",
         icon: "adventure",
       },
       {
         time: "Afternoon",
-        title: "Option 2 - Rincón de la Vieja + Ziplining + Hot Springs/ Mud treatment.",
+        title: "Route 2: Rincón de la Vieja + Ziplining + Hot Springs/Mud treatment",
         location: "",
-        description: "Moderate. Classic national park hike with volcanic scenery, zipline through the canyon, and hot springs to end the day",
+        description: "Moderate. Classic national park hike with volcanic scenery, zipline through the canyon, and hot springs to end the day.",
         icon: "adventure",
       },
       {
