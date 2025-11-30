@@ -74,27 +74,17 @@ function CostCard({
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
       className={clsx(
-        "group relative overflow-hidden rounded-2xl border shadow-lg backdrop-blur-sm transition-all duration-300",
-        isDeposit ? "p-4 sm:p-5" : "p-4 sm:p-5",
-        cardBorderClass
+        "group relative overflow-hidden rounded-3xl border border-white/20 shadow-[0_4px_20px_rgba(0,0,0,0.25)] backdrop-filter backdrop-blur-sm hover:shadow-[0_8px_30px_rgba(0,0,0,0.35)] hover:-translate-y-[3px] transition-all duration-300 ease-out",
+        isDeposit ? "p-4 sm:p-5 md:p-6" : "p-4 sm:p-5"
       )}
       style={{
         background: gradientFrom && gradientTo
-          ? `linear-gradient(135deg, ${gradientFrom}15, ${gradientTo}10)`
+          ? `linear-gradient(to bottom right, ${gradientFrom}, ${gradientTo})`
           : undefined,
-        backgroundColor: !gradientFrom ? undefined : "transparent",
       }}
     >
-      {/* Caustics texture overlay */}
-      <div 
-        className="absolute inset-0 opacity-[0.03] pointer-events-none"
-        style={{
-          backgroundImage: "url('/textures/caustics.webp')",
-          backgroundSize: "160% 160%",
-          backgroundPosition: "center",
-          mixBlendMode: "screen",
-        }}
-      />
+      {/* Subtle brightness on hover */}
+      <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
       {/* Content */}
       <div className="relative z-10">
@@ -102,36 +92,31 @@ function CostCard({
           <div className="flex gap-3 flex-1 min-w-0">
             {/* Icon with glass morphism */}
             <motion.div
-              whileHover={{ scale: 1.05, rotate: 2 }}
-              className={clsx(
-                "flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl shadow-lg backdrop-blur-sm border border-white/20",
-                iconBgClass
-              )}
-              style={{
-                backgroundColor: gradientFrom ? `${gradientFrom}20` : undefined,
-              }}
+              className="flex-shrink-0 mt-0.5"
+              whileHover={{ y: -2, rotate: 1 }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
             >
-              <div className={clsx(iconColorClass, "[&>svg]:h-5 [&>svg]:w-5")}>
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl p-3 shadow-lg bg-white/15 backdrop-blur-sm border border-white/20">
                 {icon}
               </div>
             </motion.div>
 
             <div className="flex-1 min-w-0">
-              <h3 className="text-lg font-bold text-slate-900 mb-0.5">{title}</h3>
+              <h3 className="text-lg font-semibold text-white leading-tight mb-0.5">{title}</h3>
               {subtitle && (
-                <p className="text-sm text-slate-600 font-medium mb-2">{subtitle}</p>
+                <p className="text-sm text-white/80 font-medium mb-2">{subtitle}</p>
               )}
               {/* Estimated total - placed under subtitle to fill space */}
               {hasTwoLineAmount && estimatedTotal && (
                 <div className="flex flex-col gap-0.5 mt-2">
-                  <span className="text-[9px] font-medium text-slate-400 uppercase tracking-wider">
+                  <span className="text-[9px] font-medium text-white/60 uppercase tracking-wider">
                     Estimated total
                   </span>
-                  <span className={clsx("text-base sm:text-lg font-semibold text-slate-500", amountColorClass)}>
+                  <span className="text-base sm:text-lg font-semibold text-white/90">
                     {estimatedTotal}
                   </span>
                   {estimatedLabel && (
-                    <span className={clsx("text-[9px] font-normal uppercase tracking-wide leading-tight text-slate-400", amountLabelColorClass)}>
+                    <span className="text-[9px] font-normal uppercase tracking-wide leading-tight text-white/60">
                       {estimatedLabel}
                     </span>
                   )}
@@ -146,15 +131,15 @@ function CostCard({
               {hasTwoLineAmount ? (
                 <>
                   {/* Deposit now - highlighted */}
-                  <div className="flex flex-col items-end gap-0.5 bg-white/60 backdrop-blur-sm rounded-lg px-3 py-2 border border-white/40 shadow-sm">
-                    <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">
+                  <div className="flex flex-col items-end gap-0.5 bg-white/20 backdrop-blur-sm rounded-xl px-4 py-3 border border-white/30 shadow-lg">
+                    <span className="text-[10px] font-bold text-white/90 uppercase tracking-wider">
                       Deposit now
                     </span>
-                    <span className={clsx("text-3xl sm:text-4xl font-bold", amountColorClass)}>
+                    <span className="text-3xl sm:text-4xl font-bold text-white">
                       {depositNow}
                     </span>
                     {depositLabel && (
-                      <span className={clsx("text-[10px] font-semibold uppercase tracking-wide", amountLabelColorClass)}>
+                      <span className="text-[10px] font-semibold uppercase tracking-wide text-white/80">
                         {depositLabel}
                       </span>
                     )}
@@ -163,14 +148,14 @@ function CostCard({
               ) : (
                 <>
                   {amount && (
-                    <div className="bg-white/60 backdrop-blur-sm rounded-lg px-3 py-2 border border-white/40 shadow-sm">
-                      <span className={clsx("text-2xl sm:text-3xl font-bold block", amountColorClass)}>
+                    <div className="bg-white/20 backdrop-blur-sm rounded-xl px-4 py-3 border border-white/30 shadow-lg">
+                      <span className="text-2xl sm:text-3xl font-bold block text-white">
                         {amount}
                       </span>
                     </div>
                   )}
                   {amountLabel && (
-                    <span className={clsx("text-[10px] font-semibold uppercase tracking-wide mt-1", amountLabelColorClass)}>
+                    <span className="text-[10px] font-semibold uppercase tracking-wide mt-1 text-white/80">
                       {amountLabel}
                     </span>
                   )}
@@ -182,24 +167,24 @@ function CostCard({
 
         {/* Body content */}
         {children && (
-          <div className="text-sm text-slate-700 leading-relaxed space-y-2.5 pl-[60px]">
+          <div className="text-sm text-white/80 leading-relaxed space-y-2.5 pl-[68px]">
             <div>{children}</div>
             
             {/* Payment instructions - collapsible */}
             {paymentInstructions && (
-              <div className="pt-2 mt-2 border-t border-slate-200/60">
+              <div className="pt-2 mt-2 border-t border-white/20">
                 <button
                   onClick={() => setIsExpanded(!isExpanded)}
                   className="flex items-center gap-1.5 w-full text-left group/payment"
                 >
-                  <CreditCard className="h-3.5 w-3.5 text-slate-500" />
-                  <span className="text-xs font-bold text-slate-900 uppercase tracking-wide">
+                  <CreditCard className="h-3.5 w-3.5 text-white/70" />
+                  <span className="text-xs font-bold text-white uppercase tracking-wide">
                     How to pay
                   </span>
                   {isExpanded ? (
-                    <ChevronUp className="h-3.5 w-3.5 text-slate-500 ml-auto transition-transform" />
+                    <ChevronUp className="h-3.5 w-3.5 text-white/70 ml-auto transition-transform" />
                   ) : (
-                    <ChevronDown className="h-3.5 w-3.5 text-slate-500 ml-auto transition-transform" />
+                    <ChevronDown className="h-3.5 w-3.5 text-white/70 ml-auto transition-transform" />
                   )}
                 </button>
                 {isExpanded && (
@@ -212,30 +197,30 @@ function CostCard({
                   >
                     <button
                       onClick={() => handleCopy("m.gnanam31@gmail.com", "email")}
-                      className="flex items-start gap-2 text-xs text-slate-700 hover:text-slate-900 transition-colors w-full text-left group/item"
+                      className="flex items-start gap-2 text-xs text-white/90 hover:text-white transition-colors w-full text-left group/item"
                     >
                       {copied === "email" ? (
-                        <Check className="h-3.5 w-3.5 text-green-600 flex-shrink-0 mt-0.5" />
+                        <Check className="h-3.5 w-3.5 text-green-400 flex-shrink-0 mt-0.5" />
                       ) : (
-                        <Copy className="h-3.5 w-3.5 text-slate-400 group-hover/item:text-slate-600 flex-shrink-0 mt-0.5 transition-colors" />
+                        <Copy className="h-3.5 w-3.5 text-white/50 group-hover/item:text-white/80 flex-shrink-0 mt-0.5 transition-colors" />
                       )}
                       <div className="flex flex-col gap-0.5">
                         <span className="font-mono">m.gnanam31@gmail.com</span>
-                        <span className="text-[10px] text-slate-500">Interac e-transfer</span>
+                        <span className="text-[10px] text-white/60">Interac e-transfer</span>
                       </div>
                     </button>
                     <button
                       onClick={() => handleCopy("$mathu", "mathu")}
-                      className="flex items-start gap-2 text-xs text-slate-700 hover:text-slate-900 transition-colors w-full text-left group/item"
+                      className="flex items-start gap-2 text-xs text-white/90 hover:text-white transition-colors w-full text-left group/item"
                     >
                       {copied === "mathu" ? (
-                        <Check className="h-3.5 w-3.5 text-green-600 flex-shrink-0 mt-0.5" />
+                        <Check className="h-3.5 w-3.5 text-green-400 flex-shrink-0 mt-0.5" />
                       ) : (
-                        <Copy className="h-3.5 w-3.5 text-slate-400 group-hover/item:text-slate-600 flex-shrink-0 mt-0.5 transition-colors" />
+                        <Copy className="h-3.5 w-3.5 text-white/50 group-hover/item:text-white/80 flex-shrink-0 mt-0.5 transition-colors" />
                       )}
                       <div className="flex flex-col gap-0.5">
                         <span className="font-mono">$mathu</span>
-                        <span className="text-[10px] text-slate-500">Wealthsimple</span>
+                        <span className="text-[10px] text-white/60">Wealthsimple</span>
                       </div>
                     </button>
                   </motion.div>
@@ -337,7 +322,7 @@ export default function TripCostsPage() {
           <div className="space-y-6">
             {/* Airbnb Villas */}
             <CostCard
-              icon={<Home className="h-6 w-6" aria-hidden="true" />}
+              icon={<Home className="h-6 w-6" strokeWidth={2} style={{ color: "#F3B44C" }} />}
               title="Airbnb villas"
               subtitle="Initial deposit"
               depositNow="$450"
@@ -345,22 +330,18 @@ export default function TripCostsPage() {
               estimatedTotal="$650–$680"
               estimatedLabel="per person (we will update this range)"
               paymentInstructions="Send e-transfer to m.gnanam31@gmail.com or Wealthsimple to $mathu."
-              gradientFrom="#10B981"
-              gradientTo="#059669"
-              iconBgClass="bg-emerald-100"
-              iconColorClass="text-emerald-700"
-              amountColorClass="text-emerald-900"
-              amountLabelColorClass="text-emerald-800"
+              gradientFrom="#1F4E3A"
+              gradientTo="#2D6B57"
               isDeposit={true}
             >
               <p>
-                Our three villas in Hacienda Pinilla cost <span className="font-bold text-emerald-900">$21,390</span> for the group. This first deposit secures our stay. We will update this page with your remaining share after the final host payment.
+                Our three villas in Hacienda Pinilla cost <span className="font-bold text-white">$21,390</span> for the group. This first deposit secures our stay. We will update this page with your remaining share after the final host payment.
               </p>
             </CostCard>
 
             {/* Catamaran Party */}
             <CostCard
-              icon={<Sailboat className="h-6 w-6" aria-hidden="true" />}
+              icon={<Sailboat className="h-6 w-6" strokeWidth={2} style={{ color: "#1C736A" }} />}
               title="Catamaran party"
               subtitle="Private sunset cruise"
               depositNow="$100"
@@ -368,16 +349,12 @@ export default function TripCostsPage() {
               estimatedTotal="$150–$180"
               estimatedLabel="per person (includes deposit + final payment)"
               paymentInstructions="Send e-transfer to m.gnanam31@gmail.com or Wealthsimple to $mathu."
-              gradientFrom="#14B8A6"
-              gradientTo="#0D9488"
-              iconBgClass="bg-teal-100"
-              iconColorClass="text-teal-700"
-              amountColorClass="text-teal-900"
-              amountLabelColorClass="text-teal-800"
+              gradientFrom="#145A47"
+              gradientTo="#0E3D2F"
               isDeposit={true}
             >
               <p>
-                This holds our private catamaran for the group. Expect another <span className="font-bold text-teal-900">$50–$80 per person</span> once we confirm final headcount and package.
+                This holds our private catamaran for the group. Expect another <span className="font-bold text-white">$50–$80 per person</span> once we confirm final headcount and package.
               </p>
             </CostCard>
           </div>
@@ -420,17 +397,13 @@ export default function TripCostsPage() {
           <div className="space-y-4">
             {/* Transport */}
             <CostCard
-              icon={<Car className="h-6 w-6" aria-hidden="true" />}
+              icon={<Car className="h-6 w-6" strokeWidth={2} style={{ color: "#C46A28" }} />}
               title="Transport & car rentals"
               subtitle="Getting between airport, villas and activities"
               amount="$100–$120"
               amountLabel="estimate per person"
-              gradientFrom="#84CC16"
-              gradientTo="#65A30D"
-              iconBgClass="bg-lime-100"
-              iconColorClass="text-lime-700"
-              amountColorClass="text-lime-900"
-              amountLabelColorClass="text-lime-800"
+              gradientFrom="#8B4513"
+              gradientTo="#C46A28"
             >
               <p>
                 We&apos;ll mix rental cars and group transport so people can get around without stress. Final cost depends on flight times and how many cars we end up needing.
@@ -439,17 +412,13 @@ export default function TripCostsPage() {
 
             {/* Group Breakfasts */}
             <CostCard
-              icon={<UtensilsCrossed className="h-6 w-6" aria-hidden="true" />}
+              icon={<UtensilsCrossed className="h-6 w-6" strokeWidth={2} style={{ color: "#F3B44C" }} />}
               title="Group breakfasts"
               subtitle="Easy mornings at the villas"
               amount="$15–$25"
               amountLabel="per breakfast"
-              gradientFrom="#F59E0B"
-              gradientTo="#D97706"
-              iconBgClass="bg-amber-100"
-              iconColorClass="text-amber-700"
-              amountColorClass="text-amber-900"
-              amountLabelColorClass="text-amber-800"
+              gradientFrom="#D97706"
+              gradientTo="#F59E0B"
             >
               <p>
                 We&apos;re exploring pre arranged family style breakfasts to make mornings easier. Food spots aren&apos;t within walking distance, so this helps everyone start the day with a good meal, coffee, and no hassle before we head out.
@@ -458,16 +427,12 @@ export default function TripCostsPage() {
 
             {/* Activities */}
             <CostCard
-              icon={<Palmtree className="h-6 w-6" aria-hidden="true" />}
+              icon={<Palmtree className="h-6 w-6" strokeWidth={2} style={{ color: "#10B981" }} />}
               title="Activities"
               subtitle="ATVs, beach clubs, spa time & more"
               amountLabel="varies by activity"
-              gradientFrom="#0EA5E9"
-              gradientTo="#0284C7"
-              iconBgClass="bg-sky-100"
-              iconColorClass="text-sky-700"
-              amountColorClass="text-sky-900"
-              amountLabelColorClass="text-sky-800"
+              gradientFrom="#0E3D2F"
+              gradientTo="#1C5A47"
             >
               <p>
                 Think ATV tours, chasing waterfalls, hot springs, water activities, surf lessons, spa/massage time and whatever else the group is feeling. We&apos;ll share the activity list and pricing soon so you can choose what you&apos;re into.
@@ -476,17 +441,13 @@ export default function TripCostsPage() {
 
             {/* Beach clubs, classes & entrance fees */}
             <CostCard
-              icon={<Ticket className="h-6 w-6" aria-hidden="true" />}
+              icon={<Ticket className="h-6 w-6" strokeWidth={2} style={{ color: "#FB7185" }} />}
               title="Beach clubs, classes & entrance fees"
               subtitle="Day passes, lessons and local spots"
               amount="$10–$50"
               amountLabel="per outing"
-              gradientFrom="#F43F5E"
-              gradientTo="#E11D48"
-              iconBgClass="bg-rose-100"
-              iconColorClass="text-rose-700"
-              amountColorClass="text-rose-900"
-              amountLabelColorClass="text-rose-800"
+              gradientFrom="#E11D48"
+              gradientTo="#F43F5E"
             >
               <p>
                 Think beach club day beds, yoga or fitness classes, surf classes, waterfall or park entrance fees and other small things that pop up while we&apos;re in Costa Rica. Most of these are optional and pay as you go.
@@ -495,16 +456,12 @@ export default function TripCostsPage() {
 
             {/* Spending Money */}
             <CostCard
-              icon={<Wallet className="h-6 w-6" aria-hidden="true" />}
+              icon={<Wallet className="h-6 w-6" strokeWidth={2} style={{ color: "#60A5FA" }} />}
               title="Spending money & tips"
               subtitle="Restaurants, drinks and the little extras"
               amountLabel="you decide"
-              gradientFrom="#0EA5E9"
-              gradientTo="#0284C7"
-              iconBgClass="bg-sky-100"
-              iconColorClass="text-sky-700"
-              amountColorClass="text-sky-900"
-              amountLabelColorClass="text-sky-800"
+              gradientFrom="#0284C7"
+              gradientTo="#0EA5E9"
             >
               <p>
                 Tamarindo is pretty card friendly, but it&apos;s best to have both USD and colones. USD works for larger purchases, but colones are better for small vendors and local services. Keep in mind you&apos;ll usually get your change back in colones even if you pay in USD. Bring whatever amount feels right for meals out, drinks, snacks, and souvenirs.
@@ -513,19 +470,15 @@ export default function TripCostsPage() {
 
             {/* Donation */}
             <CostCard
-              icon={<Gift className="h-6 w-6" aria-hidden="true" />}
+              icon={<Gift className="h-6 w-6" strokeWidth={2} style={{ color: "#F3B44C" }} />}
               title="Donate to the site creator"
               subtitle="Optional, unserious, but appreciated"
               amountLabel="BTC preferred"
-              gradientFrom="#F59E0B"
-              gradientTo="#D97706"
-              iconBgClass="bg-amber-200"
-              iconColorClass="text-amber-800"
-              amountColorClass="text-amber-900"
-              amountLabelColorClass="text-amber-800"
+              gradientFrom="#B45309"
+              gradientTo="#F3B44C"
             >
               <p>
-                If you&apos;re enjoying this site, feel free to donate to the creators. Bitcoin preferred. Or, if you&apos;re not into crypto, we&apos;ll accept <span className="font-bold text-amber-900">one free flop in 2026</span> with zero questions asked ;).
+                If you&apos;re enjoying this site, feel free to donate to the creators. Bitcoin preferred. Or, if you&apos;re not into crypto, we&apos;ll accept <span className="font-bold text-white">one free flop in 2026</span> with zero questions asked ;).
               </p>
             </CostCard>
           </div>
