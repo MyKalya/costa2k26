@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { HeroSection } from "./HeroSection";
 import { DayScroller } from "./DayScroller";
 import { DayCard, type DayCardProps } from "./DayCard";
-import { FooterActions } from "./FooterActions";
 
 const days: DayCardProps[] = [
   {
@@ -331,9 +330,6 @@ export default function ItineraryPage() {
           <DayCard key={day.id} {...day} />
         ))}
       </div>
-
-      {/* Footer */}
-      <FooterActions />
     </div>
   );
 }
