@@ -1,6 +1,6 @@
 "use client";
 
-import { Home, Sailboat, Car, UtensilsCrossed, Palmtree, Wallet, Gift } from "lucide-react";
+import { Home, Sailboat, Car, UtensilsCrossed, Palmtree, Wallet, Gift, Ticket } from "lucide-react";
 import { clsx } from "clsx";
 
 type CostCardProps = {
@@ -9,6 +9,11 @@ type CostCardProps = {
   subtitle?: string;
   amount?: string;
   amountLabel?: string;
+  depositNow?: string;
+  depositLabel?: string;
+  estimatedTotal?: string;
+  estimatedLabel?: string;
+  paymentInstructions?: string;
   cardBgClass?: string;
   cardBorderClass?: string;
   iconBgClass?: string;
@@ -24,6 +29,11 @@ function CostCard({
   subtitle, 
   amount, 
   amountLabel,
+  depositNow,
+  depositLabel,
+  estimatedTotal,
+  estimatedLabel,
+  paymentInstructions,
   cardBgClass = "bg-emerald-50",
   cardBorderClass = "border-emerald-100",
   iconBgClass = "bg-emerald-100",
@@ -32,6 +42,8 @@ function CostCard({
   amountLabelColorClass = "text-emerald-800",
   children 
 }: CostCardProps) {
+  const hasTwoLineAmount = depositNow && estimatedTotal;
+
   return (
     <div className={clsx("flex flex-col gap-4 rounded-2xl border shadow-sm p-4 sm:p-5", cardBgClass, cardBorderClass)}>
       <div className="flex items-start justify-between gap-4 flex-wrap">
@@ -48,24 +60,69 @@ function CostCard({
             )}
           </div>
         </div>
-        {(amount || amountLabel) && (
-          <div className="flex flex-col items-end gap-0.5 flex-shrink-0">
-            {amount && (
-              <span className={clsx("text-3xl sm:text-4xl font-semibold", amountColorClass)}>
-                {amount}
-              </span>
-            )}
-            {amountLabel && (
-              <span className={clsx("text-xs font-medium uppercase tracking-wide", amountLabelColorClass)}>
-                {amountLabel}
-              </span>
+        {(amount || amountLabel || hasTwoLineAmount) && (
+          <div className="flex flex-col items-end gap-1.5 flex-shrink-0">
+            {hasTwoLineAmount ? (
+              <>
+                {/* Deposit now */}
+                <div className="flex flex-col items-end gap-0.5">
+                  <span className="text-xs font-medium text-slate-600 uppercase tracking-wide">
+                    Deposit now
+                  </span>
+                  <span className={clsx("text-2xl sm:text-3xl font-semibold", amountColorClass)}>
+                    {depositNow}
+                  </span>
+                  {depositLabel && (
+                    <span className={clsx("text-xs font-medium uppercase tracking-wide", amountLabelColorClass)}>
+                      {depositLabel}
+                    </span>
+                  )}
+                </div>
+                {/* Estimated total */}
+                <div className="flex flex-col items-end gap-0.5 mt-2 pt-2 border-t border-slate-300/50">
+                  <span className="text-xs font-medium text-slate-600 uppercase tracking-wide">
+                    Estimated total
+                  </span>
+                  <span className={clsx("text-xl sm:text-2xl font-semibold", amountColorClass)}>
+                    {estimatedTotal}
+                  </span>
+                  {estimatedLabel && (
+                    <span className={clsx("text-[10px] font-medium uppercase tracking-wide leading-tight", amountLabelColorClass)}>
+                      {estimatedLabel}
+                    </span>
+                  )}
+                </div>
+              </>
+            ) : (
+              <>
+                {amount && (
+                  <span className={clsx("text-3xl sm:text-4xl font-semibold", amountColorClass)}>
+                    {amount}
+                  </span>
+                )}
+                {amountLabel && (
+                  <span className={clsx("text-xs font-medium uppercase tracking-wide", amountLabelColorClass)}>
+                    {amountLabel}
+                  </span>
+                )}
+              </>
             )}
           </div>
         )}
       </div>
       {children && (
-        <div className="text-sm text-slate-700 leading-relaxed pl-[56px]">
-          {children}
+        <div className="text-sm text-slate-700 leading-relaxed pl-[56px] space-y-3">
+          <div>{children}</div>
+          {paymentInstructions && (
+            <div className="pt-3 mt-3 border-t border-slate-200">
+              <p className="text-xs font-semibold text-slate-900 uppercase tracking-wide mb-1.5">
+                How to pay
+              </p>
+              <p className="text-sm text-slate-700 leading-relaxed">
+                {paymentInstructions}
+              </p>
+            </div>
+          )}
         </div>
       )}
     </div>
@@ -96,10 +153,10 @@ export default function TripCostsPage() {
         <div className="mt-8 space-y-4">
           <div>
             <h2 className="text-sm font-semibold text-slate-500 uppercase tracking-wide">
-              What we&apos;re paying now
+              WHAT WE&apos;RE PAYING NOW
             </h2>
             <p className="mt-1 text-sm text-slate-600">
-              This section covers amounts we will actually ask you to send.
+              These are deposits we will actually ask you to send. Each tile shows what you pay now and an estimate of the total you can expect for that item.
             </p>
           </div>
 
@@ -108,8 +165,11 @@ export default function TripCostsPage() {
             icon={<Home className="h-5 w-5" aria-hidden="true" />}
             title="Airbnb villas"
             subtitle="Initial deposit"
-            amount="$450"
-            amountLabel="per person"
+            depositNow="$450"
+            depositLabel="per person"
+            estimatedTotal="$250–$290"
+            estimatedLabel="per person (we will update this range once numbers finalize)"
+            paymentInstructions="Send e-transfer to m.gnanam31@gmail.com or Wealthsimple to $mathu."
             cardBgClass="bg-emerald-50"
             cardBorderClass="border-emerald-100"
             iconBgClass="bg-emerald-100"
@@ -118,7 +178,7 @@ export default function TripCostsPage() {
             amountLabelColorClass="text-emerald-800"
           >
             <p>
-              Our three villas in Hacienda Pinilla cost <span className="font-semibold">$21,390</span> for the group. This first deposit secures our stay. We will update this page with your remaining share after the final host payment.
+              Our three villas in Hacienda Pinilla cost around <span className="font-semibold">$21,390</span> for the group. This first deposit secures our stay. We will update this page with your remaining share after the final host payment.
             </p>
           </CostCard>
 
@@ -127,8 +187,11 @@ export default function TripCostsPage() {
             icon={<Sailboat className="h-5 w-5" aria-hidden="true" />}
             title="Catamaran party"
             subtitle="Private sunset cruise"
-            amount="$100"
-            amountLabel="deposit per person"
+            depositNow="$100"
+            depositLabel="per person"
+            estimatedTotal="$150–$180"
+            estimatedLabel="per person (includes deposit and final payment)"
+            paymentInstructions="Send e-transfer to m.gnanam31@gmail.com or Wealthsimple to $mathu."
             cardBgClass="bg-teal-50"
             cardBorderClass="border-teal-100"
             iconBgClass="bg-teal-100"
@@ -137,16 +200,21 @@ export default function TripCostsPage() {
             amountLabelColorClass="text-teal-800"
           >
             <p>
-              This holds our private catamaran for the group. Expect another <span className="font-semibold">$50–$80 per person</span> once we confirm final headcount and package.
+              This holds our private catamaran for the group. This first deposit secures our booking. Expect another amount later once we confirm final headcount and package.
             </p>
           </CostCard>
         </div>
 
         {/* What to plan for */}
         <div className="mt-8 space-y-4">
-          <h2 className="text-sm font-semibold text-slate-500 uppercase tracking-wide">
-            What to plan for
-          </h2>
+          <div>
+            <h2 className="text-sm font-semibold text-slate-500 uppercase tracking-wide">
+              WHAT TO PLAN FOR
+            </h2>
+            <p className="mt-1 text-sm text-slate-600">
+              These are costs we are still finalizing or that will be pay as you go. Use these numbers to budget. We will update this page as details lock in.
+            </p>
+          </div>
 
           {/* Tile 3 - Transport */}
           <CostCard
@@ -163,7 +231,7 @@ export default function TripCostsPage() {
             amountLabelColorClass="text-lime-800"
           >
             <p>
-              We&apos;ll mix rental cars and group transport so people can get around without stress. Final cost depends on flight times and how many cars we end up needing.
+              We will mix rental cars and ubers so people can get around without stress. Final cost depends on flight times and how many cars we end up needing.
             </p>
           </CostCard>
 
@@ -172,8 +240,8 @@ export default function TripCostsPage() {
             icon={<UtensilsCrossed className="h-5 w-5" aria-hidden="true" />}
             title="Group breakfasts"
             subtitle="Easy mornings at the villas"
-            amount="$60–$100"
-            amountLabel="estimate per person"
+            amount="$15–$25"
+            amountLabel="per breakfast"
             cardBgClass="bg-amber-50"
             cardBorderClass="border-amber-100"
             iconBgClass="bg-amber-100"
@@ -182,7 +250,7 @@ export default function TripCostsPage() {
             amountLabelColorClass="text-amber-800"
           >
             <p>
-              We&apos;re looking at pre-arranged breakfasts so you can roll out of bed and straight into coffee and food. Range depends on the vendor and menu we lock in.
+              We are looking at pre-arranged breakfasts on a few mornings so you can roll out of bed and go straight into coffee and food. Expect around $20 per breakfast at the villa. It will not be every day, and we will confirm which days closer to the trip.
             </p>
           </CostCard>
 
@@ -190,8 +258,8 @@ export default function TripCostsPage() {
           <CostCard
             icon={<Palmtree className="h-5 w-5" aria-hidden="true" />}
             title="Activities"
-            subtitle="ATVs, beach clubs, spa time & more"
-            amountLabel="varies by activity"
+            subtitle="ATVs, beach clubs, spa time and more"
+            amountLabel="Varies by activity"
             cardBgClass="bg-sky-50"
             cardBorderClass="border-sky-100"
             iconBgClass="bg-sky-100"
@@ -200,16 +268,35 @@ export default function TripCostsPage() {
             amountLabelColorClass="text-sky-800"
           >
             <p>
-              Think ATV tours, beach clubs, spa/massage time, surf lessons and whatever else the group is feeling. We&apos;ll share a menu of options and pricing closer to the trip so you can pick what you&apos;re into.
+              Think ATV tours, spa or massage time, surf lessons and whatever else the group is feeling. We will share a menu of options and pricing closer to the trip so you can pick what you are into.
             </p>
           </CostCard>
 
-          {/* Tile 6 - Spending money */}
+          {/* Tile 6 - Beach clubs, classes and entrance fees */}
+          <CostCard
+            icon={<Ticket className="h-5 w-5" aria-hidden="true" />}
+            title="Beach clubs, classes and entrance fees"
+            subtitle="Day passes, lessons and local spots"
+            amount="$10–$50"
+            amountLabel="per outing"
+            cardBgClass="bg-rose-50"
+            cardBorderClass="border-rose-100"
+            iconBgClass="bg-rose-100"
+            iconColorClass="text-rose-800"
+            amountColorClass="text-rose-900"
+            amountLabelColorClass="text-rose-800"
+          >
+            <p>
+              Think beach club day beds, yoga classes, surf classes, waterfall or park entrance fees and similar little costs that pop up while we are in Costa Rica. Most of these are optional and pay as you go, but it helps to budget a bit of flexible cash for them.
+            </p>
+          </CostCard>
+
+          {/* Tile 7 - Spending money */}
           <CostCard
             icon={<Wallet className="h-5 w-5" aria-hidden="true" />}
-            title="Spending money & tips"
+            title="Spending money and tips"
             subtitle="Restaurants, drinks and the little extras"
-            amountLabel="you decide"
+            amountLabel="You decide"
             cardBgClass="bg-sky-50"
             cardBorderClass="border-sky-100"
             iconBgClass="bg-sky-100"
@@ -218,11 +305,11 @@ export default function TripCostsPage() {
             amountLabelColorClass="text-sky-800"
           >
             <p>
-              Costa Rica is pretty card-friendly, but it really helps to have some USD on hand for tips, small markets, taxis/parking and those random &quot;I need this&quot; moments. Bring whatever feels right for you. Think meals out, drinks, snacks and souvenirs.
+              Costa Rica is pretty card friendly, but it really helps to have some USD on hand for tips, small markets, taxis or parking and those random &quot;I need this&quot; moments. Think meals out, drinks, snacks and souvenirs.
             </p>
           </CostCard>
 
-          {/* Tile 7 - Donation */}
+          {/* Tile 8 - Donation */}
           <CostCard
             icon={<Gift className="h-5 w-5" aria-hidden="true" />}
             title="Donate to the site creator"
@@ -236,7 +323,7 @@ export default function TripCostsPage() {
             amountLabelColorClass="text-amber-800"
           >
             <p>
-              If you&apos;re enjoying this Costa2K26 site, feel free to donate to the creator. Bitcoin preferred. Or, if you&apos;re not into crypto, I&apos;ll accept <span className="font-semibold">one free flop in 2026</span> with zero questions asked.
+              If you&apos;re enjoying this Costa2K26 site, feel free to donate to the creator — Bitcoin preferred. Or, if you&apos;re not into crypto, I&apos;ll accept <span className="font-semibold">one free flop in 2026</span> with zero questions asked.
             </p>
           </CostCard>
         </div>
