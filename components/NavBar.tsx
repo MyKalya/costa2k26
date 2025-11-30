@@ -150,7 +150,7 @@ export default function NavBar() {
           style={{ fontFamily: "'Pacifico', cursive" }}
           aria-label="Costa Rica 2026 home"
         >
-          pura vida
+          Costa 2026
         </Link>
         
         {/* Right menu button - white icon to pop against background */}
