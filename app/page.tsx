@@ -333,10 +333,10 @@ function Hero() {
           <UpdatesTile className="w-full" />
         </div>
 
-        {/* CENTER GROUP: Title - much higher, close to notification, forced 2 lines */}
-        <div className="flex flex-col items-center text-center -mt-4">
-          <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight text-white drop-shadow-lg leading-tight">
-            Get Set for an<br />Unreal Week Together!
+        {/* CENTER GROUP: Title - right below notification, forced 2 lines */}
+        <div className="flex flex-col items-center text-center mt-4">
+          <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight text-white drop-shadow-lg leading-[1.1]">
+            Get Set for an Unreal Week<br />Together!
           </h1>
         </div>
 
