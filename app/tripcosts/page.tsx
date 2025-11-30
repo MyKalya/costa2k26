@@ -272,11 +272,6 @@ export default function TripCostsPage() {
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="flex flex-col items-center max-w-2xl"
           >
-            {/* Eyebrow */}
-            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] opacity-90 drop-shadow-md">
-              Costa2K26
-            </p>
-
             {/* Main Title */}
             <h1 className="mb-6 font-display text-4xl sm:text-5xl md:text-6xl font-bold drop-shadow-md leading-tight">
               Trip costs overview
