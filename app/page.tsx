@@ -326,22 +326,26 @@ function Hero() {
       {/* Dark gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/45 to-black/15" />
 
-      {/* Content wrapper - better spaced layout */}
-      <div className="relative z-20 flex h-full flex-col items-center justify-between px-6 py-8">
-        {/* TOP: Updates Tile - higher and thinner */}
-        <div className="w-full max-w-md px-4 pt-2">
-          <UpdatesTile className="w-full" />
+      {/* Content wrapper - top-aligned layout */}
+      <div className="relative z-20 flex h-full flex-col items-center px-6 pt-2 pb-8">
+        {/* TOP SECTION: Updates Tile + Header directly below */}
+        <div className="w-full flex flex-col items-center">
+          {/* Updates Tile */}
+          <div className="w-full max-w-md px-4">
+            <UpdatesTile className="w-full" />
+          </div>
+
+          {/* Header - right below notification, forced 2 lines */}
+          <div className="flex flex-col items-center text-center mt-6">
+            <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight text-white drop-shadow-lg leading-[1.1]">
+              <span className="block">Get Set for an Unreal Week</span>
+              <span className="block">Together!</span>
+            </h1>
+          </div>
         </div>
 
-        {/* CENTER GROUP: Title - right below notification, forced 2 lines */}
-        <div className="flex flex-col items-center text-center mt-4">
-          <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight text-white drop-shadow-lg leading-[1.1]">
-            Get Set for an Unreal Week<br />Together!
-          </h1>
-        </div>
-
-        {/* BOTTOM GROUP: Subtitle + Countdown - closer together */}
-        <div className="flex flex-col items-center text-center gap-4 pb-8">
+        {/* BOTTOM GROUP: Subtitle + Countdown - positioned at bottom */}
+        <div className="flex flex-col items-center text-center gap-4 mt-auto">
           <p className="max-w-xs text-sm sm:text-base text-white/85 leading-relaxed drop-shadow-md">
             Five days in Hacienda Pinilla with our people. February 13–18, 2026.
           </p>
