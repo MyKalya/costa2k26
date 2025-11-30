@@ -55,7 +55,7 @@ export default function TravelPage() {
           <AccordionItem
             title="Transport to the Villa"
             icon={Car}
-            preview="We're finalizing between rentals and group shuttles."
+            preview="We&apos;re finalizing between rentals and group shuttles."
             bgColor="#DDEFE3"
           >
             <div className="space-y-3 text-slate-700">
