@@ -12,8 +12,10 @@ type UpdatesTileProps = {
 export function UpdatesTile({ className }: UpdatesTileProps) {
   return (
     <div className={clsx("relative", className)}>
-      {/* Gold pulsing glow halo - like unread notification */}
-      <div className="pointer-events-none absolute inset-0 -z-10 rounded-full bg-gradient-to-r from-amber-400/25 via-yellow-400/20 to-amber-500/25 blur-xl opacity-60 animate-pulse" />
+      {/* Gold pulsing glow halo - strong live notification effect */}
+      <div className="pointer-events-none absolute inset-0 -z-10 rounded-full bg-gradient-to-r from-amber-400/40 via-yellow-400/35 to-amber-500/40 blur-xl opacity-80 animate-pulse" />
+      {/* Additional outer glow ring */}
+      <div className="pointer-events-none absolute -inset-1 -z-10 rounded-full bg-gradient-to-r from-amber-300/30 via-yellow-300/25 to-amber-400/30 blur-2xl opacity-70 animate-pulse" style={{ animationDelay: '0.5s' }} />
 
       <Link
         href="/updates"
