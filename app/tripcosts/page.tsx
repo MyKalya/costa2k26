@@ -462,20 +462,6 @@ export default function TripCostsPage() {
                 Tamarindo is pretty card friendly, but it&apos;s best to have both USD and colones. USD works for larger purchases, but colones are better for small vendors and local services. Keep in mind you&apos;ll usually get your change back in colones even if you pay in USD. Bring whatever amount feels right for meals out, drinks, snacks, and souvenirs.
               </p>
             </CostCard>
-
-            {/* Donation */}
-            <CostCard
-              icon={<Gift className="h-6 w-6" strokeWidth={2} style={{ color: "#F3B44C" }} />}
-              title="Donate to the site creator"
-              subtitle="Optional, unserious, but appreciated"
-              amountLabel="BTC preferred"
-              gradientFrom="#B45309"
-              gradientTo="#F3B44C"
-            >
-              <p>
-                If you&apos;re enjoying this site, feel free to donate to the creators. Bitcoin preferred. Or, if you&apos;re not into crypto, we&apos;ll accept <span className="font-bold text-white">one free flop in 2026</span> with zero questions asked ;).
-              </p>
-            </CostCard>
           </div>
         </div>
       </section>
