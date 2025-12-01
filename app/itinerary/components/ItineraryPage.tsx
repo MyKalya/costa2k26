@@ -277,38 +277,55 @@ export default function ItineraryPage() {
 
   // Detect which day is in viewport (scrollspy)
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const dayId = entry.target.id;
-            if (dayId && dayId.startsWith("day-")) {
-              setActiveDayId(dayId);
-            }
-          }
-        });
-      },
-      {
-        root: null,
-        threshold: [0.3, 0.5, 0.7],
-        rootMargin: "-20% 0px -20% 0px",
-      }
-    );
+    const handleScroll = () => {
+      const viewportTop = window.scrollY;
+      const viewportHeight = window.innerHeight;
+      const viewportCenter = viewportTop + viewportHeight / 2;
 
-    days.forEach((day) => {
-      const section = document.getElementById(day.id);
-      if (section) {
-        observer.observe(section);
-      }
-    });
+      let activeDay = days[0];
+      let minDistance = Infinity;
 
-    return () => {
       days.forEach((day) => {
         const section = document.getElementById(day.id);
         if (section) {
-          observer.unobserve(section);
+          const rect = section.getBoundingClientRect();
+          const sectionTop = rect.top + window.scrollY;
+          const sectionHeight = rect.height;
+          const sectionCenter = sectionTop + sectionHeight / 2;
+
+          // Calculate distance from viewport center to section center
+          const distance = Math.abs(viewportCenter - sectionCenter);
+
+          // Check if section is in viewport (at least partially visible)
+          const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+
+          if (isVisible && distance < minDistance) {
+            minDistance = distance;
+            activeDay = day;
+          }
         }
       });
+
+      setActiveDayId(activeDay.id);
+    };
+
+    // Throttle scroll handler
+    let ticking = false;
+    const throttledScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener("scroll", throttledScroll, { passive: true });
+    handleScroll(); // Initial check
+
+    return () => {
+      window.removeEventListener("scroll", throttledScroll);
     };
   }, []);
 

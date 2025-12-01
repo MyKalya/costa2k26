@@ -11,7 +11,7 @@ import {
   CalendarDays,
   Package,
   Gift,
-  CircleHelp,
+  DollarSign,
   Megaphone,
   Lock,
 } from "lucide-react";
@@ -27,7 +27,7 @@ const navLinks: NavItem[] = [
   { href: "/itinerary", label: "Itinerary", Icon: CalendarDays },
   // { href: "/packing", label: "Packing", Icon: Package }, // Hidden for now
   { href: "/explore-tamarindo", label: "Explore Nearby", Icon: Gift },
-  { href: "/tripcosts", label: "Trip costs", Icon: CircleHelp },
+  { href: "/tripcosts", label: "Trip costs", Icon: DollarSign },
   // { href: "/updates", label: "Updates", Icon: Megaphone }, // Hidden for now
   // { href: "/guest", label: "Guest 🔒", Icon: Lock }, // Removed
 ] as const;
