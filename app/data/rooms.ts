@@ -126,7 +126,7 @@ export const ROOMS = [
   },
   {
     villa: "16",
-    id: "V16-12",
+    id: "V16-12 Master",
     bed: "King",
     bath: "Ensuite",
     occupants: ["Deleep", "Shannon"],
@@ -190,7 +190,7 @@ export const FLOORS = {
     "Main House 2nd Floor": ["V15-4", "V15-5", "V15-6"],
   },
   "16": {
-    "Detached Suites": ["V16-11 Master", "V16-12"],
+    "Detached Suites": ["V16-11 Master", "V16-12 Master"],
     "Main House 2nd Floor": ["V16-7", "V16-8", "V16-9", "V16-10"],
   },
 } as const;
@@ -257,7 +257,7 @@ export const ZONES: Record<string, Zone[]> = {
       id: "casita",
       name: "Detached Suites",
       description: "Quiet casita wing with plenty of privacy and balconies.",
-      rooms: ["V16-11 Master", "V16-12"],
+      rooms: ["V16-11 Master", "V16-12 Master"],
     },
   ],
 };
@@ -274,7 +274,7 @@ export const ROOM_DETAILS: Record<string, { ensuite: boolean; capacity: number; 
   "V16-9": { ensuite: true, capacity: 2, amenities: ["Patio access"] },
   "V16-10": { ensuite: true, capacity: 4, amenities: ["Bunkroom"] },
   "V16-11 Master": { ensuite: true, capacity: 2, amenities: ["Balcony", "Detached suite"] },
-  "V16-12": { ensuite: true, capacity: 2, amenities: ["Balcony"] },
+  "V16-12 Master": { ensuite: true, capacity: 2, amenities: ["Balcony", "Detached suite"] },
   "V14-13 Master": { ensuite: true, capacity: 2, amenities: ["Detached suite", "Pool access"] },
   "V14-14": { ensuite: true, capacity: 2, amenities: ["Garden view"] },
   "V14-15": { ensuite: true, capacity: 2, amenities: ["Balcony"] },
