@@ -1,10 +1,11 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import { CalendarCheck, Car, Sparkles, PartyPopper, Sailboat as Catamaran, Backpack, ChevronDown } from "lucide-react";
 import { PalmBackground } from "@/components/PalmBackground";
 import type { LucideIcon } from "lucide-react";
+
 
 interface TravelAccordionItemProps {
   title: string;
@@ -15,6 +16,7 @@ interface TravelAccordionItemProps {
   gradientTo: string;
   iconColor: string;
   isOutfitTheme?: boolean;
+  id?: string;
 }
 
 function TravelAccordionItem({
@@ -26,14 +28,27 @@ function TravelAccordionItem({
   gradientTo,
   iconColor,
   isOutfitTheme = false,
+  id,
 }: TravelAccordionItemProps) {
   const [isOpen, setIsOpen] = useState(false);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
+  // Open accordion if hash matches
+  useEffect(() => {
+    if (id && window.location.hash === `#${id}`) {
+      setIsOpen(true);
+      // Scroll to element after a brief delay to ensure it's rendered
+      setTimeout(() => {
+        ref.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+      }, 100);
+    }
+  }, [id]);
+
   return (
     <motion.div
       ref={ref}
+      id={id}
       initial={{ opacity: 0, y: 20 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
@@ -259,6 +274,7 @@ export default function TravelPage() {
 
           {/* Accordion Item 5: Party on the Sea (Catamaran Theme) */}
           <TravelAccordionItem
+            id="catamaran-outfit"
             title="Party on the Sea"
             icon={Catamaran}
             preview="Warm, romantic sunset palette."

@@ -10,7 +10,7 @@ const days: DayCardProps[] = [
     id: "day-1",
     dayIndex: 1,
     dateLabel: "Fri Feb 13",
-    title: "Arrivals and Welcome Party",
+    title: "Arrivals and Welcome Night",
     summary: "Settle in, meet the group, and kick off the week with dinner and drinks.",
     themeColor: "#C46A28",
     cardBg: "#FDF3EA",
@@ -31,7 +31,7 @@ const days: DayCardProps[] = [
       },
       {
         time: "Evening",
-        title: "Welcome party",
+        title: "Welcome night",
         location: "At the villa or Pangas",
         description: "Casual vibes, music, and time to meet everyone.",
         icon: "party",
@@ -55,7 +55,7 @@ const days: DayCardProps[] = [
     themeColor: "#E8A48F",
     cardBg: "#FDEFEA",
     bannerImage: "/media/itinerary/day2-banner.png",
-    vibeSummary: "A slow, fun day at the villa. BBQ, pool time, music, and using all the good stuff the villa has to offer. In the evening, anyone who's up for it can slide over to Puerto de Sal for beach club vibes, food, and music.",
+    vibeSummary: "Poolside BBQ and let's enjoy the villa! Later, we'll break to Puerto de Sal for food, local vendors, and drinks by the beach.",
     notes: [
       "Great day to book optional excursions or spa.",
       "Bring a small bag if you plan to shop at the night market.",
@@ -73,7 +73,7 @@ const days: DayCardProps[] = [
         time: "Evening",
         title: "Puerto De Sal Beach Club",
         location: "",
-        description: "We'll grab a bite (+ drinks) at El Marcadito for local vendors, food, cockatail and music then head to the beach club if you're feeling the night.",
+        description: "We'll grab a bite (+ drinks) at El Marcadito for local vendors, food, cocktail and music then head to the beach club if you're feeling the night.",
         icon: "beach",
       },
     ],
@@ -106,7 +106,7 @@ const days: DayCardProps[] = [
         time: "Afternoon",
         title: "Adventure tour - Choose your route",
         location: "",
-        description: "Pick between two routes. Both include a Costa Rican lunch and hot springs at the end. (We're doing Option 1)",
+        description: "Pick between two routes. Both include a Costa Rican lunch and hot springs at the end. (We're doing Route 1)",
         icon: "adventure",
       },
       {
@@ -158,9 +158,9 @@ const days: DayCardProps[] = [
       },
       {
         time: "Afternoon",
-        title: "Explore Tamarindo, do a short adventure as couples, in groups, or grab a day bed at Hacienda Pinilla beach club for only $5 USD and chill (click here for adventure details).",
+        title: "Choose your own adventure.",
         location: "",
-        description: "",
+        description: "Explore Tamarindo, pick an activity, lounge, day bed are $5 USD at the Hacienda Beach Club. For anyone who wants something more we'll share adventure options you can pick from.",
         icon: "free",
       },
       {
@@ -169,6 +169,7 @@ const days: DayCardProps[] = [
         location: "",
         description: "We'll ride through rivers, mountains, forests and fields to reach Playa Minas, Bahía Los Piratas, and Puerto Viejo. Expect a fun ride, great views, and maybe some wildlife like monkeys, birds and iguanas along the way.",
         icon: "adventure",
+        tag: "This is what we'll be doing",
       },
       {
         time: "Afternoon",
@@ -198,17 +199,16 @@ const days: DayCardProps[] = [
     bannerImage: "/media/itinerary/day5-banner.png",
     vibeSummary: "The big party. A full afternoon on the water with swimming, music, drinks, and a sunset that hits different when you're out at sea.",
     notes: [
+      "Catamaran dress-code: warm sunset.",
       "Bring swimwear and something dry for the sail back.",
       "Sunscreen, sunglasses, and a hat are your best friends.",
-      "Avoid bringing valuables that cannot get wet (or bring your dry bag).",
-      "Outfit Themes - Warm Sunset Colors: Think warm tones that match a sunset — terracotta, coral, peach, rust, gold, soft yellow, plum, or rose.Swim sets, shorts, linen, dresses, shirts… anything goes as long as the color hits the sunset vibe",
     ],
     events: [
       {
         time: "Morning",
         title: "Slow morning & light breakfast",
         location: "At the villa",
-        description: "Sleep in, golf, swim, visit the beach club",
+        description: "Sleep in, golf, swim, or explore nearby for more options",
         icon: "free",
       },
       {
@@ -222,7 +222,7 @@ const days: DayCardProps[] = [
         time: "Sunset",
         title: "Sunset sail",
         location: "On the catamaran",
-        description: "Sunset hits different out here. Music up, drinks flowing, the whole crew, and a full blown boat party as the sky goes orange.",
+        description: "Music up, drinks flowing, the whole crew, and a full blown boat party as the sky goes orange.",
         icon: "boat",
       },
       {

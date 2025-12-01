@@ -16,6 +16,7 @@ export interface DayEvent {
   location?: string;
   description?: string;
   icon?: "arrival" | "party" | "meal" | "beach" | "free" | "adventure" | "boat" | "plane";
+  tag?: string;
 }
 
 export interface DayCardProps {
@@ -157,18 +158,22 @@ export function DayCard(props: DayCardProps) {
             style={{ backgroundColor: themeColor }}
           />
 
-          {events.map((event, index) => (
+          {events.map((event, index) => {
+            // Check if this event should be visually nested (has a tag and previous event is "Choose your own adventure")
+            const isNested = event.tag && index > 0 && events[index - 1].title.toLowerCase().includes("choose your own adventure");
+            
+            return (
             <motion.div
               key={`${event.time}-${event.title}-${index}`}
               initial={{ opacity: 0, x: -10 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
-              className="relative mb-4 last:mb-0"
+              className={`relative mb-4 last:mb-0 ${isNested ? "ml-6" : ""}`}
             >
               {/* Enhanced marker */}
               <div 
-                className="absolute left-4 top-0 h-8 w-8 rounded-full flex items-center justify-center transform -translate-x-1/2 shadow-lg border-4 border-white"
+                className={`absolute ${isNested ? "left-2" : "left-4"} top-0 h-8 w-8 rounded-full flex items-center justify-center transform -translate-x-1/2 shadow-lg border-4 border-white`}
                 style={{ backgroundColor: themeColor }}
               >
                 <span className="text-sm" aria-hidden="true">
@@ -177,7 +182,7 @@ export function DayCard(props: DayCardProps) {
               </div>
 
               {/* Event content with better typography */}
-              <div className="ml-8 space-y-1.5 pb-1">
+              <div className={`space-y-1.5 pb-1 ${isNested ? "ml-6" : "ml-8"}`}>
                 <div className="flex items-baseline gap-2 flex-wrap">
                   <span 
                     className="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded-full"
@@ -189,9 +194,23 @@ export function DayCard(props: DayCardProps) {
                     {event.time}
                   </span>
                 </div>
-                <h3 className="text-lg font-bold text-[#111827] leading-tight mt-1">
-                  {event.title}
-                </h3>
+                <div className="flex items-center gap-2 flex-wrap mt-1">
+                  <h3 className="text-lg font-bold text-[#111827] leading-tight">
+                    {event.title}
+                  </h3>
+                  {event.tag && (
+                    <span
+                      className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wide"
+                      style={{
+                        backgroundColor: `${themeColor}20`,
+                        color: themeColor,
+                        border: `1px solid ${themeColor}40`,
+                      }}
+                    >
+                      {event.tag}
+                    </span>
+                  )}
+                </div>
                 {event.location && (
                   <p className="text-sm font-medium text-[#6B7280] flex items-start gap-1.5">
                     <span className="text-[10px] mt-0.5">📍</span>
@@ -200,17 +219,32 @@ export function DayCard(props: DayCardProps) {
                 )}
                 {event.description && (
                   <p className="text-sm text-[#6B7280] leading-relaxed mt-1.5">
-                    {event.description}
+                    {event.description.split(/(explore nearby)/i).map((part, idx) => {
+                      if (part.toLowerCase() === "explore nearby") {
+                        return (
+                          <a
+                            key={idx}
+                            href="/explore-tamarindo"
+                            className="font-semibold underline hover:opacity-80 transition-opacity"
+                            style={{ color: themeColor }}
+                          >
+                            {part}
+                          </a>
+                        );
+                      }
+                      return <span key={idx}>{part}</span>;
+                    })}
                   </p>
                 )}
               </div>
 
               {/* Subtle divider */}
-              {index < events.length - 1 && (
-                <div className="mt-3 ml-8 h-px bg-gradient-to-r from-transparent via-[#E5E7EB] to-transparent" />
+              {index < events.length - 1 && !isNested && (
+                <div className={`mt-3 ${isNested ? "ml-6" : "ml-8"} h-px bg-gradient-to-r from-transparent via-[#E5E7EB] to-transparent`} />
               )}
             </motion.div>
-          ))}
+            );
+          })}
         </div>
 
         {/* Enhanced Notes section */}
@@ -242,7 +276,23 @@ export function DayCard(props: DayCardProps) {
                     className="mt-1.5 h-2 w-2 rounded-full flex-shrink-0"
                     style={{ backgroundColor: themeColor }}
                   />
-                  <span className="text-sm text-[#374151] leading-relaxed flex-1">{note}</span>
+                  <span className="text-sm text-[#374151] leading-relaxed flex-1">
+                    {note.split(/(warm sunset)/i).map((part, idx) => {
+                      if (part.toLowerCase() === "warm sunset") {
+                        return (
+                          <a
+                            key={idx}
+                            href="/travel#catamaran-outfit"
+                            className="font-semibold underline hover:opacity-80 transition-opacity"
+                            style={{ color: themeColor }}
+                          >
+                            {part}
+                          </a>
+                        );
+                      }
+                      return <span key={idx}>{part}</span>;
+                    })}
+                  </span>
                 </li>
               ))}
             </ul>
