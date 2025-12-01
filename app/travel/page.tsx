@@ -230,7 +230,7 @@ export default function TravelPage() {
                   A separate rental car group will be arranged for this arrival time.
                 </p>
               </div>
-              <p className="pt-2 border-t" style={{ borderColor: isDark ? 'rgba(255, 255, 255, 0.2)' : 'rgba(148, 163, 184, 0.3)' }}>
+              <p className="pt-2 border-t border-inherit opacity-70">
                 If plans change, let us know so we can update transport
               </p>
             </div>
