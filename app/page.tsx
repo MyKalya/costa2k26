@@ -623,47 +623,47 @@ function WhatsComingNext() {
   const getStatusStyles = (accentColor: string) => {
     switch (accentColor) {
       case "green":
-        return "bg-green-50 text-green-700";
+        return "bg-emerald-100/80 text-emerald-800 border-emerald-200";
       case "blue":
-        return "bg-blue-50 text-blue-700";
+        return "bg-blue-100/80 text-blue-800 border-blue-200";
       case "coral":
-        return "bg-orange-50 text-orange-700";
+        return "bg-amber-100/80 text-amber-800 border-amber-200";
       default:
-        return "bg-green-50 text-green-700";
+        return "bg-emerald-100/80 text-emerald-800 border-emerald-200";
     }
   };
 
-  const getBorderColor = (accentColor: string) => {
+  const getGradientColor = (accentColor: string) => {
     switch (accentColor) {
       case "green":
-        return "border-l-green-500";
+        return "from-emerald-50/50 to-emerald-100/30";
       case "blue":
-        return "border-l-blue-500";
+        return "from-blue-50/50 to-blue-100/30";
       case "coral":
-        return "border-l-orange-500";
+        return "from-amber-50/50 to-amber-100/30";
       default:
-        return "border-l-green-500";
+        return "from-emerald-50/50 to-emerald-100/30";
     }
   };
 
   return (
-    <section ref={sectionRef} className="bg-[#FFFDF7] py-10 md:py-12">
-      <div className="max-w-5xl mx-auto px-5 flex flex-col gap-6">
+    <section ref={sectionRef} className="bg-gradient-to-b from-[#FFFDF7] to-white py-12 md:py-16">
+      <div className="max-w-5xl mx-auto px-5 flex flex-col gap-8">
         {/* Heading block */}
-        <div>
-          <p className="text-xs font-semibold tracking-[0.22em] uppercase text-gray-500">
+        <div className="text-center max-w-2xl mx-auto">
+          <p className="text-xs font-semibold tracking-[0.22em] uppercase text-slate-500 mb-3">
             WHAT&apos;S COMING NEXT
           </p>
-          <h2 className="text-2xl md:text-3xl font-semibold text-[#111827] max-w-xl mt-1">
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4 leading-tight">
             We&apos;re still building this trip together.
           </h2>
-          <p className="mt-2 text-sm md:text-base text-gray-600 max-w-xl">
+          <p className="text-base text-slate-600 leading-relaxed">
             We&apos;re locking in a few more details and we&apos;d love your input. As we book more activities and transport, this site will stay up to date.
           </p>
         </div>
 
         {/* Cards grid */}
-        <div className="mt-4 grid gap-4 md:grid-cols-3">
+        <div className="mt-6 grid gap-5 md:grid-cols-3">
           {COMING_NEXT_CARDS.map((card, index) => (
             <motion.div
               key={card.id}
@@ -674,37 +674,51 @@ function WhatsComingNext() {
                 delay: index * 0.08,
                 ease: "easeOut",
               }}
-              className={`rounded-3xl bg-white/90 border-l-[3px] ${getBorderColor(card.accentColor)} border-t border-r border-b border-[#F1EDE5] shadow-[0_4px_18px_rgba(0,0,0,0.04)] p-5 flex flex-col gap-3 h-full hover:-translate-y-[2px] hover:shadow-[0_6px_24px_rgba(0,0,0,0.06)] transition-all duration-200 ease-out`}
+              className={`group relative overflow-hidden rounded-3xl bg-gradient-to-br ${getGradientColor(card.accentColor)} border border-slate-200/60 shadow-sm backdrop-blur-sm p-6 flex flex-col gap-4 h-full hover:shadow-lg hover:-translate-y-1 transition-all duration-300 ease-out`}
             >
-              {/* Header row with title and status */}
-              <div className="flex items-start justify-between gap-3">
-                <h3 className="text-base md:text-lg font-semibold text-[#0f172a] flex-1">
-                  {card.title}
-                </h3>
-                <span
-                  className={`inline-flex items-center rounded-full ${getStatusStyles(card.accentColor)} text-[11px] font-medium px-3 py-1 flex-shrink-0`}
-                >
-                  {card.status}
-                </span>
+              {/* Subtle texture overlay */}
+              <div 
+                className="absolute inset-0 opacity-[0.02] pointer-events-none"
+                style={{
+                  backgroundImage: "url('/textures/caustics.webp')",
+                  backgroundSize: "160% 160%",
+                  backgroundPosition: "center",
+                  mixBlendMode: "screen",
+                }}
+              />
+
+              {/* Content */}
+              <div className="relative z-10">
+                {/* Header row with title and status */}
+                <div className="flex items-start justify-between gap-3 mb-3">
+                  <h3 className="text-lg md:text-xl font-bold text-slate-900 flex-1 leading-tight">
+                    {card.title}
+                  </h3>
+                  <span
+                    className={`inline-flex items-center rounded-full ${getStatusStyles(card.accentColor)} text-[10px] font-bold px-3 py-1.5 flex-shrink-0 border uppercase tracking-wide`}
+                  >
+                    {card.status}
+                  </span>
+                </div>
+
+                {/* Body */}
+                <p className="text-sm text-slate-700 leading-relaxed flex-1">
+                  {card.body}
+                </p>
+
+                {/* WhatsApp button for card 3 */}
+                {card.hasButton && card.buttonLabel && (
+                  <a
+                    href={card.buttonLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-emerald-600 text-white text-sm font-semibold px-5 py-2.5 hover:bg-emerald-700 shadow-md hover:shadow-lg transition-all duration-200 ease-out group/button"
+                  >
+                    <MessageCircle className="h-4 w-4" />
+                    {card.buttonLabel}
+                  </a>
+                )}
               </div>
-
-              {/* Body */}
-              <p className="text-sm text-gray-600 leading-relaxed flex-1">
-                {card.body}
-              </p>
-
-              {/* WhatsApp button for card 3 */}
-              {card.hasButton && card.buttonLabel && (
-                <a
-                  href={card.buttonLink}
-          target="_blank"
-          rel="noopener noreferrer"
-                  className="mt-2 inline-flex items-center justify-center gap-2 rounded-full border border-emerald-600 text-emerald-700 text-sm font-medium px-4 py-2 hover:bg-emerald-50 transition-all duration-200 ease-out"
-                >
-                  <MessageCircle className="h-4 w-4" />
-                  {card.buttonLabel}
-                </a>
-              )}
             </motion.div>
           ))}
         </div>
