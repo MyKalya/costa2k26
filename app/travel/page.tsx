@@ -316,7 +316,7 @@ export default function TravelPage() {
                 This is our biggest party day, so we&apos;re running a sunset theme.
               </p>
               <p>
-                Think colours you see in a Tamarindo sunset: terracotta, deep plums, dusty reds, burnt orange, reddish/marroons, warm sunset.
+                Think colours you see in a Tamarindo sunset: terracotta, deep plums, dusty reds, burnt orange, reddish/maroons, warm sunset.
               </p>
               <p>
                 Swimwear or beach-party outfits in this palette will look great.
