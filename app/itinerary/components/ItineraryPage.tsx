@@ -55,9 +55,9 @@ const days: DayCardProps[] = [
     themeColor: "#E8A48F",
     cardBg: "#FDEFEA",
     bannerImage: "/media/itinerary/day2-banner.png",
-    vibeSummary: "Poolside BBQ and let's enjoy the villa! Later, we'll break to Puerto de Sal for food, local vendors, and drinks by the beach.",
+    vibeSummary: "Poolside BBQ and let's enjoy the villa! Later, we'll break to Puerta de Sal for food, local vendors, and drinks by the beach.",
     notes: [
-      "Puerto de sal dress-code: Soft Romance.",
+      "Puerta de sal dress-code: Soft Romance.",
       "It's Valentine's Day, feel free to do your own thing during the day, but we want everyone together in the evening.",
     ],
     events: [
@@ -70,7 +70,7 @@ const days: DayCardProps[] = [
       },
       {
         time: "Evening",
-        title: "Puerto De Sal Beach Club",
+        title: "Puerta De Sal Beach Club",
         location: "",
         description: "We'll grab a bite (+ drinks) at El Marcadito for local vendors, food, cocktails and music then head to the beach club.",
         icon: "beach",
