@@ -247,9 +247,9 @@ export default function TravelPage() {
             title="Arrival Night Theme"
             icon={Sparkles}
             preview="All-white welcome party on Feb 13."
-            gradientFrom="#8B5CF6"
-            gradientTo="#7C3AED"
-            iconColor="#C4B5FD"
+            gradientFrom="#F5E6D3"
+            gradientTo="#E8D5B7"
+            iconColor="#B8956A"
             isOutfitTheme={true}
           >
             <p className="text-white/90">
@@ -262,9 +262,9 @@ export default function TravelPage() {
             title="Puerto de Sal Beach Club"
             icon={PartyPopper}
             preview="Light, dreamy, coastal romantic. Ultra flattering."
-            gradientFrom="#EC4899"
-            gradientTo="#DB2777"
-            iconColor="#F9A8D4"
+            gradientFrom="#FCE7F3"
+            gradientTo="#FBCFE8"
+            iconColor="#F8A5C2"
             isOutfitTheme={true}
           >
             <ul className="list-disc list-inside space-y-2 text-white/90">
@@ -280,9 +280,9 @@ export default function TravelPage() {
             title="Party on the Sea"
             icon={Catamaran}
             preview="Warm, romantic sunset palette."
-            gradientFrom="#F97316"
-            gradientTo="#EA580C"
-            iconColor="#FDBA74"
+            gradientFrom="#E8C5B0"
+            gradientTo="#D4A574"
+            iconColor="#C8845F"
             isOutfitTheme={true}
           >
             <div className="space-y-3">
