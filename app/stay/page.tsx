@@ -95,7 +95,7 @@ const SERVICES = [
     icon: MessageCircle,
   },
   {
-    text: "Five Rental cars onsite",
+    text: "Rental vehicles for group travel",
     icon: Car,
   },
   {
@@ -994,7 +994,7 @@ export default function Stay() {
                               <span className="text-sm leading-relaxed text-muted sm:text-base">
                                 {idx === 3 ? (
                                   <>
-                                    <span className="font-semibold text-foreground">Five Rental cars onsite</span> Available for small group outings. Let us know before taking one. Try to roll in groups of five so everyone can get around easily.
+                                    <span className="font-semibold text-foreground">Rental vehicles</span> We&apos;ll be renting vehicles for the group to get around. If you&apos;re planning something on your own away from the group, please let us know before taking one. The exact number of rentals will be confirmed closer to the trip.
                                   </>
                                 ) : idx === 4 ? (
                                   <>
