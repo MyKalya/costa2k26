@@ -82,22 +82,22 @@ function TravelAccordionItem({
 
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 mb-1">
-              <h3 className="text-lg sm:text-xl font-semibold text-white leading-tight">
+              <h3 className="text-lg sm:text-xl font-bold text-slate-900 leading-tight drop-shadow-sm">
                 {title}
               </h3>
               {isOutfitTheme && (
-                <span className="px-2 py-0.5 text-[10px] font-bold text-white/90 bg-white/20 rounded-full border border-white/30 uppercase tracking-wide">
+                <span className="px-2 py-0.5 text-[10px] font-bold text-slate-800 bg-white/40 rounded-full border border-white/50 uppercase tracking-wide drop-shadow-sm">
                   Outfit Theme
                 </span>
               )}
             </div>
-            <p className="text-sm text-white/80 leading-relaxed">
+            <p className="text-sm text-slate-700 leading-relaxed font-medium drop-shadow-sm">
               {preview}
             </p>
           </div>
         </div>
         <ChevronDown
-          className={`flex-shrink-0 h-5 w-5 text-white/70 transition-transform duration-200 ${
+          className={`flex-shrink-0 h-5 w-5 text-slate-700 transition-transform duration-200 ${
             isOpen ? "rotate-180" : ""
           }`}
           aria-hidden="true"
@@ -114,8 +114,8 @@ function TravelAccordionItem({
             className="overflow-hidden"
           >
             <div className="px-5 pb-5 sm:px-6 sm:pb-6 pt-0 relative z-10">
-              <div className="pt-4 border-t border-white/20">
-                <div className="text-base text-white/90 leading-relaxed space-y-3">
+              <div className="pt-4 border-t border-slate-300/30">
+                <div className="text-base text-slate-800 leading-relaxed space-y-3 font-medium">
                   {children}
                 </div>
               </div>
@@ -188,24 +188,24 @@ export default function TravelPage() {
           >
             <div className="space-y-4">
               <div>
-                <h4 className="font-semibold text-white mb-2">Group 1 – 2:30 PM</h4>
-                <p className="text-white/90">
+                <h4 className="font-semibold text-slate-800 mb-2">Group 1 – 2:30 PM</h4>
+                <p className="text-slate-800">
                   Most people arrive in this group.
                 </p>
-                <p className="text-white/90">
+                <p className="text-slate-800">
                   You&apos;ll be grouped into rental cars with a designated driver.
                 </p>
-                <p className="text-white/90">
+                <p className="text-slate-800">
                   Full instructions will be shared in January.
                 </p>
               </div>
               <div>
-                <h4 className="font-semibold text-white mb-2">Group 2 – 4:30 PM</h4>
-                <p className="text-white/90">
+                <h4 className="font-semibold text-slate-800 mb-2">Group 2 – 4:30 PM</h4>
+                <p className="text-slate-800">
                   A separate rental car group will be arranged for this arrival time.
                 </p>
               </div>
-              <p className="text-white/80 pt-2 border-t border-white/20">
+              <p className="text-slate-700 pt-2 border-t border-slate-300/30">
                 If plans change, let us know so we can update transport
               </p>
             </div>
@@ -221,10 +221,10 @@ export default function TravelPage() {
             iconColor="#1C736A"
           >
             <div className="space-y-3">
-              <p className="text-white/90">
+              <p className="text-slate-800">
                 We&apos;re finalizing between rental cars and coordinated shuttles. Either way, transport will be fully arranged for both arrival groups before landing.
               </p>
-              <p className="text-white/90">
+              <p className="text-slate-800">
                 If your arrival time changes, please update us — it affects how we organize pickups.
               </p>
             </div>
@@ -242,17 +242,17 @@ export default function TravelPage() {
             </div>
           </div>
 
-          {/* Accordion Item 3: Arrival Night Theme */}
+          {/* Accordion Item 3: Arrival Night */}
           <TravelAccordionItem
-            title="Arrival Night Theme"
+            title="Arrival Night"
             icon={Sparkles}
             preview="All-white welcome party on Feb 13."
             gradientFrom="#F5E6D3"
             gradientTo="#E8D5B7"
-            iconColor="#B8956A"
+            iconColor="#8B6F47"
             isOutfitTheme={true}
           >
-            <p className="text-white/90">
+            <p className="text-slate-800">
               Our first night is a relaxed, fun all-white theme. Think bright, breezy, coastal-white outfits. Anything comfortable but cute works.
             </p>
           </TravelAccordionItem>
@@ -264,35 +264,35 @@ export default function TravelPage() {
             preview="Light, dreamy, coastal romantic. Ultra flattering."
             gradientFrom="#FCE7F3"
             gradientTo="#FBCFE8"
-            iconColor="#F8A5C2"
+            iconColor="#C2185B"
             isOutfitTheme={true}
           >
-            <ul className="list-disc list-inside space-y-2 text-white/90">
+            <ul className="list-disc list-inside space-y-2 text-slate-800">
               <li>Ladies think baby pink, peach, lavender, soft yellow, champagne, pastel coral.</li>
               <li>Men think creams, linen, pale pinks, peach, light grey or pastel yellows.</li>
               <li>Bring some cash for tips, shops, random snacks etc.</li>
             </ul>
           </TravelAccordionItem>
 
-          {/* Accordion Item 5: Party on the Sea (Catamaran Theme) */}
+          {/* Accordion Item 5: Catamaran Party */}
           <TravelAccordionItem
             id="catamaran-outfit"
-            title="Party on the Sea"
+            title="Catamaran Party"
             icon={Catamaran}
             preview="Warm, romantic sunset palette."
-            gradientFrom="#E8C5B0"
-            gradientTo="#D4A574"
-            iconColor="#C8845F"
+            gradientFrom="#D4C4E0"
+            gradientTo="#C5A8D6"
+            iconColor="#8B6B9F"
             isOutfitTheme={true}
           >
             <div className="space-y-3">
-              <p className="text-white/90">
+              <p className="text-slate-800">
                 This is our biggest party day, so we&apos;re running a sunset theme.
               </p>
-              <p className="text-white/90">
+              <p className="text-slate-800">
                 Think colours you see in a Tamarindo sunset: terracotta, deep plums, dusty reds, burnt orange, reddish/marroons, warm sunset.
               </p>
-              <p className="text-white/90">
+              <p className="text-slate-800">
                 Swimwear or beach-party outfits in this palette will look great.
               </p>
             </div>
@@ -307,7 +307,7 @@ export default function TravelPage() {
             gradientTo="#2563EB"
             iconColor="#93C5FD"
           >
-            <ul className="list-disc list-inside space-y-2 text-white/90">
+            <ul className="list-disc list-inside space-y-2 text-slate-800">
               <li>A full packing list is coming soon with basics for the villa, adventure days, and beach days. Themed-night details are already on this page so you can plan outfits early.</li>
               <li>We&apos;ll share it in January as activities and details finalize, but this itinerary should give you a solid head start.</li>
             </ul>
