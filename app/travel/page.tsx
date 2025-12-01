@@ -31,7 +31,7 @@ function TravelAccordionItem({
   id,
 }: TravelAccordionItemProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const ref = useRef(null);
+  const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
   // Open accordion if hash matches
@@ -40,7 +40,9 @@ function TravelAccordionItem({
       setIsOpen(true);
       // Scroll to element after a brief delay to ensure it's rendered
       setTimeout(() => {
-        ref.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+        if (ref.current) {
+          ref.current.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
       }, 100);
     }
   }, [id]);
