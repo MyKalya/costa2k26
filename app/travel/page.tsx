@@ -34,6 +34,31 @@ function TravelAccordionItem({
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
+  // Helper function to determine if a hex color is dark
+  const isDarkBackground = (hex: string): boolean => {
+    // Remove # if present
+    const color = hex.replace('#', '');
+    // Convert to RGB
+    const r = parseInt(color.substring(0, 2), 16);
+    const g = parseInt(color.substring(2, 4), 16);
+    const b = parseInt(color.substring(4, 6), 16);
+    // Calculate luminance
+    const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+    return luminance < 0.5;
+  };
+
+  // Check if background is dark (use the darker of the two gradient colors)
+  const isDark = isDarkBackground(gradientFrom) || isDarkBackground(gradientTo);
+  
+  // Text colors based on background
+  const textColor = isDark ? 'text-white' : 'text-slate-800';
+  const textColorMuted = isDark ? 'text-white/90' : 'text-slate-700';
+  const textColorLight = isDark ? 'text-white/80' : 'text-slate-600';
+  const borderColor = isDark ? 'border-white/20' : 'border-slate-300/30';
+  const badgeBg = isDark ? 'bg-white/20' : 'bg-white/40';
+  const badgeText = isDark ? 'text-white/90' : 'text-slate-800';
+  const badgeBorder = isDark ? 'border-white/30' : 'border-white/50';
+
   // Open accordion if hash matches
   useEffect(() => {
     if (id && window.location.hash === `#${id}`) {
@@ -82,22 +107,22 @@ function TravelAccordionItem({
 
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 mb-1">
-              <h3 className="text-lg sm:text-xl font-bold text-slate-900 leading-tight drop-shadow-sm">
+              <h3 className={`text-lg sm:text-xl font-bold ${textColor} leading-tight drop-shadow-sm`}>
                 {title}
               </h3>
               {isOutfitTheme && (
-                <span className="px-2 py-0.5 text-[10px] font-bold text-slate-800 bg-white/40 rounded-full border border-white/50 uppercase tracking-wide drop-shadow-sm">
+                <span className={`px-2 py-0.5 text-[10px] font-bold ${badgeText} ${badgeBg} rounded-full border ${badgeBorder} uppercase tracking-wide drop-shadow-sm`}>
                   Outfit Theme
                 </span>
               )}
             </div>
-            <p className="text-sm text-slate-700 leading-relaxed font-medium drop-shadow-sm">
+            <p className={`text-sm ${textColorMuted} leading-relaxed font-medium drop-shadow-sm`}>
               {preview}
             </p>
           </div>
         </div>
         <ChevronDown
-          className={`flex-shrink-0 h-5 w-5 text-slate-700 transition-transform duration-200 ${
+          className={`flex-shrink-0 h-5 w-5 ${textColorMuted} transition-transform duration-200 ${
             isOpen ? "rotate-180" : ""
           }`}
           aria-hidden="true"
@@ -114,8 +139,8 @@ function TravelAccordionItem({
             className="overflow-hidden"
           >
             <div className="px-5 pb-5 sm:px-6 sm:pb-6 pt-0 relative z-10">
-              <div className="pt-4 border-t border-slate-300/30">
-                <div className="text-base text-slate-800 leading-relaxed space-y-3 font-medium">
+              <div className={`pt-4 border-t ${borderColor}`}>
+                <div className={`text-base leading-relaxed space-y-3 font-medium ${isDark ? 'text-white [&_h4]:text-white [&_p]:text-white/90 [&_li]:text-white/90 [&_.text-slate-800]:text-white/90 [&_.text-slate-700]:text-white/90' : 'text-slate-800 [&_h4]:text-slate-800 [&_p]:text-slate-700 [&_li]:text-slate-700 [&_.text-slate-800]:text-slate-800 [&_.text-slate-700]:text-slate-700'}`}>
                   {children}
                 </div>
               </div>
@@ -188,24 +213,24 @@ export default function TravelPage() {
           >
             <div className="space-y-4">
               <div>
-                <h4 className="font-semibold text-slate-800 mb-2">Group 1 – 2:30 PM</h4>
-                <p className="text-slate-800">
+                <h4 className="font-semibold mb-2">Group 1 – 2:30 PM</h4>
+                <p>
                   Most people arrive in this group.
                 </p>
-                <p className="text-slate-800">
+                <p>
                   You&apos;ll be grouped into rental cars with a designated driver.
                 </p>
-                <p className="text-slate-800">
+                <p>
                   Full instructions will be shared in January.
                 </p>
               </div>
               <div>
-                <h4 className="font-semibold text-slate-800 mb-2">Group 2 – 4:30 PM</h4>
-                <p className="text-slate-800">
+                <h4 className="font-semibold mb-2">Group 2 – 4:30 PM</h4>
+                <p>
                   A separate rental car group will be arranged for this arrival time.
                 </p>
               </div>
-              <p className="text-slate-700 pt-2 border-t border-slate-300/30">
+              <p className="pt-2 border-t" style={{ borderColor: isDark ? 'rgba(255, 255, 255, 0.2)' : 'rgba(148, 163, 184, 0.3)' }}>
                 If plans change, let us know so we can update transport
               </p>
             </div>
@@ -221,10 +246,10 @@ export default function TravelPage() {
             iconColor="#1C736A"
           >
             <div className="space-y-3">
-              <p className="text-slate-800">
+              <p>
                 We&apos;re finalizing between rental cars and coordinated shuttles. Either way, transport will be fully arranged for both arrival groups before landing.
               </p>
-              <p className="text-slate-800">
+              <p>
                 If your arrival time changes, please update us — it affects how we organize pickups.
               </p>
             </div>
@@ -252,7 +277,7 @@ export default function TravelPage() {
             iconColor="#8B6F47"
             isOutfitTheme={true}
           >
-            <p className="text-slate-800">
+            <p>
               Our first night is a relaxed, fun all-white theme. Think bright, breezy, coastal-white outfits. Anything comfortable but cute works.
             </p>
           </TravelAccordionItem>
@@ -267,7 +292,7 @@ export default function TravelPage() {
             iconColor="#C2185B"
             isOutfitTheme={true}
           >
-            <ul className="list-disc list-inside space-y-2 text-slate-800">
+            <ul className="list-disc list-inside space-y-2">
               <li>Ladies think baby pink, peach, lavender, soft yellow, champagne, pastel coral.</li>
               <li>Men think creams, linen, pale pinks, peach, light grey or pastel yellows.</li>
               <li>Bring some cash for tips, shops, random snacks etc.</li>
@@ -286,13 +311,13 @@ export default function TravelPage() {
             isOutfitTheme={true}
           >
             <div className="space-y-3">
-              <p className="text-slate-800">
+              <p>
                 This is our biggest party day, so we&apos;re running a sunset theme.
               </p>
-              <p className="text-slate-800">
+              <p>
                 Think colours you see in a Tamarindo sunset: terracotta, deep plums, dusty reds, burnt orange, reddish/marroons, warm sunset.
               </p>
-              <p className="text-slate-800">
+              <p>
                 Swimwear or beach-party outfits in this palette will look great.
               </p>
             </div>
@@ -307,7 +332,7 @@ export default function TravelPage() {
             gradientTo="#2563EB"
             iconColor="#93C5FD"
           >
-            <ul className="list-disc list-inside space-y-2 text-slate-800">
+            <ul className="list-disc list-inside space-y-2">
               <li>A full packing list is coming soon with basics for the villa, adventure days, and beach days. Themed-night details are already on this page so you can plan outfits early.</li>
               <li>We&apos;ll share it in January as activities and details finalize, but this itinerary should give you a solid head start.</li>
             </ul>
