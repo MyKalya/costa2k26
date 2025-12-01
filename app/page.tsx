@@ -337,8 +337,11 @@ function Hero() {
 
           {/* Header - forced 2 lines only */}
           <div className="flex flex-col items-center text-center mt-2">
-            <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight text-white drop-shadow-lg leading-[1.1] whitespace-pre-line">
-              Get Set for an Unreal{"\n"}Week Together!
+            <p className="text-xs sm:text-sm font-medium tracking-[0.2em] uppercase text-white/80 mb-3 drop-shadow-md">
+              It&apos;s Time
+            </p>
+            <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight text-white drop-shadow-lg leading-[1.1]">
+              Get Hyped for an Unreal Week!
             </h1>
           </div>
         </div>
