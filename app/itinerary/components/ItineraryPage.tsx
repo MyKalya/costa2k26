@@ -58,7 +58,7 @@ const days: DayCardProps[] = [
     vibeSummary: "Poolside BBQ and let's enjoy the villa! Later, we'll break to Puerto de Sal for food, local vendors, and drinks by the beach.",
     notes: [
       "Puerto de sal dress-code: Soft Romance.",
-      "It's Valentine's Day — feel free to do your own thing during the day, but we want everyone together in the evening.",
+      "It's Valentine's Day, feel free to do your own thing during the day, but we want everyone together in the evening.",
     ],
     events: [
       {
@@ -72,7 +72,7 @@ const days: DayCardProps[] = [
         time: "Evening",
         title: "Puerto De Sal Beach Club",
         location: "",
-        description: "We'll grab a bite (+ drinks) at El Marcadito for local vendors, food, cocktail and music then head to the beach club.",
+        description: "We'll grab a bite (+ drinks) at El Marcadito for local vendors, food, cocktails and music then head to the beach club.",
         icon: "beach",
       },
     ],
@@ -181,7 +181,7 @@ const days: DayCardProps[] = [
         time: "Evening",
         title: "Private Chef @ the villa",
         location: "",
-        description: "Chef Danny hosted dinner for my couples and my single pringles in honor of valentines day <3",
+        description: "Chef Danny hosted dinner for our beautiful guests to get wine, dined and 🤫",
         icon: "meal",
       },
     ],
