@@ -277,8 +277,9 @@ export function DayCard(props: DayCardProps) {
                     style={{ backgroundColor: themeColor }}
                   />
                   <span className="text-sm text-[#374151] leading-relaxed flex-1">
-                    {note.split(/(warm sunset)/i).map((part, idx) => {
-                      if (part.toLowerCase() === "warm sunset") {
+                    {note.split(/(warm sunset|Soft Romance)/i).map((part, idx) => {
+                      const lowerPart = part.toLowerCase();
+                      if (lowerPart === "warm sunset") {
                         return (
                           <a
                             key={idx}
@@ -287,6 +288,18 @@ export function DayCard(props: DayCardProps) {
                             style={{ color: themeColor }}
                           >
                             {part}
+                          </a>
+                        );
+                      }
+                      if (lowerPart === "soft romance") {
+                        return (
+                          <a
+                            key={idx}
+                            href="/travel#puerto-de-sal-outfit"
+                            className="font-semibold underline hover:opacity-80 transition-opacity"
+                            style={{ color: themeColor }}
+                          >
+                            Soft Romance
                           </a>
                         );
                       }

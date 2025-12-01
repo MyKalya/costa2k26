@@ -284,6 +284,7 @@ export default function TravelPage() {
 
           {/* Accordion Item 4: Puerto de Sal Beach Club */}
           <TravelAccordionItem
+            id="puerto-de-sal-outfit"
             title="Puerto de Sal Beach Club"
             icon={PartyPopper}
             preview="Light, dreamy, coastal romantic. Ultra flattering."

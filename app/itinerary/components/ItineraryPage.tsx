@@ -57,23 +57,22 @@ const days: DayCardProps[] = [
     bannerImage: "/media/itinerary/day2-banner.png",
     vibeSummary: "Poolside BBQ and let's enjoy the villa! Later, we'll break to Puerto de Sal for food, local vendors, and drinks by the beach.",
     notes: [
-      "Great day to book optional excursions or spa.",
-      "Bring a small bag if you plan to shop at the night market.",
-      "Ask our experience guide if you want help planning.",
+      "Puerto de sal dress-code: Soft Romance.",
+      "It's Valentine's Day — feel free to do your own thing during the day, but we want everyone together in the evening.",
     ],
     events: [
       {
         time: "Late Morning/Afternoon",
         title: "BBQ & Pool",
         location: "",
-        description: "Drinks flowing, music on, sauna, jacuzzi and a laid back BBQ using the outdoor kitchen and grill.",
+        description: "Drinks flowing, saunas, heated jacuzzi and a laidback BBQ using the awesome amenities the villa has to offer.",
         icon: "beach",
       },
       {
         time: "Evening",
         title: "Puerto De Sal Beach Club",
         location: "",
-        description: "We'll grab a bite (+ drinks) at El Marcadito for local vendors, food, cocktail and music then head to the beach club if you're feeling the night.",
+        description: "We'll grab a bite (+ drinks) at El Marcadito for local vendors, food, cocktail and music then head to the beach club.",
         icon: "beach",
       },
     ],
