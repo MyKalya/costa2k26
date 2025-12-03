@@ -20,6 +20,7 @@ const days: DayCardProps[] = [
       "Welcome party dress code: all white.",
       "Pack a light layer for the evening breeze.",
       "Keep passports and valuables in the villa safe once you arrive.",
+      "Pro tip: Stop at PriceSmart by the airport before heading to Pinilla for major grocery purchases — it's cheaper than Tamarindo. Stock up on bottles at Duty Free for the best prices!",
     ],
     events: [
       {
