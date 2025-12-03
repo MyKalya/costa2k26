@@ -51,8 +51,9 @@ function TravelAccordionItem({
   const isDark = isDarkBackground(gradientFrom) || isDarkBackground(gradientTo);
   
   // Text colors based on background
-  const textColor = isDark ? 'text-white' : 'text-slate-800';
-  const textColorMuted = isDark ? 'text-white/90' : 'text-slate-700';
+  // For outfit theme cards, use softer, warmer tones that complement pastel backgrounds
+  const textColor = isDark ? 'text-white' : (isOutfitTheme ? 'text-slate-700' : 'text-slate-800');
+  const textColorMuted = isDark ? 'text-white/90' : (isOutfitTheme ? 'text-slate-600' : 'text-slate-700');
   const textColorLight = isDark ? 'text-white/80' : 'text-slate-600';
   const borderColor = isDark ? 'border-white/20' : 'border-slate-300/30';
   const badgeBg = isDark ? 'bg-white/20' : 'bg-white/40';
@@ -271,7 +272,7 @@ export default function TravelPage() {
           <TravelAccordionItem
             title="Arrival Night"
             icon={Sparkles}
-            preview="All-white welcome party on Feb 13."
+            preview="All-white welcome party."
             gradientFrom="#F5E6D3"
             gradientTo="#E8D5B7"
             iconColor="#8B6F47"
@@ -287,7 +288,7 @@ export default function TravelPage() {
             id="puerto-de-sal-outfit"
             title="Ocho Beach Club"
             icon={PartyPopper}
-            preview="Light, dreamy, coastal romantic. Ultra flattering."
+            preview="Light, dreamy, coastal romantic."
             gradientFrom="#FCE7F3"
             gradientTo="#FBCFE8"
             iconColor="#C2185B"
@@ -295,7 +296,7 @@ export default function TravelPage() {
           >
             <ul className="list-disc list-inside space-y-2">
               <li>Ladies think baby pink, peach, lavender, soft yellow, champagne, pastel coral.</li>
-              <li>Men think creams, linen, pale pinks, peach, light grey or pastel yellows.</li>
+              <li>Men think creams, linen, pale pinks, peach or pastel yellows.</li>
               <li>Bring some cash for tips, shops, random snacks etc.</li>
             </ul>
           </TravelAccordionItem>
@@ -305,7 +306,7 @@ export default function TravelPage() {
             id="catamaran-outfit"
             title="Catamaran Party"
             icon={Catamaran}
-            preview="Warm, romantic sunset palette."
+            preview="Warm coastal tones."
             gradientFrom="#D4C4E0"
             gradientTo="#C5A8D6"
             iconColor="#8B6B9F"
@@ -316,10 +317,10 @@ export default function TravelPage() {
                 This is our biggest party day, so we&apos;re running a sunset theme.
               </p>
               <p>
-                Think colours you see in a Tamarindo sunset: terracotta, deep plums, dusty reds, burnt orange, reddish/maroons, warm sunset.
+                Think colours you see in a sunset: terracotta, deep plums, dusty reds, burnt orange, warm maroons.
               </p>
               <p>
-                Swimwear or beach-party outfits in this palette will look great.
+                Swimwear or beach-party outfits.
               </p>
             </div>
           </TravelAccordionItem>
