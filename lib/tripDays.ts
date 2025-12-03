@@ -7,7 +7,7 @@ export const tripDays = [
     id: "day-1",
     number: 1,
     title: "Arrivals",
-    label: "Arrivals and Welcome Party",
+    label: "Arrivals and Welcome Night",
     image: "/media/itinerary/day1-banner.png",
   },
   {
