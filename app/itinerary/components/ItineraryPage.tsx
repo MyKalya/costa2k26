@@ -56,9 +56,9 @@ const days: DayCardProps[] = [
     themeColor: "#E8A48F",
     cardBg: "#FDEFEA",
     bannerImage: "/media/itinerary/day2-banner.png",
-    vibeSummary: "Poolside BBQ and let's enjoy the villa! Later, we'll break to Puerta de Sal for food, local vendors, and drinks by the beach.",
+    vibeSummary: "Poolside BBQ and let's enjoy the villa! Later, we'll break to Ocho for food, local vendors, and drinks by the beach.",
     notes: [
-      "Puerta de sal dress-code: Soft Romance.",
+      "Ocho dress-code: Soft Romance.",
       "It's Valentine's Day, feel free to do your own thing during the day, but we want everyone together in the evening.",
     ],
     events: [
@@ -71,9 +71,9 @@ const days: DayCardProps[] = [
       },
       {
         time: "Evening",
-        title: "Puerta De Sal Beach Club",
+        title: "Ocho Beach Club and Bar Crawl",
         location: "",
-        description: "We'll grab a bite (+ drinks) at El Marcadito for local vendors, food, cocktails and music then head to the beach club.",
+        description: "Start strong at Ocho, then roll into a boozy beach-bar crawl through El Be!, Nogui's, and all the hot spots. Big energy, big drinks, big night.",
         icon: "beach",
       },
     ],
