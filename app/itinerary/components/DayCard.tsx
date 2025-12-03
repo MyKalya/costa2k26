@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Lightbulb } from "lucide-react";
 
 export type DayTheme =
   | "arrivals"
@@ -270,13 +271,27 @@ export function DayCard(props: DayCardProps) {
               <p className="text-xs font-medium text-[#6B7280]">Important details for this day</p>
             </div>
             <ul className="space-y-2">
-              {notes.map((note, noteIndex) => (
-                <li key={noteIndex} className="flex gap-3 items-start">
-                  <span
-                    className="mt-1.5 h-2 w-2 rounded-full flex-shrink-0"
-                    style={{ backgroundColor: themeColor }}
-                  />
-                  <span className="text-sm text-[#374151] leading-relaxed flex-1">
+              {notes.map((note, noteIndex) => {
+                const isProTip = note.startsWith("Pro tip:");
+                return (
+                <li key={noteIndex} className={`flex gap-3 items-start ${isProTip ? 'relative' : ''}`}>
+                  {isProTip ? (
+                    <div 
+                      className="mt-1 flex-shrink-0 h-5 w-5 rounded-full flex items-center justify-center"
+                      style={{ 
+                        backgroundColor: `${themeColor}20`,
+                        border: `1.5px solid ${themeColor}40`
+                      }}
+                    >
+                      <Lightbulb className="h-3 w-3" style={{ color: themeColor }} />
+                    </div>
+                  ) : (
+                    <span
+                      className="mt-1.5 h-2 w-2 rounded-full flex-shrink-0"
+                      style={{ backgroundColor: themeColor }}
+                    />
+                  )}
+                  <span className={`text-sm leading-relaxed flex-1 ${isProTip ? 'text-[#374151]' : 'text-[#374151]'}`}>
                     {note.split(/(warm sunset|Soft Romance)/i).map((part, idx) => {
                       const lowerPart = part.toLowerCase();
                       if (lowerPart === "warm sunset") {
@@ -307,7 +322,8 @@ export function DayCard(props: DayCardProps) {
                     })}
                   </span>
                 </li>
-              ))}
+                );
+              })}
             </ul>
           </motion.div>
         )}
