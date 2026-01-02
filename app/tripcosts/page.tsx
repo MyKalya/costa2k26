@@ -2,7 +2,7 @@
 
 import { useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Home, Sailboat, Car, UtensilsCrossed, Palmtree, Wallet, Ticket, ChevronDown, ChevronUp, CreditCard, Check, Copy } from "lucide-react";
+import { Home, Sailboat, Car, UtensilsCrossed, Palmtree, Wallet, Ticket, ChevronDown, ChevronUp, CreditCard, Check, Copy, ChefHat } from "lucide-react";
 import { clsx } from "clsx";
 import { PalmBackground } from "@/components/PalmBackground";
 
@@ -417,6 +417,21 @@ export default function TripCostsPage() {
             >
               <p>
                 We&apos;re exploring pre arranged family style breakfasts to make mornings easier. Food spots aren&apos;t within walking distance, so this helps everyone start the day with a good meal, coffee, and no hassle before we head out.
+              </p>
+            </CostCard>
+
+            {/* Private Chef and Experience */}
+            <CostCard
+              icon={<ChefHat className="h-6 w-6" strokeWidth={2} style={{ color: "#EF4444" }} />}
+              title="Private chef and experience"
+              subtitle="Chef Antonio joining us for special meals"
+              amount="$85"
+              amountLabel="per person"
+              gradientFrom="#DC2626"
+              gradientTo="#EF4444"
+            >
+              <p>
+                Chef Antonio will be joining us on Feb 13 (covered by us), our BBQ at the villa on Feb 14, and a fun little cooking experience on the 16th.
               </p>
             </CostCard>
 
