@@ -106,14 +106,14 @@ const days: DayCardProps[] = [
         time: "Afternoon",
         title: "Route 1: La Leona Waterfall Hike + White Water Tubing",
         location: "",
-        description: "Moderate. Short hike through the rapids to a bright blue canyon waterfall, followed by fun river tubing and a relaxed hot spring finish.",
+        description: "Moderate. Short hike through the rapids to a bright blue canyon waterfall, followed by fun river tubing.",
         icon: "adventure",
       },
       {
         time: "Afternoon",
         title: "Route 2: Rincón de la Vieja + Ziplining",
         location: "",
-        description: "Moderate. Classic national park hike with volcanic scenery, zipline through the canyon, and hot springs to end the day.",
+        description: "Moderate. Classic national park hike with volcanic scenery, zipline through the canyon.",
         icon: "adventure",
       },
       {
