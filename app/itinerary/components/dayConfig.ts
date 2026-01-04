@@ -13,21 +13,21 @@ export const daysConfig: DayConfig[] = [
   {
     id: "day-1",
     number: 1,
-    label: "Arrivals",
+    label: "Arrivals and Welcome Party",
     image: "/media/itinerary/day1-banner.png",
     color: "#C46A28", // sunset orange
   },
   {
     id: "day-2",
     number: 2,
-    label: "BBQ & Beach",
+    label: "Villa BBQ and Bar Crawl",
     image: "/media/itinerary/day2-banner.png",
     color: "#E8A48F", // peach / coral
   },
   {
     id: "day-3",
     number: 3,
-    label: "Adventure",
+    label: "Waterfall Hike and Tubing",
     image: "/media/itinerary/day3-banner.png",
     color: "#4AA7A4", // teal night-market
   },
@@ -41,7 +41,7 @@ export const daysConfig: DayConfig[] = [
   {
     id: "day-5",
     number: 5,
-    label: "Catamaran",
+    label: "Catamaran Party",
     image: "/media/itinerary/day5-banner.png",
     color: "#3D829F", // ocean blue
   },
