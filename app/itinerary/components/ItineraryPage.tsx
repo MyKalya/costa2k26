@@ -154,7 +154,7 @@ const days: DayCardProps[] = [
         time: "Afternoon",
         title: "VOTE ON WHATSAPP",
         location: "",
-        description: "Will be decided soon — check WhatsApp for the poll!",
+        description: "",
         icon: "free",
       },
       {
