@@ -2,7 +2,7 @@
 
 import { useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Home, Sailboat, Car, UtensilsCrossed, Palmtree, Wallet, Ticket, ChevronDown, ChevronUp, CreditCard, Check, Copy, ChefHat } from "lucide-react";
+import { Home, Sailboat, Car, UtensilsCrossed, Palmtree, Wallet, Ticket, ChevronDown, ChevronUp, CreditCard, Check, Copy } from "lucide-react";
 import { clsx } from "clsx";
 import { PalmBackground } from "@/components/PalmBackground";
 
@@ -236,9 +236,11 @@ function CostCard({
 
 export default function TripCostsPage() {
   const heroRef = useRef(null);
+  const section0Ref = useRef(null);
   const section1Ref = useRef(null);
   const section2Ref = useRef(null);
   const heroInView = useInView(heroRef, { once: true });
+  const section0InView = useInView(section0Ref, { once: true, margin: "-100px" });
   const section1InView = useInView(section1Ref, { once: true, margin: "-100px" });
   const section2InView = useInView(section2Ref, { once: true, margin: "-100px" });
 
@@ -292,8 +294,64 @@ export default function TripCostsPage() {
 
       {/* Main Content */}
       <section className="relative mx-auto max-w-4xl px-4 sm:px-6 py-12 sm:py-16">
+        {/* Note about Feb 13 private chef */}
+        <div className="mb-8 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3">
+          <p className="text-sm text-slate-700">
+            <span className="font-semibold">Feb 13:</span> Private chef arrival dinner is covered by us.
+          </p>
+        </div>
+
+        {/* Section 0: Payments so far */}
+        <div ref={section0Ref} className="mb-12">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={section0InView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.5 }}
+            className="mb-6"
+          >
+            <div className="flex items-center gap-3 mb-3">
+              <div className="h-1 w-8 bg-gradient-to-r from-slate-400 to-slate-500 rounded-full"></div>
+              <h2 className="text-2xl sm:text-3xl font-bold text-slate-900">
+                Payments so far
+              </h2>
+              <span className="px-3 py-1 text-xs font-bold text-slate-700 bg-slate-200 rounded-full border border-slate-300">
+                COMPLETED
+              </span>
+            </div>
+            <p className="text-sm text-slate-600 leading-relaxed ml-11">
+              These payments have already been collected.
+            </p>
+          </motion.div>
+
+          <div className="space-y-6">
+            {/* Initial Group Deposit */}
+            <CostCard
+              icon={<Wallet className="h-6 w-6" strokeWidth={2} style={{ color: "#64748B" }} />}
+              title="Initial group deposit"
+              amount="$550"
+              amountLabel="per person"
+              gradientFrom="#475569"
+              gradientTo="#64748B"
+            >
+              <div className="space-y-2">
+                <p className="font-semibold text-white mb-2">Breakdown:</p>
+                <ul className="space-y-1.5 text-sm text-white/90">
+                  <li className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-white/60"></span>
+                    Airbnb villas deposit: <span className="font-semibold">$450</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-white/60"></span>
+                    Catamaran deposit: <span className="font-semibold">$100</span>
+                  </li>
+                </ul>
+              </div>
+            </CostCard>
+          </div>
+        </div>
+
         {/* Section 1: What we're paying now */}
-        <div ref={section1Ref} className="mb-12">
+        <div className="mb-12">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={section1InView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
@@ -315,42 +373,49 @@ export default function TripCostsPage() {
           </motion.div>
 
           <div className="space-y-6">
-            {/* Airbnb Villas */}
+            {/* Next Group Payment */}
             <CostCard
-              icon={<Home className="h-6 w-6" strokeWidth={2} style={{ color: "#F3B44C" }} />}
-              title="Airbnb villas"
-              subtitle="Initial deposit"
-              depositNow="$450"
+              icon={<CreditCard className="h-6 w-6" strokeWidth={2} style={{ color: "#10B981" }} />}
+              title="Next group payment"
+              depositNow="$330.99"
               depositLabel="per person"
-              estimatedTotal="$650–$680"
-              estimatedLabel="per person (we will update this range)"
               paymentInstructions="Send e-transfer to m.gnanam31@gmail.com or Wealthsimple to $mathu."
               gradientFrom="#1F4E3A"
               gradientTo="#2D6B57"
               isDeposit={true}
             >
-              <p>
-                Our three villas in Hacienda Pinilla cost <span className="font-bold text-white">$21,390</span> for the group. This first deposit secures our stay. We will update this page with your remaining share after the final host payment.
-              </p>
-            </CostCard>
-
-            {/* Catamaran Party */}
-            <CostCard
-              icon={<Sailboat className="h-6 w-6" strokeWidth={2} style={{ color: "#60A5FA" }} />}
-              title="Catamaran party"
-              subtitle="Private sunset cruise"
-              depositNow="$100"
-              depositLabel="per person"
-              estimatedTotal="$150–$180"
-              estimatedLabel="per person (includes deposit + final payment)"
-              paymentInstructions="Send e-transfer to m.gnanam31@gmail.com or Wealthsimple to $mathu."
-              gradientFrom="#145A47"
-              gradientTo="#0E3D2F"
-              isDeposit={true}
-            >
-              <p>
-                This holds our private catamaran for the group. Expect another <span className="font-bold text-white">$50–$80 per person</span> once we confirm final headcount and package.
-              </p>
+              <div className="space-y-3">
+                <div>
+                  <p className="font-semibold text-white mb-2">Breakdown:</p>
+                  <ul className="space-y-1.5 text-sm text-white/90">
+                    <li className="flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-white/60"></span>
+                      Total Airbnb per person: <span className="font-semibold">$629.12</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-white/60"></span>
+                      Already paid: <span className="font-semibold">$450</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-white/60"></span>
+                      Remaining Airbnb: <span className="font-semibold">$179.12</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-white/60"></span>
+                      Dinners & BBQ: <span className="font-semibold">$100.08</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-white/60"></span>
+                      Catamaran remainder: <span className="font-semibold">$51.80</span>
+                    </li>
+                  </ul>
+                </div>
+                <div className="mt-4 pt-3 border-t border-white/20">
+                  <p className="text-sm text-white/95">
+                    <span className="font-semibold">Good news:</span> Airbnb came in at $629.12 per person, lower than our estimate. Catamaran came in at $151.80 per person, at the lowest end of our range.
+                  </p>
+                </div>
+              </div>
             </CostCard>
           </div>
         </div>
@@ -378,22 +443,22 @@ export default function TripCostsPage() {
             <div className="flex items-center gap-3 mb-3">
               <div className="h-1 w-8 bg-gradient-to-r from-amber-400 to-orange-400 rounded-full"></div>
               <h2 className="text-2xl sm:text-3xl font-bold text-slate-900">
-                What to plan for
+                Future payments to expect
               </h2>
               <span className="px-3 py-1 text-xs font-bold text-amber-700 bg-amber-100 rounded-full border border-amber-200">
                 ESTIMATES
               </span>
             </div>
             <p className="text-sm text-slate-600 leading-relaxed ml-11">
-              Budget for these costs—some are still being finalized.
+              We will only request money once final costs are locked. Budget for these costs—some are still being finalized.
             </p>
           </motion.div>
 
           <div className="space-y-4">
-            {/* Transport */}
+            {/* Airport Transportation */}
             <CostCard
               icon={<Car className="h-6 w-6" strokeWidth={2} style={{ color: "#C46A28" }} />}
-              title="Transport & car rentals"
+              title="Airport transportation & shuttles"
               subtitle="Getting between airport, villas and activities"
               amount="$100–$120"
               amountLabel="estimate per person"
@@ -420,25 +485,38 @@ export default function TripCostsPage() {
               </p>
             </CostCard>
 
-            {/* Private Chef and Experience */}
+            {/* Snacks Pre-Order */}
             <CostCard
-              icon={<ChefHat className="h-6 w-6" strokeWidth={2} style={{ color: "#EF4444" }} />}
-              title="Private chef and experience"
-              subtitle="Chef Antonio joining us for special meals"
-              amount="$85"
-              amountLabel="per person"
-              gradientFrom="#DC2626"
-              gradientTo="#EF4444"
+              icon={<UtensilsCrossed className="h-6 w-6" strokeWidth={2} style={{ color: "#10B981" }} />}
+              title="Snacks for the villas"
+              subtitle="Pre-ordered snacks and essentials"
+              amountLabel="TBD"
+              gradientFrom="#0E3D2F"
+              gradientTo="#1C5A47"
             >
               <p>
-                Chef Antonio will be joining us on Feb 13 (covered by us), our BBQ at the villa on Feb 14, and a fun little cooking experience on the 16th.
+                We&apos;ll pre-order some snacks and essentials for the villas to make things easier. Final cost will depend on what we order and headcount.
+              </p>
+            </CostCard>
+
+            {/* La Leona Adventure Day */}
+            <CostCard
+              icon={<Palmtree className="h-6 w-6" strokeWidth={2} style={{ color: "#10B981" }} />}
+              title="La Leona adventure day"
+              subtitle="Group activity day"
+              amountLabel="TBD"
+              gradientFrom="#059669"
+              gradientTo="#10B981"
+            >
+              <p>
+                We&apos;re planning a group adventure day at La Leona. Final pricing will be shared once we confirm the details and package.
               </p>
             </CostCard>
 
             {/* Activities */}
             <CostCard
               icon={<Palmtree className="h-6 w-6" strokeWidth={2} style={{ color: "#10B981" }} />}
-              title="Activities"
+              title="Other activities"
               subtitle="ATVs, beach clubs, spa time & more"
               amountLabel="varies by activity"
               gradientFrom="#0E3D2F"
