@@ -27,6 +27,7 @@ type CostCardProps = {
   gradientTo?: string;
   children?: React.ReactNode;
   isDeposit?: boolean;
+  darkText?: boolean;
 };
 
 function CostCard({ 
@@ -50,6 +51,7 @@ function CostCard({
   gradientTo,
   children,
   isDeposit = false,
+  darkText = false,
 }: CostCardProps) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [copied, setCopied] = useState<string | null>(null);
@@ -74,8 +76,9 @@ function CostCard({
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
       className={clsx(
-        "group relative overflow-hidden rounded-3xl border border-white/20 shadow-[0_4px_20px_rgba(0,0,0,0.25)] backdrop-filter backdrop-blur-sm hover:shadow-[0_8px_30px_rgba(0,0,0,0.35)] hover:-translate-y-[3px] transition-all duration-300 ease-out",
-        isDeposit ? "p-5 sm:p-6" : "p-5 sm:p-6"
+        "group relative overflow-hidden rounded-3xl border shadow-[0_4px_20px_rgba(0,0,0,0.25)] backdrop-filter backdrop-blur-sm hover:shadow-[0_8px_30px_rgba(0,0,0,0.35)] hover:-translate-y-[3px] transition-all duration-300 ease-out",
+        isDeposit ? "p-5 sm:p-6" : "p-5 sm:p-6",
+        darkText ? "border-slate-300/40" : "border-white/20"
       )}
       style={{
         background: gradientFrom && gradientTo
@@ -96,15 +99,15 @@ function CostCard({
               whileHover={{ y: -2, rotate: 1 }}
               transition={{ duration: 0.2, ease: "easeOut" }}
             >
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl p-3 shadow-lg bg-white/15 backdrop-blur-sm border border-white/20">
+              <div className={clsx("flex h-12 w-12 items-center justify-center rounded-2xl p-3 shadow-lg backdrop-blur-sm border", darkText ? "bg-slate-200/60 border-slate-300/40" : "bg-white/15 border-white/20")}>
                 {icon}
               </div>
             </motion.div>
 
             <div className="flex-1 min-w-0">
-              <h3 className="text-lg font-semibold text-white leading-tight mb-0.5">{title}</h3>
+              <h3 className={clsx("text-lg font-semibold leading-tight mb-0.5", darkText ? "text-slate-800" : "text-white")}>{title}</h3>
               {subtitle && (
-                <p className="text-sm text-white/80 font-medium mb-2">{subtitle}</p>
+                <p className={clsx("text-sm font-medium mb-2", darkText ? "text-slate-700" : "text-white/80")}>{subtitle}</p>
               )}
               {/* Estimated total - placed under subtitle to fill space */}
               {hasTwoLineAmount && estimatedTotal && (
@@ -148,14 +151,14 @@ function CostCard({
               ) : (
                 <>
                   {amount && (
-                    <div className="bg-white/20 backdrop-blur-sm rounded-xl px-4 py-3 border border-white/30 shadow-lg">
-                      <span className="text-2xl sm:text-3xl font-bold block text-white">
+                    <div className={clsx("backdrop-blur-sm rounded-xl px-4 py-3 border shadow-lg", darkText ? "bg-slate-200/80 border-slate-300/50" : "bg-white/20 border-white/30")}>
+                      <span className={clsx("text-2xl sm:text-3xl font-bold block", darkText ? "text-slate-800" : "text-white")}>
                         {amount}
                       </span>
                     </div>
                   )}
                   {amountLabel && (
-                    <span className="text-[10px] font-semibold uppercase tracking-wide mt-1 text-white/80">
+                    <span className={clsx("text-[10px] font-semibold uppercase tracking-wide mt-1", darkText ? "text-slate-700" : "text-white/80")}>
                       {amountLabel}
                     </span>
                   )}
@@ -167,24 +170,24 @@ function CostCard({
 
         {/* Body content */}
         {children && (
-          <div className="text-sm text-white/80 leading-relaxed space-y-2.5">
+          <div className={clsx("text-sm leading-relaxed space-y-2.5", darkText ? "text-slate-700" : "text-white/80")}>
             <div>{children}</div>
             
             {/* Payment instructions - collapsible */}
             {paymentInstructions && (
-              <div className="pt-2 mt-2 border-t border-white/20">
+              <div className={clsx("pt-2 mt-2 border-t", darkText ? "border-slate-300/40" : "border-white/20")}>
                 <button
                   onClick={() => setIsExpanded(!isExpanded)}
                   className="flex items-center gap-1.5 w-full text-left group/payment"
                 >
-                  <CreditCard className="h-3.5 w-3.5 text-white/70" />
-                  <span className="text-xs font-bold text-white uppercase tracking-wide">
+                  <CreditCard className={clsx("h-3.5 w-3.5", darkText ? "text-slate-600" : "text-white/70")} />
+                  <span className={clsx("text-xs font-bold uppercase tracking-wide", darkText ? "text-slate-800" : "text-white")}>
                     How to pay
                   </span>
                   {isExpanded ? (
-                    <ChevronUp className="h-3.5 w-3.5 text-white/70 ml-auto transition-transform" />
+                    <ChevronUp className={clsx("h-3.5 w-3.5 ml-auto transition-transform", darkText ? "text-slate-600" : "text-white/70")} />
                   ) : (
-                    <ChevronDown className="h-3.5 w-3.5 text-white/70 ml-auto transition-transform" />
+                    <ChevronDown className={clsx("h-3.5 w-3.5 ml-auto transition-transform", darkText ? "text-slate-600" : "text-white/70")} />
                   )}
                 </button>
                 {isExpanded && (
@@ -197,30 +200,30 @@ function CostCard({
                   >
                     <button
                       onClick={() => handleCopy("m.gnanam31@gmail.com", "email")}
-                      className="flex items-start gap-2 text-xs text-white/90 hover:text-white transition-colors w-full text-left group/item"
+                      className={clsx("flex items-start gap-2 text-xs transition-colors w-full text-left group/item", darkText ? "text-slate-800 hover:text-slate-900" : "text-white/90 hover:text-white")}
                     >
                       {copied === "email" ? (
                         <Check className="h-3.5 w-3.5 text-green-400 flex-shrink-0 mt-0.5" />
                       ) : (
-                        <Copy className="h-3.5 w-3.5 text-white/50 group-hover/item:text-white/80 flex-shrink-0 mt-0.5 transition-colors" />
+                        <Copy className={clsx("h-3.5 w-3.5 flex-shrink-0 mt-0.5 transition-colors", darkText ? "text-slate-500 group-hover/item:text-slate-700" : "text-white/50 group-hover/item:text-white/80")} />
                       )}
                       <div className="flex flex-col gap-0.5">
                         <span className="font-mono">m.gnanam31@gmail.com</span>
-                        <span className="text-[10px] text-white/60">Interac e-transfer</span>
+                        <span className={clsx("text-[10px]", darkText ? "text-slate-600" : "text-white/60")}>Interac e-transfer</span>
                       </div>
                     </button>
                     <button
                       onClick={() => handleCopy("$mathu", "mathu")}
-                      className="flex items-start gap-2 text-xs text-white/90 hover:text-white transition-colors w-full text-left group/item"
+                      className={clsx("flex items-start gap-2 text-xs transition-colors w-full text-left group/item", darkText ? "text-slate-800 hover:text-slate-900" : "text-white/90 hover:text-white")}
                     >
                       {copied === "mathu" ? (
                         <Check className="h-3.5 w-3.5 text-green-400 flex-shrink-0 mt-0.5" />
                       ) : (
-                        <Copy className="h-3.5 w-3.5 text-white/50 group-hover/item:text-white/80 flex-shrink-0 mt-0.5 transition-colors" />
+                        <Copy className={clsx("h-3.5 w-3.5 flex-shrink-0 mt-0.5 transition-colors", darkText ? "text-slate-500 group-hover/item:text-slate-700" : "text-white/50 group-hover/item:text-white/80")} />
                       )}
                       <div className="flex flex-col gap-0.5">
                         <span className="font-mono">$mathu</span>
-                        <span className="text-[10px] text-white/60">Wealthsimple</span>
+                        <span className={clsx("text-[10px]", darkText ? "text-slate-600" : "text-white/60")}>Wealthsimple</span>
                       </div>
                     </button>
                   </motion.div>
@@ -294,13 +297,6 @@ export default function TripCostsPage() {
 
       {/* Main Content */}
       <section className="relative mx-auto max-w-4xl px-4 sm:px-6 py-12 sm:py-16">
-        {/* Note about Feb 13 private chef */}
-        <div className="mb-8 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3">
-          <p className="text-sm text-slate-700">
-            <span className="font-semibold">Feb 13:</span> Private chef arrival dinner is covered by us.
-          </p>
-        </div>
-
         {/* Section 0: Payments so far */}
         <div ref={section0Ref} className="mb-12">
           <motion.div
@@ -324,10 +320,10 @@ export default function TripCostsPage() {
           </motion.div>
 
           <div className="space-y-6">
-            {/* Initial Group Deposit */}
+            {/* Initial Deposit */}
             <CostCard
               icon={<Wallet className="h-6 w-6" strokeWidth={2} style={{ color: "#64748B" }} />}
-              title="Initial group deposit"
+              title="Initial deposit"
               amount="$550"
               amountLabel="per person"
               gradientFrom="#475569"
@@ -373,16 +369,15 @@ export default function TripCostsPage() {
           </motion.div>
 
           <div className="space-y-6">
-            {/* Next Group Payment */}
+            {/* Next Payment */}
             <CostCard
               icon={<CreditCard className="h-6 w-6" strokeWidth={2} style={{ color: "#10B981" }} />}
-              title="Next group payment"
-              depositNow="$330.99"
-              depositLabel="per person"
+              title="Next payment"
+              amount="$330.99"
+              amountLabel="per person"
               paymentInstructions="Send e-transfer to m.gnanam31@gmail.com or Wealthsimple to $mathu."
               gradientFrom="#1F4E3A"
               gradientTo="#2D6B57"
-              isDeposit={true}
             >
               <div className="space-y-3">
                 <div>
@@ -412,7 +407,7 @@ export default function TripCostsPage() {
                 </div>
                 <div className="mt-4 pt-3 border-t border-white/20">
                   <p className="text-sm text-white/95">
-                    <span className="font-semibold">Good news:</span> Airbnb came in at $629.12 per person, lower than our estimate. Catamaran came in at $151.80 per person, at the lowest end of our range.
+                    <span className="font-semibold">Good news:</span> Airbnb came in at $629.12 per person, lower than our estimate. Catamaran came in at $151.80 per person, at the lowest end of our range. <span className="font-semibold">Feb 13:</span> Private chef arrival dinner is covered by us.
                   </p>
                 </div>
               </div>
@@ -457,13 +452,13 @@ export default function TripCostsPage() {
           <div className="space-y-4">
             {/* Airport Transportation */}
             <CostCard
-              icon={<Car className="h-6 w-6" strokeWidth={2} style={{ color: "#C46A28" }} />}
+              icon={<Car className="h-6 w-6" strokeWidth={2} style={{ color: "#60A5FA" }} />}
               title="Airport transportation & shuttles"
               subtitle="Getting between airport, villas and activities"
-              amount="$100–$120"
+              amount="$40–$60"
               amountLabel="estimate per person"
-              gradientFrom="#8B4513"
-              gradientTo="#C46A28"
+              gradientFrom="#38BDF8"
+              gradientTo="#60A5FA"
             >
               <p>
                 We&apos;ll mix rental cars and group transport so people can get around without stress. Final cost depends on flight times and how many cars we end up needing.
@@ -475,24 +470,24 @@ export default function TripCostsPage() {
               icon={<UtensilsCrossed className="h-6 w-6" strokeWidth={2} style={{ color: "#F3B44C" }} />}
               title="Group breakfasts"
               subtitle="Easy mornings at the villas"
-              amount="$15–$25"
-              amountLabel="per breakfast"
+              amount="$40–$80"
+              amountLabel="estimate per person"
               gradientFrom="#D97706"
               gradientTo="#F59E0B"
             >
               <p>
-                We&apos;re exploring pre arranged family style breakfasts to make mornings easier. Food spots aren&apos;t within walking distance, so this helps everyone start the day with a good meal, coffee, and no hassle before we head out.
+                We&apos;re exploring pre arranged family style breakfasts to make mornings easier. Food spots aren&apos;t within walking distance, so this helps everyone start the day with a good meal, coffee, and no hassle before we head out. Final cost depends on which days we choose to have it prepped at the villa.
               </p>
             </CostCard>
 
             {/* Snacks Pre-Order */}
             <CostCard
-              icon={<UtensilsCrossed className="h-6 w-6" strokeWidth={2} style={{ color: "#10B981" }} />}
+              icon={<UtensilsCrossed className="h-6 w-6" strokeWidth={2} style={{ color: "#F3B44C" }} />}
               title="Snacks for the villas"
               subtitle="Pre-ordered snacks and essentials"
               amountLabel="TBD"
-              gradientFrom="#0E3D2F"
-              gradientTo="#1C5A47"
+              gradientFrom="#D97706"
+              gradientTo="#F59E0B"
             >
               <p>
                 We&apos;ll pre-order some snacks and essentials for the villas to make things easier. Final cost will depend on what we order and headcount.
@@ -544,12 +539,13 @@ export default function TripCostsPage() {
 
             {/* Spending Money */}
             <CostCard
-              icon={<Wallet className="h-6 w-6" strokeWidth={2} style={{ color: "#60A5FA" }} />}
+              icon={<Wallet className="h-6 w-6" strokeWidth={2} style={{ color: "#8B8B7A" }} />}
               title="Spending money & tips"
               subtitle="Restaurants, drinks and the little extras"
               amountLabel="you decide"
-              gradientFrom="#0284C7"
-              gradientTo="#0EA5E9"
+              gradientFrom="#E8E5E0"
+              gradientTo="#D8D5D0"
+              darkText={true}
             >
               <p>
                 Tamarindo is pretty card friendly, but it&apos;s best to have both USD and colones. USD works for larger purchases, but colones are better for small vendors and local services. Keep in mind you&apos;ll usually get your change back in colones even if you pay in USD. Bring whatever amount feels right for meals out, drinks, snacks, and souvenirs.
