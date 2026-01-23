@@ -463,13 +463,13 @@ export default function TripCostsPage() {
 
             {/* Group Breakfasts */}
             <CostCard
-              icon={<UtensilsCrossed className="h-6 w-6" strokeWidth={2} style={{ color: "#F3B44C" }} />}
+              icon={<UtensilsCrossed className="h-6 w-6" strokeWidth={2} style={{ color: "#A7C4A0" }} />}
               title="Group breakfasts"
               subtitle="Easy mornings at the villas"
               amount="$40–$80"
               amountLabel="estimate per person"
-              gradientFrom="#D97706"
-              gradientTo="#F59E0B"
+              gradientFrom="#6B8E5A"
+              gradientTo="#8FA87A"
             >
               <p>
                 We&apos;re exploring pre arranged family style breakfasts to make mornings easier. Food spots aren&apos;t within walking distance, so this helps everyone start the day with a good meal, coffee, and no hassle before we head out. Final cost depends on which days we choose to have it prepped at the villa.
@@ -478,13 +478,13 @@ export default function TripCostsPage() {
 
             {/* Dinner Experience and BBQ */}
             <CostCard
-              icon={<UtensilsCrossed className="h-6 w-6" strokeWidth={2} style={{ color: "#F3B44C" }} />}
+              icon={<UtensilsCrossed className="h-6 w-6" strokeWidth={2} style={{ color: "#A7C4A0" }} />}
               title="Dinner experience and BBQ"
               subtitle="Special group dinners at the villa"
               amount="$80–$110"
               amountLabel="estimate per person"
-              gradientFrom="#D97706"
-              gradientTo="#F59E0B"
+              gradientFrom="#6B8E5A"
+              gradientTo="#8FA87A"
             >
               <p>
                 We&apos;re planning special dinner experiences and a BBQ at the villa. Final cost will depend on the menu and headcount.
@@ -493,12 +493,12 @@ export default function TripCostsPage() {
 
             {/* Snacks Pre-Order */}
             <CostCard
-              icon={<UtensilsCrossed className="h-6 w-6" strokeWidth={2} style={{ color: "#F3B44C" }} />}
+              icon={<UtensilsCrossed className="h-6 w-6" strokeWidth={2} style={{ color: "#B8A082" }} />}
               title="Snacks for the villas"
               subtitle="Pre-ordered snacks and essentials"
               amountLabel="TBD"
-              gradientFrom="#D97706"
-              gradientTo="#F59E0B"
+              gradientFrom="#8B7355"
+              gradientTo="#A68B6F"
             >
               <p>
                 We&apos;ll pre-order some snacks and essentials for the villas to make things easier. Final cost will depend on what we order and headcount.
