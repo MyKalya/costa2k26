@@ -373,7 +373,7 @@ export default function TripCostsPage() {
             <CostCard
               icon={<CreditCard className="h-6 w-6" strokeWidth={2} style={{ color: "#10B981" }} />}
               title="Next payment"
-              amount="$330.99"
+              amount="$230.92"
               amountLabel="per person"
               paymentInstructions="Send e-transfer to m.gnanam31@gmail.com or Wealthsimple to $mathu."
               gradientFrom="#1F4E3A"
@@ -394,10 +394,6 @@ export default function TripCostsPage() {
                     <li className="flex items-center gap-2">
                       <span className="w-1.5 h-1.5 rounded-full bg-white/60"></span>
                       Remaining Airbnb: <span className="font-semibold">$179.12</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-white/60"></span>
-                      Dinners & BBQ: <span className="font-semibold">$100.08</span>
                     </li>
                     <li className="flex items-center gap-2">
                       <span className="w-1.5 h-1.5 rounded-full bg-white/60"></span>
@@ -477,6 +473,21 @@ export default function TripCostsPage() {
             >
               <p>
                 We&apos;re exploring pre arranged family style breakfasts to make mornings easier. Food spots aren&apos;t within walking distance, so this helps everyone start the day with a good meal, coffee, and no hassle before we head out. Final cost depends on which days we choose to have it prepped at the villa.
+              </p>
+            </CostCard>
+
+            {/* Dinner Experience and BBQ */}
+            <CostCard
+              icon={<UtensilsCrossed className="h-6 w-6" strokeWidth={2} style={{ color: "#F3B44C" }} />}
+              title="Dinner experience and BBQ"
+              subtitle="Special group dinners at the villa"
+              amount="$80–$110"
+              amountLabel="estimate per person"
+              gradientFrom="#D97706"
+              gradientTo="#F59E0B"
+            >
+              <p>
+                We&apos;re planning special dinner experiences and a BBQ at the villa. Final cost will depend on the menu and headcount.
               </p>
             </CostCard>
 
