@@ -322,7 +322,7 @@ export default function TripCostsPage() {
           <div className="space-y-6">
             {/* Initial Deposit */}
             <CostCard
-              icon={<Wallet className="h-6 w-6" strokeWidth={2} style={{ color: "#64748B" }} />}
+              icon={<Wallet className="h-6 w-6" strokeWidth={2} style={{ color: "#E2E8F0" }} />}
               title="Initial deposit"
               amount="$550"
               amountLabel="per person"
@@ -441,7 +441,7 @@ export default function TripCostsPage() {
               </span>
             </div>
             <p className="text-sm text-slate-600 leading-relaxed ml-11">
-              We will only request money once final costs are locked. Budget for these costs—some are still being finalized.
+              We will only request money once final costs are locked. Budget for these costs, some are still being finalized. After this, we&apos;ll probably collect after the trip based on who does what and other variables.
             </p>
           </motion.div>
 
