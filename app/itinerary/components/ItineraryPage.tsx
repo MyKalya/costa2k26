@@ -132,7 +132,7 @@ const days: DayCardProps[] = [
         time: "Morning",
         title: "Departure to Tamarindo",
         location: "",
-        description: "Girls doing horseback riding will need to be ready to leave at the latest by 8:20AM. Everyone else will leave the villa at 9:00AM headed towards Tamarindo. Once there, feel free to chill, grab food or drinks prior to your activities. To know more about your activity, please check below.",
+        description: "Girls doing horseback riding will need to be ready to leave at the latest by 8:20AM. Everyone else will leave the villa at 9:00AM headed towards Tamarindo.\n\nPlan for the Day: We'll all get dropped off in Tamarindo. Our activities start and end at different times, so we'll all hang out in Tamarindo when we're waiting or done with our activities. We'll leave Tamarindo together around 3:30PM when everyone is finished.\n\nOnce there, feel free to chill, grab food or drinks prior to your activities. To know more about your activity, please check below.",
         icon: "adventure",
       },
       {

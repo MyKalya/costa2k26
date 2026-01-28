@@ -225,23 +225,37 @@ export function DayCard(props: DayCardProps) {
                   </p>
                 )}
                 {event.description && (
-                  <p className="text-sm text-[#6B7280] leading-relaxed mt-1.5">
-                    {event.description.split(/(explore nearby)/i).map((part, idx) => {
-                      if (part.toLowerCase() === "explore nearby") {
+                  <div className="text-sm text-[#6B7280] leading-relaxed mt-1.5 space-y-2">
+                    {event.description.split('\n\n').map((paragraph, pIdx) => {
+                      if (paragraph.startsWith('Plan for the Day:')) {
                         return (
-                          <a
-                            key={idx}
-                            href="/explore-tamarindo"
-                            className="font-semibold underline hover:opacity-80 transition-opacity"
-                            style={{ color: themeColor }}
-                          >
-                            {part}
-                          </a>
+                          <div key={pIdx} className="space-y-1.5">
+                            <p className="font-semibold text-[#111827]">{paragraph.split(':')[0]}:</p>
+                            <p>{paragraph.split(':').slice(1).join(':').trim()}</p>
+                          </div>
                         );
                       }
-                      return <span key={idx}>{part}</span>;
+                      return (
+                        <p key={pIdx}>
+                          {paragraph.split(/(explore nearby)/i).map((part, idx) => {
+                            if (part.toLowerCase() === "explore nearby") {
+                              return (
+                                <a
+                                  key={idx}
+                                  href="/explore-tamarindo"
+                                  className="font-semibold underline hover:opacity-80 transition-opacity"
+                                  style={{ color: themeColor }}
+                                >
+                                  {part}
+                                </a>
+                              );
+                            }
+                            return <span key={idx}>{part}</span>;
+                          })}
+                        </p>
+                      );
                     })}
-                  </p>
+                  </div>
                 )}
                 {event.showPrepareButton && (
                   <button
@@ -889,7 +903,7 @@ function ActivityModal({ activity, themeColor, onClose }: { activity: string; th
                 style={{ borderColor: `${themeColor}20` }}
               >
                 <h4 className="text-lg font-bold text-[#111827] mb-3">Participants:</h4>
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2" style={{ gridAutoFlow: "column", gridTemplateRows: `repeat(${Math.ceil(data.participants.length / 3)}, minmax(0, 1fr))` }}>
                   {data.participants.map((name, idx) => (
                     <div
                       key={idx}
