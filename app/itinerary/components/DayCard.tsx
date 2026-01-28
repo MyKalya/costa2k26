@@ -227,35 +227,65 @@ export function DayCard(props: DayCardProps) {
                 {event.description && (
                   <div className="text-sm text-[#6B7280] leading-relaxed mt-1.5 space-y-2">
                     {event.description.split('\n\n').map((paragraph, pIdx) => {
-                      if (paragraph.startsWith('Plan for the Day:')) {
+                      // Helper function to parse HTML tags in text
+                      const parseHTML = (text: string) => {
+                        const parts: (string | JSX.Element)[] = [];
+                        let lastIndex = 0;
+                        const regex = /(<strong>.*?<\/strong>|<a\s+href=["']([^"']+)["']\s+class=["']([^"']+)["']>(.*?)<\/a>)/gi;
+                        let match;
+                        
+                        while ((match = regex.exec(text)) !== null) {
+                          // Add text before the match
+                          if (match.index > lastIndex) {
+                            parts.push(text.substring(lastIndex, match.index));
+                          }
+                          
+                          // Handle <strong> tags
+                          if (match[1] && match[1].startsWith('<strong>')) {
+                            const text = match[1].replace(/<\/?strong>/gi, '');
+                            parts.push(<strong key={`strong-${match.index}`} className="font-bold text-[#111827]">{text}</strong>);
+                          }
+                          // Handle <a> tags
+                          else if (match[1] && match[1].startsWith('<a')) {
+                            const href = match[2];
+                            const className = match[3];
+                            const linkText = match[4];
+                            parts.push(
+                              <a
+                                key={`link-${match.index}`}
+                                href={href}
+                                className={className || "font-semibold underline hover:opacity-80 transition-opacity"}
+                                style={{ color: themeColor }}
+                              >
+                                {linkText}
+                              </a>
+                            );
+                          }
+                          
+                          lastIndex = regex.lastIndex;
+                        }
+                        
+                        // Add remaining text
+                        if (lastIndex < text.length) {
+                          parts.push(text.substring(lastIndex));
+                        }
+                        
+                        return parts.length > 0 ? parts : [text];
+                      };
+
+                      if (paragraph.startsWith('<strong>Plan for the Day:</strong>') || paragraph.startsWith('Plan for the Day:')) {
+                        const labelMatch = paragraph.match(/^(<strong>)?Plan for the Day:(<\/strong>)?/i);
+                        const content = paragraph.replace(/^(<strong>)?Plan for the Day:(<\/strong>)?\s*/i, '').trim();
                         return (
                           <div key={pIdx} className="space-y-1.5">
-                            <p className="font-semibold text-[#111827]">{paragraph.split(':')[0]}:</p>
-                            <p>{paragraph.split(':').slice(1).join(':').trim()}</p>
+                            <p className="font-semibold text-[#111827]">Plan for the Day:</p>
+                            <p>{parseHTML(content)}</p>
                           </div>
                         );
                       }
                       return (
                         <p key={pIdx}>
-                          {paragraph.split(/(<strong>.*?<\/strong>|explore nearby)/i).map((part, idx) => {
-                            if (part.toLowerCase() === "explore nearby") {
-                              return (
-                                <a
-                                  key={idx}
-                                  href="/explore-tamarindo"
-                                  className="font-semibold underline hover:opacity-80 transition-opacity"
-                                  style={{ color: themeColor }}
-                                >
-                                  {part}
-                                </a>
-                              );
-                            }
-                            if (part.match(/<strong>.*?<\/strong>/i)) {
-                              const text = part.replace(/<\/?strong>/gi, '');
-                              return <strong key={idx} className="font-bold text-[#111827]">{text}</strong>;
-                            }
-                            return <span key={idx}>{part}</span>;
-                          })}
+                          {parseHTML(paragraph)}
                         </p>
                       );
                     })}
