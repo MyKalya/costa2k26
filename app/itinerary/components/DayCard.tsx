@@ -660,7 +660,7 @@ function ActivityModal({ activity, themeColor, onClose }: { activity: string; th
             "Camera",
             "Cash for tipping",
           ],
-          participants: ["AK", "Andrew", "Aru", "Math", "Mathushan", "Netharrshan", "Raja", "Yanushan"],
+          participants: ["AK", "Andrew", "Aru", "Math", "Netharrshan", "Raja", "Yanushan"],
         };
       case "kayak":
         return {
@@ -705,7 +705,7 @@ function ActivityModal({ activity, themeColor, onClose }: { activity: string; th
             "Flip flops",
             "Cash for tipping",
           ],
-          participants: ["Aatharsha", "Deleep", "Harish", "Mathan", "Mathushan", "Meth", "Nick", "Ro", "Shrey", "Thasi", "Thithu"],
+          participants: ["Aatharsha", "Deleep", "Harish", "Mathan", "Mathushan", "Meth", "Nick", "Ro", "Shreya", "Thasi", "Thithu"],
         };
       case "horseback":
         return {
@@ -730,7 +730,7 @@ function ActivityModal({ activity, themeColor, onClose }: { activity: string; th
           startTime: "9:00AM",
           endTime: "11:00AM",
           specialNote: "Meet @ 8:50AM in front of the Restaurante Chiringuito",
-          participants: ["Ballersai", "Janu", "Kaja", "Keerthana", "Kimia", "Madhu", "Pray", "Rishega", "Sherrena", "Supine"],
+          participants: ["Ballersai", "Janu", "Kaja", "Keerthana", "Kimia", "Madhu", "Priya", "Rishega", "Sherrena", "Supena"],
         };
       default:
         return null;
