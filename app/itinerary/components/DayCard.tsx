@@ -660,6 +660,7 @@ function ActivityModal({ activity, themeColor, onClose }: { activity: string; th
             "Camera",
             "Cash for tipping",
           ],
+          participants: ["AK", "Andrew", "Aru", "Math", "Mathushan", "Netharrshan", "Raja", "Yanushan"],
         };
       case "kayak":
         return {
@@ -681,6 +682,7 @@ function ActivityModal({ activity, themeColor, onClose }: { activity: string; th
             "Bug Spray",
             "Cash for tipping",
           ],
+          participants: ["Arun", "Athira", "Rajiv", "Shannon"],
         };
       case "surf":
         return {
@@ -703,6 +705,7 @@ function ActivityModal({ activity, themeColor, onClose }: { activity: string; th
             "Flip flops",
             "Cash for tipping",
           ],
+          participants: ["Aatharsha", "Deleep", "Harish", "Mathan", "Mathushan", "Meth", "Nick", "Ro", "Shrey", "Thasi", "Thithu"],
         };
       case "horseback":
         return {
@@ -727,6 +730,7 @@ function ActivityModal({ activity, themeColor, onClose }: { activity: string; th
           startTime: "9:00AM",
           endTime: "11:00AM",
           specialNote: "Meet @ 8:50AM in front of the Restaurante Chiringuito",
+          participants: ["Ballersai", "Janu", "Kaja", "Keerthana", "Kimia", "Madhu", "Pray", "Rishega", "Sherrena", "Supine"],
         };
       default:
         return null;
@@ -877,6 +881,27 @@ function ActivityModal({ activity, themeColor, onClose }: { activity: string; th
                 ))}
               </ul>
             </div>
+
+            {/* Participants */}
+            {data.participants && data.participants.length > 0 && (
+              <div
+                className="pt-4 border-t"
+                style={{ borderColor: `${themeColor}20` }}
+              >
+                <h4 className="text-lg font-bold text-[#111827] mb-3">Participants:</h4>
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                  {data.participants.map((name, idx) => (
+                    <div
+                      key={idx}
+                      className="text-sm text-[#374151] px-2 py-1 rounded-md"
+                      style={{ backgroundColor: `${themeColor}10` }}
+                    >
+                      {name}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </motion.div>
