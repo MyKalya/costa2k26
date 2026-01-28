@@ -660,7 +660,7 @@ function ActivityModal({ activity, themeColor, onClose }: { activity: string; th
             "Camera",
             "Cash for tipping",
           ],
-          participants: ["AK", "Andrew", "Aru", "Math", "Netharrshan", "Raja", "Yanushan"],
+          participants: ["AK", "Andrew", "Aru", "Maathu", "Netharrshan", "Raja", "Yanushan"],
         };
       case "kayak":
         return {
