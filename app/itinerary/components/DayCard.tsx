@@ -237,7 +237,7 @@ export function DayCard(props: DayCardProps) {
                       }
                       return (
                         <p key={pIdx}>
-                          {paragraph.split(/(explore nearby)/i).map((part, idx) => {
+                          {paragraph.split(/(<strong>.*?<\/strong>|explore nearby)/i).map((part, idx) => {
                             if (part.toLowerCase() === "explore nearby") {
                               return (
                                 <a
@@ -249,6 +249,10 @@ export function DayCard(props: DayCardProps) {
                                   {part}
                                 </a>
                               );
+                            }
+                            if (part.match(/<strong>.*?<\/strong>/i)) {
+                              const text = part.replace(/<\/?strong>/gi, '');
+                              return <strong key={idx} className="font-bold text-[#111827]">{text}</strong>;
                             }
                             return <span key={idx}>{part}</span>;
                           })}
