@@ -457,7 +457,7 @@ export default function TripCostsPage() {
               gradientTo="#60A5FA"
             >
               <p>
-                We&apos;ll mix rental cars and group transport so people can get around without stress. Final cost depends on flight times and how many cars we end up needing.
+                We&apos;ll book shuttles for our group where it makes sense, and use Ubers for other trips. The final cost will vary based on how often we choose to book shuttles versus using Ubers, and will depend on flight times and group activity schedules.
               </p>
             </CostCard>
 
