@@ -34,7 +34,7 @@ export const daysConfig: DayConfig[] = [
   {
     id: "day-4",
     number: 4,
-    label: "Under Review - Go vote on Whatsapp",
+    label: "Tamarindo Activities",
     image: "/media/itinerary/day4-banner.png",
     color: "#3A784F", // deep jungle green
   },

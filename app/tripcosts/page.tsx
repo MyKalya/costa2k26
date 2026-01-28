@@ -404,7 +404,7 @@ export default function TripCostsPage() {
                 <div className="mt-4 pt-3 border-t border-white/20">
                   <p className="text-sm text-white/95">
                     <span className="font-semibold">Good news:</span> Airbnb came in at $629.12 per person, lower than our estimate. Catamaran came in at $151.80 per person, at the lowest end of our range. <span className="font-semibold">Feb 13:</span> Private chef arrival dinner is covered by us.
-                  </p>
+              </p>
                 </div>
               </div>
             </CostCard>
@@ -459,6 +459,38 @@ export default function TripCostsPage() {
               <p>
                 We&apos;ll mix rental cars and group transport so people can get around without stress. Final cost depends on flight times and how many cars we end up needing.
               </p>
+            </CostCard>
+
+            {/* Activities */}
+            <CostCard
+              icon={<Palmtree className="h-6 w-6" strokeWidth={2} style={{ color: "#10B981" }} />}
+              title="Tamarindo activities"
+              subtitle="ATV, Kayak, Surf Lessons, Horseback Riding"
+              amountLabel="per activity"
+              gradientFrom="#0E3D2F"
+              gradientTo="#1C5A47"
+            >
+              <div className="space-y-2">
+                <p className="font-semibold text-white mb-2">Activity pricing:</p>
+                <ul className="space-y-1.5 text-sm text-white/90">
+                  <li className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-white/60"></span>
+                    ATV Tour: <span className="font-semibold">$75 USD</span> (cash on site)
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-white/60"></span>
+                    Kayak Tour: <span className="font-semibold">$50 USD</span> (cash on site)
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-white/60"></span>
+                    Surf Lessons: <span className="font-semibold">$55 USD</span> (cash on site)
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-white/60"></span>
+                    Horseback Riding: <span className="font-semibold">$70 USD (Pre-paid)</span>
+                  </li>
+                </ul>
+              </div>
             </CostCard>
 
             {/* Group Breakfasts */}
@@ -516,20 +548,6 @@ export default function TripCostsPage() {
             >
               <p>
                 We&apos;re planning a group adventure day at La Leona. Final pricing will be shared once we confirm the details and package.
-              </p>
-            </CostCard>
-
-            {/* Activities */}
-            <CostCard
-              icon={<Palmtree className="h-6 w-6" strokeWidth={2} style={{ color: "#10B981" }} />}
-              title="Other activities"
-              subtitle="ATVs, beach clubs, spa time & more"
-              amountLabel="varies by activity"
-              gradientFrom="#0E3D2F"
-              gradientTo="#1C5A47"
-            >
-              <p>
-                Think ATV tours, chasing waterfalls, hot springs, water activities, surf lessons, spa/massage time and whatever else the group is feeling. We&apos;ll share the activity list and pricing soon so you can choose what you&apos;re into.
               </p>
             </CostCard>
 

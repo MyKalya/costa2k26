@@ -95,7 +95,7 @@ const SERVICES = [
     icon: MessageCircle,
   },
   {
-    text: "Rental vehicles for group travel",
+    text: "Combination of prearranged shuttles and Ubers to get around",
     icon: Car,
   },
   {
@@ -994,7 +994,7 @@ export default function Stay() {
                               <span className="text-sm leading-relaxed text-muted sm:text-base">
                                 {idx === 3 ? (
                                   <>
-                                    <span className="font-semibold text-foreground">Rental vehicles</span> We&apos;ll be renting vehicles for the group to get around. If you&apos;re planning something on your own away from the group, please let us know before taking one. The exact number of rentals will be confirmed closer to the trip.
+                                    <span className="font-semibold text-foreground">Transportation</span> We&apos;ll use a combination of prearranged shuttles and Ubers to get around. Group transport will be organized for scheduled activities, and Ubers are available for individual trips.
                                   </>
                                 ) : idx === 4 ? (
                                   <>

@@ -207,51 +207,14 @@ export default function TravelPage() {
           <TravelAccordionItem
             title="Arrival Groups (Feb 13)"
             icon={CalendarCheck}
-            preview="Two arrival groups, we'll coordinate pickups accordingly."
+            preview="Shuttles from the airport to Tamarindo have been arranged."
             gradientFrom="#0E3D2F"
             gradientTo="#1C5A47"
             iconColor="#10B981"
           >
             <div className="space-y-4">
-              <div>
-                <h4 className="font-semibold mb-2">Group 1 – 2:30 PM</h4>
-                <p>
-                  Most people arrive in this group.
-                </p>
-                <p>
-                  You&apos;ll be grouped into rental cars with a designated driver.
-                </p>
-                <p>
-                  Full instructions will be shared in January.
-                </p>
-              </div>
-              <div>
-                <h4 className="font-semibold mb-2">Group 2 – 4:30 PM</h4>
-                <p>
-                  A separate rental car group will be arranged for this arrival time.
-                </p>
-              </div>
-              <p className="pt-2 border-t border-inherit opacity-70">
-                If plans change, let us know so we can update transport
-              </p>
-            </div>
-          </TravelAccordionItem>
-
-          {/* Accordion Item 2: Transport to the Villa */}
-          <TravelAccordionItem
-            title="Transport to the Villa"
-            icon={Car}
-            preview="We&apos;re finalizing between rentals and group shuttles."
-            gradientFrom="#145A47"
-            gradientTo="#0E3D2F"
-            iconColor="#1C736A"
-          >
-            <div className="space-y-3">
               <p>
-                We&apos;re finalizing between rental cars and coordinated shuttles. Either way, transport will be fully arranged for both arrival groups before landing.
-              </p>
-              <p>
-                If your arrival time changes, please update us — it affects how we organize pickups.
+                Shuttles from the airport to Tamarindo have been arranged, so all you have to do is buy your bottles at Duty Free and let us magically transport you to our villas.
               </p>
             </div>
           </TravelAccordionItem>
@@ -283,10 +246,10 @@ export default function TravelPage() {
             </p>
           </TravelAccordionItem>
 
-          {/* Accordion Item 4: Ocho Beach Club */}
+          {/* Accordion Item 4: Bar Crawl Night */}
           <TravelAccordionItem
             id="puerto-de-sal-outfit"
-            title="Ocho Beach Club"
+            title="Bar Crawl Night"
             icon={PartyPopper}
             preview="Light, dreamy, coastal romantic."
             gradientFrom="#FCE7F3"
@@ -325,20 +288,188 @@ export default function TravelPage() {
             </div>
           </TravelAccordionItem>
 
-          {/* Accordion Item 6: Packing List (Coming Soon) */}
+          {/* Section Divider for Activity Updates */}
+          <div className="relative my-8">
+            <div className="absolute inset-0 flex items-center">
+              <div className="w-full border-t border-slate-200"></div>
+            </div>
+            <div className="relative flex justify-center">
+              <span className="bg-white px-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">
+                Activity Updates
+              </span>
+            </div>
+          </div>
+
+          {/* Accordion Item 6: Feb 15 Update */}
           <TravelAccordionItem
-            title="Packing List"
-            icon={Backpack}
-            preview="Full packing guide coming in January."
-            gradientFrom="#3B82F6"
-            gradientTo="#2563EB"
-            iconColor="#93C5FD"
+            title="Feb 15 Update"
+            icon={CalendarCheck}
+            preview="Waterfall Hike and Tubing - How to prepare."
+            gradientFrom="#4AA7A4"
+            gradientTo="#3A8B88"
+            iconColor="#7DD3FC"
           >
-            <ul className="list-disc list-inside space-y-2">
-              <li>A full packing list is coming soon with basics for the villa, adventure days, and beach days. Themed-night details are already on this page so you can plan outfits early.</li>
-              <li>We&apos;ll share it in January as activities and details finalize, but this itinerary should give you a solid head start.</li>
-            </ul>
+            <div className="space-y-4">
+              <div>
+                <h4 className="font-semibold mb-2">Pickup Time</h4>
+                <p>
+                  <strong>8:45AM pickup at the villa</strong>
+                </p>
+                <p className="mt-2">
+                  Please do not be late as the bus will need to leave at 8:45AM at the latest! Please meet at villa 15 ready to leave and make sure to check below on how to prepare and what to bring.
+                </p>
+              </div>
+              <div className="pt-3 border-t border-inherit opacity-70">
+                <h4 className="font-semibold mb-3">What to Bring:</h4>
+                <ul className="list-disc list-inside space-y-2">
+                  <li><strong>Important for women:</strong> Wear bathing suit under your clothes only and make sure to bring clothes that tighten, there is a current during the hike that could potentially pull your clothes down if they are not tight enough.</li>
+                  <li>Closed toe shoes, water shoes or sandals with straps <strong>(NO FLIP FLOPS)</strong></li>
+                  <li>Keens or chacos are okay to wear</li>
+                  <li>Shoes with a good grip</li>
+                  <li>Extra clothes to change</li>
+                  <li>Extra shoes to change</li>
+                  <li>Sunscreen</li>
+                  <li>Small bottle of water</li>
+                  <li>Towels</li>
+                  <li>We provide a dry bag to take your cellphone and water to the tour</li>
+                </ul>
+              </div>
+            </div>
           </TravelAccordionItem>
+
+          {/* Accordion Item 7: Feb 16 Update */}
+          <TravelAccordionItem
+            title="Feb 16 Update"
+            icon={CalendarCheck}
+            preview="Tamarindo Activities - Departure times and cash payments."
+            gradientFrom="#3A784F"
+            gradientTo="#2D5F3F"
+            iconColor="#A7C4A0"
+          >
+            <div className="space-y-4" style={{ color: 'inherit' }}>
+              <div style={{ color: 'white' }}>
+                <h4 className="font-semibold mb-2" style={{ color: 'white' }}>Departure Times</h4>
+                <p style={{ color: 'white' }}>
+                  Girls doing horseback riding will need to be ready to leave at the latest by <strong style={{ color: 'white' }}>8:20AM</strong>.
+                </p>
+                <p style={{ color: 'white' }}>
+                  Everyone else will leave the villa at <strong style={{ color: 'white' }}>9:00AM</strong> headed towards Tamarindo.
+                </p>
+                <p className="mt-2" style={{ color: 'white' }}>
+                  Once there, feel free to chill, grab food or drinks prior to your activities.
+                </p>
+              </div>
+              
+              <div className="pt-4 border-t border-white/30">
+                <h4 className="font-bold text-lg mb-4" style={{ color: 'white' }}>Cash Payments Required</h4>
+                <div className="space-y-4 p-5 rounded-xl bg-white border-2 border-red-300 shadow-lg" style={{ color: '#1F2937', backgroundColor: '#FFFFFF' }}>
+                  <div className="flex items-start gap-3">
+                    <span className="text-2xl">⚠️</span>
+                    <p className="font-bold text-lg leading-tight" style={{ color: '#991B1B', fontWeight: '700' }}>
+                      IMPORTANT: Each activity requires cash payment!
+                    </p>
+                  </div>
+                  <ul className="list-none space-y-2.5 ml-1">
+                    <li className="flex items-start gap-2">
+                      <span className="font-bold min-w-[100px]" style={{ color: '#991B1B', fontWeight: '700' }}>ATV:</span>
+                      <span style={{ color: '#991B1B' }}>$75 cash to pay tour</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="font-bold min-w-[100px]" style={{ color: '#991B1B', fontWeight: '700' }}>Kayak:</span>
+                      <span style={{ color: '#991B1B' }}>$50 cash to pay tour</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="font-bold min-w-[100px]" style={{ color: '#991B1B', fontWeight: '700' }}>Surf Lessons:</span>
+                      <span style={{ color: '#991B1B' }}>$55 cash to pay instructor</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="font-bold min-w-[100px]" style={{ color: '#991B1B', fontWeight: '700' }}>Horseback:</span>
+                      <span style={{ color: '#991B1B' }}>Cash for tipping (tour cost already covered)</span>
+                    </li>
+                  </ul>
+                  <p className="mt-4 pt-3 border-t border-red-300 font-semibold text-base leading-relaxed" style={{ color: '#991B1B', fontWeight: '600' }}>
+                    Each activity has particular needs and we&apos;re paying cash for the best prices, so be mindful of that and bring enough cash!
+                  </p>
+                </div>
+              </div>
+
+              <div className="pt-4 border-t border-white/30">
+                <h4 className="font-bold text-lg mb-4" style={{ color: 'white' }}>Activity Details & What to Bring</h4>
+                
+                <div className="space-y-4">
+                  <div className="p-5 rounded-xl border-2 border-slate-300 shadow-lg" style={{ color: '#1F2937', backgroundColor: '#FFFFFF' }}>
+                    <h5 className="font-bold text-lg mb-3" style={{ color: '#111827', fontWeight: '700' }}>ATV Tour</h5>
+                    <div className="space-y-2 mb-4">
+                      <p className="text-base" style={{ color: '#1F2937' }}><strong style={{ color: '#111827', fontWeight: '700' }}>Meet:</strong> <span style={{ color: '#374151' }}>Club 33 Surf Shop @ 10:45AM</span></p>
+                      <p className="text-base" style={{ color: '#1F2937' }}><strong style={{ color: '#111827', fontWeight: '700' }}>Cash needed:</strong> <span className="font-bold" style={{ color: '#B91C1C', fontWeight: '700' }}>$75</span></p>
+                    </div>
+                    <p className="font-semibold mb-2" style={{ color: '#111827', fontWeight: '600' }}>What to bring:</p>
+                    <ul className="list-disc list-inside space-y-1.5 text-sm ml-2" style={{ color: '#374151' }}>
+                      <li style={{ color: '#374151' }}>Comfortable clothes for ATVs (Bathing suit if you want to swim at the beaches)</li>
+                      <li style={{ color: '#374151' }}>Tennis Shoes</li>
+                      <li style={{ color: '#374151' }}>Sunblock</li>
+                      <li style={{ color: '#374151' }}>Sunglasses</li>
+                      <li style={{ color: '#374151' }}>Camera</li>
+                      <li style={{ color: '#374151' }}>Cash for tipping</li>
+                    </ul>
+                  </div>
+
+                  <div className="p-5 rounded-xl border-2 border-slate-300 shadow-lg" style={{ color: '#1F2937', backgroundColor: '#FFFFFF' }}>
+                    <h5 className="font-bold text-lg mb-3" style={{ color: '#111827', fontWeight: '700' }}>Kayak Tour</h5>
+                    <div className="space-y-2 mb-4">
+                      <p className="text-base" style={{ color: '#1F2937' }}><strong style={{ color: '#111827', fontWeight: '700' }}>Meet:</strong> <span style={{ color: '#374151' }}>Pangas restaurant @ 9:45 AM</span></p>
+                      <p className="text-base" style={{ color: '#1F2937' }}><strong style={{ color: '#111827', fontWeight: '700' }}>Cash needed:</strong> <span className="font-bold" style={{ color: '#B91C1C', fontWeight: '700' }}>$50</span></p>
+                    </div>
+                    <p className="font-semibold mb-2" style={{ color: '#111827', fontWeight: '600' }}>What to bring:</p>
+                    <ul className="list-disc list-inside space-y-1.5 text-sm ml-2" style={{ color: '#374151' }}>
+                      <li style={{ color: '#374151' }}>Comfortable/ Light Clothes</li>
+                      <li style={{ color: '#374151' }}>Water Shoes (not required, just be prepared for your shoes to get wet or go barefoot)</li>
+                      <li style={{ color: '#374151' }}>Hat</li>
+                      <li style={{ color: '#374151' }}>Sunscreen</li>
+                      <li style={{ color: '#374151' }}>Bug Spray</li>
+                      <li style={{ color: '#374151' }}>Cash for tipping</li>
+                    </ul>
+                  </div>
+
+                  <div className="p-5 rounded-xl border-2 border-slate-300 shadow-lg" style={{ color: '#1F2937', backgroundColor: '#FFFFFF' }}>
+                    <h5 className="font-bold text-lg mb-3" style={{ color: '#111827', fontWeight: '700' }}>Surf Lessons</h5>
+                    <div className="space-y-2 mb-4">
+                      <p className="text-base" style={{ color: '#1F2937' }}><strong style={{ color: '#111827', fontWeight: '700' }}>Meet:</strong> <span style={{ color: '#374151' }}>Club 33 Surf Shop (time confirmed closer to trip depending on tides)</span></p>
+                      <p className="text-base" style={{ color: '#1F2937' }}><strong style={{ color: '#111827', fontWeight: '700' }}>Cash needed:</strong> <span className="font-bold" style={{ color: '#B91C1C', fontWeight: '700' }}>$55</span></p>
+                    </div>
+                    <p className="font-semibold mb-2" style={{ color: '#111827', fontWeight: '600' }}>What to bring:</p>
+                    <ul className="list-disc list-inside space-y-1.5 text-sm ml-2" style={{ color: '#374151' }}>
+                      <li style={{ color: '#374151' }}>Swimsuit</li>
+                      <li style={{ color: '#374151' }}>Change of clothes</li>
+                      <li style={{ color: '#374151' }}>Towel</li>
+                      <li style={{ color: '#374151' }}>Sunblock</li>
+                      <li style={{ color: '#374151' }}>Flip flops</li>
+                      <li style={{ color: '#374151' }}>Cash for tipping</li>
+                    </ul>
+                  </div>
+
+                  <div className="p-5 rounded-xl border-2 border-slate-300 shadow-lg" style={{ color: '#1F2937', backgroundColor: '#FFFFFF' }}>
+                    <h5 className="font-bold text-lg mb-3" style={{ color: '#111827', fontWeight: '700' }}>Horseback Riding</h5>
+                    <div className="space-y-2 mb-4">
+                      <p className="text-base" style={{ color: '#1F2937' }}><strong style={{ color: '#111827', fontWeight: '700' }}>Meet:</strong> <span style={{ color: '#374151' }}>8:50AM in front of Restaurante Chiringuito</span></p>
+                      <p className="text-base" style={{ color: '#1F2937' }}><strong style={{ color: '#111827', fontWeight: '700' }}>Time:</strong> <span style={{ color: '#374151' }}>9:00AM - 11:00AM</span></p>
+                      <p className="text-base" style={{ color: '#1F2937' }}><strong style={{ color: '#111827', fontWeight: '700' }}>Cash needed:</strong> <span style={{ color: '#374151' }}>For tipping only</span></p>
+                    </div>
+                    <p className="font-semibold mb-2" style={{ color: '#111827', fontWeight: '600' }}>What to bring:</p>
+                    <ul className="list-disc list-inside space-y-1.5 text-sm ml-2" style={{ color: '#374151' }}>
+                      <li style={{ color: '#374151' }}>Long pants</li>
+                      <li style={{ color: '#374151' }}>Closed toed shoes</li>
+                      <li style={{ color: '#374151' }}>Camera</li>
+                      <li style={{ color: '#374151' }}>Hat</li>
+                      <li style={{ color: '#374151' }}>Sunscreen</li>
+                      <li style={{ color: '#374151' }}>Cash for tipping</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </TravelAccordionItem>
+
         </div>
       </section>
     </main>

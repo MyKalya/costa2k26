@@ -1,7 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Lightbulb } from "lucide-react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Lightbulb, X } from "lucide-react";
 
 export type DayTheme =
   | "arrivals"
@@ -18,6 +19,8 @@ export interface DayEvent {
   description?: string;
   icon?: "arrival" | "party" | "meal" | "beach" | "free" | "adventure" | "boat" | "plane";
   tag?: string;
+  showPrepareButton?: boolean;
+  showActivityButtons?: boolean;
 }
 
 export interface DayCardProps {
@@ -79,6 +82,8 @@ export function DayCard(props: DayCardProps) {
     gettingAround,
   } = props;
 
+  const [showPrepareModal, setShowPrepareModal] = useState(false);
+  const [showActivityModal, setShowActivityModal] = useState<string | null>(null);
   const isDay1 = dayIndex === 1;
 
   return (
@@ -166,6 +171,7 @@ export function DayCard(props: DayCardProps) {
             return (
             <motion.div
               key={`${event.time}-${event.title}-${index}`}
+              id={event.showActivityButtons ? `${id}-activity` : undefined}
               initial={{ opacity: 0, x: -10 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -236,6 +242,67 @@ export function DayCard(props: DayCardProps) {
                       return <span key={idx}>{part}</span>;
                     })}
                   </p>
+                )}
+                {event.showPrepareButton && (
+                  <button
+                    onClick={() => setShowPrepareModal(true)}
+                    className="mt-3 inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold transition-all hover:scale-105 active:scale-95 shadow-md"
+                    style={{
+                      backgroundColor: themeColor,
+                      color: "#FFFFFF",
+                    }}
+                  >
+                    <span>How to prepare</span>
+                    <span className="text-xs">→</span>
+                  </button>
+                )}
+                {event.showActivityButtons && (
+                  <div className="mt-4 flex flex-wrap gap-3">
+                    <button
+                      onClick={() => setShowActivityModal("atv")}
+                      className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold transition-all hover:scale-105 active:scale-95 shadow-md"
+                      style={{
+                        backgroundColor: themeColor,
+                        color: "#FFFFFF",
+                      }}
+                    >
+                      <span>ATV</span>
+                      <span className="text-xs">→</span>
+                    </button>
+                    <button
+                      onClick={() => setShowActivityModal("kayak")}
+                      className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold transition-all hover:scale-105 active:scale-95 shadow-md"
+                      style={{
+                        backgroundColor: themeColor,
+                        color: "#FFFFFF",
+                      }}
+                    >
+                      <span>Kayak</span>
+                      <span className="text-xs">→</span>
+                    </button>
+                    <button
+                      onClick={() => setShowActivityModal("surf")}
+                      className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold transition-all hover:scale-105 active:scale-95 shadow-md"
+                      style={{
+                        backgroundColor: themeColor,
+                        color: "#FFFFFF",
+                      }}
+                    >
+                      <span>Surf Lessons</span>
+                      <span className="text-xs">→</span>
+                    </button>
+                    <button
+                      onClick={() => setShowActivityModal("horseback")}
+                      className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold transition-all hover:scale-105 active:scale-95 shadow-md"
+                      style={{
+                        backgroundColor: themeColor,
+                        color: "#FFFFFF",
+                      }}
+                    >
+                      <span>Horseback Riding</span>
+                      <span className="text-xs">→</span>
+                    </button>
+                  </div>
                 )}
               </div>
 
@@ -353,6 +420,466 @@ export function DayCard(props: DayCardProps) {
           </div>
         </motion.div>
       </div>
+
+      {/* How to Prepare Modal */}
+      <AnimatePresence>
+        {showPrepareModal && (
+          <PrepareModal
+            themeColor={themeColor}
+            onClose={() => setShowPrepareModal(false)}
+          />
+        )}
+      </AnimatePresence>
+
+      {/* Activity Modals */}
+      <AnimatePresence>
+        {showActivityModal && (
+          <ActivityModal
+            activity={showActivityModal}
+            themeColor={themeColor}
+            onClose={() => setShowActivityModal(null)}
+          />
+        )}
+      </AnimatePresence>
     </motion.section>
+  );
+}
+
+/**
+ * PrepareModal - Modal showing "What to bring?" information
+ */
+function PrepareModal({ themeColor, onClose }: { themeColor: string; onClose: () => void }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
+      onClick={onClose}
+    >
+      <motion.div
+        initial={{ scale: 0.95, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        exit={{ scale: 0.95, opacity: 0 }}
+        onClick={(e) => e.stopPropagation()}
+        className="relative w-full max-w-lg bg-white rounded-3xl shadow-2xl overflow-hidden"
+      >
+        {/* Header */}
+        <div
+          className="px-6 py-4 border-b"
+          style={{ borderColor: `${themeColor}20` }}
+        >
+          <div className="flex items-center justify-between">
+            <h3
+              className="text-2xl font-bold"
+              style={{ color: themeColor }}
+            >
+              What to bring?
+            </h3>
+            <button
+              onClick={onClose}
+              className="p-2 rounded-full hover:bg-gray-100 transition-colors"
+              aria-label="Close"
+            >
+              <X className="h-5 w-5 text-gray-600" />
+            </button>
+          </div>
+        </div>
+
+        {/* Content */}
+        <div className="px-6 py-5 max-h-[70vh] overflow-y-auto">
+          <ul className="space-y-4">
+            <li>
+              <div className="flex gap-3 items-start">
+                <span
+                  className="mt-1 h-2 w-2 rounded-full flex-shrink-0"
+                  style={{ backgroundColor: themeColor }}
+                />
+                <div className="flex-1">
+                  <p className="text-sm text-[#374151] leading-relaxed">
+                    <span className="font-semibold text-red-600">Important for women:</span> Wear bathing suit under your clothes only and make sure to bring clothes that tighten, there is a current during the hike that could potentially pull your clothes down if they are not tight enough.
+                  </p>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div className="flex gap-3 items-start">
+                <span
+                  className="mt-1 h-2 w-2 rounded-full flex-shrink-0"
+                  style={{ backgroundColor: themeColor }}
+                />
+                <div className="flex-1">
+                  <p className="text-sm text-[#374151] leading-relaxed">
+                    Closed toe shoes, water shoes or sandals with straps
+                  </p>
+                  <p className="text-sm font-semibold text-red-600 mt-1">
+                    (NO FLIP FLOPS)
+                  </p>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div className="flex gap-3 items-start">
+                <span
+                  className="mt-1 h-2 w-2 rounded-full flex-shrink-0"
+                  style={{ backgroundColor: themeColor }}
+                />
+                <div className="flex-1">
+                  <p className="text-sm text-[#374151] leading-relaxed">
+                    Keens or chacos are okay to wear
+                  </p>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div className="flex gap-3 items-start">
+                <span
+                  className="mt-1 h-2 w-2 rounded-full flex-shrink-0"
+                  style={{ backgroundColor: themeColor }}
+                />
+                <div className="flex-1">
+                  <p className="text-sm text-[#374151] leading-relaxed">
+                    Shoes with a good grip
+                  </p>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div className="flex gap-3 items-start">
+                <span
+                  className="mt-1 h-2 w-2 rounded-full flex-shrink-0"
+                  style={{ backgroundColor: themeColor }}
+                />
+                <div className="flex-1">
+                  <p className="text-sm text-[#374151] leading-relaxed">
+                    Extra clothes to change
+                  </p>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div className="flex gap-3 items-start">
+                <span
+                  className="mt-1 h-2 w-2 rounded-full flex-shrink-0"
+                  style={{ backgroundColor: themeColor }}
+                />
+                <div className="flex-1">
+                  <p className="text-sm text-[#374151] leading-relaxed">
+                    Extra shoes to change
+                  </p>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div className="flex gap-3 items-start">
+                <span
+                  className="mt-1 h-2 w-2 rounded-full flex-shrink-0"
+                  style={{ backgroundColor: themeColor }}
+                />
+                <div className="flex-1">
+                  <p className="text-sm text-[#374151] leading-relaxed">
+                    Sunscreen
+                  </p>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div className="flex gap-3 items-start">
+                <span
+                  className="mt-1 h-2 w-2 rounded-full flex-shrink-0"
+                  style={{ backgroundColor: themeColor }}
+                />
+                <div className="flex-1">
+                  <p className="text-sm text-[#374151] leading-relaxed">
+                    Small bottle of water
+                  </p>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div className="flex gap-3 items-start">
+                <span
+                  className="mt-1 h-2 w-2 rounded-full flex-shrink-0"
+                  style={{ backgroundColor: themeColor }}
+                />
+                <div className="flex-1">
+                  <p className="text-sm text-[#374151] leading-relaxed">
+                    Towels
+                  </p>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div className="flex gap-3 items-start">
+                <span
+                  className="mt-1 h-2 w-2 rounded-full flex-shrink-0"
+                  style={{ backgroundColor: themeColor }}
+                />
+                <div className="flex-1">
+                  <p className="text-sm text-[#374151] leading-relaxed">
+                    We provide a dry bag to take your cellphone and water to the tour
+                  </p>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+}
+
+/**
+ * ActivityModal - Modal showing activity details
+ */
+function ActivityModal({ activity, themeColor, onClose }: { activity: string; themeColor: string; onClose: () => void }) {
+  const getActivityData = () => {
+    switch (activity) {
+      case "atv":
+        return {
+          title: "ATV Tour",
+          cashPayment: "BRING $75 CASH TO PAY TOUR",
+          meetup: "Club 33 Surf Shop",
+          meetupLink: "https://maps.app.goo.gl/wbvb43MhW3grz4bQA",
+          time: "10:45AM for pick up to ATV site",
+          tourIncludes: [
+            "Roundtrip Transportation",
+            "Two Hour ATV Tour",
+            "Bilingual Guides",
+            "Water",
+          ],
+          details: [
+            "Roundtrip transportation",
+            "Single ATV's",
+          ],
+          whatToBring: [
+            "Comfortable clothes for ATVs (Bathing suit if you want to swim at the beaches)",
+            "Tennis Shoes",
+            "Sunblock",
+            "Sunglasses",
+            "Camera",
+            "Cash for tipping",
+          ],
+        };
+      case "kayak":
+        return {
+          title: "Kayak Tour",
+          cashPayment: "BRING $50 CASH TO PAY TOUR",
+          meetup: "Pangas restaurant",
+          time: "9:45 AM",
+          tourIncludes: [
+            "National park entrance fee",
+            "Kayak equipment",
+            "Bilingual guide",
+            "Water",
+          ],
+          whatToBring: [
+            "Comfortable/ Light Clothes",
+            "Water Shoes (not required, just be prepared for your shoes to get wet or go barefoot)",
+            "Hat",
+            "Sunscreen",
+            "Bug Spray",
+            "Cash for tipping",
+          ],
+        };
+      case "surf":
+        return {
+          title: "Surf Lessons",
+          cashPayment: "BRING $55 CASH TO PAY INSTRUCTOR",
+          meetup: "Club 33 Surf Shop",
+          meetupLink: "https://maps.app.goo.gl/wbvb43MhW3grz4bQA",
+          time: "Will be confirmed closer to trip depending on tides",
+          tourIncludes: [
+            "Certified Instructor",
+            "Rash Guard",
+            "Surf Board",
+            "2 Hour Surf Lesson",
+          ],
+          whatToBring: [
+            "Swimsuit",
+            "Change of clothes",
+            "Towel",
+            "Sunblock",
+            "Flip flops",
+            "Cash for tipping",
+          ],
+        };
+      case "horseback":
+        return {
+          title: "Horseback Riding",
+          tourIncludes: [
+            "Horses",
+            "Guide",
+            "Water",
+            "1 hr along the beach (horses can pass through the water like in the video)",
+            "1 hr through the mountains behind Tamarindo",
+          ],
+          whatToBring: [
+            "Long pants",
+            "Closed toed shoes",
+            "Camera",
+            "Hat",
+            "Sunscreen",
+            "Cash for tipping",
+          ],
+          meetup: "Restaurante Chiringuito",
+          meetupLink: "https://maps.app.goo.gl/WZ1VeP8knFm4WsYt5",
+          startTime: "9:00AM",
+          endTime: "11:00AM",
+          specialNote: "Meet @ 8:50AM in front of the Restaurante Chiringuito",
+        };
+      default:
+        return null;
+    }
+  };
+
+  const data = getActivityData();
+  if (!data) return null;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
+      onClick={onClose}
+    >
+      <motion.div
+        initial={{ scale: 0.95, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        exit={{ scale: 0.95, opacity: 0 }}
+        onClick={(e) => e.stopPropagation()}
+        className="relative w-full max-w-lg bg-white rounded-3xl shadow-2xl overflow-hidden max-h-[90vh] flex flex-col"
+      >
+        {/* Header */}
+        <div
+          className="px-6 py-4 border-b flex-shrink-0"
+          style={{ borderColor: `${themeColor}20` }}
+        >
+          <div className="flex items-center justify-between">
+            <h3
+              className="text-2xl font-bold"
+              style={{ color: themeColor }}
+            >
+              {data.title}
+            </h3>
+            <button
+              onClick={onClose}
+              className="p-2 rounded-full hover:bg-gray-100 transition-colors"
+              aria-label="Close"
+            >
+              <X className="h-5 w-5 text-gray-600" />
+            </button>
+          </div>
+        </div>
+
+        {/* Content */}
+        <div className="px-6 py-5 overflow-y-auto flex-1">
+          <div className="space-y-6">
+            {/* Cash Payment Notice */}
+            {data.cashPayment && (
+              <div
+                className="rounded-xl px-4 py-3"
+                style={{ backgroundColor: `${themeColor}15`, border: `2px solid ${themeColor}40` }}
+              >
+                <p className="text-base font-bold text-center" style={{ color: themeColor }}>
+                  {data.cashPayment}
+                </p>
+              </div>
+            )}
+
+            {/* Meetup Info */}
+            <div>
+              <h4 className="text-lg font-bold text-[#111827] mb-3">Meet-up Location & Time:</h4>
+              {data.specialNote && (
+                <p className="text-sm font-semibold text-[#374151] mb-2">{data.specialNote}</p>
+              )}
+              <p className="text-sm text-[#374151] leading-relaxed">
+                <span className="font-semibold">Location:</span>{" "}
+                {data.meetupLink ? (
+                  <a
+                    href={data.meetupLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline hover:opacity-80 transition-opacity"
+                    style={{ color: themeColor }}
+                  >
+                    {data.meetup}
+                  </a>
+                ) : (
+                  data.meetup
+                )}
+              </p>
+              {data.startTime && data.endTime && (
+                <p className="text-sm text-[#374151] leading-relaxed mt-2">
+                  <span className="font-semibold">Time:</span> {data.startTime} - {data.endTime}
+                </p>
+              )}
+              {data.time && (
+                <p className="text-sm text-[#374151] leading-relaxed mt-2">
+                  <span className="font-semibold">Time:</span> {data.time}
+                </p>
+              )}
+            </div>
+
+            {/* Tour Includes */}
+            <div
+              className="pt-4 border-t"
+              style={{ borderColor: `${themeColor}20` }}
+            >
+              <h4 className="text-lg font-bold text-[#111827] mb-3">Tour Includes:</h4>
+              <ul className="space-y-2">
+                {data.tourIncludes.map((item, idx) => (
+                  <li key={idx} className="flex gap-3 items-start">
+                    <span
+                      className="mt-1.5 h-2 w-2 rounded-full flex-shrink-0"
+                      style={{ backgroundColor: themeColor }}
+                    />
+                    <span className="text-sm text-[#374151] leading-relaxed">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Details (for ATV) */}
+            {data.details && (
+              <div>
+                <h4 className="text-lg font-bold text-[#111827] mb-3">Details:</h4>
+                <ul className="space-y-2">
+                  {data.details.map((item, idx) => (
+                    <li key={idx} className="flex gap-3 items-start">
+                      <span
+                        className="mt-1.5 h-2 w-2 rounded-full flex-shrink-0"
+                        style={{ backgroundColor: themeColor }}
+                      />
+                      <span className="text-sm text-[#374151] leading-relaxed">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {/* What to Bring */}
+            <div
+              className="pt-4 border-t"
+              style={{ borderColor: `${themeColor}20` }}
+            >
+              <h4 className="text-lg font-bold text-[#111827] mb-3">What to Bring:</h4>
+              <ul className="space-y-2">
+                {data.whatToBring.map((item, idx) => (
+                  <li key={idx} className="flex gap-3 items-start">
+                    <span
+                      className="mt-1.5 h-2 w-2 rounded-full flex-shrink-0"
+                      style={{ backgroundColor: themeColor }}
+                    />
+                    <span className="text-sm text-[#374151] leading-relaxed">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+    </motion.div>
   );
 }

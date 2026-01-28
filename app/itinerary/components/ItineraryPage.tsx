@@ -38,7 +38,7 @@ const days: DayCardProps[] = [
         icon: "party",
       },
     ],
-    gettingAround: "Shuttle, rental car, or taxi or Uber from the villa.",
+    gettingAround: "Shuttles will be arranged for everyone arriving on this day. We'll use Ubers between our villa and Tamarindo for anyone going out that night.",
   },
   {
     id: "day-2",
@@ -49,9 +49,8 @@ const days: DayCardProps[] = [
     themeColor: "#E8A48F",
     cardBg: "#FDEFEA",
     bannerImage: "/media/itinerary/day2-banner.png",
-    vibeSummary: "Poolside BBQ and let's enjoy the villa! Later, we'll break to Ocho for food, local vendors, and drinks by the beach.",
+    vibeSummary: "Poolside BBQ and let's enjoy the villa! Later, we'll head out for a bar crawl through Tamarindo.",
     notes: [
-      "Ocho dress-code: Soft Romance.",
       "It's Valentine's Day, feel free to do your own thing during the day, but we want everyone together in the evening.",
     ],
     events: [
@@ -64,13 +63,13 @@ const days: DayCardProps[] = [
       },
       {
         time: "Evening",
-        title: "Ocho Beach Club and Bar Crawl",
+        title: "Bar Crawl",
         location: "",
-        description: "Start strong at Ocho, then roll into a boozy beach-bar crawl through El Be!, Nogui's, and all the hot spots. Big energy, big drinks, big night.",
+        description: "Roll into a boozy beach-bar crawl through El Be!, Nogui's, and all the hot spots. Big energy, big drinks, big night.",
         icon: "beach",
       },
     ],
-    gettingAround: "Uber",
+    gettingAround: "Ubers.",
   },
   {
     id: "day-3",
@@ -90,32 +89,18 @@ const days: DayCardProps[] = [
     events: [
       {
         time: "Morning",
-        title: "10am pickup at the villa",
+        title: "8:45AM pickup at the villa",
         location: "",
-        description: "",
+        description: "Please do not be late as the bus will need to leave at 8:45AM at the latest! Please meet at villa 15 ready to leave and make sure to check below on how to prepare and what to bring.",
         icon: "adventure",
       },
       {
         time: "Afternoon",
-        title: "Adventure tour - Choose your route",
+        title: "La Leona Waterfall Hike + White Water Tubing",
         location: "",
-        description: "Pick between two routes. Both include a Costa Rican lunch. (We're doing Route 1)",
+        description: "Moderate. Short hike through the rapids to a bright blue canyon waterfall, followed by fun river tubing. Includes a Costa Rican lunch.",
         icon: "adventure",
-      },
-      {
-        time: "Afternoon",
-        title: "Route 1: La Leona Waterfall Hike + White Water Tubing",
-        location: "",
-        description: "Moderate. Short hike through the rapids to a bright blue canyon waterfall, followed by fun river tubing.",
-        tag: "This is what we'll be doing",
-        icon: "adventure",
-      },
-      {
-        time: "Afternoon",
-        title: "Route 2: Rincón de la Vieja + Hot Springs/Mud bath",
-        location: "",
-        description: "Moderate. Classic national park hike with volcanic scenery, ending with hot springs and mud bath.",
-        icon: "adventure",
+        showPrepareButton: true,
       },
       {
         time: "Evening",
@@ -125,37 +110,38 @@ const days: DayCardProps[] = [
         icon: "meal",
       },
     ],
-    gettingAround: "Round trip transport is organized as part of the tour, plus backup options by rental car if needed.",
+    gettingAround: "We've organized group transport as part of the tour. For the rest of the day, we'll use Ubers to go to Tamarindo and back.",
   },
   {
     id: "day-4",
     dayIndex: 4,
     dateLabel: "Mon Feb 16",
-    title: "Under Review - Go vote on Whatsapp",
-    summary: "A full day at Tamarindo Beach Club with watersports, brunch, and sunset drinks.",
+    title: "Tamarindo Activities & Villa Class",
+    summary: "Spend the day in Tamarindo with chosen activities, then return to the villa for a cooking experience.",
     themeColor: "#3A784F",
     cardBg: "#E7F2EB",
     bannerImage: "/media/itinerary/day4-banner.png",
-    vibeSummary: "We'll split the group between a couple activities, then head back to the villa for a cooking experience with Chef Antonio. Anyone up for heading out to town to continue the party can do so!",
+    vibeSummary: "We'll spend the first half of the day in Tamarindo, relaxing and enjoying the activities we've all voted on. Then we'll head back to the villa for a cooking experience with Chef Antonio. Anyone up for heading out to town again to continue the party can do so!",
     notes: [
       "Bring sunglasses, hat, and sunscreen.",
       "Light, beach friendly outfits are perfect.",
-      "Check WhatsApp for the poll to vote on afternoon activities!",
+      "Each activity has particular needs and we're paying cash for the best prices, so be mindful of that and bring enough cash!",
     ],
     events: [
       {
         time: "Morning",
-        title: "Light Breakfast at the villa.",
+        title: "Departure to Tamarindo",
         location: "",
-        description: "",
-        icon: "meal",
+        description: "Girls doing horseback riding will need to be ready to leave at the latest by 8:20AM. Everyone else will leave the villa at 9:00AM headed towards Tamarindo. Once there, feel free to chill, grab food or drinks prior to your activities. To know more about each activity, please check below.",
+        icon: "adventure",
       },
       {
         time: "Afternoon",
-        title: "VOTE ON WHATSAPP",
+        title: "Choose Your Activity",
         location: "",
-        description: "",
-        icon: "free",
+        description: "We've got four options: Horseback Riding, ATV, Surf Lessons, and Kayak. Click below to see more details about each.",
+        icon: "adventure",
+        showActivityButtons: true,
       },
       {
         time: "Evening",
@@ -172,7 +158,7 @@ const days: DayCardProps[] = [
         icon: "party",
       },
     ],
-    gettingAround: "Rental cars will be reserved for adventure groups",
+    gettingAround: "Group transport to Tamarindo and to your activities has been arranged, including transport back to our villa via shuttle.",
   },
   {
     id: "day-5",
@@ -219,7 +205,7 @@ const days: DayCardProps[] = [
         icon: "party",
       },
     ],
-    gettingAround: "Group transport to and from the marina is organized. If you miss the shuttle, taxis or Ubers are available from Tamarindo.",
+    gettingAround: "We've arranged transportation to and from the catamaran. For the final night out, we'll use Ubers.",
   },
   {
     id: "day-6",
@@ -245,7 +231,7 @@ const days: DayCardProps[] = [
         icon: "plane",
       },
     ],
-    gettingAround: "Pre booked airport shuttles, rental cars, or shared rides based on your plans.",
+    gettingAround: "All shuttles and transportation for flights after 10AM have been arranged.",
   },
 ];
 
@@ -318,6 +304,26 @@ export default function ItineraryPage() {
   const handleViewDays = () => {
     document.getElementById("day-nav")?.scrollIntoView({ behavior: "smooth" });
   };
+
+  // Handle hash links (e.g., /itinerary#day-4-activity)
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      // Wait for content to render, then scroll
+      setTimeout(() => {
+        const element = document.getElementById(hash.substring(1)); // Remove the #
+        if (element) {
+          const offset = 100; // Account for sticky nav
+          const elementPosition = element.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - offset;
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth",
+          });
+        }
+      }, 500);
+    }
+  }, []);
 
   return (
     <div className="min-h-screen bg-background">

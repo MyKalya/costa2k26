@@ -28,7 +28,7 @@ export const tripDays = [
     id: "day-4",
     number: 4,
     title: "Adventure",
-    label: "Under Review - Go vote on Whatsapp",
+    label: "Tamarindo Activities",
     image: "/media/itinerary/day4-banner.png",
   },
   {
