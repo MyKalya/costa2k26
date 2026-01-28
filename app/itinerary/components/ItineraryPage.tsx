@@ -116,7 +116,7 @@ const days: DayCardProps[] = [
     id: "day-4",
     dayIndex: 4,
     dateLabel: "Mon Feb 16",
-    title: "Tamarindo Activities & Villa Class",
+    title: "Tamarindo Activities & Villa Experience",
     summary: "Spend the day in Tamarindo with chosen activities, then return to the villa for a cooking experience.",
     themeColor: "#3A784F",
     cardBg: "#E7F2EB",
@@ -132,7 +132,7 @@ const days: DayCardProps[] = [
         time: "Morning",
         title: "Departure to Tamarindo",
         location: "",
-        description: "Girls doing horseback riding will need to be ready to leave at the latest by 8:20AM. Everyone else will leave the villa at 9:00AM headed towards Tamarindo. Once there, feel free to chill, grab food or drinks prior to your activities. To know more about each activity, please check below.",
+        description: "Girls doing horseback riding will need to be ready to leave at the latest by 8:20AM. Everyone else will leave the villa at 9:00AM headed towards Tamarindo. Once there, feel free to chill, grab food or drinks prior to your activities. To know more about your activity, please check below.",
         icon: "adventure",
       },
       {
