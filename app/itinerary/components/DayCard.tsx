@@ -899,13 +899,15 @@ function ActivityModal({ activity, themeColor, onClose }: { activity: string; th
             {/* Participants */}
             {data.participants && data.participants.length > 0 && (() => {
               // Reorganize to fill columns vertically (column-wise)
+              // Items fill first column top to bottom, then second column, etc.
               const numColumns = 3;
-              const columnWise: string[] = [];
               const numRows = Math.ceil(data.participants.length / numColumns);
+              const columnWise: string[] = [];
               
-              for (let row = 0; row < numRows; row++) {
-                for (let col = 0; col < numColumns; col++) {
-                  const idx = col * numRows + row;
+              // Fill column by column
+              for (let col = 0; col < numColumns; col++) {
+                for (let row = 0; row < numRows; row++) {
+                  const idx = row * numColumns + col;
                   if (idx < data.participants.length) {
                     columnWise.push(data.participants[idx]);
                   }
