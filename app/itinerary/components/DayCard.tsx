@@ -897,25 +897,41 @@ function ActivityModal({ activity, themeColor, onClose }: { activity: string; th
             </div>
 
             {/* Participants */}
-            {data.participants && data.participants.length > 0 && (
-              <div
-                className="pt-4 border-t"
-                style={{ borderColor: `${themeColor}20` }}
-              >
-                <h4 className="text-lg font-bold text-[#111827] mb-3">Participants:</h4>
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2" style={{ gridAutoFlow: "column", gridTemplateRows: `repeat(${Math.ceil(data.participants.length / 3)}, minmax(0, 1fr))` }}>
-                  {data.participants.map((name, idx) => (
-                    <div
-                      key={idx}
-                      className="text-sm text-[#374151] px-2 py-1 rounded-md"
-                      style={{ backgroundColor: `${themeColor}10` }}
-                    >
-                      {name}
-                    </div>
-                  ))}
+            {data.participants && data.participants.length > 0 && (() => {
+              // Reorganize to fill columns vertically (column-wise)
+              const numColumns = 3;
+              const columnWise: string[] = [];
+              const numRows = Math.ceil(data.participants.length / numColumns);
+              
+              for (let row = 0; row < numRows; row++) {
+                for (let col = 0; col < numColumns; col++) {
+                  const idx = col * numRows + row;
+                  if (idx < data.participants.length) {
+                    columnWise.push(data.participants[idx]);
+                  }
+                }
+              }
+              
+              return (
+                <div
+                  className="pt-4 border-t"
+                  style={{ borderColor: `${themeColor}20` }}
+                >
+                  <h4 className="text-lg font-bold text-[#111827] mb-3">Participants:</h4>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                    {columnWise.map((name, idx) => (
+                      <div
+                        key={idx}
+                        className="text-sm text-[#374151] px-2 py-1 rounded-md"
+                        style={{ backgroundColor: `${themeColor}10` }}
+                      >
+                        {name}
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            )}
+              );
+            })()}
           </div>
         </div>
       </motion.div>
