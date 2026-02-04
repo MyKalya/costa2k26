@@ -245,7 +245,6 @@ function RoomsPageContent() {
     </BottomSheet>
   ) : null;
 
-  ) : null;
 
   const heroImage = "/media/villas/villas.avif";
 
