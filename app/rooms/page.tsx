@@ -91,7 +91,7 @@ function RoomsPageContent() {
   const [expandedRooms, setExpandedRooms] = useState<Record<string, boolean>>({});
   const [doorState, setDoorState] = useState<Record<VillaId, AccessState>>({} as Record<VillaId, AccessState>);
   const [doorTimerTick, setDoorTimerTick] = useState(Date.now());
-  const [activeSheet, setActiveSheet] = useState<"wifi" | "door" | null>(null);
+  const [activeSheet, setActiveSheet] = useState<"wifi" | null>(null);
   const [doorInstructionsExpanded, setDoorInstructionsExpanded] = useState(false);
   const [carouselCompact, setCarouselCompact] = useState(false);
 
@@ -333,7 +333,6 @@ function RoomsPageContent() {
               meta={VILLAS[selectedVilla]}
               onAction={(id) => {
                 if (id === "wifi") setActiveSheet("wifi");
-                if (id === "door") setActiveSheet("door");
               }}
             />
             <GuestFinder
