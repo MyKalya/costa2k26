@@ -245,49 +245,6 @@ function RoomsPageContent() {
     </BottomSheet>
   ) : null;
 
-  const doorCode = VILLAS[selectedVilla]?.accessCode;
-  const doorSheet = activeSheet === "door" && doorCode ? (
-    <BottomSheet
-      onClose={() => {
-        setActiveSheet(null);
-        setDoorInstructionsExpanded(false);
-      }}
-    >
-      <div>
-        <h3 className="font-sans text-base font-semibold text-foreground">
-          Door Code for Villa {selectedVilla}
-        </h3>
-        <div className="mt-6">
-          <div>
-            <span className="font-sans text-3xl font-bold text-foreground">{doorCode}</span>
-          </div>
-          <div className="my-4 border-t border-border" />
-          <button
-            type="button"
-            onClick={() => setDoorInstructionsExpanded((prev) => !prev)}
-            className="flex w-full items-center justify-between gap-4 text-left"
-            aria-expanded={doorInstructionsExpanded}
-          >
-            <span className="text-sm font-semibold text-foreground">How to use the lock</span>
-            <ChevronDown
-              className={`h-4 w-4 flex-shrink-0 text-muted transition-transform ${
-                doorInstructionsExpanded ? "rotate-180" : ""
-              }`}
-              aria-hidden
-            />
-          </button>
-          {doorInstructionsExpanded && (
-            <div className="mt-3 text-sm leading-relaxed text-muted">
-              <p>
-                Tap the display to wake it up. A set of random numbers will light up. Press all the illuminated
-                numbers, then enter the code. After entering the code, tap the lock icon in the bottom right to unlock
-                the door. When leaving, press the same button to activate the deadbolt and lock the home.
-              </p>
-            </div>
-          )}
-        </div>
-      </div>
-    </BottomSheet>
   ) : null;
 
   const heroImage = "/media/villas/villas.avif";
@@ -384,7 +341,6 @@ function RoomsPageContent() {
 
       {toast ? <Toast message={toast} /> : null}
       {wifiSheet}
-      {doorSheet}
     </div>
   );
 
