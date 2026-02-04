@@ -22,7 +22,6 @@ import {
   ChevronDown,
   Cigarette,
   Copy,
-  Lock,
   Search,
   Snowflake,
   Trash2,
@@ -61,7 +60,6 @@ const PULSE_DURATION_MS = 1_500;
 
 const QUICK_ACTIONS = [
   { id: "wifi", label: "Wi-Fi", icon: Wifi },
-  { id: "door", label: "Door code", icon: Lock },
 ] as const;
 
 type QuickActionId = (typeof QUICK_ACTIONS)[number]["id"];

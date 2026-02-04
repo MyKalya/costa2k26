@@ -49,9 +49,10 @@ const days: DayCardProps[] = [
     themeColor: "#E8A48F",
     cardBg: "#FDEFEA",
     bannerImage: "/media/itinerary/day2-banner.png",
-    vibeSummary: "Poolside BBQ and let's enjoy the villa! Later, we'll head out for a bar crawl through Tamarindo.",
+    vibeSummary: "Poolside BBQ at the villa, then we'll head into Tamarindo for a special Valentine's dinner show before the bar crawl.",
     notes: [
-      "It's Valentine's Day, feel free to do your own thing during the day, but we want everyone together in the evening.",
+      "Valentine's Day: do your own thing during the day if you want, but we want everyone together for the evening. Please be at Crazy Monkey by 7:30 PM.",
+      "We're aiming to be in Tamarindo for 5:00 PM to catch the sunset, and anyone is free to join if they want to be in Tamarindo earlier too.",
     ],
     events: [
       {
@@ -62,11 +63,18 @@ const days: DayCardProps[] = [
         icon: "beach",
       },
       {
-        time: "Evening",
+        time: "7:30 PM",
+        title: "Valentine's Dinner Show",
+        location: "",
+        description: "Be at Crazy Monkey by 7:30 PM for a special Valentine's Day dinner show. This is where the night officially starts.",
+        icon: "party",
+      },
+      {
+        time: "Night",
         title: "Bar Crawl",
         location: "",
-        description: "Roll into a boozy beach-bar crawl through El Be!, Nogui's, and all the hot spots. Big energy, big drinks, big night.",
-        icon: "beach",
+        description: "After the show, we roll into a Tamarindo bar crawl through El Be!, Nogui's, and other spots. Big energy, big drinks, late night.",
+        icon: "party",
       },
     ],
     gettingAround: "Ubers.",
@@ -176,6 +184,13 @@ const days: DayCardProps[] = [
       "Sunscreen, sunglasses, and a hat are your best friends.",
     ],
     events: [
+      {
+        time: "7:30AM",
+        title: "Yoga class",
+        location: "Playa Avellana",
+        description: "Start with a scenic 20-minute walk to the beach, followed by an optional yoga session. Let Sherrena know if you'd like to join. A relaxed way to ease into the day and soak in the Costa sun.",
+        icon: "sunrise",
+      },
       {
         time: "Morning",
         title: "Slow morning & light breakfast",

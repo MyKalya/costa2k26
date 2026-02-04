@@ -17,7 +17,7 @@ export interface DayEvent {
   title: string;
   location?: string;
   description?: string;
-  icon?: "arrival" | "party" | "meal" | "beach" | "free" | "adventure" | "boat" | "plane";
+  icon?: "arrival" | "party" | "meal" | "beach" | "free" | "adventure" | "boat" | "plane" | "sunrise";
   tag?: string;
   showPrepareButton?: boolean;
   showActivityButtons?: boolean;
@@ -59,6 +59,8 @@ const iconForEvent = (icon?: string) => {
       return "⛵";
     case "plane":
       return "✈️";
+    case "sunrise":
+      return "🌅";
     default:
       return "•";
   }
@@ -255,8 +257,8 @@ export function DayCard(props: DayCardProps) {
                                 key={`link-${match.index}`}
                                 href={href}
                                 className={className || "font-semibold underline hover:opacity-80 transition-opacity"}
-                                style={{ color: themeColor }}
-                              >
+                            style={{ color: themeColor }}
+                          >
                                 {linkText}
                               </a>
                             );
