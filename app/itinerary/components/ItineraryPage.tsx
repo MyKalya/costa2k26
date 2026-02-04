@@ -185,10 +185,10 @@ const days: DayCardProps[] = [
     ],
     events: [
       {
-        time: "7:30AM",
+        time: "7:00AM",
         title: "Yoga class",
         location: "Playa Avellana",
-        description: "Start with a scenic 20-minute walk to the beach, followed by an optional yoga session. Let Sherrena know if you'd like to join. A relaxed way to ease into the day and soak in the Costa sun.",
+        description: "Start with a scenic 20-minute walk to the beach, followed by an optional yoga session. Let Sherrena know if you'd like to join. A relaxed way to ease into the day and soak in the Costa sun. What to bring: bathing suit, beach towel, sunhat (by the time we head back around 930 sun will be out, it will be hot!!)",
         icon: "sunrise",
       },
       {

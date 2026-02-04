@@ -321,7 +321,7 @@ export default function TravelPage() {
               </div>
               <div className="pt-3 border-t border-inherit opacity-70">
                 <h4 className="font-semibold mb-3">What to Bring:</h4>
-                <ul className="list-disc list-inside space-y-2">
+            <ul className="list-disc list-inside space-y-2">
                   <li><strong>Important for women:</strong> Wear bathing suit under your clothes only and make sure to bring clothes that tighten, there is a current during the hike that could potentially pull your clothes down if they are not tight enough.</li>
                   <li>Closed toe shoes, water shoes or sandals with straps <strong>(NO FLIP FLOPS)</strong></li>
                   <li>Keens or chacos are okay to wear</li>
@@ -463,7 +463,7 @@ export default function TravelPage() {
                       <li style={{ color: '#374151' }}>Hat</li>
                       <li style={{ color: '#374151' }}>Sunscreen</li>
                       <li style={{ color: '#374151' }}>Cash for tipping</li>
-                    </ul>
+            </ul>
                   </div>
                 </div>
               </div>
