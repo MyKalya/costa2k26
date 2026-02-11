@@ -576,7 +576,7 @@ function PrepareModal({ themeColor, onClose }: { themeColor: string; onClose: ()
                 />
                 <div className="flex-1">
                   <p className="text-sm text-[#374151] leading-relaxed">
-                    Keens or chacos are okay to wear
+                    Keens, Chacos, or <strong>Crocs with sports mode</strong> are okay to wear
                   </p>
                 </div>
               </div>

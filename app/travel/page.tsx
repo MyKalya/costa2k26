@@ -324,7 +324,7 @@ export default function TravelPage() {
             <ul className="list-disc list-inside space-y-2">
                   <li><strong>Important for women:</strong> Wear bathing suit under your clothes only and make sure to bring clothes that tighten, there is a current during the hike that could potentially pull your clothes down if they are not tight enough.</li>
                   <li>Closed toe shoes, water shoes or sandals with straps <strong>(NO FLIP FLOPS)</strong></li>
-                  <li>Keens or chacos are okay to wear</li>
+                  <li>Keens, Chacos, or <strong>Crocs with sports mode</strong> are okay to wear</li>
                   <li>Shoes with a good grip</li>
                   <li>Extra clothes to change</li>
                   <li>Extra shoes to change</li>
