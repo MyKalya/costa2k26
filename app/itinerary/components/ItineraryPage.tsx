@@ -20,7 +20,6 @@ const days: DayCardProps[] = [
       "Welcome party dress code: all white.",
       "Pack a light layer for the evening breeze.",
       "Keep passports and valuables in the villa safe once you arrive.",
-      "Pro tip: Stop at PriceSmart by the airport before heading to Pinilla for major grocery purchases. It's cheaper than Tamarindo.",
     ],
     events: [
       {
@@ -92,7 +91,7 @@ const days: DayCardProps[] = [
     notes: [
       "Bring a bathing suit and a change of clothes. There are lots of chances to get into the water.",
       "Wear secure shoes that can handle water and uneven ground.",
-      "Towel and dry bag are recommended for your phone.",
+      "Bringing a towel is recommended and a dry bag will be provided for your phone",
     ],
     events: [
       {
@@ -112,9 +111,9 @@ const days: DayCardProps[] = [
       },
       {
         time: "Evening",
-        title: "Dinner",
-        location: "Local Costa Rican spot",
-        description: "Group dinner with classic Costa Rican dishes.",
+        title: "Free night",
+        location: "Tamarindo or Hacienda Pinilla",
+        description: "Enjoy a free evening to explore. Head to Tamarindo to dine at one of the many restaurants or visit El Mercadito de Tamarindo before 11pm. Alternatively, check out restaurants in the nearby Hacienda Pinilla area (just a 5-minute Uber away). The <a href=\"/explore-tamarindo\" class=\"underline font-semibold\">Explore Nearby</a> page has plenty of options.",
         icon: "meal",
       },
     ],

@@ -796,7 +796,7 @@ export const PLACES: Place[] = [
   },
   {
     id: "tamarindo-night-market",
-    name: "Tamarindo Night Market",
+    name: "El Mercadito de Tamarindo",
     category: "grocery",
     drivingMinutes: 25,
     rating: 4.3,
