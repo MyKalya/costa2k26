@@ -65,78 +65,75 @@ export function useMissions(externalPlayerId?: string | null) {
     setPointsMap(getPointsMap());
   }, [externalPlayerId]);
 
-  // Fetch from Supabase when configured and we have a player
-  useEffect(() => {
+  const fetchFromSupabase = useCallback(async () => {
     if (!hasSupabase || !supabase || !effectivePlayerId) {
       setSupabasePlayers(null);
       setSupabaseAssignments(null);
       return;
     }
-    let cancelled = false;
     setLoading(true);
-    (async () => {
-      try {
-        const { data: playersData, error: playersError } = await supabase
-          .from("players")
-          .select("id, name, first_name, gender, backend_group, villa, room, is_admin, points, couple_with");
-        if (playersError) throw playersError;
-        if (cancelled) return;
-        setSupabasePlayers((playersData ?? []) as Player[]);
+    try {
+      const { data: playersData, error: playersError } = await supabase
+        .from("players")
+        .select("id, name, first_name, gender, backend_group, villa, room, is_admin, points, couple_with");
+      if (playersError) throw playersError;
+      setSupabasePlayers((playersData ?? []) as Player[]);
 
-        const { data: assignmentsData, error: assignError } = await supabase
-          .from("mission_assignments")
-          .select(`
-            id,
-            mission_id,
-            player_id,
-            partner_id,
-            is_completed,
-            completed_at,
-            mission:missions(id, description, day, tier, points, bonus_points, time_window_start, time_window_end, is_group_mission),
-            partner:players!partner_id(id, first_name, villa, room)
-          `)
-          .eq("player_id", effectivePlayerId);
-        if (assignError) throw assignError;
-        if (cancelled) return;
-        const rows: AssignmentRow[] = (assignmentsData ?? []).map((row: Record<string, unknown>) => {
-          const mission = row.mission as Record<string, unknown>;
-          const partner = row.partner as Record<string, unknown> | null;
-          return {
-            assignment: {
-              id: row.id as string,
-              mission_id: row.mission_id as string,
-              player_id: row.player_id as string,
-              partner_id: (row.partner_id as string) ?? null,
-              is_completed: row.is_completed as boolean,
-              completed_at: (row.completed_at as string) ?? null,
-            },
-            mission: {
-              id: mission?.id as string,
-              description: mission?.description as string,
-              day: mission?.day as number,
-              tier: mission?.tier as string,
-              points: mission?.points as number,
-              bonus_points: (mission?.bonus_points as number) ?? null,
-              time_window_start: mission?.time_window_start as string,
-              time_window_end: mission?.time_window_end as string,
-              is_group_mission: mission?.is_group_mission as boolean,
-              is_active: true,
-              created_at: "",
-            },
-            partner: partner
-              ? { id: partner.id as string, first_name: partner.first_name as string, villa: partner.villa as string, room: partner.room as string }
-              : null,
-          };
-        });
-        setSupabaseAssignments(rows);
-      } catch (e) {
-        if (!cancelled) console.error("Supabase fetch error", e);
-      } finally {
-        if (!cancelled) setLoading(false);
-      }
-    })();
-    return () => { cancelled = true; };
+      const { data: assignmentsData, error: assignError } = await supabase
+        .from("mission_assignments")
+        .select(`
+          id,
+          mission_id,
+          player_id,
+          partner_id,
+          is_completed,
+          completed_at,
+          mission:missions(id, description, day, tier, points, bonus_points, time_window_start, time_window_end, is_group_mission),
+          partner:players!partner_id(id, first_name, villa, room)
+        `)
+        .eq("player_id", effectivePlayerId);
+      if (assignError) throw assignError;
+      const rows: AssignmentRow[] = (assignmentsData ?? []).map((row: Record<string, unknown>) => {
+        const mission = row.mission as Record<string, unknown>;
+        const partner = row.partner as Record<string, unknown> | null;
+        return {
+          assignment: {
+            id: row.id as string,
+            mission_id: row.mission_id as string,
+            player_id: row.player_id as string,
+            partner_id: (row.partner_id as string) ?? null,
+            is_completed: row.is_completed as boolean,
+            completed_at: (row.completed_at as string) ?? null,
+          },
+          mission: {
+            id: mission?.id as string,
+            description: mission?.description as string,
+            day: mission?.day as number,
+            tier: mission?.tier as string,
+            points: mission?.points as number,
+            bonus_points: (mission?.bonus_points as number) ?? null,
+            time_window_start: mission?.time_window_start as string,
+            time_window_end: mission?.time_window_end as string,
+            is_group_mission: mission?.is_group_mission as boolean,
+            is_active: true,
+            created_at: "",
+          },
+          partner: partner
+            ? { id: partner.id as string, first_name: partner.first_name as string, villa: partner.villa as string, room: partner.room as string }
+            : null,
+        };
+      });
+      setSupabaseAssignments(rows);
+    } catch (e) {
+      console.error("Supabase fetch error", e);
+    } finally {
+      setLoading(false);
+    }
   }, [effectivePlayerId]);
+
+  useEffect(() => {
+    fetchFromSupabase();
+  }, [fetchFromSupabase]);
 
   const basePlayer = effectivePlayerId
     ? (supabasePlayers ?? PLAYERS).find((p) => p.id === effectivePlayerId)
@@ -215,8 +212,6 @@ export function useMissions(externalPlayerId?: string | null) {
   const undoComplete = useCallback(
     async (assignmentId: string) => {
       if (!hasSupabase) return;
-      const row = (supabaseAssignments ?? []).find((a) => a.assignment.id === assignmentId);
-      if (!row) return;
       try {
         const res = await fetch("/api/missions/undo", {
           method: "POST",
@@ -225,24 +220,12 @@ export function useMissions(externalPlayerId?: string | null) {
         });
         const data = await res.json();
         if (!res.ok) throw new Error(data.error || "Undo failed");
-        const points = row.mission.points;
-        setSupabaseAssignments((prev) =>
-          (prev ?? []).map((a) =>
-            a.assignment.id === assignmentId
-              ? { ...a, assignment: { ...a.assignment, is_completed: false, completed_at: null } }
-              : a
-          )
-        );
-        setSupabasePlayers((prev) =>
-          (prev ?? []).map((p) =>
-            p.id === row.assignment.player_id ? { ...p, points: Math.max(0, (p.points ?? 0) - points) } : p
-          )
-        );
+        await fetchFromSupabase();
       } catch (e) {
         console.error("Undo error", e);
       }
     },
-    [supabaseAssignments]
+    [fetchFromSupabase]
   );
 
   const playersWithPoints = supabasePlayers
