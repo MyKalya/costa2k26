@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useMissions } from "../hooks/useMissions";
+import { supabase, hasSupabase } from "@/lib/supabase";
 
 const TIERS = [
   { id: "icebreaker", label: "Icebreaker" },
@@ -19,6 +20,15 @@ interface DraftMission {
   pairs?: [string, string][];
 }
 
+interface CompletedAssignmentRow {
+  id: string;
+  mission_id: string;
+  player_id: string;
+  completed_at: string | null;
+  mission: { id: string; description: string; points: number; is_active: boolean };
+  player: { first_name: string; name: string } | null;
+}
+
 export function AdminView({ playerId }: { playerId: string | null }) {
   const { playersWithPoints } = useMissions(playerId);
   const [day, setDay] = useState(2);
@@ -31,6 +41,70 @@ export function AdminView({ playerId }: { playerId: string | null }) {
   const [publishLoading, setPublishLoading] = useState(false);
   const [publishError, setPublishError] = useState<string | null>(null);
   const [publishSuccess, setPublishSuccess] = useState(false);
+  const [completedAssignments, setCompletedAssignments] = useState<CompletedAssignmentRow[]>([]);
+  const [manageLoading, setManageLoading] = useState(false);
+  const [undoingId, setUndoingId] = useState<string | null>(null);
+
+  const fetchCompletedAssignments = useCallback(async () => {
+    if (!hasSupabase || !supabase) return;
+    setManageLoading(true);
+    try {
+      const { data, error } = await supabase
+        .from("mission_assignments")
+        .select(
+          "id, mission_id, player_id, completed_at, mission:missions(id, description, points, is_active), player:players!player_id(first_name, name)"
+        )
+        .eq("is_completed", true);
+      if (error) throw error;
+      const rows: CompletedAssignmentRow[] = (data ?? []).map((row: Record<string, unknown>) => {
+        const mission = row.mission as Record<string, unknown>;
+        const player = row.player as Record<string, unknown> | null;
+        return {
+          id: row.id as string,
+          mission_id: row.mission_id as string,
+          player_id: row.player_id as string,
+          completed_at: (row.completed_at as string) ?? null,
+          mission: {
+            id: mission?.id as string,
+            description: (mission?.description as string) ?? "",
+            points: (mission?.points as number) ?? 0,
+            is_active: (mission?.is_active as boolean) ?? false,
+          },
+          player: player
+            ? { first_name: player.first_name as string, name: player.name as string }
+            : null,
+        };
+      });
+      setCompletedAssignments(rows.filter((r) => r.mission.is_active));
+    } catch (e) {
+      console.error("Fetch completed assignments", e);
+      setCompletedAssignments([]);
+    } finally {
+      setManageLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchCompletedAssignments();
+  }, [fetchCompletedAssignments]);
+
+  const handleAdminUndo = async (assignmentId: string) => {
+    setUndoingId(assignmentId);
+    try {
+      const res = await fetch("/api/missions/undo", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ assignmentId }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Undo failed");
+      await fetchCompletedAssignments();
+    } catch (e) {
+      console.error("Admin undo error", e);
+    } finally {
+      setUndoingId(null);
+    }
+  };
 
   const handleGenerate = async () => {
     setLoading(true);
@@ -176,6 +250,47 @@ export function AdminView({ playerId }: { playerId: string | null }) {
           </div>
           {publishError && <p className="mt-2 text-sm text-red-300">{publishError}</p>}
           {publishSuccess && <p className="mt-2 text-sm text-green-300">Published. Players will see these missions.</p>}
+        </section>
+      )}
+
+      {hasSupabase && (
+        <section className="mb-8 rounded-xl bg-white/10 p-4">
+          <h3 className="mb-3 font-semibold text-white">Manage active missions</h3>
+          <p className="mb-3 text-sm text-white/80">
+            Who marked what as complete. Undo reverses completion and subtracts points (no time limit).
+          </p>
+          {manageLoading ? (
+            <p className="text-sm text-white/70">Loading…</p>
+          ) : completedAssignments.length === 0 ? (
+            <p className="text-sm text-white/70">No completed assignments for active missions.</p>
+          ) : (
+            <div className="space-y-3">
+              {completedAssignments.map((row) => (
+                <div
+                  key={row.id}
+                  className="flex flex-wrap items-center justify-between gap-2 rounded-lg border border-white/20 bg-white/5 p-3"
+                >
+                  <div className="min-w-0 flex-1">
+                    <p className="text-sm text-white/90">{row.mission.description}</p>
+                    <p className="mt-0.5 text-xs text-white/60">
+                      {row.player?.first_name ?? row.player?.name ?? row.player_id} · +{row.mission.points} pts
+                      {row.completed_at && (
+                        <> · {new Date(row.completed_at).toLocaleString()}</>
+                      )}
+                    </p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => handleAdminUndo(row.id)}
+                    disabled={undoingId === row.id}
+                    className="shrink-0 rounded-lg border border-white/30 bg-white/10 px-3 py-1.5 text-xs font-medium text-white/90 hover:bg-white/20 disabled:opacity-50"
+                  >
+                    {undoingId === row.id ? "Undoing…" : "Undo"}
+                  </button>
+                </div>
+              ))}
+            </div>
+          )}
         </section>
       )}
 

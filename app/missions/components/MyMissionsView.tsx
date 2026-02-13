@@ -3,8 +3,10 @@
 import { useMissions } from "../hooks/useMissions";
 import { MissionCard } from "./MissionCard";
 
+const UNDO_WINDOW_MS = 10 * 60 * 1000; // 10 minutes
+
 export function MyMissionsView({ playerId }: { playerId: string | null }) {
-  const { currentPlayer, assignments, markComplete } = useMissions(playerId);
+  const { currentPlayer, assignments, markComplete, undoComplete } = useMissions(playerId);
 
   if (!currentPlayer) return null;
 
@@ -56,19 +58,34 @@ export function MyMissionsView({ playerId }: { playerId: string | null }) {
             Completed
           </h3>
           <div className="space-y-4">
-            {done.map((a) => (
-              <div
-                key={a.assignment.id}
-                className="rounded-2xl border border-white/10 bg-white/5 p-4 opacity-90"
-              >
-                <p className="text-sm text-white/90 line-through">
-                  {a.mission.description}
-                </p>
-                <p className="mt-1 text-xs text-white/60">
-                  +{a.mission.points} pts
-                </p>
-              </div>
-            ))}
+            {done.map((a) => {
+              const completedAt = a.assignment.completed_at;
+              const canUndo =
+                completedAt &&
+                Date.now() - new Date(completedAt).getTime() < UNDO_WINDOW_MS;
+              return (
+                <div
+                  key={a.assignment.id}
+                  className="rounded-2xl border border-white/10 bg-white/5 p-4 opacity-90"
+                >
+                  <p className="text-sm text-white/90 line-through">
+                    {a.mission.description}
+                  </p>
+                  <p className="mt-1 text-xs text-white/60">
+                    +{a.mission.points} pts
+                  </p>
+                  {canUndo && (
+                    <button
+                      type="button"
+                      onClick={() => undoComplete(a.assignment.id)}
+                      className="mt-2 rounded-lg border border-white/30 bg-white/10 px-3 py-1.5 text-xs font-medium text-white/90 hover:bg-white/20"
+                    >
+                      Undo
+                    </button>
+                  )}
+                </div>
+              );
+            })}
           </div>
         </section>
       )}

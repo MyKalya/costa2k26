@@ -6,7 +6,7 @@ import type { Player } from "../types";
  */
 export const PLAYERS: Omit<Player, "points">[] = [
   { id: "p-mathushan", name: "Mathushan Gnanasegaram", first_name: "Mathushan", gender: "M", backend_group: "admin", villa: "V15", room: "V15-1", is_admin: true, couple_with: "Sherrena" },
-  { id: "p-sherrena", name: "Sherrena Sivarajah", first_name: "Sherrena", gender: "F", backend_group: "admin", villa: "V15", room: "V15-1", is_admin: true, couple_with: "Mathushan" },
+  { id: "p-sherrena", name: "Sherrena Sivarajah", first_name: "Sherrena", gender: "F", backend_group: "admin", villa: "V15", room: "V15-1", is_admin: false, couple_with: "Mathushan" },
   { id: "p-aatharsha", name: "Aatharsha Jeyachelvan", first_name: "Aatharsha", gender: "F", backend_group: "sher_a", villa: "V16", room: "V16-7", is_admin: false, couple_with: "Thasitathan" },
   { id: "p-thasithan", name: "Thasitathan Sivakumaran", first_name: "Thasitathan", gender: "M", backend_group: "sher_a", villa: "V16", room: "V16-7", is_admin: false, couple_with: "Aatharsha" },
   { id: "p-aksaran", name: "Aksaran Thayalanathan", first_name: "Aksaran", gender: "M", backend_group: "sher_a", villa: "V15", room: "V15-2", is_admin: false, couple_with: "Thithusha" },

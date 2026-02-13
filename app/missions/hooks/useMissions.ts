@@ -212,6 +212,39 @@ export function useMissions(externalPlayerId?: string | null) {
     [currentPlayer, supabaseAssignments]
   );
 
+  const undoComplete = useCallback(
+    async (assignmentId: string) => {
+      if (!hasSupabase) return;
+      const row = (supabaseAssignments ?? []).find((a) => a.assignment.id === assignmentId);
+      if (!row) return;
+      try {
+        const res = await fetch("/api/missions/undo", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ assignmentId }),
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || "Undo failed");
+        const points = row.mission.points;
+        setSupabaseAssignments((prev) =>
+          (prev ?? []).map((a) =>
+            a.assignment.id === assignmentId
+              ? { ...a, assignment: { ...a.assignment, is_completed: false, completed_at: null } }
+              : a
+          )
+        );
+        setSupabasePlayers((prev) =>
+          (prev ?? []).map((p) =>
+            p.id === row.assignment.player_id ? { ...p, points: Math.max(0, (p.points ?? 0) - points) } : p
+          )
+        );
+      } catch (e) {
+        console.error("Undo error", e);
+      }
+    },
+    [supabaseAssignments]
+  );
+
   const playersWithPoints = supabasePlayers
     ? supabasePlayers.map((p) => ({ ...p, points: p.points ?? 0 }))
     : getPlayersWithPoints(pointsMap);
@@ -226,6 +259,7 @@ export function useMissions(externalPlayerId?: string | null) {
       isCompleted: completedSet.has(a.assignment.id),
     })),
     markComplete,
+    undoComplete,
     isAssignmentCompleted: (id: string) => completedSet.has(id),
     playersWithPoints,
     pointsMap,
