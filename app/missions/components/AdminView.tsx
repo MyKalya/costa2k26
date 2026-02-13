@@ -44,6 +44,68 @@ export function AdminView({ playerId }: { playerId: string | null }) {
   const [completedAssignments, setCompletedAssignments] = useState<CompletedAssignmentRow[]>([]);
   const [manageLoading, setManageLoading] = useState(false);
   const [undoingId, setUndoingId] = useState<string | null>(null);
+  const [stakesCurrentDay, setStakesCurrentDay] = useState(1);
+  const [stakesByDay, setStakesByDay] = useState<Record<number, { reward_text: string; consequence_text: string }>>({
+    1: { reward_text: "", consequence_text: "" },
+    2: { reward_text: "", consequence_text: "" },
+    3: { reward_text: "", consequence_text: "" },
+    4: { reward_text: "", consequence_text: "" },
+    5: { reward_text: "", consequence_text: "" },
+  });
+  const [stakesLoadLoading, setStakesLoadLoading] = useState(true);
+  const [stakesSaveLoading, setStakesSaveLoading] = useState(false);
+  const [stakesSaveSuccess, setStakesSaveSuccess] = useState(false);
+
+  const fetchStakes = useCallback(async () => {
+    setStakesLoadLoading(true);
+    try {
+      const res = await fetch("/api/missions/stakes");
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Failed to load stakes");
+      setStakesCurrentDay(data.currentDay ?? 1);
+      const next: Record<number, { reward_text: string; consequence_text: string }> = { 1: { reward_text: "", consequence_text: "" }, 2: { reward_text: "", consequence_text: "" }, 3: { reward_text: "", consequence_text: "" }, 4: { reward_text: "", consequence_text: "" }, 5: { reward_text: "", consequence_text: "" } };
+      for (const row of data.dailyStakes ?? []) {
+        if (row.day >= 1 && row.day <= 5) {
+          next[row.day] = { reward_text: row.reward_text ?? "", consequence_text: row.consequence_text ?? "" };
+        }
+      }
+      setStakesByDay(next);
+    } catch (e) {
+      console.error("Fetch stakes", e);
+    } finally {
+      setStakesLoadLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchStakes();
+  }, [fetchStakes]);
+
+  const handleSaveStakes = async () => {
+    setStakesSaveLoading(true);
+    setStakesSaveSuccess(false);
+    try {
+      const res = await fetch("/api/missions/stakes", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          currentDay: stakesCurrentDay,
+          dailyStakes: [1, 2, 3, 4, 5].map((d) => ({
+            day: d,
+            reward_text: stakesByDay[d]?.reward_text ?? "",
+            consequence_text: stakesByDay[d]?.consequence_text ?? "",
+          })),
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Failed to save stakes");
+      setStakesSaveSuccess(true);
+    } catch (e) {
+      console.error("Save stakes", e);
+    } finally {
+      setStakesSaveLoading(false);
+    }
+  };
 
   const fetchCompletedAssignments = useCallback(async () => {
     if (!hasSupabase || !supabase) return;
@@ -94,7 +156,7 @@ export function AdminView({ playerId }: { playerId: string | null }) {
       const res = await fetch("/api/missions/undo", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ assignmentId }),
+        body: JSON.stringify({ assignmentId, reason: "admin_undo" }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Undo failed");
@@ -151,6 +213,73 @@ export function AdminView({ playerId }: { playerId: string | null }) {
   return (
     <div className="mx-auto max-w-lg px-4 pb-28 pt-6">
       <h2 className="mb-6 text-2xl font-bold text-white">Admin</h2>
+
+      <section className="mb-8 rounded-xl bg-white/10 p-4">
+        <h3 className="mb-3 font-semibold text-white">Daily stakes</h3>
+        <p className="mb-4 text-sm text-white/80">
+          Set the &quot;today&quot; trip day and, for each day, the reward (complete all missions) and consequence (complete none). Shown at the top of My Missions and Leaderboard.
+        </p>
+        {stakesLoadLoading ? (
+          <p className="text-sm text-white/70">Loading…</p>
+        ) : (
+          <>
+            <div className="mb-4">
+              <label className="mb-1 block text-xs text-white/70">Current trip day (what &quot;today&quot; is)</label>
+              <select
+                value={stakesCurrentDay}
+                onChange={(e) => setStakesCurrentDay(Number(e.target.value))}
+                className="w-full rounded-lg bg-white/10 px-3 py-2 text-white"
+              >
+                {[1, 2, 3, 4, 5].map((d) => (
+                  <option key={d} value={d} className="bg-[#0E3D2F]">
+                    Day {d}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="space-y-6">
+              {[1, 2, 3, 4, 5].map((d) => (
+                <div key={d} className="rounded-lg border border-white/20 bg-white/5 p-3">
+                  <h4 className="mb-2 text-sm font-semibold text-white">Day {d}</h4>
+                  <div className="space-y-2">
+                    <div>
+                      <label className="mb-0.5 block text-xs text-white/60">Reward (complete all missions this day)</label>
+                      <input
+                        type="text"
+                        value={stakesByDay[d]?.reward_text ?? ""}
+                        onChange={(e) => setStakesByDay((prev) => ({ ...prev, [d]: { ...prev[d], reward_text: e.target.value } }))}
+                        placeholder="e.g. First drink on the hosts"
+                        className="w-full rounded-lg bg-white/10 px-3 py-2 text-sm text-white placeholder-white/40"
+                      />
+                    </div>
+                    <div>
+                      <label className="mb-0.5 block text-xs text-white/60">Consequence (complete none this day)</label>
+                      <input
+                        type="text"
+                        value={stakesByDay[d]?.consequence_text ?? ""}
+                        onChange={(e) => setStakesByDay((prev) => ({ ...prev, [d]: { ...prev[d], consequence_text: e.target.value } }))}
+                        placeholder="e.g. Last pick for transfer seats"
+                        className="w-full rounded-lg bg-white/10 px-3 py-2 text-sm text-white placeholder-white/40"
+                      />
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="mt-4 flex items-center gap-3">
+              <button
+                type="button"
+                onClick={handleSaveStakes}
+                disabled={stakesSaveLoading}
+                className="rounded-xl bg-[#F3B44C] py-2.5 px-4 font-bold text-[#0E3D2F] disabled:opacity-50"
+              >
+                {stakesSaveLoading ? "Saving…" : "Save daily stakes"}
+              </button>
+              {stakesSaveSuccess && <span className="text-sm text-green-300">Saved.</span>}
+            </div>
+          </>
+        )}
+      </section>
 
       <section className="mb-8 rounded-xl bg-white/10 p-4">
         <h3 className="mb-3 font-semibold text-white">Generate missions (AI)</h3>

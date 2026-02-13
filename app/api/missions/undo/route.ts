@@ -8,13 +8,14 @@ export async function POST(request: Request) {
   if (!supabaseUrl || !supabaseServiceKey) {
     return NextResponse.json({ error: "Supabase not configured" }, { status: 503 });
   }
-  let body: { assignmentId: string };
+  let body: { assignmentId: string; reason?: string };
   try {
     body = await request.json();
   } catch {
     return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
   }
-  const { assignmentId } = body;
+  const { assignmentId, reason: logReason } = body;
+  const pointLogReason = logReason === "admin_undo" ? "admin_undo" : "undo";
   if (!assignmentId || typeof assignmentId !== "string") {
     return NextResponse.json({ error: "assignmentId required" }, { status: 400 });
   }
@@ -76,7 +77,7 @@ export async function POST(request: Request) {
     player_id: assignment.player_id,
     mission_id: assignment.mission_id,
     points: -points,
-    reason: "undo",
+    reason: pointLogReason,
   });
 
   if (logErr) {

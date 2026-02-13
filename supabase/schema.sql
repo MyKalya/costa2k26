@@ -2,6 +2,8 @@
 -- Player id is text (e.g. p-mathushan) so app and seed script stay in sync. Run via setup script.
 
 -- Drop in reverse dependency order (for clean re-run)
+drop table if exists daily_stakes;
+drop table if exists app_config;
 drop table if exists point_log;
 drop table if exists mission_assignments;
 drop table if exists missions;
@@ -63,3 +65,16 @@ create table point_log (
 create index idx_mission_assignments_player on mission_assignments(player_id);
 create index idx_mission_assignments_mission on mission_assignments(mission_id);
 create index idx_point_log_player on point_log(player_id);
+
+-- App config (e.g. current trip day 1-5)
+create table app_config (
+  key text primary key,
+  value text not null
+);
+
+-- Daily stakes: reward for completing all missions that day, consequence for completing none
+create table daily_stakes (
+  day integer primary key check (day >= 1 and day <= 5),
+  reward_text text not null default '',
+  consequence_text text not null default ''
+);

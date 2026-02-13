@@ -1,12 +1,15 @@
 "use client";
 
 import { useMissions } from "../hooks/useMissions";
+import { useStakes } from "../hooks/useStakes";
 import { MissionCard } from "./MissionCard";
+import { TodaysStakesBanner } from "./TodaysStakesBanner";
 
 const UNDO_WINDOW_MS = 10 * 60 * 1000; // 10 minutes
 
 export function MyMissionsView({ playerId }: { playerId: string | null }) {
   const { currentPlayer, assignments, markComplete, undoComplete } = useMissions(playerId);
+  const { currentDay, rewardText, consequenceText, stakesLoading } = useStakes();
 
   if (!currentPlayer) return null;
 
@@ -15,6 +18,12 @@ export function MyMissionsView({ playerId }: { playerId: string | null }) {
 
   return (
     <div className="mx-auto max-w-lg px-4 pb-28 pt-6">
+      <TodaysStakesBanner
+        currentDay={currentDay}
+        rewardText={rewardText}
+        consequenceText={consequenceText}
+        loading={stakesLoading}
+      />
       <div className="mb-6 flex items-center justify-between">
         <div>
           <h2 className="text-xl font-bold text-white">

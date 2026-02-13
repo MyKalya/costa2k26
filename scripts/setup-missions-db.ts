@@ -85,7 +85,18 @@ async function run() {
       }
     }
 
-    console.log("Done. Tables created and seeded: players (34), missions (3), mission_assignments (98).");
+    console.log("5. Seeding app_config and daily_stakes...");
+    await client.query(
+      `insert into app_config (key, value) values ('current_day', '1') on conflict (key) do update set value = excluded.value`
+    );
+    for (let d = 1; d <= 5; d++) {
+      await client.query(
+        `insert into daily_stakes (day, reward_text, consequence_text) values ($1, '', '') on conflict (day) do nothing`,
+        [d]
+      );
+    }
+
+    console.log("Done. Tables created and seeded: players (34), missions (3), mission_assignments (98), app_config, daily_stakes (days 1-5).");
   } finally {
     await client.end();
   }
