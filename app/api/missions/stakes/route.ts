@@ -9,9 +9,12 @@ export interface StakesBody {
   dailyStakes?: { day: number; reward_text: string; consequence_text: string }[];
 }
 
+const SUPABASE_NOT_CONFIGURED =
+  "Supabase not configured. Add NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY (or SUPABASE_SERVICE_ROLE_KEY) to .env.local. See .env.example.";
+
 export async function GET() {
   if (!supabaseUrl || !supabaseServiceKey) {
-    return NextResponse.json({ error: "Supabase not configured" }, { status: 503 });
+    return NextResponse.json({ error: SUPABASE_NOT_CONFIGURED }, { status: 503 });
   }
   const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
@@ -37,7 +40,7 @@ export async function GET() {
 
 export async function POST(request: Request) {
   if (!supabaseUrl || !supabaseServiceKey) {
-    return NextResponse.json({ error: "Supabase not configured" }, { status: 503 });
+    return NextResponse.json({ error: SUPABASE_NOT_CONFIGURED }, { status: 503 });
   }
   let body: StakesBody;
   try {

@@ -282,7 +282,23 @@ export function AdminView({ playerId }: { playerId: string | null }) {
               </button>
               {stakesSaveSuccess && <span className="text-sm text-green-300">Saved.</span>}
               {stakesSaveError && (
-                <span className="text-sm text-red-300">Failed: {stakesSaveError}</span>
+                <div className="mt-2 rounded-lg border border-red-400/50 bg-red-500/10 p-3">
+                  <p className="text-sm font-medium text-red-300">Failed: {stakesSaveError}</p>
+                  {stakesSaveError.includes("Supabase not configured") && (
+                    <div className="mt-2 text-xs text-white/90">
+                      <p className="font-semibold text-red-200">How to fix:</p>
+                      <ol className="mt-1 list-inside list-decimal space-y-0.5">
+                        <li>Create a project at supabase.com if you don’t have one.</li>
+                        <li>In the repo root, create or edit <code className="rounded bg-white/20 px-1">.env.local</code> and add:<br />
+                          <code className="mt-1 block rounded bg-black/30 p-2 text-[11px]">NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co<br />NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key</code>
+                        </li>
+                        <li>Get the URL and anon key from Supabase → Project Settings → API.</li>
+                        <li>Run <code className="rounded bg-white/20 px-1">pnpm setup-missions-db</code> (or run the SQL in <code className="rounded bg-white/20 px-1">supabase/schema.sql</code> in the Supabase SQL editor) so <code className="rounded bg-white/20 px-1">app_config</code> and <code className="rounded bg-white/20 px-1">daily_stakes</code> tables exist.</li>
+                        <li>Restart the dev server and try saving again.</li>
+                      </ol>
+                    </div>
+                  )}
+                </div>
               )}
             </div>
           </>
