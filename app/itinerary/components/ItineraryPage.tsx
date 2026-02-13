@@ -30,10 +30,10 @@ const days: DayCardProps[] = [
         icon: "arrival",
       },
       {
-        time: "Evening",
+        time: "7:30 PM",
         title: "Welcome night",
-        location: "At the villa",
-        description: "Private chef experience at the villa. For those who want to stay up and party the first night, we'll head over to Tamarindo to continue the partying.",
+        location: "Villa 15",
+        description: "Please be at Villa 15 by 7:30 PM. The welcome party is being hosted there. Look cute. Our private chef will begin serving at 8 PM, and we'd love everyone there before then so we can kick off the night together. For those who want to keep the party going, we'll head to Tamarindo after.",
         icon: "party",
       },
     ],
