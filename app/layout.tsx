@@ -1,6 +1,6 @@
 import "./globals.css";
-import NavBar from "@/components/NavBar";
 import { Inter } from "next/font/google";
+import MissionsAwareLayout from "@/components/MissionsAwareLayout";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -13,8 +13,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={inter.variable}>
       <body className="bg-background text-foreground antialiased">
-        <NavBar />
-        <main className="min-h-screen pt-14">{children}</main>
+        <MissionsAwareLayout>{children}</MissionsAwareLayout>
       </body>
     </html>
   );
