@@ -30,7 +30,9 @@ export async function GET() {
     consequence_text: r.consequence_text ?? "",
   }));
 
-  return NextResponse.json({ currentDay, dailyStakes });
+  return NextResponse.json({ currentDay, dailyStakes }, {
+    headers: { "Cache-Control": "no-store, max-age=0" },
+  });
 }
 
 export async function POST(request: Request) {

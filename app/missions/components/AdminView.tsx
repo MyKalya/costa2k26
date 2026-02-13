@@ -55,11 +55,12 @@ export function AdminView({ playerId }: { playerId: string | null }) {
   const [stakesLoadLoading, setStakesLoadLoading] = useState(true);
   const [stakesSaveLoading, setStakesSaveLoading] = useState(false);
   const [stakesSaveSuccess, setStakesSaveSuccess] = useState(false);
+  const [stakesSaveError, setStakesSaveError] = useState<string | null>(null);
 
   const fetchStakes = useCallback(async () => {
     setStakesLoadLoading(true);
     try {
-      const res = await fetch("/api/missions/stakes");
+      const res = await fetch("/api/missions/stakes", { cache: "no-store" });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Failed to load stakes");
       setStakesCurrentDay(data.currentDay ?? 1);
@@ -84,6 +85,7 @@ export function AdminView({ playerId }: { playerId: string | null }) {
   const handleSaveStakes = async () => {
     setStakesSaveLoading(true);
     setStakesSaveSuccess(false);
+    setStakesSaveError(null);
     try {
       const res = await fetch("/api/missions/stakes", {
         method: "POST",
@@ -100,7 +102,10 @@ export function AdminView({ playerId }: { playerId: string | null }) {
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Failed to save stakes");
       setStakesSaveSuccess(true);
+      await fetchStakes();
     } catch (e) {
+      const message = e instanceof Error ? e.message : "Save failed";
+      setStakesSaveError(message);
       console.error("Save stakes", e);
     } finally {
       setStakesSaveLoading(false);
@@ -217,7 +222,7 @@ export function AdminView({ playerId }: { playerId: string | null }) {
       <section className="mb-8 rounded-xl bg-white/10 p-4">
         <h3 className="mb-3 font-semibold text-white">Daily stakes</h3>
         <p className="mb-4 text-sm text-white/80">
-          Set the &quot;today&quot; trip day and, for each day, the reward (complete all missions) and consequence (complete none). Shown at the top of My Missions and Leaderboard.
+          Set the &quot;today&quot; trip day and, for each day, the reward (complete all missions) and consequence (complete none). Players see the day you set as &quot;Current trip day&quot;. If save fails, ensure <code className="rounded bg-white/20 px-1">app_config</code> and <code className="rounded bg-white/20 px-1">daily_stakes</code> exist in Supabase (run schema/setup).
         </p>
         {stakesLoadLoading ? (
           <p className="text-sm text-white/70">Loading…</p>
@@ -276,6 +281,9 @@ export function AdminView({ playerId }: { playerId: string | null }) {
                 {stakesSaveLoading ? "Saving…" : "Save daily stakes"}
               </button>
               {stakesSaveSuccess && <span className="text-sm text-green-300">Saved.</span>}
+              {stakesSaveError && (
+                <span className="text-sm text-red-300">Failed: {stakesSaveError}</span>
+              )}
             </div>
           </>
         )}

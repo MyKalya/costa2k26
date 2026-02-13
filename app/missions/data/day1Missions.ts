@@ -29,7 +29,7 @@ const MISSION_1: Mission = {
 const MISSION_2: Mission = {
   id: "day1-m2-paired",
   description:
-    "You've been paired with a fellow guest. Find them tonight, buy or bring them a drink, and learn one thing about them that would surprise the group. Post a selfie together in the missions chat.",
+    "You've been paired with a fellow guest. Find them tonight, have a drink with them, and learn one thing about them that would surprise the group. Post a selfie of the two of you doing that in the missions chat.",
   day: 1,
   tier: "icebreaker",
   points: 15,
