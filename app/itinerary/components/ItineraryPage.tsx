@@ -96,9 +96,9 @@ const days: DayCardProps[] = [
     events: [
       {
         time: "Morning",
-        title: "8:45AM pickup at the villa",
+        title: "8:00AM pickup from the villa",
         location: "",
-        description: "Please do not be late as the bus will need to leave at 8:45AM at the latest! Please meet at villa 15 ready to leave and make sure to check below on how to prepare and what to bring.",
+        description: "Please do not be late as the bus will need to leave at 8:00AM at the latest! Please meet at villa 15 ready to leave and make sure to check below on how to prepare and what to bring.",
         icon: "adventure",
       },
       {

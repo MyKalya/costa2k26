@@ -313,10 +313,10 @@ export default function TravelPage() {
               <div>
                 <h4 className="font-semibold mb-2">Pickup Time</h4>
                 <p>
-                  <strong>8:45AM pickup at the villa</strong>
+                  <strong>8:00AM pickup from the villa</strong>
                 </p>
                 <p className="mt-2">
-                  Please do not be late as the bus will need to leave at 8:45AM at the latest! Please meet at villa 15 ready to leave and make sure to check below on how to prepare and what to bring.
+                  Please do not be late as the bus will need to leave at 8:00AM at the latest! Please meet at villa 15 ready to leave and make sure to check below on how to prepare and what to bring.
                 </p>
               </div>
               <div className="pt-3 border-t border-inherit opacity-70">
