@@ -140,7 +140,7 @@ export const DAY_CONFIGS: DayConfig[] = [
       { key: "day1.secondEtransfer", label: "Second E-Transfer" },
       { key: "day1.groceryHaul", label: "Grocery Haul" },
       { key: "day1.airportTransfer", label: "Airport Transfer" },
-      { key: "day1.bakeryHaul", label: "Bakery Haul" },
+      { key: "day1.bakeryHaul", label: "Pastry Assortment" },
     ],
   },
   {
